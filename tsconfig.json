@@ -21,7 +21,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "ignoreDeprecations": "6.0" // tambahan agar tidak error
   },
   "include": [
     "next-env.d.ts",

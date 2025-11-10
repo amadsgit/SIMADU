@@ -2,9 +2,33 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
+
 export async function GET() {
-  const kader = await prisma.kader.findMany({ include: { posyandu: true } });
-  return NextResponse.json(kader);
+  try {
+    const kader = await prisma.kader.findMany({
+      include: {
+        posyandu: {
+          include: {
+            kelurahan: {
+              select: {
+                id: true,
+                nama: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: { nama: 'asc' },
+    });
+
+    return NextResponse.json(kader);
+  } catch (error: any) {
+    console.error('[GET kader]', error);
+    return NextResponse.json(
+      { error: 'Gagal mengambil data kader', detail: error.message },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(req: Request) {

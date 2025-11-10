@@ -16,7 +16,7 @@ export default function ModalKonfirmasi({
   onClose,
   onConfirm,
   title = 'Konfirmasi Hapus',
-  message = 'Apakah kamu yakin ingin menghapus data ini?'
+  message = 'Apakah anda yakin ingin menghapus data ini?'
 }: ModalKonfirmasiProps) {
   return (
     <Transition.Root show={isOpen} as={Fragment}>

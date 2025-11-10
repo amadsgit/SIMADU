@@ -18,7 +18,7 @@ export default function KontakPage() {
       <section className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 rounded-xl shadow-xl mx-4 md:mx-6 mt-6 px-6 md:px-12 py-8 md:py-12 text-white text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-extrabold drop-shadow">Kontak Kami</h1>
         <p className="mt-2 text-sm md:text-base max-w-2xl">
-          Hubungi kami jika ada pertanyaan, saran, atau kerjasama terkait <strong>E-Posyandu Care</strong>. Kami siap mendengarkan Anda!
+          Hubungi kami jika ada pertanyaan dan saran terkait kegiatan posyandu di wilayah kerja UPTD Puskesmas Cikalapa.
         </p>
       </section>
 
@@ -31,8 +31,7 @@ export default function KontakPage() {
             <li className="flex items-start gap-4">
               <MapPinIcon className="w-6 h-6 text-emerald-600 mt-1" />
               <span>
-                Jl. Bima Sakti, Kel. Cigadung, Kec. Subang, Kab. Subang,<br />
-                Jawa Barat 41211 – Indonesia
+                Jl. Pulau Kalimantan No.39 Kelurahan Pasirkareumbi Kec.Subang Kad.Subang - Jawa Barat.
               </span>
             </li>
             <li className="flex items-start gap-4">
@@ -41,7 +40,7 @@ export default function KontakPage() {
             </li>
             <li className="flex items-start gap-4">
               <EnvelopeIcon className="w-6 h-6 text-emerald-600 mt-1" />
-              <span>mamadahmadfnc@gmail.com</span>
+              <span>puskesmascikalapa@gmail.com</span>
             </li>
           </ul>
         </div>

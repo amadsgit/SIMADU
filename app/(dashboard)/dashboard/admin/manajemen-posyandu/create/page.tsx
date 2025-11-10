@@ -5,6 +5,11 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonSimpan from '@/components/button-simpan';
 import ButtonBatal from '@/components/button-batal';
+import dynamic from 'next/dynamic';
+
+const ModalAmbilKoordinat = dynamic(() => import('@/components/modal-ambil-koordinat'), {
+  ssr: false,
+});
 
 const enumOptions = [
   'PARIPURNA',
@@ -44,6 +49,10 @@ export default function Page() {
 
   const [kelurahanList, setKelurahanList] = useState<Kelurahan[]>([]);
   const [loading, setLoading] = useState(false);
+  const [showMap, setShowMap] = useState(false);
+  // State untuk cek realtime nama
+  const [namaError, setNamaError] = useState<string | null>(null);
+  const [checkingNama, setCheckingNama] = useState(false);
 
   // Fetch data kelurahan
   useEffect(() => {
@@ -65,6 +74,41 @@ export default function Page() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const delayDebounce = setTimeout(async () => {
+      if (formData.nama.trim() === '') {
+        setNamaError(null);
+        return;
+      }
+
+      setCheckingNama(true);
+      try {
+        const res = await fetch(`/api/check-namaposyandu?nama=${encodeURIComponent(formData.nama)}`, {
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error('Gagal memeriksa nama');
+        const data = await res.json();
+        if (data.exists) {
+          setNamaError('Nama Posyandu sudah terdaftar.');
+        } else {
+          setNamaError(null);
+        }
+      } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
+        console.error(err);
+      } finally {
+        setCheckingNama(false);
+      }
+    }, 500); // debounce 0.5 detik
+
+    return () => {
+      clearTimeout(delayDebounce);
+      controller.abort();
+    };
+  }, [formData.nama]);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,6 +139,14 @@ export default function Page() {
         }),
       });
 
+      // Cek jika nama sudah ada (status 409)
+      if (res.status === 409) {
+        const data = await res.json();
+        toast.error(data.message || 'Nama Posyandu sudah terdaftar!');
+        setLoading(false);
+        return;
+      }
+
       if (!res.ok) throw new Error('Gagal menyimpan data');
 
       toast.success('Berhasil menambahkan data Posyandu!');
@@ -106,6 +158,7 @@ export default function Page() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="px-3 py-6">
@@ -117,20 +170,34 @@ export default function Page() {
 
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-8">
-              {/* --- Nama Posyandu --- */}
+              {/* --- Nama Posyandu (dengan validasi realtime) --- */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">
                   Nama Posyandu
                 </label>
-                <input
-                  type="text"
-                  name="nama"
-                  value={formData.nama}
-                  onChange={handleChange}
-                  placeholder="Contoh: Posyandu Melati"
-                  ref={namaRef}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
-                />
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="nama"
+                    value={formData.nama}
+                    onChange={handleChange}
+                    placeholder="Contoh: Posyandu Melati"
+                    ref={namaRef}
+                    className={`w-full px-4 py-2 border rounded-xl shadow-sm focus:outline-none focus:ring-2 transition
+                      ${namaError
+                        ? 'border-red-400 focus:ring-red-400'
+                        : 'border-gray-300 focus:ring-green-400'}
+                    `}
+                  />
+                  {checkingNama && (
+                    <span className="absolute right-3 top-2.5 text-gray-400 text-sm animate-pulse">
+                      Mengecek...
+                    </span>
+                  )}
+                </div>
+                {namaError && (
+                  <p className="text-red-500 text-sm mt-1">{namaError}</p>
+                )}
               </div>
 
               {/* --- Alamat & Wilayah --- */}
@@ -188,7 +255,9 @@ export default function Page() {
               {/* --- Koordinat Lokasi --- */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Longitude</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Longitude
+                  </label>
                   <input
                     type="text"
                     name="longitude"
@@ -197,9 +266,19 @@ export default function Page() {
                     placeholder="Contoh: 107.619123"
                     className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="mt-2 text-sm text-green-600 font-medium hover:underline"
+                  >
+                    📍 Ambil dari Peta
+                  </button>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Latitude</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Latitude
+                  </label>
                   <input
                     type="text"
                     name="latitude"
@@ -254,6 +333,22 @@ export default function Page() {
               </div>
             </div>
           </form>
+
+          {/* Modal Ambil Koordinat */}
+          {showMap && (
+            <ModalAmbilKoordinat
+              onPick={(lat, lng) => {
+                setFormData({
+                  ...formData,
+                  latitude: lat.toString(),
+                  longitude: lng.toString(),
+                });
+                setShowMap(false);
+              }}
+              onClose={() => setShowMap(false)}
+            />
+          )}
+
         </div>
       </div>
     </div>

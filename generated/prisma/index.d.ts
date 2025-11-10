@@ -43,6 +43,46 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Otp = $Result.DefaultSelection<Prisma.$OtpPayload>
+/**
+ * Model Klaster
+ * 
+ */
+export type Klaster = $Result.DefaultSelection<Prisma.$KlasterPayload>
+/**
+ * Model ProgramKesehatan
+ * 
+ */
+export type ProgramKesehatan = $Result.DefaultSelection<Prisma.$ProgramKesehatanPayload>
+/**
+ * Model Kegiatan
+ * 
+ */
+export type Kegiatan = $Result.DefaultSelection<Prisma.$KegiatanPayload>
+/**
+ * Model Balita
+ * 
+ */
+export type Balita = $Result.DefaultSelection<Prisma.$BalitaPayload>
+/**
+ * Model IbuHamil
+ * 
+ */
+export type IbuHamil = $Result.DefaultSelection<Prisma.$IbuHamilPayload>
+/**
+ * Model PemeriksaanBalita
+ * 
+ */
+export type PemeriksaanBalita = $Result.DefaultSelection<Prisma.$PemeriksaanBalitaPayload>
+/**
+ * Model PemeriksaanIbuHamil
+ * 
+ */
+export type PemeriksaanIbuHamil = $Result.DefaultSelection<Prisma.$PemeriksaanIbuHamilPayload>
+/**
+ * Model StatusGiziBalita
+ * 
+ */
+export type StatusGiziBalita = $Result.DefaultSelection<Prisma.$StatusGiziBalitaPayload>
 
 /**
  * Enums
@@ -249,6 +289,86 @@ export class PrismaClient<
     * ```
     */
   get otp(): Prisma.OtpDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.klaster`: Exposes CRUD operations for the **Klaster** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Klasters
+    * const klasters = await prisma.klaster.findMany()
+    * ```
+    */
+  get klaster(): Prisma.KlasterDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.programKesehatan`: Exposes CRUD operations for the **ProgramKesehatan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProgramKesehatans
+    * const programKesehatans = await prisma.programKesehatan.findMany()
+    * ```
+    */
+  get programKesehatan(): Prisma.ProgramKesehatanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kegiatan`: Exposes CRUD operations for the **Kegiatan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Kegiatans
+    * const kegiatans = await prisma.kegiatan.findMany()
+    * ```
+    */
+  get kegiatan(): Prisma.KegiatanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.balita`: Exposes CRUD operations for the **Balita** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Balitas
+    * const balitas = await prisma.balita.findMany()
+    * ```
+    */
+  get balita(): Prisma.BalitaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ibuHamil`: Exposes CRUD operations for the **IbuHamil** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more IbuHamils
+    * const ibuHamils = await prisma.ibuHamil.findMany()
+    * ```
+    */
+  get ibuHamil(): Prisma.IbuHamilDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pemeriksaanBalita`: Exposes CRUD operations for the **PemeriksaanBalita** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PemeriksaanBalitas
+    * const pemeriksaanBalitas = await prisma.pemeriksaanBalita.findMany()
+    * ```
+    */
+  get pemeriksaanBalita(): Prisma.PemeriksaanBalitaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pemeriksaanIbuHamil`: Exposes CRUD operations for the **PemeriksaanIbuHamil** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PemeriksaanIbuHamils
+    * const pemeriksaanIbuHamils = await prisma.pemeriksaanIbuHamil.findMany()
+    * ```
+    */
+  get pemeriksaanIbuHamil(): Prisma.PemeriksaanIbuHamilDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.statusGiziBalita`: Exposes CRUD operations for the **StatusGiziBalita** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StatusGiziBalitas
+    * const statusGiziBalitas = await prisma.statusGiziBalita.findMany()
+    * ```
+    */
+  get statusGiziBalita(): Prisma.StatusGiziBalitaDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -694,7 +814,15 @@ export namespace Prisma {
     Kader: 'Kader',
     Role: 'Role',
     User: 'User',
-    Otp: 'Otp'
+    Otp: 'Otp',
+    Klaster: 'Klaster',
+    ProgramKesehatan: 'ProgramKesehatan',
+    Kegiatan: 'Kegiatan',
+    Balita: 'Balita',
+    IbuHamil: 'IbuHamil',
+    PemeriksaanBalita: 'PemeriksaanBalita',
+    PemeriksaanIbuHamil: 'PemeriksaanIbuHamil',
+    StatusGiziBalita: 'StatusGiziBalita'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -713,7 +841,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "kelurahan" | "posyandu" | "kader" | "role" | "user" | "otp"
+      modelProps: "kelurahan" | "posyandu" | "kader" | "role" | "user" | "otp" | "klaster" | "programKesehatan" | "kegiatan" | "balita" | "ibuHamil" | "pemeriksaanBalita" | "pemeriksaanIbuHamil" | "statusGiziBalita"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1161,6 +1289,598 @@ export namespace Prisma {
           }
         }
       }
+      Klaster: {
+        payload: Prisma.$KlasterPayload<ExtArgs>
+        fields: Prisma.KlasterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KlasterFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KlasterFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          findFirst: {
+            args: Prisma.KlasterFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KlasterFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          findMany: {
+            args: Prisma.KlasterFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>[]
+          }
+          create: {
+            args: Prisma.KlasterCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          createMany: {
+            args: Prisma.KlasterCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.KlasterCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>[]
+          }
+          delete: {
+            args: Prisma.KlasterDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          update: {
+            args: Prisma.KlasterUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          deleteMany: {
+            args: Prisma.KlasterDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KlasterUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.KlasterUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>[]
+          }
+          upsert: {
+            args: Prisma.KlasterUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KlasterPayload>
+          }
+          aggregate: {
+            args: Prisma.KlasterAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKlaster>
+          }
+          groupBy: {
+            args: Prisma.KlasterGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KlasterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KlasterCountArgs<ExtArgs>
+            result: $Utils.Optional<KlasterCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProgramKesehatan: {
+        payload: Prisma.$ProgramKesehatanPayload<ExtArgs>
+        fields: Prisma.ProgramKesehatanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProgramKesehatanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProgramKesehatanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          findFirst: {
+            args: Prisma.ProgramKesehatanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProgramKesehatanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          findMany: {
+            args: Prisma.ProgramKesehatanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>[]
+          }
+          create: {
+            args: Prisma.ProgramKesehatanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          createMany: {
+            args: Prisma.ProgramKesehatanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProgramKesehatanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>[]
+          }
+          delete: {
+            args: Prisma.ProgramKesehatanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          update: {
+            args: Prisma.ProgramKesehatanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProgramKesehatanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProgramKesehatanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProgramKesehatanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProgramKesehatanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgramKesehatanPayload>
+          }
+          aggregate: {
+            args: Prisma.ProgramKesehatanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProgramKesehatan>
+          }
+          groupBy: {
+            args: Prisma.ProgramKesehatanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProgramKesehatanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProgramKesehatanCountArgs<ExtArgs>
+            result: $Utils.Optional<ProgramKesehatanCountAggregateOutputType> | number
+          }
+        }
+      }
+      Kegiatan: {
+        payload: Prisma.$KegiatanPayload<ExtArgs>
+        fields: Prisma.KegiatanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KegiatanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KegiatanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          findFirst: {
+            args: Prisma.KegiatanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KegiatanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          findMany: {
+            args: Prisma.KegiatanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>[]
+          }
+          create: {
+            args: Prisma.KegiatanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          createMany: {
+            args: Prisma.KegiatanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.KegiatanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>[]
+          }
+          delete: {
+            args: Prisma.KegiatanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          update: {
+            args: Prisma.KegiatanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          deleteMany: {
+            args: Prisma.KegiatanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KegiatanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.KegiatanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>[]
+          }
+          upsert: {
+            args: Prisma.KegiatanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KegiatanPayload>
+          }
+          aggregate: {
+            args: Prisma.KegiatanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKegiatan>
+          }
+          groupBy: {
+            args: Prisma.KegiatanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KegiatanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KegiatanCountArgs<ExtArgs>
+            result: $Utils.Optional<KegiatanCountAggregateOutputType> | number
+          }
+        }
+      }
+      Balita: {
+        payload: Prisma.$BalitaPayload<ExtArgs>
+        fields: Prisma.BalitaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BalitaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BalitaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          findFirst: {
+            args: Prisma.BalitaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BalitaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          findMany: {
+            args: Prisma.BalitaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>[]
+          }
+          create: {
+            args: Prisma.BalitaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          createMany: {
+            args: Prisma.BalitaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BalitaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>[]
+          }
+          delete: {
+            args: Prisma.BalitaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          update: {
+            args: Prisma.BalitaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          deleteMany: {
+            args: Prisma.BalitaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BalitaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BalitaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>[]
+          }
+          upsert: {
+            args: Prisma.BalitaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BalitaPayload>
+          }
+          aggregate: {
+            args: Prisma.BalitaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBalita>
+          }
+          groupBy: {
+            args: Prisma.BalitaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BalitaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BalitaCountArgs<ExtArgs>
+            result: $Utils.Optional<BalitaCountAggregateOutputType> | number
+          }
+        }
+      }
+      IbuHamil: {
+        payload: Prisma.$IbuHamilPayload<ExtArgs>
+        fields: Prisma.IbuHamilFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.IbuHamilFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.IbuHamilFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          findFirst: {
+            args: Prisma.IbuHamilFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.IbuHamilFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          findMany: {
+            args: Prisma.IbuHamilFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>[]
+          }
+          create: {
+            args: Prisma.IbuHamilCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          createMany: {
+            args: Prisma.IbuHamilCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.IbuHamilCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>[]
+          }
+          delete: {
+            args: Prisma.IbuHamilDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          update: {
+            args: Prisma.IbuHamilUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          deleteMany: {
+            args: Prisma.IbuHamilDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.IbuHamilUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.IbuHamilUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>[]
+          }
+          upsert: {
+            args: Prisma.IbuHamilUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IbuHamilPayload>
+          }
+          aggregate: {
+            args: Prisma.IbuHamilAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateIbuHamil>
+          }
+          groupBy: {
+            args: Prisma.IbuHamilGroupByArgs<ExtArgs>
+            result: $Utils.Optional<IbuHamilGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.IbuHamilCountArgs<ExtArgs>
+            result: $Utils.Optional<IbuHamilCountAggregateOutputType> | number
+          }
+        }
+      }
+      PemeriksaanBalita: {
+        payload: Prisma.$PemeriksaanBalitaPayload<ExtArgs>
+        fields: Prisma.PemeriksaanBalitaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PemeriksaanBalitaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PemeriksaanBalitaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          findFirst: {
+            args: Prisma.PemeriksaanBalitaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PemeriksaanBalitaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          findMany: {
+            args: Prisma.PemeriksaanBalitaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>[]
+          }
+          create: {
+            args: Prisma.PemeriksaanBalitaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          createMany: {
+            args: Prisma.PemeriksaanBalitaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PemeriksaanBalitaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>[]
+          }
+          delete: {
+            args: Prisma.PemeriksaanBalitaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          update: {
+            args: Prisma.PemeriksaanBalitaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          deleteMany: {
+            args: Prisma.PemeriksaanBalitaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PemeriksaanBalitaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PemeriksaanBalitaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>[]
+          }
+          upsert: {
+            args: Prisma.PemeriksaanBalitaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanBalitaPayload>
+          }
+          aggregate: {
+            args: Prisma.PemeriksaanBalitaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePemeriksaanBalita>
+          }
+          groupBy: {
+            args: Prisma.PemeriksaanBalitaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PemeriksaanBalitaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PemeriksaanBalitaCountArgs<ExtArgs>
+            result: $Utils.Optional<PemeriksaanBalitaCountAggregateOutputType> | number
+          }
+        }
+      }
+      PemeriksaanIbuHamil: {
+        payload: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>
+        fields: Prisma.PemeriksaanIbuHamilFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PemeriksaanIbuHamilFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PemeriksaanIbuHamilFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          findFirst: {
+            args: Prisma.PemeriksaanIbuHamilFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PemeriksaanIbuHamilFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          findMany: {
+            args: Prisma.PemeriksaanIbuHamilFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>[]
+          }
+          create: {
+            args: Prisma.PemeriksaanIbuHamilCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          createMany: {
+            args: Prisma.PemeriksaanIbuHamilCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PemeriksaanIbuHamilCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>[]
+          }
+          delete: {
+            args: Prisma.PemeriksaanIbuHamilDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          update: {
+            args: Prisma.PemeriksaanIbuHamilUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          deleteMany: {
+            args: Prisma.PemeriksaanIbuHamilDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PemeriksaanIbuHamilUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PemeriksaanIbuHamilUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>[]
+          }
+          upsert: {
+            args: Prisma.PemeriksaanIbuHamilUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PemeriksaanIbuHamilPayload>
+          }
+          aggregate: {
+            args: Prisma.PemeriksaanIbuHamilAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePemeriksaanIbuHamil>
+          }
+          groupBy: {
+            args: Prisma.PemeriksaanIbuHamilGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PemeriksaanIbuHamilGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PemeriksaanIbuHamilCountArgs<ExtArgs>
+            result: $Utils.Optional<PemeriksaanIbuHamilCountAggregateOutputType> | number
+          }
+        }
+      }
+      StatusGiziBalita: {
+        payload: Prisma.$StatusGiziBalitaPayload<ExtArgs>
+        fields: Prisma.StatusGiziBalitaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StatusGiziBalitaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StatusGiziBalitaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          findFirst: {
+            args: Prisma.StatusGiziBalitaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StatusGiziBalitaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          findMany: {
+            args: Prisma.StatusGiziBalitaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>[]
+          }
+          create: {
+            args: Prisma.StatusGiziBalitaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          createMany: {
+            args: Prisma.StatusGiziBalitaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StatusGiziBalitaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>[]
+          }
+          delete: {
+            args: Prisma.StatusGiziBalitaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          update: {
+            args: Prisma.StatusGiziBalitaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          deleteMany: {
+            args: Prisma.StatusGiziBalitaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StatusGiziBalitaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StatusGiziBalitaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>[]
+          }
+          upsert: {
+            args: Prisma.StatusGiziBalitaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusGiziBalitaPayload>
+          }
+          aggregate: {
+            args: Prisma.StatusGiziBalitaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStatusGiziBalita>
+          }
+          groupBy: {
+            args: Prisma.StatusGiziBalitaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StatusGiziBalitaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StatusGiziBalitaCountArgs<ExtArgs>
+            result: $Utils.Optional<StatusGiziBalitaCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1259,6 +1979,14 @@ export namespace Prisma {
     role?: RoleOmit
     user?: UserOmit
     otp?: OtpOmit
+    klaster?: KlasterOmit
+    programKesehatan?: ProgramKesehatanOmit
+    kegiatan?: KegiatanOmit
+    balita?: BalitaOmit
+    ibuHamil?: IbuHamilOmit
+    pemeriksaanBalita?: PemeriksaanBalitaOmit
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilOmit
+    statusGiziBalita?: StatusGiziBalitaOmit
   }
 
   /* Types for Logging */
@@ -1390,10 +2118,16 @@ export namespace Prisma {
 
   export type PosyanduCountOutputType = {
     kader: number
+    kegiatan: number
+    balita: number
+    ibuHamil: number
   }
 
   export type PosyanduCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kader?: boolean | PosyanduCountOutputTypeCountKaderArgs
+    kegiatan?: boolean | PosyanduCountOutputTypeCountKegiatanArgs
+    balita?: boolean | PosyanduCountOutputTypeCountBalitaArgs
+    ibuHamil?: boolean | PosyanduCountOutputTypeCountIbuHamilArgs
   }
 
   // Custom InputTypes
@@ -1412,6 +2146,85 @@ export namespace Prisma {
    */
   export type PosyanduCountOutputTypeCountKaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: KaderWhereInput
+  }
+
+  /**
+   * PosyanduCountOutputType without action
+   */
+  export type PosyanduCountOutputTypeCountKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KegiatanWhereInput
+  }
+
+  /**
+   * PosyanduCountOutputType without action
+   */
+  export type PosyanduCountOutputTypeCountBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BalitaWhereInput
+  }
+
+  /**
+   * PosyanduCountOutputType without action
+   */
+  export type PosyanduCountOutputTypeCountIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IbuHamilWhereInput
+  }
+
+
+  /**
+   * Count Type KaderCountOutputType
+   */
+
+  export type KaderCountOutputType = {
+    balita: number
+    ibuHamil: number
+    periksaBalita: number
+    periksaIbuHamil: number
+  }
+
+  export type KaderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | KaderCountOutputTypeCountBalitaArgs
+    ibuHamil?: boolean | KaderCountOutputTypeCountIbuHamilArgs
+    periksaBalita?: boolean | KaderCountOutputTypeCountPeriksaBalitaArgs
+    periksaIbuHamil?: boolean | KaderCountOutputTypeCountPeriksaIbuHamilArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KaderCountOutputType
+     */
+    select?: KaderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeCountBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BalitaWhereInput
+  }
+
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeCountIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IbuHamilWhereInput
+  }
+
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeCountPeriksaBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeCountPeriksaIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanIbuHamilWhereInput
   }
 
 
@@ -1474,6 +2287,179 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountOtpArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OtpWhereInput
+  }
+
+
+  /**
+   * Count Type KlasterCountOutputType
+   */
+
+  export type KlasterCountOutputType = {
+    programKesehatan: number
+  }
+
+  export type KlasterCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    programKesehatan?: boolean | KlasterCountOutputTypeCountProgramKesehatanArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KlasterCountOutputType without action
+   */
+  export type KlasterCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KlasterCountOutputType
+     */
+    select?: KlasterCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KlasterCountOutputType without action
+   */
+  export type KlasterCountOutputTypeCountProgramKesehatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProgramKesehatanWhereInput
+  }
+
+
+  /**
+   * Count Type ProgramKesehatanCountOutputType
+   */
+
+  export type ProgramKesehatanCountOutputType = {
+    kegiatan: number
+  }
+
+  export type ProgramKesehatanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kegiatan?: boolean | ProgramKesehatanCountOutputTypeCountKegiatanArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProgramKesehatanCountOutputType without action
+   */
+  export type ProgramKesehatanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatanCountOutputType
+     */
+    select?: ProgramKesehatanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProgramKesehatanCountOutputType without action
+   */
+  export type ProgramKesehatanCountOutputTypeCountKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KegiatanWhereInput
+  }
+
+
+  /**
+   * Count Type KegiatanCountOutputType
+   */
+
+  export type KegiatanCountOutputType = {
+    pemeriksaanBalita: number
+    pemeriksaanIbuHamil: number
+  }
+
+  export type KegiatanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pemeriksaanBalita?: boolean | KegiatanCountOutputTypeCountPemeriksaanBalitaArgs
+    pemeriksaanIbuHamil?: boolean | KegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KegiatanCountOutputType without action
+   */
+  export type KegiatanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KegiatanCountOutputType
+     */
+    select?: KegiatanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KegiatanCountOutputType without action
+   */
+  export type KegiatanCountOutputTypeCountPemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  /**
+   * KegiatanCountOutputType without action
+   */
+  export type KegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanIbuHamilWhereInput
+  }
+
+
+  /**
+   * Count Type BalitaCountOutputType
+   */
+
+  export type BalitaCountOutputType = {
+    pemeriksaanBalita: number
+    statusGizi: number
+  }
+
+  export type BalitaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pemeriksaanBalita?: boolean | BalitaCountOutputTypeCountPemeriksaanBalitaArgs
+    statusGizi?: boolean | BalitaCountOutputTypeCountStatusGiziArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BalitaCountOutputType without action
+   */
+  export type BalitaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BalitaCountOutputType
+     */
+    select?: BalitaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BalitaCountOutputType without action
+   */
+  export type BalitaCountOutputTypeCountPemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  /**
+   * BalitaCountOutputType without action
+   */
+  export type BalitaCountOutputTypeCountStatusGiziArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StatusGiziBalitaWhereInput
+  }
+
+
+  /**
+   * Count Type IbuHamilCountOutputType
+   */
+
+  export type IbuHamilCountOutputType = {
+    pemeriksaanKehamilan: number
+  }
+
+  export type IbuHamilCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pemeriksaanKehamilan?: boolean | IbuHamilCountOutputTypeCountPemeriksaanKehamilanArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * IbuHamilCountOutputType without action
+   */
+  export type IbuHamilCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamilCountOutputType
+     */
+    select?: IbuHamilCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * IbuHamilCountOutputType without action
+   */
+  export type IbuHamilCountOutputTypeCountPemeriksaanKehamilanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanIbuHamilWhereInput
   }
 
 
@@ -2840,6 +3826,9 @@ export namespace Prisma {
     updatedAt?: boolean
     kelurahan?: boolean | Posyandu$kelurahanArgs<ExtArgs>
     kader?: boolean | Posyandu$kaderArgs<ExtArgs>
+    kegiatan?: boolean | Posyandu$kegiatanArgs<ExtArgs>
+    balita?: boolean | Posyandu$balitaArgs<ExtArgs>
+    ibuHamil?: boolean | Posyandu$ibuHamilArgs<ExtArgs>
     _count?: boolean | PosyanduCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["posyandu"]>
 
@@ -2894,6 +3883,9 @@ export namespace Prisma {
   export type PosyanduInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kelurahan?: boolean | Posyandu$kelurahanArgs<ExtArgs>
     kader?: boolean | Posyandu$kaderArgs<ExtArgs>
+    kegiatan?: boolean | Posyandu$kegiatanArgs<ExtArgs>
+    balita?: boolean | Posyandu$balitaArgs<ExtArgs>
+    ibuHamil?: boolean | Posyandu$ibuHamilArgs<ExtArgs>
     _count?: boolean | PosyanduCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PosyanduIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2908,6 +3900,9 @@ export namespace Prisma {
     objects: {
       kelurahan: Prisma.$KelurahanPayload<ExtArgs> | null
       kader: Prisma.$KaderPayload<ExtArgs>[]
+      kegiatan: Prisma.$KegiatanPayload<ExtArgs>[]
+      balita: Prisma.$BalitaPayload<ExtArgs>[]
+      ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3318,6 +4313,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     kelurahan<T extends Posyandu$kelurahanArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$kelurahanArgs<ExtArgs>>): Prisma__KelurahanClient<$Result.GetResult<Prisma.$KelurahanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     kader<T extends Posyandu$kaderArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$kaderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    kegiatan<T extends Posyandu$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$kegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    balita<T extends Posyandu$balitaArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$balitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ibuHamil<T extends Posyandu$ibuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$ibuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3798,6 +4796,78 @@ export namespace Prisma {
   }
 
   /**
+   * Posyandu.kegiatan
+   */
+  export type Posyandu$kegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    where?: KegiatanWhereInput
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    cursor?: KegiatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KegiatanScalarFieldEnum | KegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * Posyandu.balita
+   */
+  export type Posyandu$balitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    where?: BalitaWhereInput
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    cursor?: BalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BalitaScalarFieldEnum | BalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Posyandu.ibuHamil
+   */
+  export type Posyandu$ibuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    where?: IbuHamilWhereInput
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    cursor?: IbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: IbuHamilScalarFieldEnum | IbuHamilScalarFieldEnum[]
+  }
+
+  /**
    * Posyandu without action
    */
   export type PosyanduDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3845,6 +4915,7 @@ export namespace Prisma {
     noHp: string | null
     alamat: string | null
     posyanduId: number | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3856,6 +4927,7 @@ export namespace Prisma {
     noHp: string | null
     alamat: string | null
     posyanduId: number | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3867,6 +4939,7 @@ export namespace Prisma {
     noHp: number
     alamat: number
     posyanduId: number
+    userId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3890,6 +4963,7 @@ export namespace Prisma {
     noHp?: true
     alamat?: true
     posyanduId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3901,6 +4975,7 @@ export namespace Prisma {
     noHp?: true
     alamat?: true
     posyanduId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3912,6 +4987,7 @@ export namespace Prisma {
     noHp?: true
     alamat?: true
     posyanduId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4010,6 +5086,7 @@ export namespace Prisma {
     noHp: string
     alamat: string
     posyanduId: number
+    userId: string | null
     createdAt: Date
     updatedAt: Date
     _count: KaderCountAggregateOutputType | null
@@ -4040,9 +5117,16 @@ export namespace Prisma {
     noHp?: boolean
     alamat?: boolean
     posyanduId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
+    balita?: boolean | Kader$balitaArgs<ExtArgs>
+    ibuHamil?: boolean | Kader$ibuHamilArgs<ExtArgs>
+    periksaBalita?: boolean | Kader$periksaBalitaArgs<ExtArgs>
+    periksaIbuHamil?: boolean | Kader$periksaIbuHamilArgs<ExtArgs>
+    _count?: boolean | KaderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["kader"]>
 
   export type KaderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4052,9 +5136,11 @@ export namespace Prisma {
     noHp?: boolean
     alamat?: boolean
     posyanduId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
   }, ExtArgs["result"]["kader"]>
 
   export type KaderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4064,9 +5150,11 @@ export namespace Prisma {
     noHp?: boolean
     alamat?: boolean
     posyanduId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
   }, ExtArgs["result"]["kader"]>
 
   export type KaderSelectScalar = {
@@ -4076,25 +5164,39 @@ export namespace Prisma {
     noHp?: boolean
     alamat?: boolean
     posyanduId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type KaderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noHp" | "alamat" | "posyanduId" | "createdAt" | "updatedAt", ExtArgs["result"]["kader"]>
+  export type KaderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noHp" | "alamat" | "posyanduId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["kader"]>
   export type KaderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
+    balita?: boolean | Kader$balitaArgs<ExtArgs>
+    ibuHamil?: boolean | Kader$ibuHamilArgs<ExtArgs>
+    periksaBalita?: boolean | Kader$periksaBalitaArgs<ExtArgs>
+    periksaIbuHamil?: boolean | Kader$periksaIbuHamilArgs<ExtArgs>
+    _count?: boolean | KaderCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type KaderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
   }
   export type KaderIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    user?: boolean | Kader$userArgs<ExtArgs>
   }
 
   export type $KaderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Kader"
     objects: {
       posyandu: Prisma.$PosyanduPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
+      balita: Prisma.$BalitaPayload<ExtArgs>[]
+      ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>[]
+      periksaBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
+      periksaIbuHamil: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4103,6 +5205,7 @@ export namespace Prisma {
       noHp: string
       alamat: string
       posyanduId: number
+      userId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["kader"]>
@@ -4500,6 +5603,11 @@ export namespace Prisma {
   export interface Prisma__KaderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     posyandu<T extends PosyanduDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PosyanduDefaultArgs<ExtArgs>>): Prisma__PosyanduClient<$Result.GetResult<Prisma.$PosyanduPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends Kader$userArgs<ExtArgs> = {}>(args?: Subset<T, Kader$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    balita<T extends Kader$balitaArgs<ExtArgs> = {}>(args?: Subset<T, Kader$balitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ibuHamil<T extends Kader$ibuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kader$ibuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    periksaBalita<T extends Kader$periksaBalitaArgs<ExtArgs> = {}>(args?: Subset<T, Kader$periksaBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    periksaIbuHamil<T extends Kader$periksaIbuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kader$periksaIbuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4535,6 +5643,7 @@ export namespace Prisma {
     readonly noHp: FieldRef<"Kader", 'String'>
     readonly alamat: FieldRef<"Kader", 'String'>
     readonly posyanduId: FieldRef<"Kader", 'Int'>
+    readonly userId: FieldRef<"Kader", 'String'>
     readonly createdAt: FieldRef<"Kader", 'DateTime'>
     readonly updatedAt: FieldRef<"Kader", 'DateTime'>
   }
@@ -4933,6 +6042,121 @@ export namespace Prisma {
   }
 
   /**
+   * Kader.user
+   */
+  export type Kader$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Kader.balita
+   */
+  export type Kader$balitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    where?: BalitaWhereInput
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    cursor?: BalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BalitaScalarFieldEnum | BalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Kader.ibuHamil
+   */
+  export type Kader$ibuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    where?: IbuHamilWhereInput
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    cursor?: IbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: IbuHamilScalarFieldEnum | IbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * Kader.periksaBalita
+   */
+  export type Kader$periksaBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    where?: PemeriksaanBalitaWhereInput
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Kader.periksaIbuHamil
+   */
+  export type Kader$periksaIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    where?: PemeriksaanIbuHamilWhereInput
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
    * Kader without action
    */
   export type KaderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5116,6 +6340,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     users?: boolean | Role$usersArgs<ExtArgs>
+    programKesehatan?: boolean | Role$programKesehatanArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["role"]>
 
@@ -5146,6 +6371,7 @@ export namespace Prisma {
   export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Role$usersArgs<ExtArgs>
+    programKesehatan?: boolean | Role$programKesehatanArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RoleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5155,6 +6381,7 @@ export namespace Prisma {
     name: "Role"
     objects: {
       users: Prisma.$UserPayload<ExtArgs>[]
+      programKesehatan: Prisma.$ProgramKesehatanPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5557,6 +6784,7 @@ export namespace Prisma {
   export interface Prisma__RoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     users<T extends Role$usersArgs<ExtArgs> = {}>(args?: Subset<T, Role$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    programKesehatan<T extends Role$programKesehatanArgs<ExtArgs> = {}>(args?: Subset<T, Role$programKesehatanArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6003,6 +7231,25 @@ export namespace Prisma {
   }
 
   /**
+   * Role.programKesehatan
+   */
+  export type Role$programKesehatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    where?: ProgramKesehatanWhereInput
+  }
+
+  /**
    * Role without action
    */
   export type RoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6258,6 +7505,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
+    kader?: boolean | User$kaderArgs<ExtArgs>
     otp?: boolean | User$otpArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -6318,6 +7566,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "email" | "noHp" | "noKK" | "nik" | "tanggalLahir" | "alamat" | "password" | "verifiedAt" | "resetToken" | "roleId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
+    kader?: boolean | User$kaderArgs<ExtArgs>
     otp?: boolean | User$otpArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -6332,6 +7581,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       role: Prisma.$RolePayload<ExtArgs>
+      kader: Prisma.$KaderPayload<ExtArgs> | null
       otp: Prisma.$OtpPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -6744,6 +7994,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kader<T extends User$kaderArgs<ExtArgs> = {}>(args?: Subset<T, User$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     otp<T extends User$otpArgs<ExtArgs> = {}>(args?: Subset<T, User$otpArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OtpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7181,6 +8432,25 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.kader
+   */
+  export type User$kaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kader
+     */
+    select?: KaderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kader
+     */
+    omit?: KaderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KaderInclude<ExtArgs> | null
+    where?: KaderWhereInput
   }
 
   /**
@@ -8298,6 +9568,9918 @@ export namespace Prisma {
 
 
   /**
+   * Model Klaster
+   */
+
+  export type AggregateKlaster = {
+    _count: KlasterCountAggregateOutputType | null
+    _avg: KlasterAvgAggregateOutputType | null
+    _sum: KlasterSumAggregateOutputType | null
+    _min: KlasterMinAggregateOutputType | null
+    _max: KlasterMaxAggregateOutputType | null
+  }
+
+  export type KlasterAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type KlasterSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type KlasterMinAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type KlasterMaxAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type KlasterCountAggregateOutputType = {
+    id: number
+    nama: number
+    deskripsi: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type KlasterAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type KlasterSumAggregateInputType = {
+    id?: true
+  }
+
+  export type KlasterMinAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type KlasterMaxAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type KlasterCountAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type KlasterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Klaster to aggregate.
+     */
+    where?: KlasterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Klasters to fetch.
+     */
+    orderBy?: KlasterOrderByWithRelationInput | KlasterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KlasterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Klasters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Klasters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Klasters
+    **/
+    _count?: true | KlasterCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KlasterAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KlasterSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KlasterMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KlasterMaxAggregateInputType
+  }
+
+  export type GetKlasterAggregateType<T extends KlasterAggregateArgs> = {
+        [P in keyof T & keyof AggregateKlaster]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKlaster[P]>
+      : GetScalarType<T[P], AggregateKlaster[P]>
+  }
+
+
+
+
+  export type KlasterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KlasterWhereInput
+    orderBy?: KlasterOrderByWithAggregationInput | KlasterOrderByWithAggregationInput[]
+    by: KlasterScalarFieldEnum[] | KlasterScalarFieldEnum
+    having?: KlasterScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KlasterCountAggregateInputType | true
+    _avg?: KlasterAvgAggregateInputType
+    _sum?: KlasterSumAggregateInputType
+    _min?: KlasterMinAggregateInputType
+    _max?: KlasterMaxAggregateInputType
+  }
+
+  export type KlasterGroupByOutputType = {
+    id: number
+    nama: string
+    deskripsi: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: KlasterCountAggregateOutputType | null
+    _avg: KlasterAvgAggregateOutputType | null
+    _sum: KlasterSumAggregateOutputType | null
+    _min: KlasterMinAggregateOutputType | null
+    _max: KlasterMaxAggregateOutputType | null
+  }
+
+  type GetKlasterGroupByPayload<T extends KlasterGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KlasterGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KlasterGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KlasterGroupByOutputType[P]>
+            : GetScalarType<T[P], KlasterGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KlasterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    programKesehatan?: boolean | Klaster$programKesehatanArgs<ExtArgs>
+    _count?: boolean | KlasterCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["klaster"]>
+
+  export type KlasterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["klaster"]>
+
+  export type KlasterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["klaster"]>
+
+  export type KlasterSelectScalar = {
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type KlasterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "deskripsi" | "createdAt" | "updatedAt", ExtArgs["result"]["klaster"]>
+  export type KlasterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    programKesehatan?: boolean | Klaster$programKesehatanArgs<ExtArgs>
+    _count?: boolean | KlasterCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type KlasterIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type KlasterIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $KlasterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Klaster"
+    objects: {
+      programKesehatan: Prisma.$ProgramKesehatanPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nama: string
+      deskripsi: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["klaster"]>
+    composites: {}
+  }
+
+  type KlasterGetPayload<S extends boolean | null | undefined | KlasterDefaultArgs> = $Result.GetResult<Prisma.$KlasterPayload, S>
+
+  type KlasterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KlasterFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KlasterCountAggregateInputType | true
+    }
+
+  export interface KlasterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Klaster'], meta: { name: 'Klaster' } }
+    /**
+     * Find zero or one Klaster that matches the filter.
+     * @param {KlasterFindUniqueArgs} args - Arguments to find a Klaster
+     * @example
+     * // Get one Klaster
+     * const klaster = await prisma.klaster.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KlasterFindUniqueArgs>(args: SelectSubset<T, KlasterFindUniqueArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Klaster that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KlasterFindUniqueOrThrowArgs} args - Arguments to find a Klaster
+     * @example
+     * // Get one Klaster
+     * const klaster = await prisma.klaster.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KlasterFindUniqueOrThrowArgs>(args: SelectSubset<T, KlasterFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Klaster that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterFindFirstArgs} args - Arguments to find a Klaster
+     * @example
+     * // Get one Klaster
+     * const klaster = await prisma.klaster.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KlasterFindFirstArgs>(args?: SelectSubset<T, KlasterFindFirstArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Klaster that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterFindFirstOrThrowArgs} args - Arguments to find a Klaster
+     * @example
+     * // Get one Klaster
+     * const klaster = await prisma.klaster.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KlasterFindFirstOrThrowArgs>(args?: SelectSubset<T, KlasterFindFirstOrThrowArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Klasters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Klasters
+     * const klasters = await prisma.klaster.findMany()
+     * 
+     * // Get first 10 Klasters
+     * const klasters = await prisma.klaster.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const klasterWithIdOnly = await prisma.klaster.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends KlasterFindManyArgs>(args?: SelectSubset<T, KlasterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Klaster.
+     * @param {KlasterCreateArgs} args - Arguments to create a Klaster.
+     * @example
+     * // Create one Klaster
+     * const Klaster = await prisma.klaster.create({
+     *   data: {
+     *     // ... data to create a Klaster
+     *   }
+     * })
+     * 
+     */
+    create<T extends KlasterCreateArgs>(args: SelectSubset<T, KlasterCreateArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Klasters.
+     * @param {KlasterCreateManyArgs} args - Arguments to create many Klasters.
+     * @example
+     * // Create many Klasters
+     * const klaster = await prisma.klaster.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KlasterCreateManyArgs>(args?: SelectSubset<T, KlasterCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Klasters and returns the data saved in the database.
+     * @param {KlasterCreateManyAndReturnArgs} args - Arguments to create many Klasters.
+     * @example
+     * // Create many Klasters
+     * const klaster = await prisma.klaster.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Klasters and only return the `id`
+     * const klasterWithIdOnly = await prisma.klaster.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends KlasterCreateManyAndReturnArgs>(args?: SelectSubset<T, KlasterCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Klaster.
+     * @param {KlasterDeleteArgs} args - Arguments to delete one Klaster.
+     * @example
+     * // Delete one Klaster
+     * const Klaster = await prisma.klaster.delete({
+     *   where: {
+     *     // ... filter to delete one Klaster
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KlasterDeleteArgs>(args: SelectSubset<T, KlasterDeleteArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Klaster.
+     * @param {KlasterUpdateArgs} args - Arguments to update one Klaster.
+     * @example
+     * // Update one Klaster
+     * const klaster = await prisma.klaster.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KlasterUpdateArgs>(args: SelectSubset<T, KlasterUpdateArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Klasters.
+     * @param {KlasterDeleteManyArgs} args - Arguments to filter Klasters to delete.
+     * @example
+     * // Delete a few Klasters
+     * const { count } = await prisma.klaster.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KlasterDeleteManyArgs>(args?: SelectSubset<T, KlasterDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Klasters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Klasters
+     * const klaster = await prisma.klaster.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KlasterUpdateManyArgs>(args: SelectSubset<T, KlasterUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Klasters and returns the data updated in the database.
+     * @param {KlasterUpdateManyAndReturnArgs} args - Arguments to update many Klasters.
+     * @example
+     * // Update many Klasters
+     * const klaster = await prisma.klaster.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Klasters and only return the `id`
+     * const klasterWithIdOnly = await prisma.klaster.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends KlasterUpdateManyAndReturnArgs>(args: SelectSubset<T, KlasterUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Klaster.
+     * @param {KlasterUpsertArgs} args - Arguments to update or create a Klaster.
+     * @example
+     * // Update or create a Klaster
+     * const klaster = await prisma.klaster.upsert({
+     *   create: {
+     *     // ... data to create a Klaster
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Klaster we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KlasterUpsertArgs>(args: SelectSubset<T, KlasterUpsertArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Klasters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterCountArgs} args - Arguments to filter Klasters to count.
+     * @example
+     * // Count the number of Klasters
+     * const count = await prisma.klaster.count({
+     *   where: {
+     *     // ... the filter for the Klasters we want to count
+     *   }
+     * })
+    **/
+    count<T extends KlasterCountArgs>(
+      args?: Subset<T, KlasterCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KlasterCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Klaster.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KlasterAggregateArgs>(args: Subset<T, KlasterAggregateArgs>): Prisma.PrismaPromise<GetKlasterAggregateType<T>>
+
+    /**
+     * Group by Klaster.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KlasterGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KlasterGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KlasterGroupByArgs['orderBy'] }
+        : { orderBy?: KlasterGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KlasterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKlasterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Klaster model
+   */
+  readonly fields: KlasterFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Klaster.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KlasterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    programKesehatan<T extends Klaster$programKesehatanArgs<ExtArgs> = {}>(args?: Subset<T, Klaster$programKesehatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Klaster model
+   */
+  interface KlasterFieldRefs {
+    readonly id: FieldRef<"Klaster", 'Int'>
+    readonly nama: FieldRef<"Klaster", 'String'>
+    readonly deskripsi: FieldRef<"Klaster", 'String'>
+    readonly createdAt: FieldRef<"Klaster", 'DateTime'>
+    readonly updatedAt: FieldRef<"Klaster", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Klaster findUnique
+   */
+  export type KlasterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter, which Klaster to fetch.
+     */
+    where: KlasterWhereUniqueInput
+  }
+
+  /**
+   * Klaster findUniqueOrThrow
+   */
+  export type KlasterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter, which Klaster to fetch.
+     */
+    where: KlasterWhereUniqueInput
+  }
+
+  /**
+   * Klaster findFirst
+   */
+  export type KlasterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter, which Klaster to fetch.
+     */
+    where?: KlasterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Klasters to fetch.
+     */
+    orderBy?: KlasterOrderByWithRelationInput | KlasterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Klasters.
+     */
+    cursor?: KlasterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Klasters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Klasters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Klasters.
+     */
+    distinct?: KlasterScalarFieldEnum | KlasterScalarFieldEnum[]
+  }
+
+  /**
+   * Klaster findFirstOrThrow
+   */
+  export type KlasterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter, which Klaster to fetch.
+     */
+    where?: KlasterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Klasters to fetch.
+     */
+    orderBy?: KlasterOrderByWithRelationInput | KlasterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Klasters.
+     */
+    cursor?: KlasterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Klasters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Klasters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Klasters.
+     */
+    distinct?: KlasterScalarFieldEnum | KlasterScalarFieldEnum[]
+  }
+
+  /**
+   * Klaster findMany
+   */
+  export type KlasterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter, which Klasters to fetch.
+     */
+    where?: KlasterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Klasters to fetch.
+     */
+    orderBy?: KlasterOrderByWithRelationInput | KlasterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Klasters.
+     */
+    cursor?: KlasterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Klasters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Klasters.
+     */
+    skip?: number
+    distinct?: KlasterScalarFieldEnum | KlasterScalarFieldEnum[]
+  }
+
+  /**
+   * Klaster create
+   */
+  export type KlasterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Klaster.
+     */
+    data: XOR<KlasterCreateInput, KlasterUncheckedCreateInput>
+  }
+
+  /**
+   * Klaster createMany
+   */
+  export type KlasterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Klasters.
+     */
+    data: KlasterCreateManyInput | KlasterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Klaster createManyAndReturn
+   */
+  export type KlasterCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * The data used to create many Klasters.
+     */
+    data: KlasterCreateManyInput | KlasterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Klaster update
+   */
+  export type KlasterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Klaster.
+     */
+    data: XOR<KlasterUpdateInput, KlasterUncheckedUpdateInput>
+    /**
+     * Choose, which Klaster to update.
+     */
+    where: KlasterWhereUniqueInput
+  }
+
+  /**
+   * Klaster updateMany
+   */
+  export type KlasterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Klasters.
+     */
+    data: XOR<KlasterUpdateManyMutationInput, KlasterUncheckedUpdateManyInput>
+    /**
+     * Filter which Klasters to update
+     */
+    where?: KlasterWhereInput
+    /**
+     * Limit how many Klasters to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Klaster updateManyAndReturn
+   */
+  export type KlasterUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * The data used to update Klasters.
+     */
+    data: XOR<KlasterUpdateManyMutationInput, KlasterUncheckedUpdateManyInput>
+    /**
+     * Filter which Klasters to update
+     */
+    where?: KlasterWhereInput
+    /**
+     * Limit how many Klasters to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Klaster upsert
+   */
+  export type KlasterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Klaster to update in case it exists.
+     */
+    where: KlasterWhereUniqueInput
+    /**
+     * In case the Klaster found by the `where` argument doesn't exist, create a new Klaster with this data.
+     */
+    create: XOR<KlasterCreateInput, KlasterUncheckedCreateInput>
+    /**
+     * In case the Klaster was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KlasterUpdateInput, KlasterUncheckedUpdateInput>
+  }
+
+  /**
+   * Klaster delete
+   */
+  export type KlasterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+    /**
+     * Filter which Klaster to delete.
+     */
+    where: KlasterWhereUniqueInput
+  }
+
+  /**
+   * Klaster deleteMany
+   */
+  export type KlasterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Klasters to delete
+     */
+    where?: KlasterWhereInput
+    /**
+     * Limit how many Klasters to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Klaster.programKesehatan
+   */
+  export type Klaster$programKesehatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    where?: ProgramKesehatanWhereInput
+    orderBy?: ProgramKesehatanOrderByWithRelationInput | ProgramKesehatanOrderByWithRelationInput[]
+    cursor?: ProgramKesehatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProgramKesehatanScalarFieldEnum | ProgramKesehatanScalarFieldEnum[]
+  }
+
+  /**
+   * Klaster without action
+   */
+  export type KlasterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Klaster
+     */
+    select?: KlasterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Klaster
+     */
+    omit?: KlasterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KlasterInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProgramKesehatan
+   */
+
+  export type AggregateProgramKesehatan = {
+    _count: ProgramKesehatanCountAggregateOutputType | null
+    _avg: ProgramKesehatanAvgAggregateOutputType | null
+    _sum: ProgramKesehatanSumAggregateOutputType | null
+    _min: ProgramKesehatanMinAggregateOutputType | null
+    _max: ProgramKesehatanMaxAggregateOutputType | null
+  }
+
+  export type ProgramKesehatanAvgAggregateOutputType = {
+    id: number | null
+    klasterId: number | null
+  }
+
+  export type ProgramKesehatanSumAggregateOutputType = {
+    id: number | null
+    klasterId: number | null
+  }
+
+  export type ProgramKesehatanMinAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    klasterId: number | null
+    roleId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProgramKesehatanMaxAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    klasterId: number | null
+    roleId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProgramKesehatanCountAggregateOutputType = {
+    id: number
+    nama: number
+    deskripsi: number
+    klasterId: number
+    roleId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProgramKesehatanAvgAggregateInputType = {
+    id?: true
+    klasterId?: true
+  }
+
+  export type ProgramKesehatanSumAggregateInputType = {
+    id?: true
+    klasterId?: true
+  }
+
+  export type ProgramKesehatanMinAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    klasterId?: true
+    roleId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProgramKesehatanMaxAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    klasterId?: true
+    roleId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProgramKesehatanCountAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    klasterId?: true
+    roleId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProgramKesehatanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProgramKesehatan to aggregate.
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgramKesehatans to fetch.
+     */
+    orderBy?: ProgramKesehatanOrderByWithRelationInput | ProgramKesehatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProgramKesehatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgramKesehatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgramKesehatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProgramKesehatans
+    **/
+    _count?: true | ProgramKesehatanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProgramKesehatanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProgramKesehatanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProgramKesehatanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProgramKesehatanMaxAggregateInputType
+  }
+
+  export type GetProgramKesehatanAggregateType<T extends ProgramKesehatanAggregateArgs> = {
+        [P in keyof T & keyof AggregateProgramKesehatan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProgramKesehatan[P]>
+      : GetScalarType<T[P], AggregateProgramKesehatan[P]>
+  }
+
+
+
+
+  export type ProgramKesehatanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProgramKesehatanWhereInput
+    orderBy?: ProgramKesehatanOrderByWithAggregationInput | ProgramKesehatanOrderByWithAggregationInput[]
+    by: ProgramKesehatanScalarFieldEnum[] | ProgramKesehatanScalarFieldEnum
+    having?: ProgramKesehatanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProgramKesehatanCountAggregateInputType | true
+    _avg?: ProgramKesehatanAvgAggregateInputType
+    _sum?: ProgramKesehatanSumAggregateInputType
+    _min?: ProgramKesehatanMinAggregateInputType
+    _max?: ProgramKesehatanMaxAggregateInputType
+  }
+
+  export type ProgramKesehatanGroupByOutputType = {
+    id: number
+    nama: string
+    deskripsi: string | null
+    klasterId: number
+    roleId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ProgramKesehatanCountAggregateOutputType | null
+    _avg: ProgramKesehatanAvgAggregateOutputType | null
+    _sum: ProgramKesehatanSumAggregateOutputType | null
+    _min: ProgramKesehatanMinAggregateOutputType | null
+    _max: ProgramKesehatanMaxAggregateOutputType | null
+  }
+
+  type GetProgramKesehatanGroupByPayload<T extends ProgramKesehatanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProgramKesehatanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProgramKesehatanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProgramKesehatanGroupByOutputType[P]>
+            : GetScalarType<T[P], ProgramKesehatanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProgramKesehatanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    klasterId?: boolean
+    roleId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+    kegiatan?: boolean | ProgramKesehatan$kegiatanArgs<ExtArgs>
+    _count?: boolean | ProgramKesehatanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["programKesehatan"]>
+
+  export type ProgramKesehatanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    klasterId?: boolean
+    roleId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+  }, ExtArgs["result"]["programKesehatan"]>
+
+  export type ProgramKesehatanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    klasterId?: boolean
+    roleId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+  }, ExtArgs["result"]["programKesehatan"]>
+
+  export type ProgramKesehatanSelectScalar = {
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    klasterId?: boolean
+    roleId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProgramKesehatanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "deskripsi" | "klasterId" | "roleId" | "createdAt" | "updatedAt", ExtArgs["result"]["programKesehatan"]>
+  export type ProgramKesehatanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+    kegiatan?: boolean | ProgramKesehatan$kegiatanArgs<ExtArgs>
+    _count?: boolean | ProgramKesehatanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProgramKesehatanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+  }
+  export type ProgramKesehatanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    klaster?: boolean | KlasterDefaultArgs<ExtArgs>
+    role?: boolean | ProgramKesehatan$roleArgs<ExtArgs>
+  }
+
+  export type $ProgramKesehatanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProgramKesehatan"
+    objects: {
+      klaster: Prisma.$KlasterPayload<ExtArgs>
+      role: Prisma.$RolePayload<ExtArgs> | null
+      kegiatan: Prisma.$KegiatanPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nama: string
+      deskripsi: string | null
+      klasterId: number
+      roleId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["programKesehatan"]>
+    composites: {}
+  }
+
+  type ProgramKesehatanGetPayload<S extends boolean | null | undefined | ProgramKesehatanDefaultArgs> = $Result.GetResult<Prisma.$ProgramKesehatanPayload, S>
+
+  type ProgramKesehatanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProgramKesehatanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProgramKesehatanCountAggregateInputType | true
+    }
+
+  export interface ProgramKesehatanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProgramKesehatan'], meta: { name: 'ProgramKesehatan' } }
+    /**
+     * Find zero or one ProgramKesehatan that matches the filter.
+     * @param {ProgramKesehatanFindUniqueArgs} args - Arguments to find a ProgramKesehatan
+     * @example
+     * // Get one ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProgramKesehatanFindUniqueArgs>(args: SelectSubset<T, ProgramKesehatanFindUniqueArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProgramKesehatan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProgramKesehatanFindUniqueOrThrowArgs} args - Arguments to find a ProgramKesehatan
+     * @example
+     * // Get one ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProgramKesehatanFindUniqueOrThrowArgs>(args: SelectSubset<T, ProgramKesehatanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProgramKesehatan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanFindFirstArgs} args - Arguments to find a ProgramKesehatan
+     * @example
+     * // Get one ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProgramKesehatanFindFirstArgs>(args?: SelectSubset<T, ProgramKesehatanFindFirstArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProgramKesehatan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanFindFirstOrThrowArgs} args - Arguments to find a ProgramKesehatan
+     * @example
+     * // Get one ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProgramKesehatanFindFirstOrThrowArgs>(args?: SelectSubset<T, ProgramKesehatanFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProgramKesehatans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProgramKesehatans
+     * const programKesehatans = await prisma.programKesehatan.findMany()
+     * 
+     * // Get first 10 ProgramKesehatans
+     * const programKesehatans = await prisma.programKesehatan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const programKesehatanWithIdOnly = await prisma.programKesehatan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProgramKesehatanFindManyArgs>(args?: SelectSubset<T, ProgramKesehatanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProgramKesehatan.
+     * @param {ProgramKesehatanCreateArgs} args - Arguments to create a ProgramKesehatan.
+     * @example
+     * // Create one ProgramKesehatan
+     * const ProgramKesehatan = await prisma.programKesehatan.create({
+     *   data: {
+     *     // ... data to create a ProgramKesehatan
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProgramKesehatanCreateArgs>(args: SelectSubset<T, ProgramKesehatanCreateArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProgramKesehatans.
+     * @param {ProgramKesehatanCreateManyArgs} args - Arguments to create many ProgramKesehatans.
+     * @example
+     * // Create many ProgramKesehatans
+     * const programKesehatan = await prisma.programKesehatan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProgramKesehatanCreateManyArgs>(args?: SelectSubset<T, ProgramKesehatanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProgramKesehatans and returns the data saved in the database.
+     * @param {ProgramKesehatanCreateManyAndReturnArgs} args - Arguments to create many ProgramKesehatans.
+     * @example
+     * // Create many ProgramKesehatans
+     * const programKesehatan = await prisma.programKesehatan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProgramKesehatans and only return the `id`
+     * const programKesehatanWithIdOnly = await prisma.programKesehatan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProgramKesehatanCreateManyAndReturnArgs>(args?: SelectSubset<T, ProgramKesehatanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProgramKesehatan.
+     * @param {ProgramKesehatanDeleteArgs} args - Arguments to delete one ProgramKesehatan.
+     * @example
+     * // Delete one ProgramKesehatan
+     * const ProgramKesehatan = await prisma.programKesehatan.delete({
+     *   where: {
+     *     // ... filter to delete one ProgramKesehatan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProgramKesehatanDeleteArgs>(args: SelectSubset<T, ProgramKesehatanDeleteArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProgramKesehatan.
+     * @param {ProgramKesehatanUpdateArgs} args - Arguments to update one ProgramKesehatan.
+     * @example
+     * // Update one ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProgramKesehatanUpdateArgs>(args: SelectSubset<T, ProgramKesehatanUpdateArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProgramKesehatans.
+     * @param {ProgramKesehatanDeleteManyArgs} args - Arguments to filter ProgramKesehatans to delete.
+     * @example
+     * // Delete a few ProgramKesehatans
+     * const { count } = await prisma.programKesehatan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProgramKesehatanDeleteManyArgs>(args?: SelectSubset<T, ProgramKesehatanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProgramKesehatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProgramKesehatans
+     * const programKesehatan = await prisma.programKesehatan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProgramKesehatanUpdateManyArgs>(args: SelectSubset<T, ProgramKesehatanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProgramKesehatans and returns the data updated in the database.
+     * @param {ProgramKesehatanUpdateManyAndReturnArgs} args - Arguments to update many ProgramKesehatans.
+     * @example
+     * // Update many ProgramKesehatans
+     * const programKesehatan = await prisma.programKesehatan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProgramKesehatans and only return the `id`
+     * const programKesehatanWithIdOnly = await prisma.programKesehatan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProgramKesehatanUpdateManyAndReturnArgs>(args: SelectSubset<T, ProgramKesehatanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProgramKesehatan.
+     * @param {ProgramKesehatanUpsertArgs} args - Arguments to update or create a ProgramKesehatan.
+     * @example
+     * // Update or create a ProgramKesehatan
+     * const programKesehatan = await prisma.programKesehatan.upsert({
+     *   create: {
+     *     // ... data to create a ProgramKesehatan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProgramKesehatan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProgramKesehatanUpsertArgs>(args: SelectSubset<T, ProgramKesehatanUpsertArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProgramKesehatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanCountArgs} args - Arguments to filter ProgramKesehatans to count.
+     * @example
+     * // Count the number of ProgramKesehatans
+     * const count = await prisma.programKesehatan.count({
+     *   where: {
+     *     // ... the filter for the ProgramKesehatans we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProgramKesehatanCountArgs>(
+      args?: Subset<T, ProgramKesehatanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProgramKesehatanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProgramKesehatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProgramKesehatanAggregateArgs>(args: Subset<T, ProgramKesehatanAggregateArgs>): Prisma.PrismaPromise<GetProgramKesehatanAggregateType<T>>
+
+    /**
+     * Group by ProgramKesehatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgramKesehatanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProgramKesehatanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProgramKesehatanGroupByArgs['orderBy'] }
+        : { orderBy?: ProgramKesehatanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProgramKesehatanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProgramKesehatanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProgramKesehatan model
+   */
+  readonly fields: ProgramKesehatanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProgramKesehatan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProgramKesehatanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    klaster<T extends KlasterDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KlasterDefaultArgs<ExtArgs>>): Prisma__KlasterClient<$Result.GetResult<Prisma.$KlasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    role<T extends ProgramKesehatan$roleArgs<ExtArgs> = {}>(args?: Subset<T, ProgramKesehatan$roleArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kegiatan<T extends ProgramKesehatan$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, ProgramKesehatan$kegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProgramKesehatan model
+   */
+  interface ProgramKesehatanFieldRefs {
+    readonly id: FieldRef<"ProgramKesehatan", 'Int'>
+    readonly nama: FieldRef<"ProgramKesehatan", 'String'>
+    readonly deskripsi: FieldRef<"ProgramKesehatan", 'String'>
+    readonly klasterId: FieldRef<"ProgramKesehatan", 'Int'>
+    readonly roleId: FieldRef<"ProgramKesehatan", 'String'>
+    readonly createdAt: FieldRef<"ProgramKesehatan", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProgramKesehatan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProgramKesehatan findUnique
+   */
+  export type ProgramKesehatanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgramKesehatan to fetch.
+     */
+    where: ProgramKesehatanWhereUniqueInput
+  }
+
+  /**
+   * ProgramKesehatan findUniqueOrThrow
+   */
+  export type ProgramKesehatanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgramKesehatan to fetch.
+     */
+    where: ProgramKesehatanWhereUniqueInput
+  }
+
+  /**
+   * ProgramKesehatan findFirst
+   */
+  export type ProgramKesehatanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgramKesehatan to fetch.
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgramKesehatans to fetch.
+     */
+    orderBy?: ProgramKesehatanOrderByWithRelationInput | ProgramKesehatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProgramKesehatans.
+     */
+    cursor?: ProgramKesehatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgramKesehatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgramKesehatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProgramKesehatans.
+     */
+    distinct?: ProgramKesehatanScalarFieldEnum | ProgramKesehatanScalarFieldEnum[]
+  }
+
+  /**
+   * ProgramKesehatan findFirstOrThrow
+   */
+  export type ProgramKesehatanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgramKesehatan to fetch.
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgramKesehatans to fetch.
+     */
+    orderBy?: ProgramKesehatanOrderByWithRelationInput | ProgramKesehatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProgramKesehatans.
+     */
+    cursor?: ProgramKesehatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgramKesehatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgramKesehatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProgramKesehatans.
+     */
+    distinct?: ProgramKesehatanScalarFieldEnum | ProgramKesehatanScalarFieldEnum[]
+  }
+
+  /**
+   * ProgramKesehatan findMany
+   */
+  export type ProgramKesehatanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgramKesehatans to fetch.
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgramKesehatans to fetch.
+     */
+    orderBy?: ProgramKesehatanOrderByWithRelationInput | ProgramKesehatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProgramKesehatans.
+     */
+    cursor?: ProgramKesehatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgramKesehatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgramKesehatans.
+     */
+    skip?: number
+    distinct?: ProgramKesehatanScalarFieldEnum | ProgramKesehatanScalarFieldEnum[]
+  }
+
+  /**
+   * ProgramKesehatan create
+   */
+  export type ProgramKesehatanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProgramKesehatan.
+     */
+    data: XOR<ProgramKesehatanCreateInput, ProgramKesehatanUncheckedCreateInput>
+  }
+
+  /**
+   * ProgramKesehatan createMany
+   */
+  export type ProgramKesehatanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProgramKesehatans.
+     */
+    data: ProgramKesehatanCreateManyInput | ProgramKesehatanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProgramKesehatan createManyAndReturn
+   */
+  export type ProgramKesehatanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProgramKesehatans.
+     */
+    data: ProgramKesehatanCreateManyInput | ProgramKesehatanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProgramKesehatan update
+   */
+  export type ProgramKesehatanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProgramKesehatan.
+     */
+    data: XOR<ProgramKesehatanUpdateInput, ProgramKesehatanUncheckedUpdateInput>
+    /**
+     * Choose, which ProgramKesehatan to update.
+     */
+    where: ProgramKesehatanWhereUniqueInput
+  }
+
+  /**
+   * ProgramKesehatan updateMany
+   */
+  export type ProgramKesehatanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProgramKesehatans.
+     */
+    data: XOR<ProgramKesehatanUpdateManyMutationInput, ProgramKesehatanUncheckedUpdateManyInput>
+    /**
+     * Filter which ProgramKesehatans to update
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * Limit how many ProgramKesehatans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProgramKesehatan updateManyAndReturn
+   */
+  export type ProgramKesehatanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * The data used to update ProgramKesehatans.
+     */
+    data: XOR<ProgramKesehatanUpdateManyMutationInput, ProgramKesehatanUncheckedUpdateManyInput>
+    /**
+     * Filter which ProgramKesehatans to update
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * Limit how many ProgramKesehatans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProgramKesehatan upsert
+   */
+  export type ProgramKesehatanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProgramKesehatan to update in case it exists.
+     */
+    where: ProgramKesehatanWhereUniqueInput
+    /**
+     * In case the ProgramKesehatan found by the `where` argument doesn't exist, create a new ProgramKesehatan with this data.
+     */
+    create: XOR<ProgramKesehatanCreateInput, ProgramKesehatanUncheckedCreateInput>
+    /**
+     * In case the ProgramKesehatan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProgramKesehatanUpdateInput, ProgramKesehatanUncheckedUpdateInput>
+  }
+
+  /**
+   * ProgramKesehatan delete
+   */
+  export type ProgramKesehatanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+    /**
+     * Filter which ProgramKesehatan to delete.
+     */
+    where: ProgramKesehatanWhereUniqueInput
+  }
+
+  /**
+   * ProgramKesehatan deleteMany
+   */
+  export type ProgramKesehatanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProgramKesehatans to delete
+     */
+    where?: ProgramKesehatanWhereInput
+    /**
+     * Limit how many ProgramKesehatans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProgramKesehatan.role
+   */
+  export type ProgramKesehatan$roleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Role
+     */
+    omit?: RoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoleInclude<ExtArgs> | null
+    where?: RoleWhereInput
+  }
+
+  /**
+   * ProgramKesehatan.kegiatan
+   */
+  export type ProgramKesehatan$kegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    where?: KegiatanWhereInput
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    cursor?: KegiatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KegiatanScalarFieldEnum | KegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * ProgramKesehatan without action
+   */
+  export type ProgramKesehatanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramKesehatan
+     */
+    select?: ProgramKesehatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgramKesehatan
+     */
+    omit?: ProgramKesehatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgramKesehatanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Kegiatan
+   */
+
+  export type AggregateKegiatan = {
+    _count: KegiatanCountAggregateOutputType | null
+    _avg: KegiatanAvgAggregateOutputType | null
+    _sum: KegiatanSumAggregateOutputType | null
+    _min: KegiatanMinAggregateOutputType | null
+    _max: KegiatanMaxAggregateOutputType | null
+  }
+
+  export type KegiatanAvgAggregateOutputType = {
+    id: number | null
+    posyanduId: number | null
+    programKesehatanId: number | null
+  }
+
+  export type KegiatanSumAggregateOutputType = {
+    id: number | null
+    posyanduId: number | null
+    programKesehatanId: number | null
+  }
+
+  export type KegiatanMinAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    tanggalPelaksanaan: Date | null
+    alamat: string | null
+    posyanduId: number | null
+    programKesehatanId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type KegiatanMaxAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    deskripsi: string | null
+    tanggalPelaksanaan: Date | null
+    alamat: string | null
+    posyanduId: number | null
+    programKesehatanId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type KegiatanCountAggregateOutputType = {
+    id: number
+    nama: number
+    deskripsi: number
+    tanggalPelaksanaan: number
+    alamat: number
+    posyanduId: number
+    programKesehatanId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type KegiatanAvgAggregateInputType = {
+    id?: true
+    posyanduId?: true
+    programKesehatanId?: true
+  }
+
+  export type KegiatanSumAggregateInputType = {
+    id?: true
+    posyanduId?: true
+    programKesehatanId?: true
+  }
+
+  export type KegiatanMinAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    tanggalPelaksanaan?: true
+    alamat?: true
+    posyanduId?: true
+    programKesehatanId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type KegiatanMaxAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    tanggalPelaksanaan?: true
+    alamat?: true
+    posyanduId?: true
+    programKesehatanId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type KegiatanCountAggregateInputType = {
+    id?: true
+    nama?: true
+    deskripsi?: true
+    tanggalPelaksanaan?: true
+    alamat?: true
+    posyanduId?: true
+    programKesehatanId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type KegiatanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kegiatan to aggregate.
+     */
+    where?: KegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kegiatans to fetch.
+     */
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Kegiatans
+    **/
+    _count?: true | KegiatanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KegiatanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KegiatanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KegiatanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KegiatanMaxAggregateInputType
+  }
+
+  export type GetKegiatanAggregateType<T extends KegiatanAggregateArgs> = {
+        [P in keyof T & keyof AggregateKegiatan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKegiatan[P]>
+      : GetScalarType<T[P], AggregateKegiatan[P]>
+  }
+
+
+
+
+  export type KegiatanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KegiatanWhereInput
+    orderBy?: KegiatanOrderByWithAggregationInput | KegiatanOrderByWithAggregationInput[]
+    by: KegiatanScalarFieldEnum[] | KegiatanScalarFieldEnum
+    having?: KegiatanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KegiatanCountAggregateInputType | true
+    _avg?: KegiatanAvgAggregateInputType
+    _sum?: KegiatanSumAggregateInputType
+    _min?: KegiatanMinAggregateInputType
+    _max?: KegiatanMaxAggregateInputType
+  }
+
+  export type KegiatanGroupByOutputType = {
+    id: number
+    nama: string
+    deskripsi: string | null
+    tanggalPelaksanaan: Date | null
+    alamat: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: KegiatanCountAggregateOutputType | null
+    _avg: KegiatanAvgAggregateOutputType | null
+    _sum: KegiatanSumAggregateOutputType | null
+    _min: KegiatanMinAggregateOutputType | null
+    _max: KegiatanMaxAggregateOutputType | null
+  }
+
+  type GetKegiatanGroupByPayload<T extends KegiatanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KegiatanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KegiatanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KegiatanGroupByOutputType[P]>
+            : GetScalarType<T[P], KegiatanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KegiatanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    tanggalPelaksanaan?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    programKesehatanId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | Kegiatan$pemeriksaanBalitaArgs<ExtArgs>
+    pemeriksaanIbuHamil?: boolean | Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    _count?: boolean | KegiatanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kegiatan"]>
+
+  export type KegiatanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    tanggalPelaksanaan?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    programKesehatanId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kegiatan"]>
+
+  export type KegiatanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    tanggalPelaksanaan?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    programKesehatanId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kegiatan"]>
+
+  export type KegiatanSelectScalar = {
+    id?: boolean
+    nama?: boolean
+    deskripsi?: boolean
+    tanggalPelaksanaan?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    programKesehatanId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type KegiatanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "deskripsi" | "tanggalPelaksanaan" | "alamat" | "posyanduId" | "programKesehatanId" | "createdAt" | "updatedAt", ExtArgs["result"]["kegiatan"]>
+  export type KegiatanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | Kegiatan$pemeriksaanBalitaArgs<ExtArgs>
+    pemeriksaanIbuHamil?: boolean | Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    _count?: boolean | KegiatanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type KegiatanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+  }
+  export type KegiatanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
+  }
+
+  export type $KegiatanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Kegiatan"
+    objects: {
+      posyandu: Prisma.$PosyanduPayload<ExtArgs>
+      programKesehatan: Prisma.$ProgramKesehatanPayload<ExtArgs>
+      pemeriksaanBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
+      pemeriksaanIbuHamil: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nama: string
+      deskripsi: string | null
+      tanggalPelaksanaan: Date | null
+      alamat: string | null
+      posyanduId: number
+      programKesehatanId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["kegiatan"]>
+    composites: {}
+  }
+
+  type KegiatanGetPayload<S extends boolean | null | undefined | KegiatanDefaultArgs> = $Result.GetResult<Prisma.$KegiatanPayload, S>
+
+  type KegiatanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KegiatanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KegiatanCountAggregateInputType | true
+    }
+
+  export interface KegiatanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Kegiatan'], meta: { name: 'Kegiatan' } }
+    /**
+     * Find zero or one Kegiatan that matches the filter.
+     * @param {KegiatanFindUniqueArgs} args - Arguments to find a Kegiatan
+     * @example
+     * // Get one Kegiatan
+     * const kegiatan = await prisma.kegiatan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KegiatanFindUniqueArgs>(args: SelectSubset<T, KegiatanFindUniqueArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Kegiatan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KegiatanFindUniqueOrThrowArgs} args - Arguments to find a Kegiatan
+     * @example
+     * // Get one Kegiatan
+     * const kegiatan = await prisma.kegiatan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KegiatanFindUniqueOrThrowArgs>(args: SelectSubset<T, KegiatanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kegiatan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanFindFirstArgs} args - Arguments to find a Kegiatan
+     * @example
+     * // Get one Kegiatan
+     * const kegiatan = await prisma.kegiatan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KegiatanFindFirstArgs>(args?: SelectSubset<T, KegiatanFindFirstArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kegiatan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanFindFirstOrThrowArgs} args - Arguments to find a Kegiatan
+     * @example
+     * // Get one Kegiatan
+     * const kegiatan = await prisma.kegiatan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KegiatanFindFirstOrThrowArgs>(args?: SelectSubset<T, KegiatanFindFirstOrThrowArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Kegiatans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Kegiatans
+     * const kegiatans = await prisma.kegiatan.findMany()
+     * 
+     * // Get first 10 Kegiatans
+     * const kegiatans = await prisma.kegiatan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const kegiatanWithIdOnly = await prisma.kegiatan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends KegiatanFindManyArgs>(args?: SelectSubset<T, KegiatanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Kegiatan.
+     * @param {KegiatanCreateArgs} args - Arguments to create a Kegiatan.
+     * @example
+     * // Create one Kegiatan
+     * const Kegiatan = await prisma.kegiatan.create({
+     *   data: {
+     *     // ... data to create a Kegiatan
+     *   }
+     * })
+     * 
+     */
+    create<T extends KegiatanCreateArgs>(args: SelectSubset<T, KegiatanCreateArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Kegiatans.
+     * @param {KegiatanCreateManyArgs} args - Arguments to create many Kegiatans.
+     * @example
+     * // Create many Kegiatans
+     * const kegiatan = await prisma.kegiatan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KegiatanCreateManyArgs>(args?: SelectSubset<T, KegiatanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Kegiatans and returns the data saved in the database.
+     * @param {KegiatanCreateManyAndReturnArgs} args - Arguments to create many Kegiatans.
+     * @example
+     * // Create many Kegiatans
+     * const kegiatan = await prisma.kegiatan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Kegiatans and only return the `id`
+     * const kegiatanWithIdOnly = await prisma.kegiatan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends KegiatanCreateManyAndReturnArgs>(args?: SelectSubset<T, KegiatanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Kegiatan.
+     * @param {KegiatanDeleteArgs} args - Arguments to delete one Kegiatan.
+     * @example
+     * // Delete one Kegiatan
+     * const Kegiatan = await prisma.kegiatan.delete({
+     *   where: {
+     *     // ... filter to delete one Kegiatan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KegiatanDeleteArgs>(args: SelectSubset<T, KegiatanDeleteArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Kegiatan.
+     * @param {KegiatanUpdateArgs} args - Arguments to update one Kegiatan.
+     * @example
+     * // Update one Kegiatan
+     * const kegiatan = await prisma.kegiatan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KegiatanUpdateArgs>(args: SelectSubset<T, KegiatanUpdateArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Kegiatans.
+     * @param {KegiatanDeleteManyArgs} args - Arguments to filter Kegiatans to delete.
+     * @example
+     * // Delete a few Kegiatans
+     * const { count } = await prisma.kegiatan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KegiatanDeleteManyArgs>(args?: SelectSubset<T, KegiatanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kegiatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Kegiatans
+     * const kegiatan = await prisma.kegiatan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KegiatanUpdateManyArgs>(args: SelectSubset<T, KegiatanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kegiatans and returns the data updated in the database.
+     * @param {KegiatanUpdateManyAndReturnArgs} args - Arguments to update many Kegiatans.
+     * @example
+     * // Update many Kegiatans
+     * const kegiatan = await prisma.kegiatan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Kegiatans and only return the `id`
+     * const kegiatanWithIdOnly = await prisma.kegiatan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends KegiatanUpdateManyAndReturnArgs>(args: SelectSubset<T, KegiatanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Kegiatan.
+     * @param {KegiatanUpsertArgs} args - Arguments to update or create a Kegiatan.
+     * @example
+     * // Update or create a Kegiatan
+     * const kegiatan = await prisma.kegiatan.upsert({
+     *   create: {
+     *     // ... data to create a Kegiatan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Kegiatan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KegiatanUpsertArgs>(args: SelectSubset<T, KegiatanUpsertArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Kegiatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanCountArgs} args - Arguments to filter Kegiatans to count.
+     * @example
+     * // Count the number of Kegiatans
+     * const count = await prisma.kegiatan.count({
+     *   where: {
+     *     // ... the filter for the Kegiatans we want to count
+     *   }
+     * })
+    **/
+    count<T extends KegiatanCountArgs>(
+      args?: Subset<T, KegiatanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KegiatanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Kegiatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KegiatanAggregateArgs>(args: Subset<T, KegiatanAggregateArgs>): Prisma.PrismaPromise<GetKegiatanAggregateType<T>>
+
+    /**
+     * Group by Kegiatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KegiatanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KegiatanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KegiatanGroupByArgs['orderBy'] }
+        : { orderBy?: KegiatanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KegiatanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKegiatanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Kegiatan model
+   */
+  readonly fields: KegiatanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Kegiatan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KegiatanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    posyandu<T extends PosyanduDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PosyanduDefaultArgs<ExtArgs>>): Prisma__PosyanduClient<$Result.GetResult<Prisma.$PosyanduPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    programKesehatan<T extends ProgramKesehatanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProgramKesehatanDefaultArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pemeriksaanBalita<T extends Kegiatan$pemeriksaanBalitaArgs<ExtArgs> = {}>(args?: Subset<T, Kegiatan$pemeriksaanBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pemeriksaanIbuHamil<T extends Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Kegiatan model
+   */
+  interface KegiatanFieldRefs {
+    readonly id: FieldRef<"Kegiatan", 'Int'>
+    readonly nama: FieldRef<"Kegiatan", 'String'>
+    readonly deskripsi: FieldRef<"Kegiatan", 'String'>
+    readonly tanggalPelaksanaan: FieldRef<"Kegiatan", 'DateTime'>
+    readonly alamat: FieldRef<"Kegiatan", 'String'>
+    readonly posyanduId: FieldRef<"Kegiatan", 'Int'>
+    readonly programKesehatanId: FieldRef<"Kegiatan", 'Int'>
+    readonly createdAt: FieldRef<"Kegiatan", 'DateTime'>
+    readonly updatedAt: FieldRef<"Kegiatan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Kegiatan findUnique
+   */
+  export type KegiatanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which Kegiatan to fetch.
+     */
+    where: KegiatanWhereUniqueInput
+  }
+
+  /**
+   * Kegiatan findUniqueOrThrow
+   */
+  export type KegiatanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which Kegiatan to fetch.
+     */
+    where: KegiatanWhereUniqueInput
+  }
+
+  /**
+   * Kegiatan findFirst
+   */
+  export type KegiatanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which Kegiatan to fetch.
+     */
+    where?: KegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kegiatans to fetch.
+     */
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kegiatans.
+     */
+    cursor?: KegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kegiatans.
+     */
+    distinct?: KegiatanScalarFieldEnum | KegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan findFirstOrThrow
+   */
+  export type KegiatanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which Kegiatan to fetch.
+     */
+    where?: KegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kegiatans to fetch.
+     */
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kegiatans.
+     */
+    cursor?: KegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kegiatans.
+     */
+    distinct?: KegiatanScalarFieldEnum | KegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan findMany
+   */
+  export type KegiatanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which Kegiatans to fetch.
+     */
+    where?: KegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kegiatans to fetch.
+     */
+    orderBy?: KegiatanOrderByWithRelationInput | KegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Kegiatans.
+     */
+    cursor?: KegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kegiatans.
+     */
+    skip?: number
+    distinct?: KegiatanScalarFieldEnum | KegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan create
+   */
+  export type KegiatanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Kegiatan.
+     */
+    data: XOR<KegiatanCreateInput, KegiatanUncheckedCreateInput>
+  }
+
+  /**
+   * Kegiatan createMany
+   */
+  export type KegiatanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Kegiatans.
+     */
+    data: KegiatanCreateManyInput | KegiatanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Kegiatan createManyAndReturn
+   */
+  export type KegiatanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * The data used to create many Kegiatans.
+     */
+    data: KegiatanCreateManyInput | KegiatanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Kegiatan update
+   */
+  export type KegiatanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Kegiatan.
+     */
+    data: XOR<KegiatanUpdateInput, KegiatanUncheckedUpdateInput>
+    /**
+     * Choose, which Kegiatan to update.
+     */
+    where: KegiatanWhereUniqueInput
+  }
+
+  /**
+   * Kegiatan updateMany
+   */
+  export type KegiatanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Kegiatans.
+     */
+    data: XOR<KegiatanUpdateManyMutationInput, KegiatanUncheckedUpdateManyInput>
+    /**
+     * Filter which Kegiatans to update
+     */
+    where?: KegiatanWhereInput
+    /**
+     * Limit how many Kegiatans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kegiatan updateManyAndReturn
+   */
+  export type KegiatanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * The data used to update Kegiatans.
+     */
+    data: XOR<KegiatanUpdateManyMutationInput, KegiatanUncheckedUpdateManyInput>
+    /**
+     * Filter which Kegiatans to update
+     */
+    where?: KegiatanWhereInput
+    /**
+     * Limit how many Kegiatans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Kegiatan upsert
+   */
+  export type KegiatanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Kegiatan to update in case it exists.
+     */
+    where: KegiatanWhereUniqueInput
+    /**
+     * In case the Kegiatan found by the `where` argument doesn't exist, create a new Kegiatan with this data.
+     */
+    create: XOR<KegiatanCreateInput, KegiatanUncheckedCreateInput>
+    /**
+     * In case the Kegiatan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KegiatanUpdateInput, KegiatanUncheckedUpdateInput>
+  }
+
+  /**
+   * Kegiatan delete
+   */
+  export type KegiatanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    /**
+     * Filter which Kegiatan to delete.
+     */
+    where: KegiatanWhereUniqueInput
+  }
+
+  /**
+   * Kegiatan deleteMany
+   */
+  export type KegiatanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kegiatans to delete
+     */
+    where?: KegiatanWhereInput
+    /**
+     * Limit how many Kegiatans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kegiatan.pemeriksaanBalita
+   */
+  export type Kegiatan$pemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    where?: PemeriksaanBalitaWhereInput
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan.pemeriksaanIbuHamil
+   */
+  export type Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    where?: PemeriksaanIbuHamilWhereInput
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan without action
+   */
+  export type KegiatanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Balita
+   */
+
+  export type AggregateBalita = {
+    _count: BalitaCountAggregateOutputType | null
+    _avg: BalitaAvgAggregateOutputType | null
+    _sum: BalitaSumAggregateOutputType | null
+    _min: BalitaMinAggregateOutputType | null
+    _max: BalitaMaxAggregateOutputType | null
+  }
+
+  export type BalitaAvgAggregateOutputType = {
+    id: number | null
+    beratLahir: number | null
+    panjangLahir: number | null
+    posyanduId: number | null
+    kaderId: number | null
+  }
+
+  export type BalitaSumAggregateOutputType = {
+    id: number | null
+    beratLahir: number | null
+    panjangLahir: number | null
+    posyanduId: number | null
+    kaderId: number | null
+  }
+
+  export type BalitaMinAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    nik: string | null
+    noKK: string | null
+    tanggalLahir: Date | null
+    jenisKelamin: string | null
+    namaAyah: string | null
+    namaIbu: string | null
+    alamat: string | null
+    beratLahir: number | null
+    panjangLahir: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BalitaMaxAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    nik: string | null
+    noKK: string | null
+    tanggalLahir: Date | null
+    jenisKelamin: string | null
+    namaAyah: string | null
+    namaIbu: string | null
+    alamat: string | null
+    beratLahir: number | null
+    panjangLahir: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BalitaCountAggregateOutputType = {
+    id: number
+    nama: number
+    nik: number
+    noKK: number
+    tanggalLahir: number
+    jenisKelamin: number
+    namaAyah: number
+    namaIbu: number
+    alamat: number
+    beratLahir: number
+    panjangLahir: number
+    posyanduId: number
+    kaderId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BalitaAvgAggregateInputType = {
+    id?: true
+    beratLahir?: true
+    panjangLahir?: true
+    posyanduId?: true
+    kaderId?: true
+  }
+
+  export type BalitaSumAggregateInputType = {
+    id?: true
+    beratLahir?: true
+    panjangLahir?: true
+    posyanduId?: true
+    kaderId?: true
+  }
+
+  export type BalitaMinAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    jenisKelamin?: true
+    namaAyah?: true
+    namaIbu?: true
+    alamat?: true
+    beratLahir?: true
+    panjangLahir?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BalitaMaxAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    jenisKelamin?: true
+    namaAyah?: true
+    namaIbu?: true
+    alamat?: true
+    beratLahir?: true
+    panjangLahir?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BalitaCountAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    jenisKelamin?: true
+    namaAyah?: true
+    namaIbu?: true
+    alamat?: true
+    beratLahir?: true
+    panjangLahir?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BalitaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Balita to aggregate.
+     */
+    where?: BalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Balitas to fetch.
+     */
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Balitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Balitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Balitas
+    **/
+    _count?: true | BalitaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BalitaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BalitaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BalitaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BalitaMaxAggregateInputType
+  }
+
+  export type GetBalitaAggregateType<T extends BalitaAggregateArgs> = {
+        [P in keyof T & keyof AggregateBalita]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBalita[P]>
+      : GetScalarType<T[P], AggregateBalita[P]>
+  }
+
+
+
+
+  export type BalitaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BalitaWhereInput
+    orderBy?: BalitaOrderByWithAggregationInput | BalitaOrderByWithAggregationInput[]
+    by: BalitaScalarFieldEnum[] | BalitaScalarFieldEnum
+    having?: BalitaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BalitaCountAggregateInputType | true
+    _avg?: BalitaAvgAggregateInputType
+    _sum?: BalitaSumAggregateInputType
+    _min?: BalitaMinAggregateInputType
+    _max?: BalitaMaxAggregateInputType
+  }
+
+  export type BalitaGroupByOutputType = {
+    id: number
+    nama: string
+    nik: string | null
+    noKK: string
+    tanggalLahir: Date
+    jenisKelamin: string
+    namaAyah: string | null
+    namaIbu: string | null
+    alamat: string
+    beratLahir: number | null
+    panjangLahir: number | null
+    posyanduId: number
+    kaderId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BalitaCountAggregateOutputType | null
+    _avg: BalitaAvgAggregateOutputType | null
+    _sum: BalitaSumAggregateOutputType | null
+    _min: BalitaMinAggregateOutputType | null
+    _max: BalitaMaxAggregateOutputType | null
+  }
+
+  type GetBalitaGroupByPayload<T extends BalitaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BalitaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BalitaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BalitaGroupByOutputType[P]>
+            : GetScalarType<T[P], BalitaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BalitaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    jenisKelamin?: boolean
+    namaAyah?: boolean
+    namaIbu?: boolean
+    alamat?: boolean
+    beratLahir?: boolean
+    panjangLahir?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | Balita$pemeriksaanBalitaArgs<ExtArgs>
+    statusGizi?: boolean | Balita$statusGiziArgs<ExtArgs>
+    _count?: boolean | BalitaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["balita"]>
+
+  export type BalitaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    jenisKelamin?: boolean
+    namaAyah?: boolean
+    namaIbu?: boolean
+    alamat?: boolean
+    beratLahir?: boolean
+    panjangLahir?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["balita"]>
+
+  export type BalitaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    jenisKelamin?: boolean
+    namaAyah?: boolean
+    namaIbu?: boolean
+    alamat?: boolean
+    beratLahir?: boolean
+    panjangLahir?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["balita"]>
+
+  export type BalitaSelectScalar = {
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    jenisKelamin?: boolean
+    namaAyah?: boolean
+    namaIbu?: boolean
+    alamat?: boolean
+    beratLahir?: boolean
+    panjangLahir?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "jenisKelamin" | "namaAyah" | "namaIbu" | "alamat" | "beratLahir" | "panjangLahir" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["balita"]>
+  export type BalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | Balita$pemeriksaanBalitaArgs<ExtArgs>
+    statusGizi?: boolean | Balita$statusGiziArgs<ExtArgs>
+    _count?: boolean | BalitaCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BalitaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+  }
+  export type BalitaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | Balita$kaderArgs<ExtArgs>
+  }
+
+  export type $BalitaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Balita"
+    objects: {
+      posyandu: Prisma.$PosyanduPayload<ExtArgs>
+      kader: Prisma.$KaderPayload<ExtArgs> | null
+      pemeriksaanBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
+      statusGizi: Prisma.$StatusGiziBalitaPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nama: string
+      nik: string | null
+      noKK: string
+      tanggalLahir: Date
+      jenisKelamin: string
+      namaAyah: string | null
+      namaIbu: string | null
+      alamat: string
+      beratLahir: number | null
+      panjangLahir: number | null
+      posyanduId: number
+      kaderId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["balita"]>
+    composites: {}
+  }
+
+  type BalitaGetPayload<S extends boolean | null | undefined | BalitaDefaultArgs> = $Result.GetResult<Prisma.$BalitaPayload, S>
+
+  type BalitaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BalitaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BalitaCountAggregateInputType | true
+    }
+
+  export interface BalitaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Balita'], meta: { name: 'Balita' } }
+    /**
+     * Find zero or one Balita that matches the filter.
+     * @param {BalitaFindUniqueArgs} args - Arguments to find a Balita
+     * @example
+     * // Get one Balita
+     * const balita = await prisma.balita.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BalitaFindUniqueArgs>(args: SelectSubset<T, BalitaFindUniqueArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Balita that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BalitaFindUniqueOrThrowArgs} args - Arguments to find a Balita
+     * @example
+     * // Get one Balita
+     * const balita = await prisma.balita.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BalitaFindUniqueOrThrowArgs>(args: SelectSubset<T, BalitaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Balita that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaFindFirstArgs} args - Arguments to find a Balita
+     * @example
+     * // Get one Balita
+     * const balita = await prisma.balita.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BalitaFindFirstArgs>(args?: SelectSubset<T, BalitaFindFirstArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Balita that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaFindFirstOrThrowArgs} args - Arguments to find a Balita
+     * @example
+     * // Get one Balita
+     * const balita = await prisma.balita.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BalitaFindFirstOrThrowArgs>(args?: SelectSubset<T, BalitaFindFirstOrThrowArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Balitas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Balitas
+     * const balitas = await prisma.balita.findMany()
+     * 
+     * // Get first 10 Balitas
+     * const balitas = await prisma.balita.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const balitaWithIdOnly = await prisma.balita.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BalitaFindManyArgs>(args?: SelectSubset<T, BalitaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Balita.
+     * @param {BalitaCreateArgs} args - Arguments to create a Balita.
+     * @example
+     * // Create one Balita
+     * const Balita = await prisma.balita.create({
+     *   data: {
+     *     // ... data to create a Balita
+     *   }
+     * })
+     * 
+     */
+    create<T extends BalitaCreateArgs>(args: SelectSubset<T, BalitaCreateArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Balitas.
+     * @param {BalitaCreateManyArgs} args - Arguments to create many Balitas.
+     * @example
+     * // Create many Balitas
+     * const balita = await prisma.balita.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BalitaCreateManyArgs>(args?: SelectSubset<T, BalitaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Balitas and returns the data saved in the database.
+     * @param {BalitaCreateManyAndReturnArgs} args - Arguments to create many Balitas.
+     * @example
+     * // Create many Balitas
+     * const balita = await prisma.balita.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Balitas and only return the `id`
+     * const balitaWithIdOnly = await prisma.balita.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BalitaCreateManyAndReturnArgs>(args?: SelectSubset<T, BalitaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Balita.
+     * @param {BalitaDeleteArgs} args - Arguments to delete one Balita.
+     * @example
+     * // Delete one Balita
+     * const Balita = await prisma.balita.delete({
+     *   where: {
+     *     // ... filter to delete one Balita
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BalitaDeleteArgs>(args: SelectSubset<T, BalitaDeleteArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Balita.
+     * @param {BalitaUpdateArgs} args - Arguments to update one Balita.
+     * @example
+     * // Update one Balita
+     * const balita = await prisma.balita.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BalitaUpdateArgs>(args: SelectSubset<T, BalitaUpdateArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Balitas.
+     * @param {BalitaDeleteManyArgs} args - Arguments to filter Balitas to delete.
+     * @example
+     * // Delete a few Balitas
+     * const { count } = await prisma.balita.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BalitaDeleteManyArgs>(args?: SelectSubset<T, BalitaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Balitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Balitas
+     * const balita = await prisma.balita.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BalitaUpdateManyArgs>(args: SelectSubset<T, BalitaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Balitas and returns the data updated in the database.
+     * @param {BalitaUpdateManyAndReturnArgs} args - Arguments to update many Balitas.
+     * @example
+     * // Update many Balitas
+     * const balita = await prisma.balita.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Balitas and only return the `id`
+     * const balitaWithIdOnly = await prisma.balita.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BalitaUpdateManyAndReturnArgs>(args: SelectSubset<T, BalitaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Balita.
+     * @param {BalitaUpsertArgs} args - Arguments to update or create a Balita.
+     * @example
+     * // Update or create a Balita
+     * const balita = await prisma.balita.upsert({
+     *   create: {
+     *     // ... data to create a Balita
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Balita we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BalitaUpsertArgs>(args: SelectSubset<T, BalitaUpsertArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Balitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaCountArgs} args - Arguments to filter Balitas to count.
+     * @example
+     * // Count the number of Balitas
+     * const count = await prisma.balita.count({
+     *   where: {
+     *     // ... the filter for the Balitas we want to count
+     *   }
+     * })
+    **/
+    count<T extends BalitaCountArgs>(
+      args?: Subset<T, BalitaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BalitaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Balita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BalitaAggregateArgs>(args: Subset<T, BalitaAggregateArgs>): Prisma.PrismaPromise<GetBalitaAggregateType<T>>
+
+    /**
+     * Group by Balita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BalitaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BalitaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BalitaGroupByArgs['orderBy'] }
+        : { orderBy?: BalitaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BalitaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBalitaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Balita model
+   */
+  readonly fields: BalitaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Balita.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BalitaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    posyandu<T extends PosyanduDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PosyanduDefaultArgs<ExtArgs>>): Prisma__PosyanduClient<$Result.GetResult<Prisma.$PosyanduPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kader<T extends Balita$kaderArgs<ExtArgs> = {}>(args?: Subset<T, Balita$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    pemeriksaanBalita<T extends Balita$pemeriksaanBalitaArgs<ExtArgs> = {}>(args?: Subset<T, Balita$pemeriksaanBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    statusGizi<T extends Balita$statusGiziArgs<ExtArgs> = {}>(args?: Subset<T, Balita$statusGiziArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Balita model
+   */
+  interface BalitaFieldRefs {
+    readonly id: FieldRef<"Balita", 'Int'>
+    readonly nama: FieldRef<"Balita", 'String'>
+    readonly nik: FieldRef<"Balita", 'String'>
+    readonly noKK: FieldRef<"Balita", 'String'>
+    readonly tanggalLahir: FieldRef<"Balita", 'DateTime'>
+    readonly jenisKelamin: FieldRef<"Balita", 'String'>
+    readonly namaAyah: FieldRef<"Balita", 'String'>
+    readonly namaIbu: FieldRef<"Balita", 'String'>
+    readonly alamat: FieldRef<"Balita", 'String'>
+    readonly beratLahir: FieldRef<"Balita", 'Float'>
+    readonly panjangLahir: FieldRef<"Balita", 'Float'>
+    readonly posyanduId: FieldRef<"Balita", 'Int'>
+    readonly kaderId: FieldRef<"Balita", 'Int'>
+    readonly createdAt: FieldRef<"Balita", 'DateTime'>
+    readonly updatedAt: FieldRef<"Balita", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Balita findUnique
+   */
+  export type BalitaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which Balita to fetch.
+     */
+    where: BalitaWhereUniqueInput
+  }
+
+  /**
+   * Balita findUniqueOrThrow
+   */
+  export type BalitaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which Balita to fetch.
+     */
+    where: BalitaWhereUniqueInput
+  }
+
+  /**
+   * Balita findFirst
+   */
+  export type BalitaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which Balita to fetch.
+     */
+    where?: BalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Balitas to fetch.
+     */
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Balitas.
+     */
+    cursor?: BalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Balitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Balitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Balitas.
+     */
+    distinct?: BalitaScalarFieldEnum | BalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Balita findFirstOrThrow
+   */
+  export type BalitaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which Balita to fetch.
+     */
+    where?: BalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Balitas to fetch.
+     */
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Balitas.
+     */
+    cursor?: BalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Balitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Balitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Balitas.
+     */
+    distinct?: BalitaScalarFieldEnum | BalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Balita findMany
+   */
+  export type BalitaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which Balitas to fetch.
+     */
+    where?: BalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Balitas to fetch.
+     */
+    orderBy?: BalitaOrderByWithRelationInput | BalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Balitas.
+     */
+    cursor?: BalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Balitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Balitas.
+     */
+    skip?: number
+    distinct?: BalitaScalarFieldEnum | BalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Balita create
+   */
+  export type BalitaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Balita.
+     */
+    data: XOR<BalitaCreateInput, BalitaUncheckedCreateInput>
+  }
+
+  /**
+   * Balita createMany
+   */
+  export type BalitaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Balitas.
+     */
+    data: BalitaCreateManyInput | BalitaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Balita createManyAndReturn
+   */
+  export type BalitaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * The data used to create many Balitas.
+     */
+    data: BalitaCreateManyInput | BalitaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Balita update
+   */
+  export type BalitaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Balita.
+     */
+    data: XOR<BalitaUpdateInput, BalitaUncheckedUpdateInput>
+    /**
+     * Choose, which Balita to update.
+     */
+    where: BalitaWhereUniqueInput
+  }
+
+  /**
+   * Balita updateMany
+   */
+  export type BalitaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Balitas.
+     */
+    data: XOR<BalitaUpdateManyMutationInput, BalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which Balitas to update
+     */
+    where?: BalitaWhereInput
+    /**
+     * Limit how many Balitas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Balita updateManyAndReturn
+   */
+  export type BalitaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * The data used to update Balitas.
+     */
+    data: XOR<BalitaUpdateManyMutationInput, BalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which Balitas to update
+     */
+    where?: BalitaWhereInput
+    /**
+     * Limit how many Balitas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Balita upsert
+   */
+  export type BalitaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Balita to update in case it exists.
+     */
+    where: BalitaWhereUniqueInput
+    /**
+     * In case the Balita found by the `where` argument doesn't exist, create a new Balita with this data.
+     */
+    create: XOR<BalitaCreateInput, BalitaUncheckedCreateInput>
+    /**
+     * In case the Balita was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BalitaUpdateInput, BalitaUncheckedUpdateInput>
+  }
+
+  /**
+   * Balita delete
+   */
+  export type BalitaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+    /**
+     * Filter which Balita to delete.
+     */
+    where: BalitaWhereUniqueInput
+  }
+
+  /**
+   * Balita deleteMany
+   */
+  export type BalitaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Balitas to delete
+     */
+    where?: BalitaWhereInput
+    /**
+     * Limit how many Balitas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Balita.kader
+   */
+  export type Balita$kaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kader
+     */
+    select?: KaderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kader
+     */
+    omit?: KaderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KaderInclude<ExtArgs> | null
+    where?: KaderWhereInput
+  }
+
+  /**
+   * Balita.pemeriksaanBalita
+   */
+  export type Balita$pemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    where?: PemeriksaanBalitaWhereInput
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Balita.statusGizi
+   */
+  export type Balita$statusGiziArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    where?: StatusGiziBalitaWhereInput
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StatusGiziBalitaScalarFieldEnum | StatusGiziBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * Balita without action
+   */
+  export type BalitaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Balita
+     */
+    select?: BalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Balita
+     */
+    omit?: BalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BalitaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model IbuHamil
+   */
+
+  export type AggregateIbuHamil = {
+    _count: IbuHamilCountAggregateOutputType | null
+    _avg: IbuHamilAvgAggregateOutputType | null
+    _sum: IbuHamilSumAggregateOutputType | null
+    _min: IbuHamilMinAggregateOutputType | null
+    _max: IbuHamilMaxAggregateOutputType | null
+  }
+
+  export type IbuHamilAvgAggregateOutputType = {
+    id: number | null
+    umurKehamilanAwal: number | null
+    gravida: number | null
+    para: number | null
+    abortus: number | null
+    posyanduId: number | null
+    kaderId: number | null
+  }
+
+  export type IbuHamilSumAggregateOutputType = {
+    id: number | null
+    umurKehamilanAwal: number | null
+    gravida: number | null
+    para: number | null
+    abortus: number | null
+    posyanduId: number | null
+    kaderId: number | null
+  }
+
+  export type IbuHamilMinAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    nik: string | null
+    noKK: string | null
+    tanggalLahir: Date | null
+    umurKehamilanAwal: number | null
+    tanggalHPHT: Date | null
+    tanggalHPL: Date | null
+    gravida: number | null
+    para: number | null
+    abortus: number | null
+    alamat: string | null
+    posyanduId: number | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IbuHamilMaxAggregateOutputType = {
+    id: number | null
+    nama: string | null
+    nik: string | null
+    noKK: string | null
+    tanggalLahir: Date | null
+    umurKehamilanAwal: number | null
+    tanggalHPHT: Date | null
+    tanggalHPL: Date | null
+    gravida: number | null
+    para: number | null
+    abortus: number | null
+    alamat: string | null
+    posyanduId: number | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IbuHamilCountAggregateOutputType = {
+    id: number
+    nama: number
+    nik: number
+    noKK: number
+    tanggalLahir: number
+    umurKehamilanAwal: number
+    tanggalHPHT: number
+    tanggalHPL: number
+    gravida: number
+    para: number
+    abortus: number
+    alamat: number
+    posyanduId: number
+    kaderId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type IbuHamilAvgAggregateInputType = {
+    id?: true
+    umurKehamilanAwal?: true
+    gravida?: true
+    para?: true
+    abortus?: true
+    posyanduId?: true
+    kaderId?: true
+  }
+
+  export type IbuHamilSumAggregateInputType = {
+    id?: true
+    umurKehamilanAwal?: true
+    gravida?: true
+    para?: true
+    abortus?: true
+    posyanduId?: true
+    kaderId?: true
+  }
+
+  export type IbuHamilMinAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    umurKehamilanAwal?: true
+    tanggalHPHT?: true
+    tanggalHPL?: true
+    gravida?: true
+    para?: true
+    abortus?: true
+    alamat?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IbuHamilMaxAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    umurKehamilanAwal?: true
+    tanggalHPHT?: true
+    tanggalHPL?: true
+    gravida?: true
+    para?: true
+    abortus?: true
+    alamat?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IbuHamilCountAggregateInputType = {
+    id?: true
+    nama?: true
+    nik?: true
+    noKK?: true
+    tanggalLahir?: true
+    umurKehamilanAwal?: true
+    tanggalHPHT?: true
+    tanggalHPL?: true
+    gravida?: true
+    para?: true
+    abortus?: true
+    alamat?: true
+    posyanduId?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type IbuHamilAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IbuHamil to aggregate.
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IbuHamils to fetch.
+     */
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: IbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned IbuHamils
+    **/
+    _count?: true | IbuHamilCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: IbuHamilAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IbuHamilSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IbuHamilMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IbuHamilMaxAggregateInputType
+  }
+
+  export type GetIbuHamilAggregateType<T extends IbuHamilAggregateArgs> = {
+        [P in keyof T & keyof AggregateIbuHamil]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIbuHamil[P]>
+      : GetScalarType<T[P], AggregateIbuHamil[P]>
+  }
+
+
+
+
+  export type IbuHamilGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IbuHamilWhereInput
+    orderBy?: IbuHamilOrderByWithAggregationInput | IbuHamilOrderByWithAggregationInput[]
+    by: IbuHamilScalarFieldEnum[] | IbuHamilScalarFieldEnum
+    having?: IbuHamilScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IbuHamilCountAggregateInputType | true
+    _avg?: IbuHamilAvgAggregateInputType
+    _sum?: IbuHamilSumAggregateInputType
+    _min?: IbuHamilMinAggregateInputType
+    _max?: IbuHamilMaxAggregateInputType
+  }
+
+  export type IbuHamilGroupByOutputType = {
+    id: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date
+    umurKehamilanAwal: number | null
+    tanggalHPHT: Date | null
+    tanggalHPL: Date | null
+    gravida: number | null
+    para: number | null
+    abortus: number | null
+    alamat: string
+    posyanduId: number
+    kaderId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: IbuHamilCountAggregateOutputType | null
+    _avg: IbuHamilAvgAggregateOutputType | null
+    _sum: IbuHamilSumAggregateOutputType | null
+    _min: IbuHamilMinAggregateOutputType | null
+    _max: IbuHamilMaxAggregateOutputType | null
+  }
+
+  type GetIbuHamilGroupByPayload<T extends IbuHamilGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IbuHamilGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IbuHamilGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IbuHamilGroupByOutputType[P]>
+            : GetScalarType<T[P], IbuHamilGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type IbuHamilSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    umurKehamilanAwal?: boolean
+    tanggalHPHT?: boolean
+    tanggalHPL?: boolean
+    gravida?: boolean
+    para?: boolean
+    abortus?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+    pemeriksaanKehamilan?: boolean | IbuHamil$pemeriksaanKehamilanArgs<ExtArgs>
+    _count?: boolean | IbuHamilCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ibuHamil"]>
+
+  export type IbuHamilSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    umurKehamilanAwal?: boolean
+    tanggalHPHT?: boolean
+    tanggalHPL?: boolean
+    gravida?: boolean
+    para?: boolean
+    abortus?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["ibuHamil"]>
+
+  export type IbuHamilSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    umurKehamilanAwal?: boolean
+    tanggalHPHT?: boolean
+    tanggalHPL?: boolean
+    gravida?: boolean
+    para?: boolean
+    abortus?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["ibuHamil"]>
+
+  export type IbuHamilSelectScalar = {
+    id?: boolean
+    nama?: boolean
+    nik?: boolean
+    noKK?: boolean
+    tanggalLahir?: boolean
+    umurKehamilanAwal?: boolean
+    tanggalHPHT?: boolean
+    tanggalHPL?: boolean
+    gravida?: boolean
+    para?: boolean
+    abortus?: boolean
+    alamat?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type IbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "umurKehamilanAwal" | "tanggalHPHT" | "tanggalHPL" | "gravida" | "para" | "abortus" | "alamat" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["ibuHamil"]>
+  export type IbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+    pemeriksaanKehamilan?: boolean | IbuHamil$pemeriksaanKehamilanArgs<ExtArgs>
+    _count?: boolean | IbuHamilCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type IbuHamilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+  }
+  export type IbuHamilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
+  }
+
+  export type $IbuHamilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "IbuHamil"
+    objects: {
+      posyandu: Prisma.$PosyanduPayload<ExtArgs>
+      kader: Prisma.$KaderPayload<ExtArgs> | null
+      pemeriksaanKehamilan: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nama: string
+      nik: string
+      noKK: string
+      tanggalLahir: Date
+      umurKehamilanAwal: number | null
+      tanggalHPHT: Date | null
+      tanggalHPL: Date | null
+      gravida: number | null
+      para: number | null
+      abortus: number | null
+      alamat: string
+      posyanduId: number
+      kaderId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["ibuHamil"]>
+    composites: {}
+  }
+
+  type IbuHamilGetPayload<S extends boolean | null | undefined | IbuHamilDefaultArgs> = $Result.GetResult<Prisma.$IbuHamilPayload, S>
+
+  type IbuHamilCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<IbuHamilFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: IbuHamilCountAggregateInputType | true
+    }
+
+  export interface IbuHamilDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['IbuHamil'], meta: { name: 'IbuHamil' } }
+    /**
+     * Find zero or one IbuHamil that matches the filter.
+     * @param {IbuHamilFindUniqueArgs} args - Arguments to find a IbuHamil
+     * @example
+     * // Get one IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends IbuHamilFindUniqueArgs>(args: SelectSubset<T, IbuHamilFindUniqueArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one IbuHamil that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {IbuHamilFindUniqueOrThrowArgs} args - Arguments to find a IbuHamil
+     * @example
+     * // Get one IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends IbuHamilFindUniqueOrThrowArgs>(args: SelectSubset<T, IbuHamilFindUniqueOrThrowArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IbuHamil that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilFindFirstArgs} args - Arguments to find a IbuHamil
+     * @example
+     * // Get one IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends IbuHamilFindFirstArgs>(args?: SelectSubset<T, IbuHamilFindFirstArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IbuHamil that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilFindFirstOrThrowArgs} args - Arguments to find a IbuHamil
+     * @example
+     * // Get one IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends IbuHamilFindFirstOrThrowArgs>(args?: SelectSubset<T, IbuHamilFindFirstOrThrowArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more IbuHamils that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all IbuHamils
+     * const ibuHamils = await prisma.ibuHamil.findMany()
+     * 
+     * // Get first 10 IbuHamils
+     * const ibuHamils = await prisma.ibuHamil.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ibuHamilWithIdOnly = await prisma.ibuHamil.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends IbuHamilFindManyArgs>(args?: SelectSubset<T, IbuHamilFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a IbuHamil.
+     * @param {IbuHamilCreateArgs} args - Arguments to create a IbuHamil.
+     * @example
+     * // Create one IbuHamil
+     * const IbuHamil = await prisma.ibuHamil.create({
+     *   data: {
+     *     // ... data to create a IbuHamil
+     *   }
+     * })
+     * 
+     */
+    create<T extends IbuHamilCreateArgs>(args: SelectSubset<T, IbuHamilCreateArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many IbuHamils.
+     * @param {IbuHamilCreateManyArgs} args - Arguments to create many IbuHamils.
+     * @example
+     * // Create many IbuHamils
+     * const ibuHamil = await prisma.ibuHamil.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends IbuHamilCreateManyArgs>(args?: SelectSubset<T, IbuHamilCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many IbuHamils and returns the data saved in the database.
+     * @param {IbuHamilCreateManyAndReturnArgs} args - Arguments to create many IbuHamils.
+     * @example
+     * // Create many IbuHamils
+     * const ibuHamil = await prisma.ibuHamil.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many IbuHamils and only return the `id`
+     * const ibuHamilWithIdOnly = await prisma.ibuHamil.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends IbuHamilCreateManyAndReturnArgs>(args?: SelectSubset<T, IbuHamilCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a IbuHamil.
+     * @param {IbuHamilDeleteArgs} args - Arguments to delete one IbuHamil.
+     * @example
+     * // Delete one IbuHamil
+     * const IbuHamil = await prisma.ibuHamil.delete({
+     *   where: {
+     *     // ... filter to delete one IbuHamil
+     *   }
+     * })
+     * 
+     */
+    delete<T extends IbuHamilDeleteArgs>(args: SelectSubset<T, IbuHamilDeleteArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one IbuHamil.
+     * @param {IbuHamilUpdateArgs} args - Arguments to update one IbuHamil.
+     * @example
+     * // Update one IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends IbuHamilUpdateArgs>(args: SelectSubset<T, IbuHamilUpdateArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more IbuHamils.
+     * @param {IbuHamilDeleteManyArgs} args - Arguments to filter IbuHamils to delete.
+     * @example
+     * // Delete a few IbuHamils
+     * const { count } = await prisma.ibuHamil.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends IbuHamilDeleteManyArgs>(args?: SelectSubset<T, IbuHamilDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IbuHamils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many IbuHamils
+     * const ibuHamil = await prisma.ibuHamil.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends IbuHamilUpdateManyArgs>(args: SelectSubset<T, IbuHamilUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IbuHamils and returns the data updated in the database.
+     * @param {IbuHamilUpdateManyAndReturnArgs} args - Arguments to update many IbuHamils.
+     * @example
+     * // Update many IbuHamils
+     * const ibuHamil = await prisma.ibuHamil.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more IbuHamils and only return the `id`
+     * const ibuHamilWithIdOnly = await prisma.ibuHamil.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends IbuHamilUpdateManyAndReturnArgs>(args: SelectSubset<T, IbuHamilUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one IbuHamil.
+     * @param {IbuHamilUpsertArgs} args - Arguments to update or create a IbuHamil.
+     * @example
+     * // Update or create a IbuHamil
+     * const ibuHamil = await prisma.ibuHamil.upsert({
+     *   create: {
+     *     // ... data to create a IbuHamil
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the IbuHamil we want to update
+     *   }
+     * })
+     */
+    upsert<T extends IbuHamilUpsertArgs>(args: SelectSubset<T, IbuHamilUpsertArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of IbuHamils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilCountArgs} args - Arguments to filter IbuHamils to count.
+     * @example
+     * // Count the number of IbuHamils
+     * const count = await prisma.ibuHamil.count({
+     *   where: {
+     *     // ... the filter for the IbuHamils we want to count
+     *   }
+     * })
+    **/
+    count<T extends IbuHamilCountArgs>(
+      args?: Subset<T, IbuHamilCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IbuHamilCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a IbuHamil.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IbuHamilAggregateArgs>(args: Subset<T, IbuHamilAggregateArgs>): Prisma.PrismaPromise<GetIbuHamilAggregateType<T>>
+
+    /**
+     * Group by IbuHamil.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IbuHamilGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends IbuHamilGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: IbuHamilGroupByArgs['orderBy'] }
+        : { orderBy?: IbuHamilGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, IbuHamilGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIbuHamilGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the IbuHamil model
+   */
+  readonly fields: IbuHamilFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for IbuHamil.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__IbuHamilClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    posyandu<T extends PosyanduDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PosyanduDefaultArgs<ExtArgs>>): Prisma__PosyanduClient<$Result.GetResult<Prisma.$PosyanduPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kader<T extends IbuHamil$kaderArgs<ExtArgs> = {}>(args?: Subset<T, IbuHamil$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    pemeriksaanKehamilan<T extends IbuHamil$pemeriksaanKehamilanArgs<ExtArgs> = {}>(args?: Subset<T, IbuHamil$pemeriksaanKehamilanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the IbuHamil model
+   */
+  interface IbuHamilFieldRefs {
+    readonly id: FieldRef<"IbuHamil", 'Int'>
+    readonly nama: FieldRef<"IbuHamil", 'String'>
+    readonly nik: FieldRef<"IbuHamil", 'String'>
+    readonly noKK: FieldRef<"IbuHamil", 'String'>
+    readonly tanggalLahir: FieldRef<"IbuHamil", 'DateTime'>
+    readonly umurKehamilanAwal: FieldRef<"IbuHamil", 'Int'>
+    readonly tanggalHPHT: FieldRef<"IbuHamil", 'DateTime'>
+    readonly tanggalHPL: FieldRef<"IbuHamil", 'DateTime'>
+    readonly gravida: FieldRef<"IbuHamil", 'Int'>
+    readonly para: FieldRef<"IbuHamil", 'Int'>
+    readonly abortus: FieldRef<"IbuHamil", 'Int'>
+    readonly alamat: FieldRef<"IbuHamil", 'String'>
+    readonly posyanduId: FieldRef<"IbuHamil", 'Int'>
+    readonly kaderId: FieldRef<"IbuHamil", 'Int'>
+    readonly createdAt: FieldRef<"IbuHamil", 'DateTime'>
+    readonly updatedAt: FieldRef<"IbuHamil", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * IbuHamil findUnique
+   */
+  export type IbuHamilFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which IbuHamil to fetch.
+     */
+    where: IbuHamilWhereUniqueInput
+  }
+
+  /**
+   * IbuHamil findUniqueOrThrow
+   */
+  export type IbuHamilFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which IbuHamil to fetch.
+     */
+    where: IbuHamilWhereUniqueInput
+  }
+
+  /**
+   * IbuHamil findFirst
+   */
+  export type IbuHamilFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which IbuHamil to fetch.
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IbuHamils to fetch.
+     */
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IbuHamils.
+     */
+    cursor?: IbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IbuHamils.
+     */
+    distinct?: IbuHamilScalarFieldEnum | IbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * IbuHamil findFirstOrThrow
+   */
+  export type IbuHamilFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which IbuHamil to fetch.
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IbuHamils to fetch.
+     */
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IbuHamils.
+     */
+    cursor?: IbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IbuHamils.
+     */
+    distinct?: IbuHamilScalarFieldEnum | IbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * IbuHamil findMany
+   */
+  export type IbuHamilFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which IbuHamils to fetch.
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IbuHamils to fetch.
+     */
+    orderBy?: IbuHamilOrderByWithRelationInput | IbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing IbuHamils.
+     */
+    cursor?: IbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IbuHamils.
+     */
+    skip?: number
+    distinct?: IbuHamilScalarFieldEnum | IbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * IbuHamil create
+   */
+  export type IbuHamilCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * The data needed to create a IbuHamil.
+     */
+    data: XOR<IbuHamilCreateInput, IbuHamilUncheckedCreateInput>
+  }
+
+  /**
+   * IbuHamil createMany
+   */
+  export type IbuHamilCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many IbuHamils.
+     */
+    data: IbuHamilCreateManyInput | IbuHamilCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * IbuHamil createManyAndReturn
+   */
+  export type IbuHamilCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * The data used to create many IbuHamils.
+     */
+    data: IbuHamilCreateManyInput | IbuHamilCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * IbuHamil update
+   */
+  export type IbuHamilUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * The data needed to update a IbuHamil.
+     */
+    data: XOR<IbuHamilUpdateInput, IbuHamilUncheckedUpdateInput>
+    /**
+     * Choose, which IbuHamil to update.
+     */
+    where: IbuHamilWhereUniqueInput
+  }
+
+  /**
+   * IbuHamil updateMany
+   */
+  export type IbuHamilUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update IbuHamils.
+     */
+    data: XOR<IbuHamilUpdateManyMutationInput, IbuHamilUncheckedUpdateManyInput>
+    /**
+     * Filter which IbuHamils to update
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * Limit how many IbuHamils to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * IbuHamil updateManyAndReturn
+   */
+  export type IbuHamilUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * The data used to update IbuHamils.
+     */
+    data: XOR<IbuHamilUpdateManyMutationInput, IbuHamilUncheckedUpdateManyInput>
+    /**
+     * Filter which IbuHamils to update
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * Limit how many IbuHamils to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * IbuHamil upsert
+   */
+  export type IbuHamilUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * The filter to search for the IbuHamil to update in case it exists.
+     */
+    where: IbuHamilWhereUniqueInput
+    /**
+     * In case the IbuHamil found by the `where` argument doesn't exist, create a new IbuHamil with this data.
+     */
+    create: XOR<IbuHamilCreateInput, IbuHamilUncheckedCreateInput>
+    /**
+     * In case the IbuHamil was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<IbuHamilUpdateInput, IbuHamilUncheckedUpdateInput>
+  }
+
+  /**
+   * IbuHamil delete
+   */
+  export type IbuHamilDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter which IbuHamil to delete.
+     */
+    where: IbuHamilWhereUniqueInput
+  }
+
+  /**
+   * IbuHamil deleteMany
+   */
+  export type IbuHamilDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IbuHamils to delete
+     */
+    where?: IbuHamilWhereInput
+    /**
+     * Limit how many IbuHamils to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * IbuHamil.kader
+   */
+  export type IbuHamil$kaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kader
+     */
+    select?: KaderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kader
+     */
+    omit?: KaderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KaderInclude<ExtArgs> | null
+    where?: KaderWhereInput
+  }
+
+  /**
+   * IbuHamil.pemeriksaanKehamilan
+   */
+  export type IbuHamil$pemeriksaanKehamilanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    where?: PemeriksaanIbuHamilWhereInput
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * IbuHamil without action
+   */
+  export type IbuHamilDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IbuHamil
+     */
+    select?: IbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IbuHamil
+     */
+    omit?: IbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IbuHamilInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PemeriksaanBalita
+   */
+
+  export type AggregatePemeriksaanBalita = {
+    _count: PemeriksaanBalitaCountAggregateOutputType | null
+    _avg: PemeriksaanBalitaAvgAggregateOutputType | null
+    _sum: PemeriksaanBalitaSumAggregateOutputType | null
+    _min: PemeriksaanBalitaMinAggregateOutputType | null
+    _max: PemeriksaanBalitaMaxAggregateOutputType | null
+  }
+
+  export type PemeriksaanBalitaAvgAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    kegiatanId: number | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    lingkarKepala: number | null
+    kaderId: number | null
+  }
+
+  export type PemeriksaanBalitaSumAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    kegiatanId: number | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    lingkarKepala: number | null
+    kaderId: number | null
+  }
+
+  export type PemeriksaanBalitaMinAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    kegiatanId: number | null
+    tanggal: Date | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    lingkarKepala: number | null
+    imunisasi: string | null
+    vitamin: boolean | null
+    keluhan: string | null
+    catatan: string | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PemeriksaanBalitaMaxAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    kegiatanId: number | null
+    tanggal: Date | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    lingkarKepala: number | null
+    imunisasi: string | null
+    vitamin: boolean | null
+    keluhan: string | null
+    catatan: string | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PemeriksaanBalitaCountAggregateOutputType = {
+    id: number
+    balitaId: number
+    kegiatanId: number
+    tanggal: number
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala: number
+    imunisasi: number
+    vitamin: number
+    keluhan: number
+    catatan: number
+    kaderId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PemeriksaanBalitaAvgAggregateInputType = {
+    id?: true
+    balitaId?: true
+    kegiatanId?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    lingkarKepala?: true
+    kaderId?: true
+  }
+
+  export type PemeriksaanBalitaSumAggregateInputType = {
+    id?: true
+    balitaId?: true
+    kegiatanId?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    lingkarKepala?: true
+    kaderId?: true
+  }
+
+  export type PemeriksaanBalitaMinAggregateInputType = {
+    id?: true
+    balitaId?: true
+    kegiatanId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    lingkarKepala?: true
+    imunisasi?: true
+    vitamin?: true
+    keluhan?: true
+    catatan?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PemeriksaanBalitaMaxAggregateInputType = {
+    id?: true
+    balitaId?: true
+    kegiatanId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    lingkarKepala?: true
+    imunisasi?: true
+    vitamin?: true
+    keluhan?: true
+    catatan?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PemeriksaanBalitaCountAggregateInputType = {
+    id?: true
+    balitaId?: true
+    kegiatanId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    lingkarKepala?: true
+    imunisasi?: true
+    vitamin?: true
+    keluhan?: true
+    catatan?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PemeriksaanBalitaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PemeriksaanBalita to aggregate.
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanBalitas to fetch.
+     */
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PemeriksaanBalitas
+    **/
+    _count?: true | PemeriksaanBalitaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PemeriksaanBalitaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PemeriksaanBalitaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PemeriksaanBalitaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PemeriksaanBalitaMaxAggregateInputType
+  }
+
+  export type GetPemeriksaanBalitaAggregateType<T extends PemeriksaanBalitaAggregateArgs> = {
+        [P in keyof T & keyof AggregatePemeriksaanBalita]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePemeriksaanBalita[P]>
+      : GetScalarType<T[P], AggregatePemeriksaanBalita[P]>
+  }
+
+
+
+
+  export type PemeriksaanBalitaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanBalitaWhereInput
+    orderBy?: PemeriksaanBalitaOrderByWithAggregationInput | PemeriksaanBalitaOrderByWithAggregationInput[]
+    by: PemeriksaanBalitaScalarFieldEnum[] | PemeriksaanBalitaScalarFieldEnum
+    having?: PemeriksaanBalitaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PemeriksaanBalitaCountAggregateInputType | true
+    _avg?: PemeriksaanBalitaAvgAggregateInputType
+    _sum?: PemeriksaanBalitaSumAggregateInputType
+    _min?: PemeriksaanBalitaMinAggregateInputType
+    _max?: PemeriksaanBalitaMaxAggregateInputType
+  }
+
+  export type PemeriksaanBalitaGroupByOutputType = {
+    id: number
+    balitaId: number
+    kegiatanId: number | null
+    tanggal: Date
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala: number | null
+    imunisasi: string | null
+    vitamin: boolean | null
+    keluhan: string | null
+    catatan: string | null
+    kaderId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PemeriksaanBalitaCountAggregateOutputType | null
+    _avg: PemeriksaanBalitaAvgAggregateOutputType | null
+    _sum: PemeriksaanBalitaSumAggregateOutputType | null
+    _min: PemeriksaanBalitaMinAggregateOutputType | null
+    _max: PemeriksaanBalitaMaxAggregateOutputType | null
+  }
+
+  type GetPemeriksaanBalitaGroupByPayload<T extends PemeriksaanBalitaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PemeriksaanBalitaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PemeriksaanBalitaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PemeriksaanBalitaGroupByOutputType[P]>
+            : GetScalarType<T[P], PemeriksaanBalitaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PemeriksaanBalitaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    lingkarKepala?: boolean
+    imunisasi?: boolean
+    vitamin?: boolean
+    keluhan?: boolean
+    catatan?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanBalita"]>
+
+  export type PemeriksaanBalitaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    lingkarKepala?: boolean
+    imunisasi?: boolean
+    vitamin?: boolean
+    keluhan?: boolean
+    catatan?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanBalita"]>
+
+  export type PemeriksaanBalitaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    lingkarKepala?: boolean
+    imunisasi?: boolean
+    vitamin?: boolean
+    keluhan?: boolean
+    catatan?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanBalita"]>
+
+  export type PemeriksaanBalitaSelectScalar = {
+    id?: boolean
+    balitaId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    lingkarKepala?: boolean
+    imunisasi?: boolean
+    vitamin?: boolean
+    keluhan?: boolean
+    catatan?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PemeriksaanBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "kegiatanId" | "tanggal" | "beratBadan" | "tinggiBadan" | "lingkarKepala" | "imunisasi" | "vitamin" | "keluhan" | "catatan" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanBalita"]>
+  export type PemeriksaanBalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }
+  export type PemeriksaanBalitaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }
+  export type PemeriksaanBalitaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+  }
+
+  export type $PemeriksaanBalitaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PemeriksaanBalita"
+    objects: {
+      balita: Prisma.$BalitaPayload<ExtArgs>
+      kegiatan: Prisma.$KegiatanPayload<ExtArgs> | null
+      kader: Prisma.$KaderPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      balitaId: number
+      kegiatanId: number | null
+      tanggal: Date
+      beratBadan: number
+      tinggiBadan: number
+      lingkarKepala: number | null
+      imunisasi: string | null
+      vitamin: boolean | null
+      keluhan: string | null
+      catatan: string | null
+      kaderId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["pemeriksaanBalita"]>
+    composites: {}
+  }
+
+  type PemeriksaanBalitaGetPayload<S extends boolean | null | undefined | PemeriksaanBalitaDefaultArgs> = $Result.GetResult<Prisma.$PemeriksaanBalitaPayload, S>
+
+  type PemeriksaanBalitaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PemeriksaanBalitaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PemeriksaanBalitaCountAggregateInputType | true
+    }
+
+  export interface PemeriksaanBalitaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PemeriksaanBalita'], meta: { name: 'PemeriksaanBalita' } }
+    /**
+     * Find zero or one PemeriksaanBalita that matches the filter.
+     * @param {PemeriksaanBalitaFindUniqueArgs} args - Arguments to find a PemeriksaanBalita
+     * @example
+     * // Get one PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PemeriksaanBalitaFindUniqueArgs>(args: SelectSubset<T, PemeriksaanBalitaFindUniqueArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PemeriksaanBalita that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PemeriksaanBalitaFindUniqueOrThrowArgs} args - Arguments to find a PemeriksaanBalita
+     * @example
+     * // Get one PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PemeriksaanBalitaFindUniqueOrThrowArgs>(args: SelectSubset<T, PemeriksaanBalitaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PemeriksaanBalita that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaFindFirstArgs} args - Arguments to find a PemeriksaanBalita
+     * @example
+     * // Get one PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PemeriksaanBalitaFindFirstArgs>(args?: SelectSubset<T, PemeriksaanBalitaFindFirstArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PemeriksaanBalita that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaFindFirstOrThrowArgs} args - Arguments to find a PemeriksaanBalita
+     * @example
+     * // Get one PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PemeriksaanBalitaFindFirstOrThrowArgs>(args?: SelectSubset<T, PemeriksaanBalitaFindFirstOrThrowArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PemeriksaanBalitas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PemeriksaanBalitas
+     * const pemeriksaanBalitas = await prisma.pemeriksaanBalita.findMany()
+     * 
+     * // Get first 10 PemeriksaanBalitas
+     * const pemeriksaanBalitas = await prisma.pemeriksaanBalita.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pemeriksaanBalitaWithIdOnly = await prisma.pemeriksaanBalita.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PemeriksaanBalitaFindManyArgs>(args?: SelectSubset<T, PemeriksaanBalitaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PemeriksaanBalita.
+     * @param {PemeriksaanBalitaCreateArgs} args - Arguments to create a PemeriksaanBalita.
+     * @example
+     * // Create one PemeriksaanBalita
+     * const PemeriksaanBalita = await prisma.pemeriksaanBalita.create({
+     *   data: {
+     *     // ... data to create a PemeriksaanBalita
+     *   }
+     * })
+     * 
+     */
+    create<T extends PemeriksaanBalitaCreateArgs>(args: SelectSubset<T, PemeriksaanBalitaCreateArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PemeriksaanBalitas.
+     * @param {PemeriksaanBalitaCreateManyArgs} args - Arguments to create many PemeriksaanBalitas.
+     * @example
+     * // Create many PemeriksaanBalitas
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PemeriksaanBalitaCreateManyArgs>(args?: SelectSubset<T, PemeriksaanBalitaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PemeriksaanBalitas and returns the data saved in the database.
+     * @param {PemeriksaanBalitaCreateManyAndReturnArgs} args - Arguments to create many PemeriksaanBalitas.
+     * @example
+     * // Create many PemeriksaanBalitas
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PemeriksaanBalitas and only return the `id`
+     * const pemeriksaanBalitaWithIdOnly = await prisma.pemeriksaanBalita.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PemeriksaanBalitaCreateManyAndReturnArgs>(args?: SelectSubset<T, PemeriksaanBalitaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PemeriksaanBalita.
+     * @param {PemeriksaanBalitaDeleteArgs} args - Arguments to delete one PemeriksaanBalita.
+     * @example
+     * // Delete one PemeriksaanBalita
+     * const PemeriksaanBalita = await prisma.pemeriksaanBalita.delete({
+     *   where: {
+     *     // ... filter to delete one PemeriksaanBalita
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PemeriksaanBalitaDeleteArgs>(args: SelectSubset<T, PemeriksaanBalitaDeleteArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PemeriksaanBalita.
+     * @param {PemeriksaanBalitaUpdateArgs} args - Arguments to update one PemeriksaanBalita.
+     * @example
+     * // Update one PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PemeriksaanBalitaUpdateArgs>(args: SelectSubset<T, PemeriksaanBalitaUpdateArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PemeriksaanBalitas.
+     * @param {PemeriksaanBalitaDeleteManyArgs} args - Arguments to filter PemeriksaanBalitas to delete.
+     * @example
+     * // Delete a few PemeriksaanBalitas
+     * const { count } = await prisma.pemeriksaanBalita.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PemeriksaanBalitaDeleteManyArgs>(args?: SelectSubset<T, PemeriksaanBalitaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PemeriksaanBalitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PemeriksaanBalitas
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PemeriksaanBalitaUpdateManyArgs>(args: SelectSubset<T, PemeriksaanBalitaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PemeriksaanBalitas and returns the data updated in the database.
+     * @param {PemeriksaanBalitaUpdateManyAndReturnArgs} args - Arguments to update many PemeriksaanBalitas.
+     * @example
+     * // Update many PemeriksaanBalitas
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PemeriksaanBalitas and only return the `id`
+     * const pemeriksaanBalitaWithIdOnly = await prisma.pemeriksaanBalita.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PemeriksaanBalitaUpdateManyAndReturnArgs>(args: SelectSubset<T, PemeriksaanBalitaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PemeriksaanBalita.
+     * @param {PemeriksaanBalitaUpsertArgs} args - Arguments to update or create a PemeriksaanBalita.
+     * @example
+     * // Update or create a PemeriksaanBalita
+     * const pemeriksaanBalita = await prisma.pemeriksaanBalita.upsert({
+     *   create: {
+     *     // ... data to create a PemeriksaanBalita
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PemeriksaanBalita we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PemeriksaanBalitaUpsertArgs>(args: SelectSubset<T, PemeriksaanBalitaUpsertArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PemeriksaanBalitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaCountArgs} args - Arguments to filter PemeriksaanBalitas to count.
+     * @example
+     * // Count the number of PemeriksaanBalitas
+     * const count = await prisma.pemeriksaanBalita.count({
+     *   where: {
+     *     // ... the filter for the PemeriksaanBalitas we want to count
+     *   }
+     * })
+    **/
+    count<T extends PemeriksaanBalitaCountArgs>(
+      args?: Subset<T, PemeriksaanBalitaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PemeriksaanBalitaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PemeriksaanBalita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PemeriksaanBalitaAggregateArgs>(args: Subset<T, PemeriksaanBalitaAggregateArgs>): Prisma.PrismaPromise<GetPemeriksaanBalitaAggregateType<T>>
+
+    /**
+     * Group by PemeriksaanBalita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanBalitaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PemeriksaanBalitaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PemeriksaanBalitaGroupByArgs['orderBy'] }
+        : { orderBy?: PemeriksaanBalitaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PemeriksaanBalitaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPemeriksaanBalitaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PemeriksaanBalita model
+   */
+  readonly fields: PemeriksaanBalitaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PemeriksaanBalita.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PemeriksaanBalitaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    balita<T extends BalitaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BalitaDefaultArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kegiatan<T extends PemeriksaanBalita$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$kegiatanArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kader<T extends PemeriksaanBalita$kaderArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PemeriksaanBalita model
+   */
+  interface PemeriksaanBalitaFieldRefs {
+    readonly id: FieldRef<"PemeriksaanBalita", 'Int'>
+    readonly balitaId: FieldRef<"PemeriksaanBalita", 'Int'>
+    readonly kegiatanId: FieldRef<"PemeriksaanBalita", 'Int'>
+    readonly tanggal: FieldRef<"PemeriksaanBalita", 'DateTime'>
+    readonly beratBadan: FieldRef<"PemeriksaanBalita", 'Float'>
+    readonly tinggiBadan: FieldRef<"PemeriksaanBalita", 'Float'>
+    readonly lingkarKepala: FieldRef<"PemeriksaanBalita", 'Float'>
+    readonly imunisasi: FieldRef<"PemeriksaanBalita", 'String'>
+    readonly vitamin: FieldRef<"PemeriksaanBalita", 'Boolean'>
+    readonly keluhan: FieldRef<"PemeriksaanBalita", 'String'>
+    readonly catatan: FieldRef<"PemeriksaanBalita", 'String'>
+    readonly kaderId: FieldRef<"PemeriksaanBalita", 'Int'>
+    readonly createdAt: FieldRef<"PemeriksaanBalita", 'DateTime'>
+    readonly updatedAt: FieldRef<"PemeriksaanBalita", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PemeriksaanBalita findUnique
+   */
+  export type PemeriksaanBalitaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanBalita to fetch.
+     */
+    where: PemeriksaanBalitaWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanBalita findUniqueOrThrow
+   */
+  export type PemeriksaanBalitaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanBalita to fetch.
+     */
+    where: PemeriksaanBalitaWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanBalita findFirst
+   */
+  export type PemeriksaanBalitaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanBalita to fetch.
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanBalitas to fetch.
+     */
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PemeriksaanBalitas.
+     */
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PemeriksaanBalitas.
+     */
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanBalita findFirstOrThrow
+   */
+  export type PemeriksaanBalitaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanBalita to fetch.
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanBalitas to fetch.
+     */
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PemeriksaanBalitas.
+     */
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PemeriksaanBalitas.
+     */
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanBalita findMany
+   */
+  export type PemeriksaanBalitaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanBalitas to fetch.
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanBalitas to fetch.
+     */
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PemeriksaanBalitas.
+     */
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanBalitas.
+     */
+    skip?: number
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanBalita create
+   */
+  export type PemeriksaanBalitaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PemeriksaanBalita.
+     */
+    data: XOR<PemeriksaanBalitaCreateInput, PemeriksaanBalitaUncheckedCreateInput>
+  }
+
+  /**
+   * PemeriksaanBalita createMany
+   */
+  export type PemeriksaanBalitaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PemeriksaanBalitas.
+     */
+    data: PemeriksaanBalitaCreateManyInput | PemeriksaanBalitaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PemeriksaanBalita createManyAndReturn
+   */
+  export type PemeriksaanBalitaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * The data used to create many PemeriksaanBalitas.
+     */
+    data: PemeriksaanBalitaCreateManyInput | PemeriksaanBalitaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PemeriksaanBalita update
+   */
+  export type PemeriksaanBalitaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PemeriksaanBalita.
+     */
+    data: XOR<PemeriksaanBalitaUpdateInput, PemeriksaanBalitaUncheckedUpdateInput>
+    /**
+     * Choose, which PemeriksaanBalita to update.
+     */
+    where: PemeriksaanBalitaWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanBalita updateMany
+   */
+  export type PemeriksaanBalitaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PemeriksaanBalitas.
+     */
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which PemeriksaanBalitas to update
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * Limit how many PemeriksaanBalitas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PemeriksaanBalita updateManyAndReturn
+   */
+  export type PemeriksaanBalitaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * The data used to update PemeriksaanBalitas.
+     */
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which PemeriksaanBalitas to update
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * Limit how many PemeriksaanBalitas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PemeriksaanBalita upsert
+   */
+  export type PemeriksaanBalitaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PemeriksaanBalita to update in case it exists.
+     */
+    where: PemeriksaanBalitaWhereUniqueInput
+    /**
+     * In case the PemeriksaanBalita found by the `where` argument doesn't exist, create a new PemeriksaanBalita with this data.
+     */
+    create: XOR<PemeriksaanBalitaCreateInput, PemeriksaanBalitaUncheckedCreateInput>
+    /**
+     * In case the PemeriksaanBalita was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PemeriksaanBalitaUpdateInput, PemeriksaanBalitaUncheckedUpdateInput>
+  }
+
+  /**
+   * PemeriksaanBalita delete
+   */
+  export type PemeriksaanBalitaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    /**
+     * Filter which PemeriksaanBalita to delete.
+     */
+    where: PemeriksaanBalitaWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanBalita deleteMany
+   */
+  export type PemeriksaanBalitaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PemeriksaanBalitas to delete
+     */
+    where?: PemeriksaanBalitaWhereInput
+    /**
+     * Limit how many PemeriksaanBalitas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PemeriksaanBalita.kegiatan
+   */
+  export type PemeriksaanBalita$kegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    where?: KegiatanWhereInput
+  }
+
+  /**
+   * PemeriksaanBalita.kader
+   */
+  export type PemeriksaanBalita$kaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kader
+     */
+    select?: KaderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kader
+     */
+    omit?: KaderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KaderInclude<ExtArgs> | null
+    where?: KaderWhereInput
+  }
+
+  /**
+   * PemeriksaanBalita without action
+   */
+  export type PemeriksaanBalitaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PemeriksaanIbuHamil
+   */
+
+  export type AggregatePemeriksaanIbuHamil = {
+    _count: PemeriksaanIbuHamilCountAggregateOutputType | null
+    _avg: PemeriksaanIbuHamilAvgAggregateOutputType | null
+    _sum: PemeriksaanIbuHamilSumAggregateOutputType | null
+    _min: PemeriksaanIbuHamilMinAggregateOutputType | null
+    _max: PemeriksaanIbuHamilMaxAggregateOutputType | null
+  }
+
+  export type PemeriksaanIbuHamilAvgAggregateOutputType = {
+    id: number | null
+    ibuHamilId: number | null
+    kegiatanId: number | null
+    usiaKehamilan: number | null
+    beratBadan: number | null
+    tinggiFundus: number | null
+    detakJantungJanin: number | null
+    kaderId: number | null
+  }
+
+  export type PemeriksaanIbuHamilSumAggregateOutputType = {
+    id: number | null
+    ibuHamilId: number | null
+    kegiatanId: number | null
+    usiaKehamilan: number | null
+    beratBadan: number | null
+    tinggiFundus: number | null
+    detakJantungJanin: number | null
+    kaderId: number | null
+  }
+
+  export type PemeriksaanIbuHamilMinAggregateOutputType = {
+    id: number | null
+    ibuHamilId: number | null
+    kegiatanId: number | null
+    tanggal: Date | null
+    usiaKehamilan: number | null
+    beratBadan: number | null
+    tekananDarah: string | null
+    tinggiFundus: number | null
+    detakJantungJanin: number | null
+    keluhan: string | null
+    tindakan: string | null
+    konseling: string | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PemeriksaanIbuHamilMaxAggregateOutputType = {
+    id: number | null
+    ibuHamilId: number | null
+    kegiatanId: number | null
+    tanggal: Date | null
+    usiaKehamilan: number | null
+    beratBadan: number | null
+    tekananDarah: string | null
+    tinggiFundus: number | null
+    detakJantungJanin: number | null
+    keluhan: string | null
+    tindakan: string | null
+    konseling: string | null
+    kaderId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PemeriksaanIbuHamilCountAggregateOutputType = {
+    id: number
+    ibuHamilId: number
+    kegiatanId: number
+    tanggal: number
+    usiaKehamilan: number
+    beratBadan: number
+    tekananDarah: number
+    tinggiFundus: number
+    detakJantungJanin: number
+    keluhan: number
+    tindakan: number
+    konseling: number
+    kaderId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PemeriksaanIbuHamilAvgAggregateInputType = {
+    id?: true
+    ibuHamilId?: true
+    kegiatanId?: true
+    usiaKehamilan?: true
+    beratBadan?: true
+    tinggiFundus?: true
+    detakJantungJanin?: true
+    kaderId?: true
+  }
+
+  export type PemeriksaanIbuHamilSumAggregateInputType = {
+    id?: true
+    ibuHamilId?: true
+    kegiatanId?: true
+    usiaKehamilan?: true
+    beratBadan?: true
+    tinggiFundus?: true
+    detakJantungJanin?: true
+    kaderId?: true
+  }
+
+  export type PemeriksaanIbuHamilMinAggregateInputType = {
+    id?: true
+    ibuHamilId?: true
+    kegiatanId?: true
+    tanggal?: true
+    usiaKehamilan?: true
+    beratBadan?: true
+    tekananDarah?: true
+    tinggiFundus?: true
+    detakJantungJanin?: true
+    keluhan?: true
+    tindakan?: true
+    konseling?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PemeriksaanIbuHamilMaxAggregateInputType = {
+    id?: true
+    ibuHamilId?: true
+    kegiatanId?: true
+    tanggal?: true
+    usiaKehamilan?: true
+    beratBadan?: true
+    tekananDarah?: true
+    tinggiFundus?: true
+    detakJantungJanin?: true
+    keluhan?: true
+    tindakan?: true
+    konseling?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PemeriksaanIbuHamilCountAggregateInputType = {
+    id?: true
+    ibuHamilId?: true
+    kegiatanId?: true
+    tanggal?: true
+    usiaKehamilan?: true
+    beratBadan?: true
+    tekananDarah?: true
+    tinggiFundus?: true
+    detakJantungJanin?: true
+    keluhan?: true
+    tindakan?: true
+    konseling?: true
+    kaderId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PemeriksaanIbuHamilAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PemeriksaanIbuHamil to aggregate.
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanIbuHamils to fetch.
+     */
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanIbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanIbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PemeriksaanIbuHamils
+    **/
+    _count?: true | PemeriksaanIbuHamilCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PemeriksaanIbuHamilAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PemeriksaanIbuHamilSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PemeriksaanIbuHamilMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PemeriksaanIbuHamilMaxAggregateInputType
+  }
+
+  export type GetPemeriksaanIbuHamilAggregateType<T extends PemeriksaanIbuHamilAggregateArgs> = {
+        [P in keyof T & keyof AggregatePemeriksaanIbuHamil]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePemeriksaanIbuHamil[P]>
+      : GetScalarType<T[P], AggregatePemeriksaanIbuHamil[P]>
+  }
+
+
+
+
+  export type PemeriksaanIbuHamilGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanIbuHamilWhereInput
+    orderBy?: PemeriksaanIbuHamilOrderByWithAggregationInput | PemeriksaanIbuHamilOrderByWithAggregationInput[]
+    by: PemeriksaanIbuHamilScalarFieldEnum[] | PemeriksaanIbuHamilScalarFieldEnum
+    having?: PemeriksaanIbuHamilScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PemeriksaanIbuHamilCountAggregateInputType | true
+    _avg?: PemeriksaanIbuHamilAvgAggregateInputType
+    _sum?: PemeriksaanIbuHamilSumAggregateInputType
+    _min?: PemeriksaanIbuHamilMinAggregateInputType
+    _max?: PemeriksaanIbuHamilMaxAggregateInputType
+  }
+
+  export type PemeriksaanIbuHamilGroupByOutputType = {
+    id: number
+    ibuHamilId: number
+    kegiatanId: number | null
+    tanggal: Date
+    usiaKehamilan: number
+    beratBadan: number | null
+    tekananDarah: string | null
+    tinggiFundus: number | null
+    detakJantungJanin: number | null
+    keluhan: string | null
+    tindakan: string | null
+    konseling: string | null
+    kaderId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PemeriksaanIbuHamilCountAggregateOutputType | null
+    _avg: PemeriksaanIbuHamilAvgAggregateOutputType | null
+    _sum: PemeriksaanIbuHamilSumAggregateOutputType | null
+    _min: PemeriksaanIbuHamilMinAggregateOutputType | null
+    _max: PemeriksaanIbuHamilMaxAggregateOutputType | null
+  }
+
+  type GetPemeriksaanIbuHamilGroupByPayload<T extends PemeriksaanIbuHamilGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PemeriksaanIbuHamilGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PemeriksaanIbuHamilGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PemeriksaanIbuHamilGroupByOutputType[P]>
+            : GetScalarType<T[P], PemeriksaanIbuHamilGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PemeriksaanIbuHamilSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ibuHamilId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    usiaKehamilan?: boolean
+    beratBadan?: boolean
+    tekananDarah?: boolean
+    tinggiFundus?: boolean
+    detakJantungJanin?: boolean
+    keluhan?: boolean
+    tindakan?: boolean
+    konseling?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
+
+  export type PemeriksaanIbuHamilSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ibuHamilId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    usiaKehamilan?: boolean
+    beratBadan?: boolean
+    tekananDarah?: boolean
+    tinggiFundus?: boolean
+    detakJantungJanin?: boolean
+    keluhan?: boolean
+    tindakan?: boolean
+    konseling?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
+
+  export type PemeriksaanIbuHamilSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ibuHamilId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    usiaKehamilan?: boolean
+    beratBadan?: boolean
+    tekananDarah?: boolean
+    tinggiFundus?: boolean
+    detakJantungJanin?: boolean
+    keluhan?: boolean
+    tindakan?: boolean
+    konseling?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
+
+  export type PemeriksaanIbuHamilSelectScalar = {
+    id?: boolean
+    ibuHamilId?: boolean
+    kegiatanId?: boolean
+    tanggal?: boolean
+    usiaKehamilan?: boolean
+    beratBadan?: boolean
+    tekananDarah?: boolean
+    tinggiFundus?: boolean
+    detakJantungJanin?: boolean
+    keluhan?: boolean
+    tindakan?: boolean
+    konseling?: boolean
+    kaderId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PemeriksaanIbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ibuHamilId" | "kegiatanId" | "tanggal" | "usiaKehamilan" | "beratBadan" | "tekananDarah" | "tinggiFundus" | "detakJantungJanin" | "keluhan" | "tindakan" | "konseling" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanIbuHamil"]>
+  export type PemeriksaanIbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }
+  export type PemeriksaanIbuHamilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }
+  export type PemeriksaanIbuHamilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
+    kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
+    kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+  }
+
+  export type $PemeriksaanIbuHamilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PemeriksaanIbuHamil"
+    objects: {
+      ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>
+      kegiatan: Prisma.$KegiatanPayload<ExtArgs> | null
+      kader: Prisma.$KaderPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      ibuHamilId: number
+      kegiatanId: number | null
+      tanggal: Date
+      usiaKehamilan: number
+      beratBadan: number | null
+      tekananDarah: string | null
+      tinggiFundus: number | null
+      detakJantungJanin: number | null
+      keluhan: string | null
+      tindakan: string | null
+      konseling: string | null
+      kaderId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
+    composites: {}
+  }
+
+  type PemeriksaanIbuHamilGetPayload<S extends boolean | null | undefined | PemeriksaanIbuHamilDefaultArgs> = $Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload, S>
+
+  type PemeriksaanIbuHamilCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PemeriksaanIbuHamilFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PemeriksaanIbuHamilCountAggregateInputType | true
+    }
+
+  export interface PemeriksaanIbuHamilDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PemeriksaanIbuHamil'], meta: { name: 'PemeriksaanIbuHamil' } }
+    /**
+     * Find zero or one PemeriksaanIbuHamil that matches the filter.
+     * @param {PemeriksaanIbuHamilFindUniqueArgs} args - Arguments to find a PemeriksaanIbuHamil
+     * @example
+     * // Get one PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PemeriksaanIbuHamilFindUniqueArgs>(args: SelectSubset<T, PemeriksaanIbuHamilFindUniqueArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PemeriksaanIbuHamil that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PemeriksaanIbuHamilFindUniqueOrThrowArgs} args - Arguments to find a PemeriksaanIbuHamil
+     * @example
+     * // Get one PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PemeriksaanIbuHamilFindUniqueOrThrowArgs>(args: SelectSubset<T, PemeriksaanIbuHamilFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PemeriksaanIbuHamil that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilFindFirstArgs} args - Arguments to find a PemeriksaanIbuHamil
+     * @example
+     * // Get one PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PemeriksaanIbuHamilFindFirstArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilFindFirstArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PemeriksaanIbuHamil that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilFindFirstOrThrowArgs} args - Arguments to find a PemeriksaanIbuHamil
+     * @example
+     * // Get one PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PemeriksaanIbuHamilFindFirstOrThrowArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilFindFirstOrThrowArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PemeriksaanIbuHamils that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamils = await prisma.pemeriksaanIbuHamil.findMany()
+     * 
+     * // Get first 10 PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamils = await prisma.pemeriksaanIbuHamil.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pemeriksaanIbuHamilWithIdOnly = await prisma.pemeriksaanIbuHamil.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PemeriksaanIbuHamilFindManyArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PemeriksaanIbuHamil.
+     * @param {PemeriksaanIbuHamilCreateArgs} args - Arguments to create a PemeriksaanIbuHamil.
+     * @example
+     * // Create one PemeriksaanIbuHamil
+     * const PemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.create({
+     *   data: {
+     *     // ... data to create a PemeriksaanIbuHamil
+     *   }
+     * })
+     * 
+     */
+    create<T extends PemeriksaanIbuHamilCreateArgs>(args: SelectSubset<T, PemeriksaanIbuHamilCreateArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PemeriksaanIbuHamils.
+     * @param {PemeriksaanIbuHamilCreateManyArgs} args - Arguments to create many PemeriksaanIbuHamils.
+     * @example
+     * // Create many PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PemeriksaanIbuHamilCreateManyArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PemeriksaanIbuHamils and returns the data saved in the database.
+     * @param {PemeriksaanIbuHamilCreateManyAndReturnArgs} args - Arguments to create many PemeriksaanIbuHamils.
+     * @example
+     * // Create many PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PemeriksaanIbuHamils and only return the `id`
+     * const pemeriksaanIbuHamilWithIdOnly = await prisma.pemeriksaanIbuHamil.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PemeriksaanIbuHamilCreateManyAndReturnArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PemeriksaanIbuHamil.
+     * @param {PemeriksaanIbuHamilDeleteArgs} args - Arguments to delete one PemeriksaanIbuHamil.
+     * @example
+     * // Delete one PemeriksaanIbuHamil
+     * const PemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.delete({
+     *   where: {
+     *     // ... filter to delete one PemeriksaanIbuHamil
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PemeriksaanIbuHamilDeleteArgs>(args: SelectSubset<T, PemeriksaanIbuHamilDeleteArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PemeriksaanIbuHamil.
+     * @param {PemeriksaanIbuHamilUpdateArgs} args - Arguments to update one PemeriksaanIbuHamil.
+     * @example
+     * // Update one PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PemeriksaanIbuHamilUpdateArgs>(args: SelectSubset<T, PemeriksaanIbuHamilUpdateArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PemeriksaanIbuHamils.
+     * @param {PemeriksaanIbuHamilDeleteManyArgs} args - Arguments to filter PemeriksaanIbuHamils to delete.
+     * @example
+     * // Delete a few PemeriksaanIbuHamils
+     * const { count } = await prisma.pemeriksaanIbuHamil.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PemeriksaanIbuHamilDeleteManyArgs>(args?: SelectSubset<T, PemeriksaanIbuHamilDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PemeriksaanIbuHamils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PemeriksaanIbuHamilUpdateManyArgs>(args: SelectSubset<T, PemeriksaanIbuHamilUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PemeriksaanIbuHamils and returns the data updated in the database.
+     * @param {PemeriksaanIbuHamilUpdateManyAndReturnArgs} args - Arguments to update many PemeriksaanIbuHamils.
+     * @example
+     * // Update many PemeriksaanIbuHamils
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PemeriksaanIbuHamils and only return the `id`
+     * const pemeriksaanIbuHamilWithIdOnly = await prisma.pemeriksaanIbuHamil.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PemeriksaanIbuHamilUpdateManyAndReturnArgs>(args: SelectSubset<T, PemeriksaanIbuHamilUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PemeriksaanIbuHamil.
+     * @param {PemeriksaanIbuHamilUpsertArgs} args - Arguments to update or create a PemeriksaanIbuHamil.
+     * @example
+     * // Update or create a PemeriksaanIbuHamil
+     * const pemeriksaanIbuHamil = await prisma.pemeriksaanIbuHamil.upsert({
+     *   create: {
+     *     // ... data to create a PemeriksaanIbuHamil
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PemeriksaanIbuHamil we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PemeriksaanIbuHamilUpsertArgs>(args: SelectSubset<T, PemeriksaanIbuHamilUpsertArgs<ExtArgs>>): Prisma__PemeriksaanIbuHamilClient<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PemeriksaanIbuHamils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilCountArgs} args - Arguments to filter PemeriksaanIbuHamils to count.
+     * @example
+     * // Count the number of PemeriksaanIbuHamils
+     * const count = await prisma.pemeriksaanIbuHamil.count({
+     *   where: {
+     *     // ... the filter for the PemeriksaanIbuHamils we want to count
+     *   }
+     * })
+    **/
+    count<T extends PemeriksaanIbuHamilCountArgs>(
+      args?: Subset<T, PemeriksaanIbuHamilCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PemeriksaanIbuHamilCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PemeriksaanIbuHamil.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PemeriksaanIbuHamilAggregateArgs>(args: Subset<T, PemeriksaanIbuHamilAggregateArgs>): Prisma.PrismaPromise<GetPemeriksaanIbuHamilAggregateType<T>>
+
+    /**
+     * Group by PemeriksaanIbuHamil.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PemeriksaanIbuHamilGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PemeriksaanIbuHamilGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PemeriksaanIbuHamilGroupByArgs['orderBy'] }
+        : { orderBy?: PemeriksaanIbuHamilGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PemeriksaanIbuHamilGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPemeriksaanIbuHamilGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PemeriksaanIbuHamil model
+   */
+  readonly fields: PemeriksaanIbuHamilFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PemeriksaanIbuHamil.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PemeriksaanIbuHamilClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ibuHamil<T extends IbuHamilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IbuHamilDefaultArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kegiatan<T extends PemeriksaanIbuHamil$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    kader<T extends PemeriksaanIbuHamil$kaderArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanIbuHamil$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PemeriksaanIbuHamil model
+   */
+  interface PemeriksaanIbuHamilFieldRefs {
+    readonly id: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly ibuHamilId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly kegiatanId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly tanggal: FieldRef<"PemeriksaanIbuHamil", 'DateTime'>
+    readonly usiaKehamilan: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly beratBadan: FieldRef<"PemeriksaanIbuHamil", 'Float'>
+    readonly tekananDarah: FieldRef<"PemeriksaanIbuHamil", 'String'>
+    readonly tinggiFundus: FieldRef<"PemeriksaanIbuHamil", 'Float'>
+    readonly detakJantungJanin: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly keluhan: FieldRef<"PemeriksaanIbuHamil", 'String'>
+    readonly tindakan: FieldRef<"PemeriksaanIbuHamil", 'String'>
+    readonly konseling: FieldRef<"PemeriksaanIbuHamil", 'String'>
+    readonly kaderId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly createdAt: FieldRef<"PemeriksaanIbuHamil", 'DateTime'>
+    readonly updatedAt: FieldRef<"PemeriksaanIbuHamil", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PemeriksaanIbuHamil findUnique
+   */
+  export type PemeriksaanIbuHamilFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanIbuHamil to fetch.
+     */
+    where: PemeriksaanIbuHamilWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil findUniqueOrThrow
+   */
+  export type PemeriksaanIbuHamilFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanIbuHamil to fetch.
+     */
+    where: PemeriksaanIbuHamilWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil findFirst
+   */
+  export type PemeriksaanIbuHamilFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanIbuHamil to fetch.
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanIbuHamils to fetch.
+     */
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PemeriksaanIbuHamils.
+     */
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanIbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanIbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PemeriksaanIbuHamils.
+     */
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanIbuHamil findFirstOrThrow
+   */
+  export type PemeriksaanIbuHamilFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanIbuHamil to fetch.
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanIbuHamils to fetch.
+     */
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PemeriksaanIbuHamils.
+     */
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanIbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanIbuHamils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PemeriksaanIbuHamils.
+     */
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanIbuHamil findMany
+   */
+  export type PemeriksaanIbuHamilFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter, which PemeriksaanIbuHamils to fetch.
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PemeriksaanIbuHamils to fetch.
+     */
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PemeriksaanIbuHamils.
+     */
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PemeriksaanIbuHamils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PemeriksaanIbuHamils.
+     */
+    skip?: number
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * PemeriksaanIbuHamil create
+   */
+  export type PemeriksaanIbuHamilCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PemeriksaanIbuHamil.
+     */
+    data: XOR<PemeriksaanIbuHamilCreateInput, PemeriksaanIbuHamilUncheckedCreateInput>
+  }
+
+  /**
+   * PemeriksaanIbuHamil createMany
+   */
+  export type PemeriksaanIbuHamilCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PemeriksaanIbuHamils.
+     */
+    data: PemeriksaanIbuHamilCreateManyInput | PemeriksaanIbuHamilCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PemeriksaanIbuHamil createManyAndReturn
+   */
+  export type PemeriksaanIbuHamilCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * The data used to create many PemeriksaanIbuHamils.
+     */
+    data: PemeriksaanIbuHamilCreateManyInput | PemeriksaanIbuHamilCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PemeriksaanIbuHamil update
+   */
+  export type PemeriksaanIbuHamilUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PemeriksaanIbuHamil.
+     */
+    data: XOR<PemeriksaanIbuHamilUpdateInput, PemeriksaanIbuHamilUncheckedUpdateInput>
+    /**
+     * Choose, which PemeriksaanIbuHamil to update.
+     */
+    where: PemeriksaanIbuHamilWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil updateMany
+   */
+  export type PemeriksaanIbuHamilUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PemeriksaanIbuHamils.
+     */
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyInput>
+    /**
+     * Filter which PemeriksaanIbuHamils to update
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * Limit how many PemeriksaanIbuHamils to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PemeriksaanIbuHamil updateManyAndReturn
+   */
+  export type PemeriksaanIbuHamilUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * The data used to update PemeriksaanIbuHamils.
+     */
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyInput>
+    /**
+     * Filter which PemeriksaanIbuHamils to update
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * Limit how many PemeriksaanIbuHamils to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PemeriksaanIbuHamil upsert
+   */
+  export type PemeriksaanIbuHamilUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PemeriksaanIbuHamil to update in case it exists.
+     */
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    /**
+     * In case the PemeriksaanIbuHamil found by the `where` argument doesn't exist, create a new PemeriksaanIbuHamil with this data.
+     */
+    create: XOR<PemeriksaanIbuHamilCreateInput, PemeriksaanIbuHamilUncheckedCreateInput>
+    /**
+     * In case the PemeriksaanIbuHamil was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PemeriksaanIbuHamilUpdateInput, PemeriksaanIbuHamilUncheckedUpdateInput>
+  }
+
+  /**
+   * PemeriksaanIbuHamil delete
+   */
+  export type PemeriksaanIbuHamilDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    /**
+     * Filter which PemeriksaanIbuHamil to delete.
+     */
+    where: PemeriksaanIbuHamilWhereUniqueInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil deleteMany
+   */
+  export type PemeriksaanIbuHamilDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PemeriksaanIbuHamils to delete
+     */
+    where?: PemeriksaanIbuHamilWhereInput
+    /**
+     * Limit how many PemeriksaanIbuHamils to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PemeriksaanIbuHamil.kegiatan
+   */
+  export type PemeriksaanIbuHamil$kegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kegiatan
+     */
+    select?: KegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kegiatan
+     */
+    omit?: KegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KegiatanInclude<ExtArgs> | null
+    where?: KegiatanWhereInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil.kader
+   */
+  export type PemeriksaanIbuHamil$kaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kader
+     */
+    select?: KaderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kader
+     */
+    omit?: KaderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KaderInclude<ExtArgs> | null
+    where?: KaderWhereInput
+  }
+
+  /**
+   * PemeriksaanIbuHamil without action
+   */
+  export type PemeriksaanIbuHamilDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StatusGiziBalita
+   */
+
+  export type AggregateStatusGiziBalita = {
+    _count: StatusGiziBalitaCountAggregateOutputType | null
+    _avg: StatusGiziBalitaAvgAggregateOutputType | null
+    _sum: StatusGiziBalitaSumAggregateOutputType | null
+    _min: StatusGiziBalitaMinAggregateOutputType | null
+    _max: StatusGiziBalitaMaxAggregateOutputType | null
+  }
+
+  export type StatusGiziBalitaAvgAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    zScoreBBTB: number | null
+    zScoreBBU: number | null
+    zScoreTBU: number | null
+  }
+
+  export type StatusGiziBalitaSumAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    zScoreBBTB: number | null
+    zScoreBBU: number | null
+    zScoreTBU: number | null
+  }
+
+  export type StatusGiziBalitaMinAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    tanggal: Date | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    zScoreBBTB: number | null
+    zScoreBBU: number | null
+    zScoreTBU: number | null
+    kategoriGizi: string | null
+    createdAt: Date | null
+  }
+
+  export type StatusGiziBalitaMaxAggregateOutputType = {
+    id: number | null
+    balitaId: number | null
+    tanggal: Date | null
+    beratBadan: number | null
+    tinggiBadan: number | null
+    zScoreBBTB: number | null
+    zScoreBBU: number | null
+    zScoreTBU: number | null
+    kategoriGizi: string | null
+    createdAt: Date | null
+  }
+
+  export type StatusGiziBalitaCountAggregateOutputType = {
+    id: number
+    balitaId: number
+    tanggal: number
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB: number
+    zScoreBBU: number
+    zScoreTBU: number
+    kategoriGizi: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type StatusGiziBalitaAvgAggregateInputType = {
+    id?: true
+    balitaId?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    zScoreBBTB?: true
+    zScoreBBU?: true
+    zScoreTBU?: true
+  }
+
+  export type StatusGiziBalitaSumAggregateInputType = {
+    id?: true
+    balitaId?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    zScoreBBTB?: true
+    zScoreBBU?: true
+    zScoreTBU?: true
+  }
+
+  export type StatusGiziBalitaMinAggregateInputType = {
+    id?: true
+    balitaId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    zScoreBBTB?: true
+    zScoreBBU?: true
+    zScoreTBU?: true
+    kategoriGizi?: true
+    createdAt?: true
+  }
+
+  export type StatusGiziBalitaMaxAggregateInputType = {
+    id?: true
+    balitaId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    zScoreBBTB?: true
+    zScoreBBU?: true
+    zScoreTBU?: true
+    kategoriGizi?: true
+    createdAt?: true
+  }
+
+  export type StatusGiziBalitaCountAggregateInputType = {
+    id?: true
+    balitaId?: true
+    tanggal?: true
+    beratBadan?: true
+    tinggiBadan?: true
+    zScoreBBTB?: true
+    zScoreBBU?: true
+    zScoreTBU?: true
+    kategoriGizi?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type StatusGiziBalitaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StatusGiziBalita to aggregate.
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusGiziBalitas to fetch.
+     */
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusGiziBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusGiziBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StatusGiziBalitas
+    **/
+    _count?: true | StatusGiziBalitaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StatusGiziBalitaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StatusGiziBalitaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StatusGiziBalitaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StatusGiziBalitaMaxAggregateInputType
+  }
+
+  export type GetStatusGiziBalitaAggregateType<T extends StatusGiziBalitaAggregateArgs> = {
+        [P in keyof T & keyof AggregateStatusGiziBalita]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStatusGiziBalita[P]>
+      : GetScalarType<T[P], AggregateStatusGiziBalita[P]>
+  }
+
+
+
+
+  export type StatusGiziBalitaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StatusGiziBalitaWhereInput
+    orderBy?: StatusGiziBalitaOrderByWithAggregationInput | StatusGiziBalitaOrderByWithAggregationInput[]
+    by: StatusGiziBalitaScalarFieldEnum[] | StatusGiziBalitaScalarFieldEnum
+    having?: StatusGiziBalitaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StatusGiziBalitaCountAggregateInputType | true
+    _avg?: StatusGiziBalitaAvgAggregateInputType
+    _sum?: StatusGiziBalitaSumAggregateInputType
+    _min?: StatusGiziBalitaMinAggregateInputType
+    _max?: StatusGiziBalitaMaxAggregateInputType
+  }
+
+  export type StatusGiziBalitaGroupByOutputType = {
+    id: number
+    balitaId: number
+    tanggal: Date
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB: number | null
+    zScoreBBU: number | null
+    zScoreTBU: number | null
+    kategoriGizi: string | null
+    createdAt: Date
+    _count: StatusGiziBalitaCountAggregateOutputType | null
+    _avg: StatusGiziBalitaAvgAggregateOutputType | null
+    _sum: StatusGiziBalitaSumAggregateOutputType | null
+    _min: StatusGiziBalitaMinAggregateOutputType | null
+    _max: StatusGiziBalitaMaxAggregateOutputType | null
+  }
+
+  type GetStatusGiziBalitaGroupByPayload<T extends StatusGiziBalitaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StatusGiziBalitaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StatusGiziBalitaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StatusGiziBalitaGroupByOutputType[P]>
+            : GetScalarType<T[P], StatusGiziBalitaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StatusGiziBalitaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    zScoreBBTB?: boolean
+    zScoreBBU?: boolean
+    zScoreTBU?: boolean
+    kategoriGizi?: boolean
+    createdAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["statusGiziBalita"]>
+
+  export type StatusGiziBalitaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    zScoreBBTB?: boolean
+    zScoreBBU?: boolean
+    zScoreTBU?: boolean
+    kategoriGizi?: boolean
+    createdAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["statusGiziBalita"]>
+
+  export type StatusGiziBalitaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    balitaId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    zScoreBBTB?: boolean
+    zScoreBBU?: boolean
+    zScoreTBU?: boolean
+    kategoriGizi?: boolean
+    createdAt?: boolean
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["statusGiziBalita"]>
+
+  export type StatusGiziBalitaSelectScalar = {
+    id?: boolean
+    balitaId?: boolean
+    tanggal?: boolean
+    beratBadan?: boolean
+    tinggiBadan?: boolean
+    zScoreBBTB?: boolean
+    zScoreBBU?: boolean
+    zScoreTBU?: boolean
+    kategoriGizi?: boolean
+    createdAt?: boolean
+  }
+
+  export type StatusGiziBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "tanggal" | "beratBadan" | "tinggiBadan" | "zScoreBBTB" | "zScoreBBU" | "zScoreTBU" | "kategoriGizi" | "createdAt", ExtArgs["result"]["statusGiziBalita"]>
+  export type StatusGiziBalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }
+  export type StatusGiziBalitaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }
+  export type StatusGiziBalitaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    balita?: boolean | BalitaDefaultArgs<ExtArgs>
+  }
+
+  export type $StatusGiziBalitaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StatusGiziBalita"
+    objects: {
+      balita: Prisma.$BalitaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      balitaId: number
+      tanggal: Date
+      beratBadan: number
+      tinggiBadan: number
+      zScoreBBTB: number | null
+      zScoreBBU: number | null
+      zScoreTBU: number | null
+      kategoriGizi: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["statusGiziBalita"]>
+    composites: {}
+  }
+
+  type StatusGiziBalitaGetPayload<S extends boolean | null | undefined | StatusGiziBalitaDefaultArgs> = $Result.GetResult<Prisma.$StatusGiziBalitaPayload, S>
+
+  type StatusGiziBalitaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StatusGiziBalitaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StatusGiziBalitaCountAggregateInputType | true
+    }
+
+  export interface StatusGiziBalitaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StatusGiziBalita'], meta: { name: 'StatusGiziBalita' } }
+    /**
+     * Find zero or one StatusGiziBalita that matches the filter.
+     * @param {StatusGiziBalitaFindUniqueArgs} args - Arguments to find a StatusGiziBalita
+     * @example
+     * // Get one StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StatusGiziBalitaFindUniqueArgs>(args: SelectSubset<T, StatusGiziBalitaFindUniqueArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StatusGiziBalita that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StatusGiziBalitaFindUniqueOrThrowArgs} args - Arguments to find a StatusGiziBalita
+     * @example
+     * // Get one StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StatusGiziBalitaFindUniqueOrThrowArgs>(args: SelectSubset<T, StatusGiziBalitaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StatusGiziBalita that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaFindFirstArgs} args - Arguments to find a StatusGiziBalita
+     * @example
+     * // Get one StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StatusGiziBalitaFindFirstArgs>(args?: SelectSubset<T, StatusGiziBalitaFindFirstArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StatusGiziBalita that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaFindFirstOrThrowArgs} args - Arguments to find a StatusGiziBalita
+     * @example
+     * // Get one StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StatusGiziBalitaFindFirstOrThrowArgs>(args?: SelectSubset<T, StatusGiziBalitaFindFirstOrThrowArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StatusGiziBalitas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StatusGiziBalitas
+     * const statusGiziBalitas = await prisma.statusGiziBalita.findMany()
+     * 
+     * // Get first 10 StatusGiziBalitas
+     * const statusGiziBalitas = await prisma.statusGiziBalita.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const statusGiziBalitaWithIdOnly = await prisma.statusGiziBalita.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StatusGiziBalitaFindManyArgs>(args?: SelectSubset<T, StatusGiziBalitaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StatusGiziBalita.
+     * @param {StatusGiziBalitaCreateArgs} args - Arguments to create a StatusGiziBalita.
+     * @example
+     * // Create one StatusGiziBalita
+     * const StatusGiziBalita = await prisma.statusGiziBalita.create({
+     *   data: {
+     *     // ... data to create a StatusGiziBalita
+     *   }
+     * })
+     * 
+     */
+    create<T extends StatusGiziBalitaCreateArgs>(args: SelectSubset<T, StatusGiziBalitaCreateArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StatusGiziBalitas.
+     * @param {StatusGiziBalitaCreateManyArgs} args - Arguments to create many StatusGiziBalitas.
+     * @example
+     * // Create many StatusGiziBalitas
+     * const statusGiziBalita = await prisma.statusGiziBalita.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StatusGiziBalitaCreateManyArgs>(args?: SelectSubset<T, StatusGiziBalitaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StatusGiziBalitas and returns the data saved in the database.
+     * @param {StatusGiziBalitaCreateManyAndReturnArgs} args - Arguments to create many StatusGiziBalitas.
+     * @example
+     * // Create many StatusGiziBalitas
+     * const statusGiziBalita = await prisma.statusGiziBalita.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StatusGiziBalitas and only return the `id`
+     * const statusGiziBalitaWithIdOnly = await prisma.statusGiziBalita.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StatusGiziBalitaCreateManyAndReturnArgs>(args?: SelectSubset<T, StatusGiziBalitaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StatusGiziBalita.
+     * @param {StatusGiziBalitaDeleteArgs} args - Arguments to delete one StatusGiziBalita.
+     * @example
+     * // Delete one StatusGiziBalita
+     * const StatusGiziBalita = await prisma.statusGiziBalita.delete({
+     *   where: {
+     *     // ... filter to delete one StatusGiziBalita
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StatusGiziBalitaDeleteArgs>(args: SelectSubset<T, StatusGiziBalitaDeleteArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StatusGiziBalita.
+     * @param {StatusGiziBalitaUpdateArgs} args - Arguments to update one StatusGiziBalita.
+     * @example
+     * // Update one StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StatusGiziBalitaUpdateArgs>(args: SelectSubset<T, StatusGiziBalitaUpdateArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StatusGiziBalitas.
+     * @param {StatusGiziBalitaDeleteManyArgs} args - Arguments to filter StatusGiziBalitas to delete.
+     * @example
+     * // Delete a few StatusGiziBalitas
+     * const { count } = await prisma.statusGiziBalita.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StatusGiziBalitaDeleteManyArgs>(args?: SelectSubset<T, StatusGiziBalitaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StatusGiziBalitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StatusGiziBalitas
+     * const statusGiziBalita = await prisma.statusGiziBalita.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StatusGiziBalitaUpdateManyArgs>(args: SelectSubset<T, StatusGiziBalitaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StatusGiziBalitas and returns the data updated in the database.
+     * @param {StatusGiziBalitaUpdateManyAndReturnArgs} args - Arguments to update many StatusGiziBalitas.
+     * @example
+     * // Update many StatusGiziBalitas
+     * const statusGiziBalita = await prisma.statusGiziBalita.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StatusGiziBalitas and only return the `id`
+     * const statusGiziBalitaWithIdOnly = await prisma.statusGiziBalita.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StatusGiziBalitaUpdateManyAndReturnArgs>(args: SelectSubset<T, StatusGiziBalitaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StatusGiziBalita.
+     * @param {StatusGiziBalitaUpsertArgs} args - Arguments to update or create a StatusGiziBalita.
+     * @example
+     * // Update or create a StatusGiziBalita
+     * const statusGiziBalita = await prisma.statusGiziBalita.upsert({
+     *   create: {
+     *     // ... data to create a StatusGiziBalita
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StatusGiziBalita we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StatusGiziBalitaUpsertArgs>(args: SelectSubset<T, StatusGiziBalitaUpsertArgs<ExtArgs>>): Prisma__StatusGiziBalitaClient<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StatusGiziBalitas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaCountArgs} args - Arguments to filter StatusGiziBalitas to count.
+     * @example
+     * // Count the number of StatusGiziBalitas
+     * const count = await prisma.statusGiziBalita.count({
+     *   where: {
+     *     // ... the filter for the StatusGiziBalitas we want to count
+     *   }
+     * })
+    **/
+    count<T extends StatusGiziBalitaCountArgs>(
+      args?: Subset<T, StatusGiziBalitaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StatusGiziBalitaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StatusGiziBalita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StatusGiziBalitaAggregateArgs>(args: Subset<T, StatusGiziBalitaAggregateArgs>): Prisma.PrismaPromise<GetStatusGiziBalitaAggregateType<T>>
+
+    /**
+     * Group by StatusGiziBalita.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGiziBalitaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StatusGiziBalitaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StatusGiziBalitaGroupByArgs['orderBy'] }
+        : { orderBy?: StatusGiziBalitaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StatusGiziBalitaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStatusGiziBalitaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StatusGiziBalita model
+   */
+  readonly fields: StatusGiziBalitaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StatusGiziBalita.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StatusGiziBalitaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    balita<T extends BalitaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BalitaDefaultArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StatusGiziBalita model
+   */
+  interface StatusGiziBalitaFieldRefs {
+    readonly id: FieldRef<"StatusGiziBalita", 'Int'>
+    readonly balitaId: FieldRef<"StatusGiziBalita", 'Int'>
+    readonly tanggal: FieldRef<"StatusGiziBalita", 'DateTime'>
+    readonly beratBadan: FieldRef<"StatusGiziBalita", 'Float'>
+    readonly tinggiBadan: FieldRef<"StatusGiziBalita", 'Float'>
+    readonly zScoreBBTB: FieldRef<"StatusGiziBalita", 'Float'>
+    readonly zScoreBBU: FieldRef<"StatusGiziBalita", 'Float'>
+    readonly zScoreTBU: FieldRef<"StatusGiziBalita", 'Float'>
+    readonly kategoriGizi: FieldRef<"StatusGiziBalita", 'String'>
+    readonly createdAt: FieldRef<"StatusGiziBalita", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StatusGiziBalita findUnique
+   */
+  export type StatusGiziBalitaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusGiziBalita to fetch.
+     */
+    where: StatusGiziBalitaWhereUniqueInput
+  }
+
+  /**
+   * StatusGiziBalita findUniqueOrThrow
+   */
+  export type StatusGiziBalitaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusGiziBalita to fetch.
+     */
+    where: StatusGiziBalitaWhereUniqueInput
+  }
+
+  /**
+   * StatusGiziBalita findFirst
+   */
+  export type StatusGiziBalitaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusGiziBalita to fetch.
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusGiziBalitas to fetch.
+     */
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StatusGiziBalitas.
+     */
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusGiziBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusGiziBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StatusGiziBalitas.
+     */
+    distinct?: StatusGiziBalitaScalarFieldEnum | StatusGiziBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * StatusGiziBalita findFirstOrThrow
+   */
+  export type StatusGiziBalitaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusGiziBalita to fetch.
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusGiziBalitas to fetch.
+     */
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StatusGiziBalitas.
+     */
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusGiziBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusGiziBalitas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StatusGiziBalitas.
+     */
+    distinct?: StatusGiziBalitaScalarFieldEnum | StatusGiziBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * StatusGiziBalita findMany
+   */
+  export type StatusGiziBalitaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusGiziBalitas to fetch.
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusGiziBalitas to fetch.
+     */
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StatusGiziBalitas.
+     */
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusGiziBalitas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusGiziBalitas.
+     */
+    skip?: number
+    distinct?: StatusGiziBalitaScalarFieldEnum | StatusGiziBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * StatusGiziBalita create
+   */
+  export type StatusGiziBalitaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StatusGiziBalita.
+     */
+    data: XOR<StatusGiziBalitaCreateInput, StatusGiziBalitaUncheckedCreateInput>
+  }
+
+  /**
+   * StatusGiziBalita createMany
+   */
+  export type StatusGiziBalitaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StatusGiziBalitas.
+     */
+    data: StatusGiziBalitaCreateManyInput | StatusGiziBalitaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StatusGiziBalita createManyAndReturn
+   */
+  export type StatusGiziBalitaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * The data used to create many StatusGiziBalitas.
+     */
+    data: StatusGiziBalitaCreateManyInput | StatusGiziBalitaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StatusGiziBalita update
+   */
+  export type StatusGiziBalitaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StatusGiziBalita.
+     */
+    data: XOR<StatusGiziBalitaUpdateInput, StatusGiziBalitaUncheckedUpdateInput>
+    /**
+     * Choose, which StatusGiziBalita to update.
+     */
+    where: StatusGiziBalitaWhereUniqueInput
+  }
+
+  /**
+   * StatusGiziBalita updateMany
+   */
+  export type StatusGiziBalitaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StatusGiziBalitas.
+     */
+    data: XOR<StatusGiziBalitaUpdateManyMutationInput, StatusGiziBalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which StatusGiziBalitas to update
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * Limit how many StatusGiziBalitas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StatusGiziBalita updateManyAndReturn
+   */
+  export type StatusGiziBalitaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * The data used to update StatusGiziBalitas.
+     */
+    data: XOR<StatusGiziBalitaUpdateManyMutationInput, StatusGiziBalitaUncheckedUpdateManyInput>
+    /**
+     * Filter which StatusGiziBalitas to update
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * Limit how many StatusGiziBalitas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StatusGiziBalita upsert
+   */
+  export type StatusGiziBalitaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StatusGiziBalita to update in case it exists.
+     */
+    where: StatusGiziBalitaWhereUniqueInput
+    /**
+     * In case the StatusGiziBalita found by the `where` argument doesn't exist, create a new StatusGiziBalita with this data.
+     */
+    create: XOR<StatusGiziBalitaCreateInput, StatusGiziBalitaUncheckedCreateInput>
+    /**
+     * In case the StatusGiziBalita was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StatusGiziBalitaUpdateInput, StatusGiziBalitaUncheckedUpdateInput>
+  }
+
+  /**
+   * StatusGiziBalita delete
+   */
+  export type StatusGiziBalitaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    /**
+     * Filter which StatusGiziBalita to delete.
+     */
+    where: StatusGiziBalitaWhereUniqueInput
+  }
+
+  /**
+   * StatusGiziBalita deleteMany
+   */
+  export type StatusGiziBalitaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StatusGiziBalitas to delete
+     */
+    where?: StatusGiziBalitaWhereInput
+    /**
+     * Limit how many StatusGiziBalitas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StatusGiziBalita without action
+   */
+  export type StatusGiziBalitaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8346,6 +19528,7 @@ export namespace Prisma {
     noHp: 'noHp',
     alamat: 'alamat',
     posyanduId: 'posyanduId',
+    userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8394,6 +19577,145 @@ export namespace Prisma {
   };
 
   export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
+  export const KlasterScalarFieldEnum: {
+    id: 'id',
+    nama: 'nama',
+    deskripsi: 'deskripsi',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type KlasterScalarFieldEnum = (typeof KlasterScalarFieldEnum)[keyof typeof KlasterScalarFieldEnum]
+
+
+  export const ProgramKesehatanScalarFieldEnum: {
+    id: 'id',
+    nama: 'nama',
+    deskripsi: 'deskripsi',
+    klasterId: 'klasterId',
+    roleId: 'roleId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProgramKesehatanScalarFieldEnum = (typeof ProgramKesehatanScalarFieldEnum)[keyof typeof ProgramKesehatanScalarFieldEnum]
+
+
+  export const KegiatanScalarFieldEnum: {
+    id: 'id',
+    nama: 'nama',
+    deskripsi: 'deskripsi',
+    tanggalPelaksanaan: 'tanggalPelaksanaan',
+    alamat: 'alamat',
+    posyanduId: 'posyanduId',
+    programKesehatanId: 'programKesehatanId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type KegiatanScalarFieldEnum = (typeof KegiatanScalarFieldEnum)[keyof typeof KegiatanScalarFieldEnum]
+
+
+  export const BalitaScalarFieldEnum: {
+    id: 'id',
+    nama: 'nama',
+    nik: 'nik',
+    noKK: 'noKK',
+    tanggalLahir: 'tanggalLahir',
+    jenisKelamin: 'jenisKelamin',
+    namaAyah: 'namaAyah',
+    namaIbu: 'namaIbu',
+    alamat: 'alamat',
+    beratLahir: 'beratLahir',
+    panjangLahir: 'panjangLahir',
+    posyanduId: 'posyanduId',
+    kaderId: 'kaderId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BalitaScalarFieldEnum = (typeof BalitaScalarFieldEnum)[keyof typeof BalitaScalarFieldEnum]
+
+
+  export const IbuHamilScalarFieldEnum: {
+    id: 'id',
+    nama: 'nama',
+    nik: 'nik',
+    noKK: 'noKK',
+    tanggalLahir: 'tanggalLahir',
+    umurKehamilanAwal: 'umurKehamilanAwal',
+    tanggalHPHT: 'tanggalHPHT',
+    tanggalHPL: 'tanggalHPL',
+    gravida: 'gravida',
+    para: 'para',
+    abortus: 'abortus',
+    alamat: 'alamat',
+    posyanduId: 'posyanduId',
+    kaderId: 'kaderId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type IbuHamilScalarFieldEnum = (typeof IbuHamilScalarFieldEnum)[keyof typeof IbuHamilScalarFieldEnum]
+
+
+  export const PemeriksaanBalitaScalarFieldEnum: {
+    id: 'id',
+    balitaId: 'balitaId',
+    kegiatanId: 'kegiatanId',
+    tanggal: 'tanggal',
+    beratBadan: 'beratBadan',
+    tinggiBadan: 'tinggiBadan',
+    lingkarKepala: 'lingkarKepala',
+    imunisasi: 'imunisasi',
+    vitamin: 'vitamin',
+    keluhan: 'keluhan',
+    catatan: 'catatan',
+    kaderId: 'kaderId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PemeriksaanBalitaScalarFieldEnum = (typeof PemeriksaanBalitaScalarFieldEnum)[keyof typeof PemeriksaanBalitaScalarFieldEnum]
+
+
+  export const PemeriksaanIbuHamilScalarFieldEnum: {
+    id: 'id',
+    ibuHamilId: 'ibuHamilId',
+    kegiatanId: 'kegiatanId',
+    tanggal: 'tanggal',
+    usiaKehamilan: 'usiaKehamilan',
+    beratBadan: 'beratBadan',
+    tekananDarah: 'tekananDarah',
+    tinggiFundus: 'tinggiFundus',
+    detakJantungJanin: 'detakJantungJanin',
+    keluhan: 'keluhan',
+    tindakan: 'tindakan',
+    konseling: 'konseling',
+    kaderId: 'kaderId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PemeriksaanIbuHamilScalarFieldEnum = (typeof PemeriksaanIbuHamilScalarFieldEnum)[keyof typeof PemeriksaanIbuHamilScalarFieldEnum]
+
+
+  export const StatusGiziBalitaScalarFieldEnum: {
+    id: 'id',
+    balitaId: 'balitaId',
+    tanggal: 'tanggal',
+    beratBadan: 'beratBadan',
+    tinggiBadan: 'tinggiBadan',
+    zScoreBBTB: 'zScoreBBTB',
+    zScoreBBU: 'zScoreBBU',
+    zScoreTBU: 'zScoreTBU',
+    kategoriGizi: 'kategoriGizi',
+    createdAt: 'createdAt'
+  };
+
+  export type StatusGiziBalitaScalarFieldEnum = (typeof StatusGiziBalitaScalarFieldEnum)[keyof typeof StatusGiziBalitaScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8493,6 +19815,13 @@ export namespace Prisma {
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
   /**
    * Deep Input Types
    */
@@ -8568,6 +19897,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Posyandu"> | Date | string
     kelurahan?: XOR<KelurahanNullableScalarRelationFilter, KelurahanWhereInput> | null
     kader?: KaderListRelationFilter
+    kegiatan?: KegiatanListRelationFilter
+    balita?: BalitaListRelationFilter
+    ibuHamil?: IbuHamilListRelationFilter
   }
 
   export type PosyanduOrderByWithRelationInput = {
@@ -8585,14 +19917,17 @@ export namespace Prisma {
     updatedAt?: SortOrder
     kelurahan?: KelurahanOrderByWithRelationInput
     kader?: KaderOrderByRelationAggregateInput
+    kegiatan?: KegiatanOrderByRelationAggregateInput
+    balita?: BalitaOrderByRelationAggregateInput
+    ibuHamil?: IbuHamilOrderByRelationAggregateInput
   }
 
   export type PosyanduWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    nama?: string
     AND?: PosyanduWhereInput | PosyanduWhereInput[]
     OR?: PosyanduWhereInput[]
     NOT?: PosyanduWhereInput | PosyanduWhereInput[]
-    nama?: StringFilter<"Posyandu"> | string
     alamat?: StringFilter<"Posyandu"> | string
     wilayah?: StringFilter<"Posyandu"> | string
     kelurahanId?: IntNullableFilter<"Posyandu"> | number | null
@@ -8605,7 +19940,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Posyandu"> | Date | string
     kelurahan?: XOR<KelurahanNullableScalarRelationFilter, KelurahanWhereInput> | null
     kader?: KaderListRelationFilter
-  }, "id">
+    kegiatan?: KegiatanListRelationFilter
+    balita?: BalitaListRelationFilter
+    ibuHamil?: IbuHamilListRelationFilter
+  }, "id" | "nama">
 
   export type PosyanduOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8655,9 +19993,15 @@ export namespace Prisma {
     noHp?: StringFilter<"Kader"> | string
     alamat?: StringFilter<"Kader"> | string
     posyanduId?: IntFilter<"Kader"> | number
+    userId?: StringNullableFilter<"Kader"> | string | null
     createdAt?: DateTimeFilter<"Kader"> | Date | string
     updatedAt?: DateTimeFilter<"Kader"> | Date | string
     posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    balita?: BalitaListRelationFilter
+    ibuHamil?: IbuHamilListRelationFilter
+    periksaBalita?: PemeriksaanBalitaListRelationFilter
+    periksaIbuHamil?: PemeriksaanIbuHamilListRelationFilter
   }
 
   export type KaderOrderByWithRelationInput = {
@@ -8667,14 +20011,21 @@ export namespace Prisma {
     noHp?: SortOrder
     alamat?: SortOrder
     posyanduId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     posyandu?: PosyanduOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+    balita?: BalitaOrderByRelationAggregateInput
+    ibuHamil?: IbuHamilOrderByRelationAggregateInput
+    periksaBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
+    periksaIbuHamil?: PemeriksaanIbuHamilOrderByRelationAggregateInput
   }
 
   export type KaderWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     nik?: string
+    userId?: string
     AND?: KaderWhereInput | KaderWhereInput[]
     OR?: KaderWhereInput[]
     NOT?: KaderWhereInput | KaderWhereInput[]
@@ -8685,7 +20036,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Kader"> | Date | string
     updatedAt?: DateTimeFilter<"Kader"> | Date | string
     posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
-  }, "id" | "nik">
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    balita?: BalitaListRelationFilter
+    ibuHamil?: IbuHamilListRelationFilter
+    periksaBalita?: PemeriksaanBalitaListRelationFilter
+    periksaIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+  }, "id" | "nik" | "userId">
 
   export type KaderOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8694,6 +20050,7 @@ export namespace Prisma {
     noHp?: SortOrder
     alamat?: SortOrder
     posyanduId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: KaderCountOrderByAggregateInput
@@ -8713,6 +20070,7 @@ export namespace Prisma {
     noHp?: StringWithAggregatesFilter<"Kader"> | string
     alamat?: StringWithAggregatesFilter<"Kader"> | string
     posyanduId?: IntWithAggregatesFilter<"Kader"> | number
+    userId?: StringNullableWithAggregatesFilter<"Kader"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Kader"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Kader"> | Date | string
   }
@@ -8727,6 +20085,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
     users?: UserListRelationFilter
+    programKesehatan?: XOR<ProgramKesehatanNullableScalarRelationFilter, ProgramKesehatanWhereInput> | null
   }
 
   export type RoleOrderByWithRelationInput = {
@@ -8736,6 +20095,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     users?: UserOrderByRelationAggregateInput
+    programKesehatan?: ProgramKesehatanOrderByWithRelationInput
   }
 
   export type RoleWhereUniqueInput = Prisma.AtLeast<{
@@ -8748,6 +20108,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
     users?: UserListRelationFilter
+    programKesehatan?: XOR<ProgramKesehatanNullableScalarRelationFilter, ProgramKesehatanWhereInput> | null
   }, "id" | "nama" | "slug">
 
   export type RoleOrderByWithAggregationInput = {
@@ -8791,6 +20152,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
     otp?: OtpListRelationFilter
   }
 
@@ -8810,6 +20172,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     role?: RoleOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
     otp?: OtpOrderByRelationAggregateInput
   }
 
@@ -8832,6 +20195,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
     otp?: OtpListRelationFilter
   }, "id" | "email" | "nik">
 
@@ -8935,6 +20299,759 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Otp"> | Date | string
   }
 
+  export type KlasterWhereInput = {
+    AND?: KlasterWhereInput | KlasterWhereInput[]
+    OR?: KlasterWhereInput[]
+    NOT?: KlasterWhereInput | KlasterWhereInput[]
+    id?: IntFilter<"Klaster"> | number
+    nama?: StringFilter<"Klaster"> | string
+    deskripsi?: StringNullableFilter<"Klaster"> | string | null
+    createdAt?: DateTimeFilter<"Klaster"> | Date | string
+    updatedAt?: DateTimeFilter<"Klaster"> | Date | string
+    programKesehatan?: ProgramKesehatanListRelationFilter
+  }
+
+  export type KlasterOrderByWithRelationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    programKesehatan?: ProgramKesehatanOrderByRelationAggregateInput
+  }
+
+  export type KlasterWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    nama?: string
+    AND?: KlasterWhereInput | KlasterWhereInput[]
+    OR?: KlasterWhereInput[]
+    NOT?: KlasterWhereInput | KlasterWhereInput[]
+    deskripsi?: StringNullableFilter<"Klaster"> | string | null
+    createdAt?: DateTimeFilter<"Klaster"> | Date | string
+    updatedAt?: DateTimeFilter<"Klaster"> | Date | string
+    programKesehatan?: ProgramKesehatanListRelationFilter
+  }, "id" | "nama">
+
+  export type KlasterOrderByWithAggregationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: KlasterCountOrderByAggregateInput
+    _avg?: KlasterAvgOrderByAggregateInput
+    _max?: KlasterMaxOrderByAggregateInput
+    _min?: KlasterMinOrderByAggregateInput
+    _sum?: KlasterSumOrderByAggregateInput
+  }
+
+  export type KlasterScalarWhereWithAggregatesInput = {
+    AND?: KlasterScalarWhereWithAggregatesInput | KlasterScalarWhereWithAggregatesInput[]
+    OR?: KlasterScalarWhereWithAggregatesInput[]
+    NOT?: KlasterScalarWhereWithAggregatesInput | KlasterScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Klaster"> | number
+    nama?: StringWithAggregatesFilter<"Klaster"> | string
+    deskripsi?: StringNullableWithAggregatesFilter<"Klaster"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Klaster"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Klaster"> | Date | string
+  }
+
+  export type ProgramKesehatanWhereInput = {
+    AND?: ProgramKesehatanWhereInput | ProgramKesehatanWhereInput[]
+    OR?: ProgramKesehatanWhereInput[]
+    NOT?: ProgramKesehatanWhereInput | ProgramKesehatanWhereInput[]
+    id?: IntFilter<"ProgramKesehatan"> | number
+    nama?: StringFilter<"ProgramKesehatan"> | string
+    deskripsi?: StringNullableFilter<"ProgramKesehatan"> | string | null
+    klasterId?: IntFilter<"ProgramKesehatan"> | number
+    roleId?: StringNullableFilter<"ProgramKesehatan"> | string | null
+    createdAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+    updatedAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+    klaster?: XOR<KlasterScalarRelationFilter, KlasterWhereInput>
+    role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
+    kegiatan?: KegiatanListRelationFilter
+  }
+
+  export type ProgramKesehatanOrderByWithRelationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    klasterId?: SortOrder
+    roleId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    klaster?: KlasterOrderByWithRelationInput
+    role?: RoleOrderByWithRelationInput
+    kegiatan?: KegiatanOrderByRelationAggregateInput
+  }
+
+  export type ProgramKesehatanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    roleId?: string
+    AND?: ProgramKesehatanWhereInput | ProgramKesehatanWhereInput[]
+    OR?: ProgramKesehatanWhereInput[]
+    NOT?: ProgramKesehatanWhereInput | ProgramKesehatanWhereInput[]
+    nama?: StringFilter<"ProgramKesehatan"> | string
+    deskripsi?: StringNullableFilter<"ProgramKesehatan"> | string | null
+    klasterId?: IntFilter<"ProgramKesehatan"> | number
+    createdAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+    updatedAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+    klaster?: XOR<KlasterScalarRelationFilter, KlasterWhereInput>
+    role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
+    kegiatan?: KegiatanListRelationFilter
+  }, "id" | "roleId">
+
+  export type ProgramKesehatanOrderByWithAggregationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    klasterId?: SortOrder
+    roleId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProgramKesehatanCountOrderByAggregateInput
+    _avg?: ProgramKesehatanAvgOrderByAggregateInput
+    _max?: ProgramKesehatanMaxOrderByAggregateInput
+    _min?: ProgramKesehatanMinOrderByAggregateInput
+    _sum?: ProgramKesehatanSumOrderByAggregateInput
+  }
+
+  export type ProgramKesehatanScalarWhereWithAggregatesInput = {
+    AND?: ProgramKesehatanScalarWhereWithAggregatesInput | ProgramKesehatanScalarWhereWithAggregatesInput[]
+    OR?: ProgramKesehatanScalarWhereWithAggregatesInput[]
+    NOT?: ProgramKesehatanScalarWhereWithAggregatesInput | ProgramKesehatanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProgramKesehatan"> | number
+    nama?: StringWithAggregatesFilter<"ProgramKesehatan"> | string
+    deskripsi?: StringNullableWithAggregatesFilter<"ProgramKesehatan"> | string | null
+    klasterId?: IntWithAggregatesFilter<"ProgramKesehatan"> | number
+    roleId?: StringNullableWithAggregatesFilter<"ProgramKesehatan"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ProgramKesehatan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProgramKesehatan"> | Date | string
+  }
+
+  export type KegiatanWhereInput = {
+    AND?: KegiatanWhereInput | KegiatanWhereInput[]
+    OR?: KegiatanWhereInput[]
+    NOT?: KegiatanWhereInput | KegiatanWhereInput[]
+    id?: IntFilter<"Kegiatan"> | number
+    nama?: StringFilter<"Kegiatan"> | string
+    deskripsi?: StringNullableFilter<"Kegiatan"> | string | null
+    tanggalPelaksanaan?: DateTimeNullableFilter<"Kegiatan"> | Date | string | null
+    alamat?: StringNullableFilter<"Kegiatan"> | string | null
+    posyanduId?: IntFilter<"Kegiatan"> | number
+    programKesehatanId?: IntFilter<"Kegiatan"> | number
+    createdAt?: DateTimeFilter<"Kegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"Kegiatan"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    programKesehatan?: XOR<ProgramKesehatanScalarRelationFilter, ProgramKesehatanWhereInput>
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+  }
+
+  export type KegiatanOrderByWithRelationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    tanggalPelaksanaan?: SortOrderInput | SortOrder
+    alamat?: SortOrderInput | SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    posyandu?: PosyanduOrderByWithRelationInput
+    programKesehatan?: ProgramKesehatanOrderByWithRelationInput
+    pemeriksaanBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilOrderByRelationAggregateInput
+  }
+
+  export type KegiatanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: KegiatanWhereInput | KegiatanWhereInput[]
+    OR?: KegiatanWhereInput[]
+    NOT?: KegiatanWhereInput | KegiatanWhereInput[]
+    nama?: StringFilter<"Kegiatan"> | string
+    deskripsi?: StringNullableFilter<"Kegiatan"> | string | null
+    tanggalPelaksanaan?: DateTimeNullableFilter<"Kegiatan"> | Date | string | null
+    alamat?: StringNullableFilter<"Kegiatan"> | string | null
+    posyanduId?: IntFilter<"Kegiatan"> | number
+    programKesehatanId?: IntFilter<"Kegiatan"> | number
+    createdAt?: DateTimeFilter<"Kegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"Kegiatan"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    programKesehatan?: XOR<ProgramKesehatanScalarRelationFilter, ProgramKesehatanWhereInput>
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+  }, "id">
+
+  export type KegiatanOrderByWithAggregationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
+    tanggalPelaksanaan?: SortOrderInput | SortOrder
+    alamat?: SortOrderInput | SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: KegiatanCountOrderByAggregateInput
+    _avg?: KegiatanAvgOrderByAggregateInput
+    _max?: KegiatanMaxOrderByAggregateInput
+    _min?: KegiatanMinOrderByAggregateInput
+    _sum?: KegiatanSumOrderByAggregateInput
+  }
+
+  export type KegiatanScalarWhereWithAggregatesInput = {
+    AND?: KegiatanScalarWhereWithAggregatesInput | KegiatanScalarWhereWithAggregatesInput[]
+    OR?: KegiatanScalarWhereWithAggregatesInput[]
+    NOT?: KegiatanScalarWhereWithAggregatesInput | KegiatanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Kegiatan"> | number
+    nama?: StringWithAggregatesFilter<"Kegiatan"> | string
+    deskripsi?: StringNullableWithAggregatesFilter<"Kegiatan"> | string | null
+    tanggalPelaksanaan?: DateTimeNullableWithAggregatesFilter<"Kegiatan"> | Date | string | null
+    alamat?: StringNullableWithAggregatesFilter<"Kegiatan"> | string | null
+    posyanduId?: IntWithAggregatesFilter<"Kegiatan"> | number
+    programKesehatanId?: IntWithAggregatesFilter<"Kegiatan"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Kegiatan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Kegiatan"> | Date | string
+  }
+
+  export type BalitaWhereInput = {
+    AND?: BalitaWhereInput | BalitaWhereInput[]
+    OR?: BalitaWhereInput[]
+    NOT?: BalitaWhereInput | BalitaWhereInput[]
+    id?: IntFilter<"Balita"> | number
+    nama?: StringFilter<"Balita"> | string
+    nik?: StringNullableFilter<"Balita"> | string | null
+    noKK?: StringFilter<"Balita"> | string
+    tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
+    jenisKelamin?: StringFilter<"Balita"> | string
+    namaAyah?: StringNullableFilter<"Balita"> | string | null
+    namaIbu?: StringNullableFilter<"Balita"> | string | null
+    alamat?: StringFilter<"Balita"> | string
+    beratLahir?: FloatNullableFilter<"Balita"> | number | null
+    panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    posyanduId?: IntFilter<"Balita"> | number
+    kaderId?: IntNullableFilter<"Balita"> | number | null
+    createdAt?: DateTimeFilter<"Balita"> | Date | string
+    updatedAt?: DateTimeFilter<"Balita"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    statusGizi?: StatusGiziBalitaListRelationFilter
+  }
+
+  export type BalitaOrderByWithRelationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrderInput | SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    jenisKelamin?: SortOrder
+    namaAyah?: SortOrderInput | SortOrder
+    namaIbu?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    beratLahir?: SortOrderInput | SortOrder
+    panjangLahir?: SortOrderInput | SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    posyandu?: PosyanduOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
+    pemeriksaanBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
+    statusGizi?: StatusGiziBalitaOrderByRelationAggregateInput
+  }
+
+  export type BalitaWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    nik?: string
+    AND?: BalitaWhereInput | BalitaWhereInput[]
+    OR?: BalitaWhereInput[]
+    NOT?: BalitaWhereInput | BalitaWhereInput[]
+    nama?: StringFilter<"Balita"> | string
+    noKK?: StringFilter<"Balita"> | string
+    tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
+    jenisKelamin?: StringFilter<"Balita"> | string
+    namaAyah?: StringNullableFilter<"Balita"> | string | null
+    namaIbu?: StringNullableFilter<"Balita"> | string | null
+    alamat?: StringFilter<"Balita"> | string
+    beratLahir?: FloatNullableFilter<"Balita"> | number | null
+    panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    posyanduId?: IntFilter<"Balita"> | number
+    kaderId?: IntNullableFilter<"Balita"> | number | null
+    createdAt?: DateTimeFilter<"Balita"> | Date | string
+    updatedAt?: DateTimeFilter<"Balita"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    statusGizi?: StatusGiziBalitaListRelationFilter
+  }, "id" | "nik">
+
+  export type BalitaOrderByWithAggregationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrderInput | SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    jenisKelamin?: SortOrder
+    namaAyah?: SortOrderInput | SortOrder
+    namaIbu?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    beratLahir?: SortOrderInput | SortOrder
+    panjangLahir?: SortOrderInput | SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BalitaCountOrderByAggregateInput
+    _avg?: BalitaAvgOrderByAggregateInput
+    _max?: BalitaMaxOrderByAggregateInput
+    _min?: BalitaMinOrderByAggregateInput
+    _sum?: BalitaSumOrderByAggregateInput
+  }
+
+  export type BalitaScalarWhereWithAggregatesInput = {
+    AND?: BalitaScalarWhereWithAggregatesInput | BalitaScalarWhereWithAggregatesInput[]
+    OR?: BalitaScalarWhereWithAggregatesInput[]
+    NOT?: BalitaScalarWhereWithAggregatesInput | BalitaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Balita"> | number
+    nama?: StringWithAggregatesFilter<"Balita"> | string
+    nik?: StringNullableWithAggregatesFilter<"Balita"> | string | null
+    noKK?: StringWithAggregatesFilter<"Balita"> | string
+    tanggalLahir?: DateTimeWithAggregatesFilter<"Balita"> | Date | string
+    jenisKelamin?: StringWithAggregatesFilter<"Balita"> | string
+    namaAyah?: StringNullableWithAggregatesFilter<"Balita"> | string | null
+    namaIbu?: StringNullableWithAggregatesFilter<"Balita"> | string | null
+    alamat?: StringWithAggregatesFilter<"Balita"> | string
+    beratLahir?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
+    panjangLahir?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
+    posyanduId?: IntWithAggregatesFilter<"Balita"> | number
+    kaderId?: IntNullableWithAggregatesFilter<"Balita"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"Balita"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Balita"> | Date | string
+  }
+
+  export type IbuHamilWhereInput = {
+    AND?: IbuHamilWhereInput | IbuHamilWhereInput[]
+    OR?: IbuHamilWhereInput[]
+    NOT?: IbuHamilWhereInput | IbuHamilWhereInput[]
+    id?: IntFilter<"IbuHamil"> | number
+    nama?: StringFilter<"IbuHamil"> | string
+    nik?: StringFilter<"IbuHamil"> | string
+    noKK?: StringFilter<"IbuHamil"> | string
+    tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
+    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    gravida?: IntNullableFilter<"IbuHamil"> | number | null
+    para?: IntNullableFilter<"IbuHamil"> | number | null
+    abortus?: IntNullableFilter<"IbuHamil"> | number | null
+    alamat?: StringFilter<"IbuHamil"> | string
+    posyanduId?: IntFilter<"IbuHamil"> | number
+    kaderId?: IntNullableFilter<"IbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"IbuHamil"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilListRelationFilter
+  }
+
+  export type IbuHamilOrderByWithRelationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    umurKehamilanAwal?: SortOrderInput | SortOrder
+    tanggalHPHT?: SortOrderInput | SortOrder
+    tanggalHPL?: SortOrderInput | SortOrder
+    gravida?: SortOrderInput | SortOrder
+    para?: SortOrderInput | SortOrder
+    abortus?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    posyandu?: PosyanduOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilOrderByRelationAggregateInput
+  }
+
+  export type IbuHamilWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    nik?: string
+    AND?: IbuHamilWhereInput | IbuHamilWhereInput[]
+    OR?: IbuHamilWhereInput[]
+    NOT?: IbuHamilWhereInput | IbuHamilWhereInput[]
+    nama?: StringFilter<"IbuHamil"> | string
+    noKK?: StringFilter<"IbuHamil"> | string
+    tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
+    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    gravida?: IntNullableFilter<"IbuHamil"> | number | null
+    para?: IntNullableFilter<"IbuHamil"> | number | null
+    abortus?: IntNullableFilter<"IbuHamil"> | number | null
+    alamat?: StringFilter<"IbuHamil"> | string
+    posyanduId?: IntFilter<"IbuHamil"> | number
+    kaderId?: IntNullableFilter<"IbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"IbuHamil"> | Date | string
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilListRelationFilter
+  }, "id" | "nik">
+
+  export type IbuHamilOrderByWithAggregationInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    umurKehamilanAwal?: SortOrderInput | SortOrder
+    tanggalHPHT?: SortOrderInput | SortOrder
+    tanggalHPL?: SortOrderInput | SortOrder
+    gravida?: SortOrderInput | SortOrder
+    para?: SortOrderInput | SortOrder
+    abortus?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: IbuHamilCountOrderByAggregateInput
+    _avg?: IbuHamilAvgOrderByAggregateInput
+    _max?: IbuHamilMaxOrderByAggregateInput
+    _min?: IbuHamilMinOrderByAggregateInput
+    _sum?: IbuHamilSumOrderByAggregateInput
+  }
+
+  export type IbuHamilScalarWhereWithAggregatesInput = {
+    AND?: IbuHamilScalarWhereWithAggregatesInput | IbuHamilScalarWhereWithAggregatesInput[]
+    OR?: IbuHamilScalarWhereWithAggregatesInput[]
+    NOT?: IbuHamilScalarWhereWithAggregatesInput | IbuHamilScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"IbuHamil"> | number
+    nama?: StringWithAggregatesFilter<"IbuHamil"> | string
+    nik?: StringWithAggregatesFilter<"IbuHamil"> | string
+    noKK?: StringWithAggregatesFilter<"IbuHamil"> | string
+    tanggalLahir?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
+    umurKehamilanAwal?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    tanggalHPHT?: DateTimeNullableWithAggregatesFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeNullableWithAggregatesFilter<"IbuHamil"> | Date | string | null
+    gravida?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    para?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    abortus?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    alamat?: StringWithAggregatesFilter<"IbuHamil"> | string
+    posyanduId?: IntWithAggregatesFilter<"IbuHamil"> | number
+    kaderId?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
+  }
+
+  export type PemeriksaanBalitaWhereInput = {
+    AND?: PemeriksaanBalitaWhereInput | PemeriksaanBalitaWhereInput[]
+    OR?: PemeriksaanBalitaWhereInput[]
+    NOT?: PemeriksaanBalitaWhereInput | PemeriksaanBalitaWhereInput[]
+    id?: IntFilter<"PemeriksaanBalita"> | number
+    balitaId?: IntFilter<"PemeriksaanBalita"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    beratBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    tinggiBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
+    imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+    kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+  }
+
+  export type PemeriksaanBalitaOrderByWithRelationInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrderInput | SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrderInput | SortOrder
+    imunisasi?: SortOrderInput | SortOrder
+    vitamin?: SortOrderInput | SortOrder
+    keluhan?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    balita?: BalitaOrderByWithRelationInput
+    kegiatan?: KegiatanOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
+  }
+
+  export type PemeriksaanBalitaWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PemeriksaanBalitaWhereInput | PemeriksaanBalitaWhereInput[]
+    OR?: PemeriksaanBalitaWhereInput[]
+    NOT?: PemeriksaanBalitaWhereInput | PemeriksaanBalitaWhereInput[]
+    balitaId?: IntFilter<"PemeriksaanBalita"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    beratBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    tinggiBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
+    imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+    kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+  }, "id">
+
+  export type PemeriksaanBalitaOrderByWithAggregationInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrderInput | SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrderInput | SortOrder
+    imunisasi?: SortOrderInput | SortOrder
+    vitamin?: SortOrderInput | SortOrder
+    keluhan?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PemeriksaanBalitaCountOrderByAggregateInput
+    _avg?: PemeriksaanBalitaAvgOrderByAggregateInput
+    _max?: PemeriksaanBalitaMaxOrderByAggregateInput
+    _min?: PemeriksaanBalitaMinOrderByAggregateInput
+    _sum?: PemeriksaanBalitaSumOrderByAggregateInput
+  }
+
+  export type PemeriksaanBalitaScalarWhereWithAggregatesInput = {
+    AND?: PemeriksaanBalitaScalarWhereWithAggregatesInput | PemeriksaanBalitaScalarWhereWithAggregatesInput[]
+    OR?: PemeriksaanBalitaScalarWhereWithAggregatesInput[]
+    NOT?: PemeriksaanBalitaScalarWhereWithAggregatesInput | PemeriksaanBalitaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PemeriksaanBalita"> | number
+    balitaId?: IntWithAggregatesFilter<"PemeriksaanBalita"> | number
+    kegiatanId?: IntNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
+    tanggal?: DateTimeWithAggregatesFilter<"PemeriksaanBalita"> | Date | string
+    beratBadan?: FloatWithAggregatesFilter<"PemeriksaanBalita"> | number
+    tinggiBadan?: FloatWithAggregatesFilter<"PemeriksaanBalita"> | number
+    lingkarKepala?: FloatNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
+    imunisasi?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
+    vitamin?: BoolNullableWithAggregatesFilter<"PemeriksaanBalita"> | boolean | null
+    keluhan?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
+    catatan?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
+    kaderId?: IntNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"PemeriksaanBalita"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PemeriksaanBalita"> | Date | string
+  }
+
+  export type PemeriksaanIbuHamilWhereInput = {
+    AND?: PemeriksaanIbuHamilWhereInput | PemeriksaanIbuHamilWhereInput[]
+    OR?: PemeriksaanIbuHamilWhereInput[]
+    NOT?: PemeriksaanIbuHamilWhereInput | PemeriksaanIbuHamilWhereInput[]
+    id?: IntFilter<"PemeriksaanIbuHamil"> | number
+    ibuHamilId?: IntFilter<"PemeriksaanIbuHamil"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    usiaKehamilan?: IntFilter<"PemeriksaanIbuHamil"> | number
+    beratBadan?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    ibuHamil?: XOR<IbuHamilScalarRelationFilter, IbuHamilWhereInput>
+    kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+  }
+
+  export type PemeriksaanIbuHamilOrderByWithRelationInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrderInput | SortOrder
+    tanggal?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrderInput | SortOrder
+    tekananDarah?: SortOrderInput | SortOrder
+    tinggiFundus?: SortOrderInput | SortOrder
+    detakJantungJanin?: SortOrderInput | SortOrder
+    keluhan?: SortOrderInput | SortOrder
+    tindakan?: SortOrderInput | SortOrder
+    konseling?: SortOrderInput | SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ibuHamil?: IbuHamilOrderByWithRelationInput
+    kegiatan?: KegiatanOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
+  }
+
+  export type PemeriksaanIbuHamilWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PemeriksaanIbuHamilWhereInput | PemeriksaanIbuHamilWhereInput[]
+    OR?: PemeriksaanIbuHamilWhereInput[]
+    NOT?: PemeriksaanIbuHamilWhereInput | PemeriksaanIbuHamilWhereInput[]
+    ibuHamilId?: IntFilter<"PemeriksaanIbuHamil"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    usiaKehamilan?: IntFilter<"PemeriksaanIbuHamil"> | number
+    beratBadan?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    ibuHamil?: XOR<IbuHamilScalarRelationFilter, IbuHamilWhereInput>
+    kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
+    kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+  }, "id">
+
+  export type PemeriksaanIbuHamilOrderByWithAggregationInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrderInput | SortOrder
+    tanggal?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrderInput | SortOrder
+    tekananDarah?: SortOrderInput | SortOrder
+    tinggiFundus?: SortOrderInput | SortOrder
+    detakJantungJanin?: SortOrderInput | SortOrder
+    keluhan?: SortOrderInput | SortOrder
+    tindakan?: SortOrderInput | SortOrder
+    konseling?: SortOrderInput | SortOrder
+    kaderId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PemeriksaanIbuHamilCountOrderByAggregateInput
+    _avg?: PemeriksaanIbuHamilAvgOrderByAggregateInput
+    _max?: PemeriksaanIbuHamilMaxOrderByAggregateInput
+    _min?: PemeriksaanIbuHamilMinOrderByAggregateInput
+    _sum?: PemeriksaanIbuHamilSumOrderByAggregateInput
+  }
+
+  export type PemeriksaanIbuHamilScalarWhereWithAggregatesInput = {
+    AND?: PemeriksaanIbuHamilScalarWhereWithAggregatesInput | PemeriksaanIbuHamilScalarWhereWithAggregatesInput[]
+    OR?: PemeriksaanIbuHamilScalarWhereWithAggregatesInput[]
+    NOT?: PemeriksaanIbuHamilScalarWhereWithAggregatesInput | PemeriksaanIbuHamilScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PemeriksaanIbuHamil"> | number
+    ibuHamilId?: IntWithAggregatesFilter<"PemeriksaanIbuHamil"> | number
+    kegiatanId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    tanggal?: DateTimeWithAggregatesFilter<"PemeriksaanIbuHamil"> | Date | string
+    usiaKehamilan?: IntWithAggregatesFilter<"PemeriksaanIbuHamil"> | number
+    beratBadan?: FloatNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    tekananDarah?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
+    tinggiFundus?: FloatNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    detakJantungJanin?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    keluhan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
+    tindakan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
+    konseling?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
+    kaderId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"PemeriksaanIbuHamil"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PemeriksaanIbuHamil"> | Date | string
+  }
+
+  export type StatusGiziBalitaWhereInput = {
+    AND?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
+    OR?: StatusGiziBalitaWhereInput[]
+    NOT?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
+    id?: IntFilter<"StatusGiziBalita"> | number
+    balitaId?: IntFilter<"StatusGiziBalita"> | number
+    tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+    beratBadan?: FloatFilter<"StatusGiziBalita"> | number
+    tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
+    zScoreBBTB?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+    balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+  }
+
+  export type StatusGiziBalitaOrderByWithRelationInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrderInput | SortOrder
+    zScoreBBU?: SortOrderInput | SortOrder
+    zScoreTBU?: SortOrderInput | SortOrder
+    kategoriGizi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    balita?: BalitaOrderByWithRelationInput
+  }
+
+  export type StatusGiziBalitaWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
+    OR?: StatusGiziBalitaWhereInput[]
+    NOT?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
+    balitaId?: IntFilter<"StatusGiziBalita"> | number
+    tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+    beratBadan?: FloatFilter<"StatusGiziBalita"> | number
+    tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
+    zScoreBBTB?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+    balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+  }, "id">
+
+  export type StatusGiziBalitaOrderByWithAggregationInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrderInput | SortOrder
+    zScoreBBU?: SortOrderInput | SortOrder
+    zScoreTBU?: SortOrderInput | SortOrder
+    kategoriGizi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: StatusGiziBalitaCountOrderByAggregateInput
+    _avg?: StatusGiziBalitaAvgOrderByAggregateInput
+    _max?: StatusGiziBalitaMaxOrderByAggregateInput
+    _min?: StatusGiziBalitaMinOrderByAggregateInput
+    _sum?: StatusGiziBalitaSumOrderByAggregateInput
+  }
+
+  export type StatusGiziBalitaScalarWhereWithAggregatesInput = {
+    AND?: StatusGiziBalitaScalarWhereWithAggregatesInput | StatusGiziBalitaScalarWhereWithAggregatesInput[]
+    OR?: StatusGiziBalitaScalarWhereWithAggregatesInput[]
+    NOT?: StatusGiziBalitaScalarWhereWithAggregatesInput | StatusGiziBalitaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"StatusGiziBalita"> | number
+    balitaId?: IntWithAggregatesFilter<"StatusGiziBalita"> | number
+    tanggal?: DateTimeWithAggregatesFilter<"StatusGiziBalita"> | Date | string
+    beratBadan?: FloatWithAggregatesFilter<"StatusGiziBalita"> | number
+    tinggiBadan?: FloatWithAggregatesFilter<"StatusGiziBalita"> | number
+    zScoreBBTB?: FloatNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
+    zScoreBBU?: FloatNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
+    zScoreTBU?: FloatNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
+    kategoriGizi?: StringNullableWithAggregatesFilter<"StatusGiziBalita"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"StatusGiziBalita"> | Date | string
+  }
+
   export type KelurahanCreateInput = {
     nama: string
     createdAt?: Date | string
@@ -8998,6 +21115,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
     kader?: KaderCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateInput = {
@@ -9014,6 +21134,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUpdateInput = {
@@ -9029,6 +21152,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
     kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateInput = {
@@ -9045,6 +21171,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduCreateManyInput = {
@@ -9098,6 +21227,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateInput = {
@@ -9107,8 +21241,13 @@ export namespace Prisma {
     noHp: string
     alamat: string
     posyanduId: number
+    userId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUpdateInput = {
@@ -9119,6 +21258,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateInput = {
@@ -9128,8 +21272,13 @@ export namespace Prisma {
     noHp?: StringFieldUpdateOperationsInput | string
     alamat?: StringFieldUpdateOperationsInput | string
     posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderCreateManyInput = {
@@ -9139,6 +21288,7 @@ export namespace Prisma {
     noHp: string
     alamat: string
     posyanduId: number
+    userId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9159,6 +21309,7 @@ export namespace Prisma {
     noHp?: StringFieldUpdateOperationsInput | string
     alamat?: StringFieldUpdateOperationsInput | string
     posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9170,6 +21321,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutRoleInput
+    programKesehatan?: ProgramKesehatanCreateNestedOneWithoutRoleInput
   }
 
   export type RoleUncheckedCreateInput = {
@@ -9179,6 +21331,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
+    programKesehatan?: ProgramKesehatanUncheckedCreateNestedOneWithoutRoleInput
   }
 
   export type RoleUpdateInput = {
@@ -9188,6 +21341,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutRoleNestedInput
+    programKesehatan?: ProgramKesehatanUpdateOneWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateInput = {
@@ -9197,6 +21351,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
+    programKesehatan?: ProgramKesehatanUncheckedUpdateOneWithoutRoleNestedInput
   }
 
   export type RoleCreateManyInput = {
@@ -9238,6 +21393,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+    kader?: KaderCreateNestedOneWithoutUserInput
     otp?: OtpCreateNestedManyWithoutUserInput
   }
 
@@ -9256,6 +21412,7 @@ export namespace Prisma {
     roleId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedOneWithoutUserInput
     otp?: OtpUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -9274,6 +21431,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    kader?: KaderUpdateOneWithoutUserNestedInput
     otp?: OtpUpdateManyWithoutUserNestedInput
   }
 
@@ -9292,6 +21450,7 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateOneWithoutUserNestedInput
     otp?: OtpUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -9405,6 +21564,800 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KlasterCreateInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    programKesehatan?: ProgramKesehatanCreateNestedManyWithoutKlasterInput
+  }
+
+  export type KlasterUncheckedCreateInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    programKesehatan?: ProgramKesehatanUncheckedCreateNestedManyWithoutKlasterInput
+  }
+
+  export type KlasterUpdateInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    programKesehatan?: ProgramKesehatanUpdateManyWithoutKlasterNestedInput
+  }
+
+  export type KlasterUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    programKesehatan?: ProgramKesehatanUncheckedUpdateManyWithoutKlasterNestedInput
+  }
+
+  export type KlasterCreateManyInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KlasterUpdateManyMutationInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KlasterUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProgramKesehatanCreateInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    klaster: KlasterCreateNestedOneWithoutProgramKesehatanInput
+    role?: RoleCreateNestedOneWithoutProgramKesehatanInput
+    kegiatan?: KegiatanCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanUncheckedCreateInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    klasterId: number
+    roleId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanUpdateInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    klaster?: KlasterUpdateOneRequiredWithoutProgramKesehatanNestedInput
+    role?: RoleUpdateOneWithoutProgramKesehatanNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    klasterId?: IntFieldUpdateOperationsInput | number
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanCreateManyInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    klasterId: number
+    roleId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProgramKesehatanUpdateManyMutationInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProgramKesehatanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    klasterId?: IntFieldUpdateOperationsInput | number
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KegiatanCreateInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
+    programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUpdateInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
+    programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanCreateManyInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KegiatanUpdateManyMutationInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KegiatanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BalitaCreateInput = {
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutBalitaInput
+    kader?: KaderCreateNestedOneWithoutBalitaInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUncheckedCreateInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUpdateInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
+    kader?: KaderUpdateOneWithoutBalitaNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaCreateManyInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BalitaUpdateManyMutationInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BalitaUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IbuHamilCreateInput = {
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
+    kader?: KaderCreateNestedOneWithoutIbuHamilInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilUncheckedCreateInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilUpdateInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
+    kader?: KaderUpdateOneWithoutIbuHamilNestedInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilCreateManyInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IbuHamilUpdateManyMutationInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IbuHamilUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaCreateInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaCreateManyInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateManyMutationInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateInput = {
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
+    kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateManyInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyMutationInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaCreateInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutStatusGiziInput
+  }
+
+  export type StatusGiziBalitaUncheckedCreateInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaUpdateInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutStatusGiziNestedInput
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaCreateManyInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaUpdateManyMutationInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9571,12 +22524,42 @@ export namespace Prisma {
     none?: KaderWhereInput
   }
 
+  export type KegiatanListRelationFilter = {
+    every?: KegiatanWhereInput
+    some?: KegiatanWhereInput
+    none?: KegiatanWhereInput
+  }
+
+  export type BalitaListRelationFilter = {
+    every?: BalitaWhereInput
+    some?: BalitaWhereInput
+    none?: BalitaWhereInput
+  }
+
+  export type IbuHamilListRelationFilter = {
+    every?: IbuHamilWhereInput
+    some?: IbuHamilWhereInput
+    none?: IbuHamilWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type KaderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type KegiatanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BalitaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type IbuHamilOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9681,9 +22664,49 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type PosyanduScalarRelationFilter = {
     is?: PosyanduWhereInput
     isNot?: PosyanduWhereInput
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type PemeriksaanBalitaListRelationFilter = {
+    every?: PemeriksaanBalitaWhereInput
+    some?: PemeriksaanBalitaWhereInput
+    none?: PemeriksaanBalitaWhereInput
+  }
+
+  export type PemeriksaanIbuHamilListRelationFilter = {
+    every?: PemeriksaanIbuHamilWhereInput
+    some?: PemeriksaanIbuHamilWhereInput
+    none?: PemeriksaanIbuHamilWhereInput
+  }
+
+  export type PemeriksaanBalitaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PemeriksaanIbuHamilOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type KaderCountOrderByAggregateInput = {
@@ -9693,6 +22716,7 @@ export namespace Prisma {
     noHp?: SortOrder
     alamat?: SortOrder
     posyanduId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9709,6 +22733,7 @@ export namespace Prisma {
     noHp?: SortOrder
     alamat?: SortOrder
     posyanduId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9720,6 +22745,7 @@ export namespace Prisma {
     noHp?: SortOrder
     alamat?: SortOrder
     posyanduId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9729,10 +22755,33 @@ export namespace Prisma {
     posyanduId?: SortOrder
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
     none?: UserWhereInput
+  }
+
+  export type ProgramKesehatanNullableScalarRelationFilter = {
+    is?: ProgramKesehatanWhereInput | null
+    isNot?: ProgramKesehatanWhereInput | null
   }
 
   export type UserOrderByRelationAggregateInput = {
@@ -9763,21 +22812,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -9792,6 +22826,11 @@ export namespace Prisma {
   export type RoleScalarRelationFilter = {
     is?: RoleWhereInput
     isNot?: RoleWhereInput
+  }
+
+  export type KaderNullableScalarRelationFilter = {
+    is?: KaderWhereInput | null
+    isNot?: KaderWhereInput | null
   }
 
   export type OtpListRelationFilter = {
@@ -9855,24 +22894,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -9917,6 +22938,569 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ProgramKesehatanListRelationFilter = {
+    every?: ProgramKesehatanWhereInput
+    some?: ProgramKesehatanWhereInput
+    none?: ProgramKesehatanWhereInput
+  }
+
+  export type ProgramKesehatanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type KlasterCountOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KlasterAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type KlasterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KlasterMinOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KlasterSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type KlasterScalarRelationFilter = {
+    is?: KlasterWhereInput
+    isNot?: KlasterWhereInput
+  }
+
+  export type RoleNullableScalarRelationFilter = {
+    is?: RoleWhereInput | null
+    isNot?: RoleWhereInput | null
+  }
+
+  export type ProgramKesehatanCountOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    klasterId?: SortOrder
+    roleId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProgramKesehatanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    klasterId?: SortOrder
+  }
+
+  export type ProgramKesehatanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    klasterId?: SortOrder
+    roleId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProgramKesehatanMinOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    klasterId?: SortOrder
+    roleId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProgramKesehatanSumOrderByAggregateInput = {
+    id?: SortOrder
+    klasterId?: SortOrder
+  }
+
+  export type ProgramKesehatanScalarRelationFilter = {
+    is?: ProgramKesehatanWhereInput
+    isNot?: ProgramKesehatanWhereInput
+  }
+
+  export type KegiatanCountOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    tanggalPelaksanaan?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KegiatanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+  }
+
+  export type KegiatanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    tanggalPelaksanaan?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KegiatanMinOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    deskripsi?: SortOrder
+    tanggalPelaksanaan?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type KegiatanSumOrderByAggregateInput = {
+    id?: SortOrder
+    posyanduId?: SortOrder
+    programKesehatanId?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type StatusGiziBalitaListRelationFilter = {
+    every?: StatusGiziBalitaWhereInput
+    some?: StatusGiziBalitaWhereInput
+    none?: StatusGiziBalitaWhereInput
+  }
+
+  export type StatusGiziBalitaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BalitaCountOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    jenisKelamin?: SortOrder
+    namaAyah?: SortOrder
+    namaIbu?: SortOrder
+    alamat?: SortOrder
+    beratLahir?: SortOrder
+    panjangLahir?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BalitaAvgOrderByAggregateInput = {
+    id?: SortOrder
+    beratLahir?: SortOrder
+    panjangLahir?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type BalitaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    jenisKelamin?: SortOrder
+    namaAyah?: SortOrder
+    namaIbu?: SortOrder
+    alamat?: SortOrder
+    beratLahir?: SortOrder
+    panjangLahir?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BalitaMinOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    jenisKelamin?: SortOrder
+    namaAyah?: SortOrder
+    namaIbu?: SortOrder
+    alamat?: SortOrder
+    beratLahir?: SortOrder
+    panjangLahir?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BalitaSumOrderByAggregateInput = {
+    id?: SortOrder
+    beratLahir?: SortOrder
+    panjangLahir?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type IbuHamilCountOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    umurKehamilanAwal?: SortOrder
+    tanggalHPHT?: SortOrder
+    tanggalHPL?: SortOrder
+    gravida?: SortOrder
+    para?: SortOrder
+    abortus?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IbuHamilAvgOrderByAggregateInput = {
+    id?: SortOrder
+    umurKehamilanAwal?: SortOrder
+    gravida?: SortOrder
+    para?: SortOrder
+    abortus?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type IbuHamilMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    umurKehamilanAwal?: SortOrder
+    tanggalHPHT?: SortOrder
+    tanggalHPL?: SortOrder
+    gravida?: SortOrder
+    para?: SortOrder
+    abortus?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IbuHamilMinOrderByAggregateInput = {
+    id?: SortOrder
+    nama?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrder
+    tanggalLahir?: SortOrder
+    umurKehamilanAwal?: SortOrder
+    tanggalHPHT?: SortOrder
+    tanggalHPL?: SortOrder
+    gravida?: SortOrder
+    para?: SortOrder
+    abortus?: SortOrder
+    alamat?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IbuHamilSumOrderByAggregateInput = {
+    id?: SortOrder
+    umurKehamilanAwal?: SortOrder
+    gravida?: SortOrder
+    para?: SortOrder
+    abortus?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type BalitaScalarRelationFilter = {
+    is?: BalitaWhereInput
+    isNot?: BalitaWhereInput
+  }
+
+  export type KegiatanNullableScalarRelationFilter = {
+    is?: KegiatanWhereInput | null
+    isNot?: KegiatanWhereInput | null
+  }
+
+  export type PemeriksaanBalitaCountOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrder
+    imunisasi?: SortOrder
+    vitamin?: SortOrder
+    keluhan?: SortOrder
+    catatan?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanBalitaAvgOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type PemeriksaanBalitaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrder
+    imunisasi?: SortOrder
+    vitamin?: SortOrder
+    keluhan?: SortOrder
+    catatan?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanBalitaMinOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrder
+    imunisasi?: SortOrder
+    vitamin?: SortOrder
+    keluhan?: SortOrder
+    catatan?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanBalitaSumOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    kegiatanId?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    lingkarKepala?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type IbuHamilScalarRelationFilter = {
+    is?: IbuHamilWhereInput
+    isNot?: IbuHamilWhereInput
+  }
+
+  export type PemeriksaanIbuHamilCountOrderByAggregateInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrder
+    tekananDarah?: SortOrder
+    tinggiFundus?: SortOrder
+    detakJantungJanin?: SortOrder
+    keluhan?: SortOrder
+    tindakan?: SortOrder
+    konseling?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanIbuHamilAvgOrderByAggregateInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrder
+    tinggiFundus?: SortOrder
+    detakJantungJanin?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type PemeriksaanIbuHamilMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrder
+    tekananDarah?: SortOrder
+    tinggiFundus?: SortOrder
+    detakJantungJanin?: SortOrder
+    keluhan?: SortOrder
+    tindakan?: SortOrder
+    konseling?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanIbuHamilMinOrderByAggregateInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrder
+    tanggal?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrder
+    tekananDarah?: SortOrder
+    tinggiFundus?: SortOrder
+    detakJantungJanin?: SortOrder
+    keluhan?: SortOrder
+    tindakan?: SortOrder
+    konseling?: SortOrder
+    kaderId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PemeriksaanIbuHamilSumOrderByAggregateInput = {
+    id?: SortOrder
+    ibuHamilId?: SortOrder
+    kegiatanId?: SortOrder
+    usiaKehamilan?: SortOrder
+    beratBadan?: SortOrder
+    tinggiFundus?: SortOrder
+    detakJantungJanin?: SortOrder
+    kaderId?: SortOrder
+  }
+
+  export type StatusGiziBalitaCountOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrder
+    zScoreBBU?: SortOrder
+    zScoreTBU?: SortOrder
+    kategoriGizi?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StatusGiziBalitaAvgOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrder
+    zScoreBBU?: SortOrder
+    zScoreTBU?: SortOrder
+  }
+
+  export type StatusGiziBalitaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrder
+    zScoreBBU?: SortOrder
+    zScoreTBU?: SortOrder
+    kategoriGizi?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StatusGiziBalitaMinOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    tanggal?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrder
+    zScoreBBU?: SortOrder
+    zScoreTBU?: SortOrder
+    kategoriGizi?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StatusGiziBalitaSumOrderByAggregateInput = {
+    id?: SortOrder
+    balitaId?: SortOrder
+    beratBadan?: SortOrder
+    tinggiBadan?: SortOrder
+    zScoreBBTB?: SortOrder
+    zScoreBBU?: SortOrder
+    zScoreTBU?: SortOrder
   }
 
   export type PosyanduCreateNestedManyWithoutKelurahanInput = {
@@ -9990,11 +23574,53 @@ export namespace Prisma {
     connect?: KaderWhereUniqueInput | KaderWhereUniqueInput[]
   }
 
+  export type KegiatanCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput> | KegiatanCreateWithoutPosyanduInput[] | KegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPosyanduInput | KegiatanCreateOrConnectWithoutPosyanduInput[]
+    createMany?: KegiatanCreateManyPosyanduInputEnvelope
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+  }
+
+  export type BalitaCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput> | BalitaCreateWithoutPosyanduInput[] | BalitaUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutPosyanduInput | BalitaCreateOrConnectWithoutPosyanduInput[]
+    createMany?: BalitaCreateManyPosyanduInputEnvelope
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+  }
+
+  export type IbuHamilCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput> | IbuHamilCreateWithoutPosyanduInput[] | IbuHamilUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPosyanduInput | IbuHamilCreateOrConnectWithoutPosyanduInput[]
+    createMany?: IbuHamilCreateManyPosyanduInputEnvelope
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+  }
+
   export type KaderUncheckedCreateNestedManyWithoutPosyanduInput = {
     create?: XOR<KaderCreateWithoutPosyanduInput, KaderUncheckedCreateWithoutPosyanduInput> | KaderCreateWithoutPosyanduInput[] | KaderUncheckedCreateWithoutPosyanduInput[]
     connectOrCreate?: KaderCreateOrConnectWithoutPosyanduInput | KaderCreateOrConnectWithoutPosyanduInput[]
     createMany?: KaderCreateManyPosyanduInputEnvelope
     connect?: KaderWhereUniqueInput | KaderWhereUniqueInput[]
+  }
+
+  export type KegiatanUncheckedCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput> | KegiatanCreateWithoutPosyanduInput[] | KegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPosyanduInput | KegiatanCreateOrConnectWithoutPosyanduInput[]
+    createMany?: KegiatanCreateManyPosyanduInputEnvelope
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+  }
+
+  export type BalitaUncheckedCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput> | BalitaCreateWithoutPosyanduInput[] | BalitaUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutPosyanduInput | BalitaCreateOrConnectWithoutPosyanduInput[]
+    createMany?: BalitaCreateManyPosyanduInputEnvelope
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+  }
+
+  export type IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput> | IbuHamilCreateWithoutPosyanduInput[] | IbuHamilUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPosyanduInput | IbuHamilCreateOrConnectWithoutPosyanduInput[]
+    createMany?: IbuHamilCreateManyPosyanduInputEnvelope
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
   }
 
   export type EnumAkreditasiFieldUpdateOperationsInput = {
@@ -10033,6 +23659,48 @@ export namespace Prisma {
     deleteMany?: KaderScalarWhereInput | KaderScalarWhereInput[]
   }
 
+  export type KegiatanUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput> | KegiatanCreateWithoutPosyanduInput[] | KegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPosyanduInput | KegiatanCreateOrConnectWithoutPosyanduInput[]
+    upsert?: KegiatanUpsertWithWhereUniqueWithoutPosyanduInput | KegiatanUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: KegiatanCreateManyPosyanduInputEnvelope
+    set?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    disconnect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    delete?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    update?: KegiatanUpdateWithWhereUniqueWithoutPosyanduInput | KegiatanUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: KegiatanUpdateManyWithWhereWithoutPosyanduInput | KegiatanUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+  }
+
+  export type BalitaUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput> | BalitaCreateWithoutPosyanduInput[] | BalitaUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutPosyanduInput | BalitaCreateOrConnectWithoutPosyanduInput[]
+    upsert?: BalitaUpsertWithWhereUniqueWithoutPosyanduInput | BalitaUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: BalitaCreateManyPosyanduInputEnvelope
+    set?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    disconnect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    delete?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    update?: BalitaUpdateWithWhereUniqueWithoutPosyanduInput | BalitaUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: BalitaUpdateManyWithWhereWithoutPosyanduInput | BalitaUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+  }
+
+  export type IbuHamilUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput> | IbuHamilCreateWithoutPosyanduInput[] | IbuHamilUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPosyanduInput | IbuHamilCreateOrConnectWithoutPosyanduInput[]
+    upsert?: IbuHamilUpsertWithWhereUniqueWithoutPosyanduInput | IbuHamilUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: IbuHamilCreateManyPosyanduInputEnvelope
+    set?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    disconnect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    delete?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    update?: IbuHamilUpdateWithWhereUniqueWithoutPosyanduInput | IbuHamilUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: IbuHamilUpdateManyWithWhereWithoutPosyanduInput | IbuHamilUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -10055,10 +23723,114 @@ export namespace Prisma {
     deleteMany?: KaderScalarWhereInput | KaderScalarWhereInput[]
   }
 
+  export type KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput> | KegiatanCreateWithoutPosyanduInput[] | KegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPosyanduInput | KegiatanCreateOrConnectWithoutPosyanduInput[]
+    upsert?: KegiatanUpsertWithWhereUniqueWithoutPosyanduInput | KegiatanUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: KegiatanCreateManyPosyanduInputEnvelope
+    set?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    disconnect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    delete?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    update?: KegiatanUpdateWithWhereUniqueWithoutPosyanduInput | KegiatanUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: KegiatanUpdateManyWithWhereWithoutPosyanduInput | KegiatanUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+  }
+
+  export type BalitaUncheckedUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput> | BalitaCreateWithoutPosyanduInput[] | BalitaUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutPosyanduInput | BalitaCreateOrConnectWithoutPosyanduInput[]
+    upsert?: BalitaUpsertWithWhereUniqueWithoutPosyanduInput | BalitaUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: BalitaCreateManyPosyanduInputEnvelope
+    set?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    disconnect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    delete?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    update?: BalitaUpdateWithWhereUniqueWithoutPosyanduInput | BalitaUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: BalitaUpdateManyWithWhereWithoutPosyanduInput | BalitaUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+  }
+
+  export type IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput> | IbuHamilCreateWithoutPosyanduInput[] | IbuHamilUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPosyanduInput | IbuHamilCreateOrConnectWithoutPosyanduInput[]
+    upsert?: IbuHamilUpsertWithWhereUniqueWithoutPosyanduInput | IbuHamilUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: IbuHamilCreateManyPosyanduInputEnvelope
+    set?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    disconnect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    delete?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    update?: IbuHamilUpdateWithWhereUniqueWithoutPosyanduInput | IbuHamilUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: IbuHamilUpdateManyWithWhereWithoutPosyanduInput | IbuHamilUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+  }
+
   export type PosyanduCreateNestedOneWithoutKaderInput = {
     create?: XOR<PosyanduCreateWithoutKaderInput, PosyanduUncheckedCreateWithoutKaderInput>
     connectOrCreate?: PosyanduCreateOrConnectWithoutKaderInput
     connect?: PosyanduWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutKaderInput = {
+    create?: XOR<UserCreateWithoutKaderInput, UserUncheckedCreateWithoutKaderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutKaderInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BalitaCreateNestedManyWithoutKaderInput = {
+    create?: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput> | BalitaCreateWithoutKaderInput[] | BalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutKaderInput | BalitaCreateOrConnectWithoutKaderInput[]
+    createMany?: BalitaCreateManyKaderInputEnvelope
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+  }
+
+  export type IbuHamilCreateNestedManyWithoutKaderInput = {
+    create?: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput> | IbuHamilCreateWithoutKaderInput[] | IbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutKaderInput | IbuHamilCreateOrConnectWithoutKaderInput[]
+    createMany?: IbuHamilCreateManyKaderInputEnvelope
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+  }
+
+  export type PemeriksaanBalitaCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput> | PemeriksaanBalitaCreateWithoutKaderInput[] | PemeriksaanBalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKaderInput | PemeriksaanBalitaCreateOrConnectWithoutKaderInput[]
+    createMany?: PemeriksaanBalitaCreateManyKaderInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput> | PemeriksaanIbuHamilCreateWithoutKaderInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput | PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKaderInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type BalitaUncheckedCreateNestedManyWithoutKaderInput = {
+    create?: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput> | BalitaCreateWithoutKaderInput[] | BalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutKaderInput | BalitaCreateOrConnectWithoutKaderInput[]
+    createMany?: BalitaCreateManyKaderInputEnvelope
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+  }
+
+  export type IbuHamilUncheckedCreateNestedManyWithoutKaderInput = {
+    create?: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput> | IbuHamilCreateWithoutKaderInput[] | IbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutKaderInput | IbuHamilCreateOrConnectWithoutKaderInput[]
+    createMany?: IbuHamilCreateManyKaderInputEnvelope
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput> | PemeriksaanBalitaCreateWithoutKaderInput[] | PemeriksaanBalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKaderInput | PemeriksaanBalitaCreateOrConnectWithoutKaderInput[]
+    createMany?: PemeriksaanBalitaCreateManyKaderInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput> | PemeriksaanIbuHamilCreateWithoutKaderInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput | PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKaderInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
   }
 
   export type PosyanduUpdateOneRequiredWithoutKaderNestedInput = {
@@ -10069,6 +23841,132 @@ export namespace Prisma {
     update?: XOR<XOR<PosyanduUpdateToOneWithWhereWithoutKaderInput, PosyanduUpdateWithoutKaderInput>, PosyanduUncheckedUpdateWithoutKaderInput>
   }
 
+  export type UserUpdateOneWithoutKaderNestedInput = {
+    create?: XOR<UserCreateWithoutKaderInput, UserUncheckedCreateWithoutKaderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutKaderInput
+    upsert?: UserUpsertWithoutKaderInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutKaderInput, UserUpdateWithoutKaderInput>, UserUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type BalitaUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput> | BalitaCreateWithoutKaderInput[] | BalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutKaderInput | BalitaCreateOrConnectWithoutKaderInput[]
+    upsert?: BalitaUpsertWithWhereUniqueWithoutKaderInput | BalitaUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: BalitaCreateManyKaderInputEnvelope
+    set?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    disconnect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    delete?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    update?: BalitaUpdateWithWhereUniqueWithoutKaderInput | BalitaUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: BalitaUpdateManyWithWhereWithoutKaderInput | BalitaUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+  }
+
+  export type IbuHamilUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput> | IbuHamilCreateWithoutKaderInput[] | IbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutKaderInput | IbuHamilCreateOrConnectWithoutKaderInput[]
+    upsert?: IbuHamilUpsertWithWhereUniqueWithoutKaderInput | IbuHamilUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: IbuHamilCreateManyKaderInputEnvelope
+    set?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    disconnect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    delete?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    update?: IbuHamilUpdateWithWhereUniqueWithoutKaderInput | IbuHamilUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: IbuHamilUpdateManyWithWhereWithoutKaderInput | IbuHamilUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput> | PemeriksaanBalitaCreateWithoutKaderInput[] | PemeriksaanBalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKaderInput | PemeriksaanBalitaCreateOrConnectWithoutKaderInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutKaderInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PemeriksaanBalitaCreateManyKaderInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutKaderInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutKaderInput | PemeriksaanBalitaUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput> | PemeriksaanIbuHamilCreateWithoutKaderInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput | PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKaderInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKaderInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type BalitaUncheckedUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput> | BalitaCreateWithoutKaderInput[] | BalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: BalitaCreateOrConnectWithoutKaderInput | BalitaCreateOrConnectWithoutKaderInput[]
+    upsert?: BalitaUpsertWithWhereUniqueWithoutKaderInput | BalitaUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: BalitaCreateManyKaderInputEnvelope
+    set?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    disconnect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    delete?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    connect?: BalitaWhereUniqueInput | BalitaWhereUniqueInput[]
+    update?: BalitaUpdateWithWhereUniqueWithoutKaderInput | BalitaUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: BalitaUpdateManyWithWhereWithoutKaderInput | BalitaUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+  }
+
+  export type IbuHamilUncheckedUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput> | IbuHamilCreateWithoutKaderInput[] | IbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutKaderInput | IbuHamilCreateOrConnectWithoutKaderInput[]
+    upsert?: IbuHamilUpsertWithWhereUniqueWithoutKaderInput | IbuHamilUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: IbuHamilCreateManyKaderInputEnvelope
+    set?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    disconnect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    delete?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+    update?: IbuHamilUpdateWithWhereUniqueWithoutKaderInput | IbuHamilUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: IbuHamilUpdateManyWithWhereWithoutKaderInput | IbuHamilUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput> | PemeriksaanBalitaCreateWithoutKaderInput[] | PemeriksaanBalitaUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKaderInput | PemeriksaanBalitaCreateOrConnectWithoutKaderInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutKaderInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PemeriksaanBalitaCreateManyKaderInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutKaderInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutKaderInput | PemeriksaanBalitaUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput> | PemeriksaanIbuHamilCreateWithoutKaderInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput | PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKaderInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKaderInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
   export type UserCreateNestedManyWithoutRoleInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
@@ -10076,11 +23974,23 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type ProgramKesehatanCreateNestedOneWithoutRoleInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutRoleInput
+    connect?: ProgramKesehatanWhereUniqueInput
+  }
+
   export type UserUncheckedCreateNestedManyWithoutRoleInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
     createMany?: UserCreateManyRoleInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type ProgramKesehatanUncheckedCreateNestedOneWithoutRoleInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutRoleInput
+    connect?: ProgramKesehatanWhereUniqueInput
   }
 
   export type UserUpdateManyWithoutRoleNestedInput = {
@@ -10097,6 +24007,16 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type ProgramKesehatanUpdateOneWithoutRoleNestedInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutRoleInput
+    upsert?: ProgramKesehatanUpsertWithoutRoleInput
+    disconnect?: ProgramKesehatanWhereInput | boolean
+    delete?: ProgramKesehatanWhereInput | boolean
+    connect?: ProgramKesehatanWhereUniqueInput
+    update?: XOR<XOR<ProgramKesehatanUpdateToOneWithWhereWithoutRoleInput, ProgramKesehatanUpdateWithoutRoleInput>, ProgramKesehatanUncheckedUpdateWithoutRoleInput>
+  }
+
   export type UserUncheckedUpdateManyWithoutRoleNestedInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
@@ -10111,10 +24031,26 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type ProgramKesehatanUncheckedUpdateOneWithoutRoleNestedInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutRoleInput
+    upsert?: ProgramKesehatanUpsertWithoutRoleInput
+    disconnect?: ProgramKesehatanWhereInput | boolean
+    delete?: ProgramKesehatanWhereInput | boolean
+    connect?: ProgramKesehatanWhereUniqueInput
+    update?: XOR<XOR<ProgramKesehatanUpdateToOneWithWhereWithoutRoleInput, ProgramKesehatanUpdateWithoutRoleInput>, ProgramKesehatanUncheckedUpdateWithoutRoleInput>
+  }
+
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
     connect?: RoleWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutUserInput = {
+    create?: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutUserInput
+    connect?: KaderWhereUniqueInput
   }
 
   export type OtpCreateNestedManyWithoutUserInput = {
@@ -10124,15 +24060,17 @@ export namespace Prisma {
     connect?: OtpWhereUniqueInput | OtpWhereUniqueInput[]
   }
 
+  export type KaderUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutUserInput
+    connect?: KaderWhereUniqueInput
+  }
+
   export type OtpUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<OtpCreateWithoutUserInput, OtpUncheckedCreateWithoutUserInput> | OtpCreateWithoutUserInput[] | OtpUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OtpCreateOrConnectWithoutUserInput | OtpCreateOrConnectWithoutUserInput[]
     createMany?: OtpCreateManyUserInputEnvelope
     connect?: OtpWhereUniqueInput | OtpWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -10147,6 +24085,16 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
   }
 
+  export type KaderUpdateOneWithoutUserNestedInput = {
+    create?: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutUserInput
+    upsert?: KaderUpsertWithoutUserInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutUserInput, KaderUpdateWithoutUserInput>, KaderUncheckedUpdateWithoutUserInput>
+  }
+
   export type OtpUpdateManyWithoutUserNestedInput = {
     create?: XOR<OtpCreateWithoutUserInput, OtpUncheckedCreateWithoutUserInput> | OtpCreateWithoutUserInput[] | OtpUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OtpCreateOrConnectWithoutUserInput | OtpCreateOrConnectWithoutUserInput[]
@@ -10159,6 +24107,16 @@ export namespace Prisma {
     update?: OtpUpdateWithWhereUniqueWithoutUserInput | OtpUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: OtpUpdateManyWithWhereWithoutUserInput | OtpUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: OtpScalarWhereInput | OtpScalarWhereInput[]
+  }
+
+  export type KaderUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutUserInput
+    upsert?: KaderUpsertWithoutUserInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutUserInput, KaderUpdateWithoutUserInput>, KaderUncheckedUpdateWithoutUserInput>
   }
 
   export type OtpUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10187,6 +24145,536 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutOtpInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOtpInput, UserUpdateWithoutOtpInput>, UserUncheckedUpdateWithoutOtpInput>
+  }
+
+  export type ProgramKesehatanCreateNestedManyWithoutKlasterInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput> | ProgramKesehatanCreateWithoutKlasterInput[] | ProgramKesehatanUncheckedCreateWithoutKlasterInput[]
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKlasterInput | ProgramKesehatanCreateOrConnectWithoutKlasterInput[]
+    createMany?: ProgramKesehatanCreateManyKlasterInputEnvelope
+    connect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+  }
+
+  export type ProgramKesehatanUncheckedCreateNestedManyWithoutKlasterInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput> | ProgramKesehatanCreateWithoutKlasterInput[] | ProgramKesehatanUncheckedCreateWithoutKlasterInput[]
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKlasterInput | ProgramKesehatanCreateOrConnectWithoutKlasterInput[]
+    createMany?: ProgramKesehatanCreateManyKlasterInputEnvelope
+    connect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+  }
+
+  export type ProgramKesehatanUpdateManyWithoutKlasterNestedInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput> | ProgramKesehatanCreateWithoutKlasterInput[] | ProgramKesehatanUncheckedCreateWithoutKlasterInput[]
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKlasterInput | ProgramKesehatanCreateOrConnectWithoutKlasterInput[]
+    upsert?: ProgramKesehatanUpsertWithWhereUniqueWithoutKlasterInput | ProgramKesehatanUpsertWithWhereUniqueWithoutKlasterInput[]
+    createMany?: ProgramKesehatanCreateManyKlasterInputEnvelope
+    set?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    disconnect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    delete?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    connect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    update?: ProgramKesehatanUpdateWithWhereUniqueWithoutKlasterInput | ProgramKesehatanUpdateWithWhereUniqueWithoutKlasterInput[]
+    updateMany?: ProgramKesehatanUpdateManyWithWhereWithoutKlasterInput | ProgramKesehatanUpdateManyWithWhereWithoutKlasterInput[]
+    deleteMany?: ProgramKesehatanScalarWhereInput | ProgramKesehatanScalarWhereInput[]
+  }
+
+  export type ProgramKesehatanUncheckedUpdateManyWithoutKlasterNestedInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput> | ProgramKesehatanCreateWithoutKlasterInput[] | ProgramKesehatanUncheckedCreateWithoutKlasterInput[]
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKlasterInput | ProgramKesehatanCreateOrConnectWithoutKlasterInput[]
+    upsert?: ProgramKesehatanUpsertWithWhereUniqueWithoutKlasterInput | ProgramKesehatanUpsertWithWhereUniqueWithoutKlasterInput[]
+    createMany?: ProgramKesehatanCreateManyKlasterInputEnvelope
+    set?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    disconnect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    delete?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    connect?: ProgramKesehatanWhereUniqueInput | ProgramKesehatanWhereUniqueInput[]
+    update?: ProgramKesehatanUpdateWithWhereUniqueWithoutKlasterInput | ProgramKesehatanUpdateWithWhereUniqueWithoutKlasterInput[]
+    updateMany?: ProgramKesehatanUpdateManyWithWhereWithoutKlasterInput | ProgramKesehatanUpdateManyWithWhereWithoutKlasterInput[]
+    deleteMany?: ProgramKesehatanScalarWhereInput | ProgramKesehatanScalarWhereInput[]
+  }
+
+  export type KlasterCreateNestedOneWithoutProgramKesehatanInput = {
+    create?: XOR<KlasterCreateWithoutProgramKesehatanInput, KlasterUncheckedCreateWithoutProgramKesehatanInput>
+    connectOrCreate?: KlasterCreateOrConnectWithoutProgramKesehatanInput
+    connect?: KlasterWhereUniqueInput
+  }
+
+  export type RoleCreateNestedOneWithoutProgramKesehatanInput = {
+    create?: XOR<RoleCreateWithoutProgramKesehatanInput, RoleUncheckedCreateWithoutProgramKesehatanInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutProgramKesehatanInput
+    connect?: RoleWhereUniqueInput
+  }
+
+  export type KegiatanCreateNestedManyWithoutProgramKesehatanInput = {
+    create?: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput> | KegiatanCreateWithoutProgramKesehatanInput[] | KegiatanUncheckedCreateWithoutProgramKesehatanInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutProgramKesehatanInput | KegiatanCreateOrConnectWithoutProgramKesehatanInput[]
+    createMany?: KegiatanCreateManyProgramKesehatanInputEnvelope
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+  }
+
+  export type KegiatanUncheckedCreateNestedManyWithoutProgramKesehatanInput = {
+    create?: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput> | KegiatanCreateWithoutProgramKesehatanInput[] | KegiatanUncheckedCreateWithoutProgramKesehatanInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutProgramKesehatanInput | KegiatanCreateOrConnectWithoutProgramKesehatanInput[]
+    createMany?: KegiatanCreateManyProgramKesehatanInputEnvelope
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+  }
+
+  export type KlasterUpdateOneRequiredWithoutProgramKesehatanNestedInput = {
+    create?: XOR<KlasterCreateWithoutProgramKesehatanInput, KlasterUncheckedCreateWithoutProgramKesehatanInput>
+    connectOrCreate?: KlasterCreateOrConnectWithoutProgramKesehatanInput
+    upsert?: KlasterUpsertWithoutProgramKesehatanInput
+    connect?: KlasterWhereUniqueInput
+    update?: XOR<XOR<KlasterUpdateToOneWithWhereWithoutProgramKesehatanInput, KlasterUpdateWithoutProgramKesehatanInput>, KlasterUncheckedUpdateWithoutProgramKesehatanInput>
+  }
+
+  export type RoleUpdateOneWithoutProgramKesehatanNestedInput = {
+    create?: XOR<RoleCreateWithoutProgramKesehatanInput, RoleUncheckedCreateWithoutProgramKesehatanInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutProgramKesehatanInput
+    upsert?: RoleUpsertWithoutProgramKesehatanInput
+    disconnect?: RoleWhereInput | boolean
+    delete?: RoleWhereInput | boolean
+    connect?: RoleWhereUniqueInput
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutProgramKesehatanInput, RoleUpdateWithoutProgramKesehatanInput>, RoleUncheckedUpdateWithoutProgramKesehatanInput>
+  }
+
+  export type KegiatanUpdateManyWithoutProgramKesehatanNestedInput = {
+    create?: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput> | KegiatanCreateWithoutProgramKesehatanInput[] | KegiatanUncheckedCreateWithoutProgramKesehatanInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutProgramKesehatanInput | KegiatanCreateOrConnectWithoutProgramKesehatanInput[]
+    upsert?: KegiatanUpsertWithWhereUniqueWithoutProgramKesehatanInput | KegiatanUpsertWithWhereUniqueWithoutProgramKesehatanInput[]
+    createMany?: KegiatanCreateManyProgramKesehatanInputEnvelope
+    set?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    disconnect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    delete?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    update?: KegiatanUpdateWithWhereUniqueWithoutProgramKesehatanInput | KegiatanUpdateWithWhereUniqueWithoutProgramKesehatanInput[]
+    updateMany?: KegiatanUpdateManyWithWhereWithoutProgramKesehatanInput | KegiatanUpdateManyWithWhereWithoutProgramKesehatanInput[]
+    deleteMany?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+  }
+
+  export type KegiatanUncheckedUpdateManyWithoutProgramKesehatanNestedInput = {
+    create?: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput> | KegiatanCreateWithoutProgramKesehatanInput[] | KegiatanUncheckedCreateWithoutProgramKesehatanInput[]
+    connectOrCreate?: KegiatanCreateOrConnectWithoutProgramKesehatanInput | KegiatanCreateOrConnectWithoutProgramKesehatanInput[]
+    upsert?: KegiatanUpsertWithWhereUniqueWithoutProgramKesehatanInput | KegiatanUpsertWithWhereUniqueWithoutProgramKesehatanInput[]
+    createMany?: KegiatanCreateManyProgramKesehatanInputEnvelope
+    set?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    disconnect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    delete?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    connect?: KegiatanWhereUniqueInput | KegiatanWhereUniqueInput[]
+    update?: KegiatanUpdateWithWhereUniqueWithoutProgramKesehatanInput | KegiatanUpdateWithWhereUniqueWithoutProgramKesehatanInput[]
+    updateMany?: KegiatanUpdateManyWithWhereWithoutProgramKesehatanInput | KegiatanUpdateManyWithWhereWithoutProgramKesehatanInput[]
+    deleteMany?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+  }
+
+  export type PosyanduCreateNestedOneWithoutKegiatanInput = {
+    create?: XOR<PosyanduCreateWithoutKegiatanInput, PosyanduUncheckedCreateWithoutKegiatanInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutKegiatanInput
+    connect?: PosyanduWhereUniqueInput
+  }
+
+  export type ProgramKesehatanCreateNestedOneWithoutKegiatanInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKegiatanInput, ProgramKesehatanUncheckedCreateWithoutKegiatanInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKegiatanInput
+    connect?: ProgramKesehatanWhereUniqueInput
+  }
+
+  export type PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyKegiatanInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput> | PemeriksaanIbuHamilCreateWithoutKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyKegiatanInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput> | PemeriksaanIbuHamilCreateWithoutKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PosyanduUpdateOneRequiredWithoutKegiatanNestedInput = {
+    create?: XOR<PosyanduCreateWithoutKegiatanInput, PosyanduUncheckedCreateWithoutKegiatanInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutKegiatanInput
+    upsert?: PosyanduUpsertWithoutKegiatanInput
+    connect?: PosyanduWhereUniqueInput
+    update?: XOR<XOR<PosyanduUpdateToOneWithWhereWithoutKegiatanInput, PosyanduUpdateWithoutKegiatanInput>, PosyanduUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput = {
+    create?: XOR<ProgramKesehatanCreateWithoutKegiatanInput, ProgramKesehatanUncheckedCreateWithoutKegiatanInput>
+    connectOrCreate?: ProgramKesehatanCreateOrConnectWithoutKegiatanInput
+    upsert?: ProgramKesehatanUpsertWithoutKegiatanInput
+    connect?: ProgramKesehatanWhereUniqueInput
+    update?: XOR<XOR<ProgramKesehatanUpdateToOneWithWhereWithoutKegiatanInput, ProgramKesehatanUpdateWithoutKegiatanInput>, ProgramKesehatanUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutKegiatanInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyKegiatanInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutKegiatanInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutKegiatanInput | PemeriksaanBalitaUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput> | PemeriksaanIbuHamilCreateWithoutKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKegiatanInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutKegiatanInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyKegiatanInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutKegiatanInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutKegiatanInput | PemeriksaanBalitaUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput> | PemeriksaanIbuHamilCreateWithoutKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKegiatanInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PosyanduCreateNestedOneWithoutBalitaInput = {
+    create?: XOR<PosyanduCreateWithoutBalitaInput, PosyanduUncheckedCreateWithoutBalitaInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutBalitaInput
+    connect?: PosyanduWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutBalitaInput = {
+    create?: XOR<KaderCreateWithoutBalitaInput, KaderUncheckedCreateWithoutBalitaInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutBalitaInput
+    connect?: KaderWhereUniqueInput
+  }
+
+  export type PemeriksaanBalitaCreateNestedManyWithoutBalitaInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput> | PemeriksaanBalitaCreateWithoutBalitaInput[] | PemeriksaanBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutBalitaInput | PemeriksaanBalitaCreateOrConnectWithoutBalitaInput[]
+    createMany?: PemeriksaanBalitaCreateManyBalitaInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type StatusGiziBalitaCreateNestedManyWithoutBalitaInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput> | StatusGiziBalitaCreateWithoutBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutBalitaInput | StatusGiziBalitaCreateOrConnectWithoutBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyBalitaInputEnvelope
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateNestedManyWithoutBalitaInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput> | PemeriksaanBalitaCreateWithoutBalitaInput[] | PemeriksaanBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutBalitaInput | PemeriksaanBalitaCreateOrConnectWithoutBalitaInput[]
+    createMany?: PemeriksaanBalitaCreateManyBalitaInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type StatusGiziBalitaUncheckedCreateNestedManyWithoutBalitaInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput> | StatusGiziBalitaCreateWithoutBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutBalitaInput | StatusGiziBalitaCreateOrConnectWithoutBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyBalitaInputEnvelope
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type PosyanduUpdateOneRequiredWithoutBalitaNestedInput = {
+    create?: XOR<PosyanduCreateWithoutBalitaInput, PosyanduUncheckedCreateWithoutBalitaInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutBalitaInput
+    upsert?: PosyanduUpsertWithoutBalitaInput
+    connect?: PosyanduWhereUniqueInput
+    update?: XOR<XOR<PosyanduUpdateToOneWithWhereWithoutBalitaInput, PosyanduUpdateWithoutBalitaInput>, PosyanduUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type KaderUpdateOneWithoutBalitaNestedInput = {
+    create?: XOR<KaderCreateWithoutBalitaInput, KaderUncheckedCreateWithoutBalitaInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutBalitaInput
+    upsert?: KaderUpsertWithoutBalitaInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutBalitaInput, KaderUpdateWithoutBalitaInput>, KaderUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithoutBalitaNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput> | PemeriksaanBalitaCreateWithoutBalitaInput[] | PemeriksaanBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutBalitaInput | PemeriksaanBalitaCreateOrConnectWithoutBalitaInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput[]
+    createMany?: PemeriksaanBalitaCreateManyBalitaInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutBalitaInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutBalitaInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutBalitaInput | PemeriksaanBalitaUpdateManyWithWhereWithoutBalitaInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type StatusGiziBalitaUpdateManyWithoutBalitaNestedInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput> | StatusGiziBalitaCreateWithoutBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutBalitaInput | StatusGiziBalitaCreateOrConnectWithoutBalitaInput[]
+    upsert?: StatusGiziBalitaUpsertWithWhereUniqueWithoutBalitaInput | StatusGiziBalitaUpsertWithWhereUniqueWithoutBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyBalitaInputEnvelope
+    set?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    disconnect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    delete?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    update?: StatusGiziBalitaUpdateWithWhereUniqueWithoutBalitaInput | StatusGiziBalitaUpdateWithWhereUniqueWithoutBalitaInput[]
+    updateMany?: StatusGiziBalitaUpdateManyWithWhereWithoutBalitaInput | StatusGiziBalitaUpdateManyWithWhereWithoutBalitaInput[]
+    deleteMany?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput> | PemeriksaanBalitaCreateWithoutBalitaInput[] | PemeriksaanBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutBalitaInput | PemeriksaanBalitaCreateOrConnectWithoutBalitaInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput[]
+    createMany?: PemeriksaanBalitaCreateManyBalitaInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutBalitaInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutBalitaInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutBalitaInput | PemeriksaanBalitaUpdateManyWithWhereWithoutBalitaInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateManyWithoutBalitaNestedInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput> | StatusGiziBalitaCreateWithoutBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutBalitaInput | StatusGiziBalitaCreateOrConnectWithoutBalitaInput[]
+    upsert?: StatusGiziBalitaUpsertWithWhereUniqueWithoutBalitaInput | StatusGiziBalitaUpsertWithWhereUniqueWithoutBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyBalitaInputEnvelope
+    set?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    disconnect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    delete?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    update?: StatusGiziBalitaUpdateWithWhereUniqueWithoutBalitaInput | StatusGiziBalitaUpdateWithWhereUniqueWithoutBalitaInput[]
+    updateMany?: StatusGiziBalitaUpdateManyWithWhereWithoutBalitaInput | StatusGiziBalitaUpdateManyWithWhereWithoutBalitaInput[]
+    deleteMany?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+  }
+
+  export type PosyanduCreateNestedOneWithoutIbuHamilInput = {
+    create?: XOR<PosyanduCreateWithoutIbuHamilInput, PosyanduUncheckedCreateWithoutIbuHamilInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutIbuHamilInput
+    connect?: PosyanduWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutIbuHamilInput = {
+    create?: XOR<KaderCreateWithoutIbuHamilInput, KaderUncheckedCreateWithoutIbuHamilInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutIbuHamilInput
+    connect?: KaderWhereUniqueInput
+  }
+
+  export type PemeriksaanIbuHamilCreateNestedManyWithoutIbuHamilInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput> | PemeriksaanIbuHamilCreateWithoutIbuHamilInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput | PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyIbuHamilInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutIbuHamilInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput> | PemeriksaanIbuHamilCreateWithoutIbuHamilInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput | PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyIbuHamilInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput = {
+    create?: XOR<PosyanduCreateWithoutIbuHamilInput, PosyanduUncheckedCreateWithoutIbuHamilInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutIbuHamilInput
+    upsert?: PosyanduUpsertWithoutIbuHamilInput
+    connect?: PosyanduWhereUniqueInput
+    update?: XOR<XOR<PosyanduUpdateToOneWithWhereWithoutIbuHamilInput, PosyanduUpdateWithoutIbuHamilInput>, PosyanduUncheckedUpdateWithoutIbuHamilInput>
+  }
+
+  export type KaderUpdateOneWithoutIbuHamilNestedInput = {
+    create?: XOR<KaderCreateWithoutIbuHamilInput, KaderUncheckedCreateWithoutIbuHamilInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutIbuHamilInput
+    upsert?: KaderUpsertWithoutIbuHamilInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutIbuHamilInput, KaderUpdateWithoutIbuHamilInput>, KaderUncheckedUpdateWithoutIbuHamilInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithoutIbuHamilNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput> | PemeriksaanIbuHamilCreateWithoutIbuHamilInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput | PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyIbuHamilInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutIbuHamilInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutIbuHamilInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutIbuHamilInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutIbuHamilInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput> | PemeriksaanIbuHamilCreateWithoutIbuHamilInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput | PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyIbuHamilInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutIbuHamilInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutIbuHamilInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutIbuHamilInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutIbuHamilInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type BalitaCreateNestedOneWithoutPemeriksaanBalitaInput = {
+    create?: XOR<BalitaCreateWithoutPemeriksaanBalitaInput, BalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: BalitaCreateOrConnectWithoutPemeriksaanBalitaInput
+    connect?: BalitaWhereUniqueInput
+  }
+
+  export type KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput = {
+    create?: XOR<KegiatanCreateWithoutPemeriksaanBalitaInput, KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPemeriksaanBalitaInput
+    connect?: KegiatanWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutPeriksaBalitaInput = {
+    create?: XOR<KaderCreateWithoutPeriksaBalitaInput, KaderUncheckedCreateWithoutPeriksaBalitaInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPeriksaBalitaInput
+    connect?: KaderWhereUniqueInput
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput = {
+    create?: XOR<BalitaCreateWithoutPemeriksaanBalitaInput, BalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: BalitaCreateOrConnectWithoutPemeriksaanBalitaInput
+    upsert?: BalitaUpsertWithoutPemeriksaanBalitaInput
+    connect?: BalitaWhereUniqueInput
+    update?: XOR<XOR<BalitaUpdateToOneWithWhereWithoutPemeriksaanBalitaInput, BalitaUpdateWithoutPemeriksaanBalitaInput>, BalitaUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput = {
+    create?: XOR<KegiatanCreateWithoutPemeriksaanBalitaInput, KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPemeriksaanBalitaInput
+    upsert?: KegiatanUpsertWithoutPemeriksaanBalitaInput
+    disconnect?: KegiatanWhereInput | boolean
+    delete?: KegiatanWhereInput | boolean
+    connect?: KegiatanWhereUniqueInput
+    update?: XOR<XOR<KegiatanUpdateToOneWithWhereWithoutPemeriksaanBalitaInput, KegiatanUpdateWithoutPemeriksaanBalitaInput>, KegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type KaderUpdateOneWithoutPeriksaBalitaNestedInput = {
+    create?: XOR<KaderCreateWithoutPeriksaBalitaInput, KaderUncheckedCreateWithoutPeriksaBalitaInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPeriksaBalitaInput
+    upsert?: KaderUpsertWithoutPeriksaBalitaInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutPeriksaBalitaInput, KaderUpdateWithoutPeriksaBalitaInput>, KaderUncheckedUpdateWithoutPeriksaBalitaInput>
+  }
+
+  export type IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput = {
+    create?: XOR<IbuHamilCreateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput>
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPemeriksaanKehamilanInput
+    connect?: IbuHamilWhereUniqueInput
+  }
+
+  export type KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput = {
+    create?: XOR<KegiatanCreateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput
+    connect?: KegiatanWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutPeriksaIbuHamilInput = {
+    create?: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPeriksaIbuHamilInput
+    connect?: KaderWhereUniqueInput
+  }
+
+  export type IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput = {
+    create?: XOR<IbuHamilCreateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput>
+    connectOrCreate?: IbuHamilCreateOrConnectWithoutPemeriksaanKehamilanInput
+    upsert?: IbuHamilUpsertWithoutPemeriksaanKehamilanInput
+    connect?: IbuHamilWhereUniqueInput
+    update?: XOR<XOR<IbuHamilUpdateToOneWithWhereWithoutPemeriksaanKehamilanInput, IbuHamilUpdateWithoutPemeriksaanKehamilanInput>, IbuHamilUncheckedUpdateWithoutPemeriksaanKehamilanInput>
+  }
+
+  export type KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput = {
+    create?: XOR<KegiatanCreateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput
+    upsert?: KegiatanUpsertWithoutPemeriksaanIbuHamilInput
+    disconnect?: KegiatanWhereInput | boolean
+    delete?: KegiatanWhereInput | boolean
+    connect?: KegiatanWhereUniqueInput
+    update?: XOR<XOR<KegiatanUpdateToOneWithWhereWithoutPemeriksaanIbuHamilInput, KegiatanUpdateWithoutPemeriksaanIbuHamilInput>, KegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+  }
+
+  export type KaderUpdateOneWithoutPeriksaIbuHamilNestedInput = {
+    create?: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPeriksaIbuHamilInput
+    upsert?: KaderUpsertWithoutPeriksaIbuHamilInput
+    disconnect?: KaderWhereInput | boolean
+    delete?: KaderWhereInput | boolean
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutPeriksaIbuHamilInput, KaderUpdateWithoutPeriksaIbuHamilInput>, KaderUncheckedUpdateWithoutPeriksaIbuHamilInput>
+  }
+
+  export type BalitaCreateNestedOneWithoutStatusGiziInput = {
+    create?: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
+    connectOrCreate?: BalitaCreateOrConnectWithoutStatusGiziInput
+    connect?: BalitaWhereUniqueInput
+  }
+
+  export type BalitaUpdateOneRequiredWithoutStatusGiziNestedInput = {
+    create?: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
+    connectOrCreate?: BalitaCreateOrConnectWithoutStatusGiziInput
+    upsert?: BalitaUpsertWithoutStatusGiziInput
+    connect?: BalitaWhereUniqueInput
+    update?: XOR<XOR<BalitaUpdateToOneWithWhereWithoutStatusGiziInput, BalitaUpdateWithoutStatusGiziInput>, BalitaUncheckedUpdateWithoutStatusGiziInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10368,17 +24856,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10396,6 +24873,17 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -10410,6 +24898,35 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type PosyanduCreateWithoutKelurahanInput = {
     nama: string
     alamat: string
@@ -10422,6 +24939,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     kader?: KaderCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutKelurahanInput = {
@@ -10437,6 +24957,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutKelurahanInput = {
@@ -10508,6 +25031,11 @@ export namespace Prisma {
     alamat: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutPosyanduInput = {
@@ -10516,8 +25044,13 @@ export namespace Prisma {
     nik: string
     noHp: string
     alamat: string
+    userId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutPosyanduInput = {
@@ -10527,6 +25060,135 @@ export namespace Prisma {
 
   export type KaderCreateManyPosyanduInputEnvelope = {
     data: KaderCreateManyPosyanduInput | KaderCreateManyPosyanduInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type KegiatanCreateWithoutPosyanduInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateWithoutPosyanduInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanCreateOrConnectWithoutPosyanduInput = {
+    where: KegiatanWhereUniqueInput
+    create: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type KegiatanCreateManyPosyanduInputEnvelope = {
+    data: KegiatanCreateManyPosyanduInput | KegiatanCreateManyPosyanduInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BalitaCreateWithoutPosyanduInput = {
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderCreateNestedOneWithoutBalitaInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUncheckedCreateWithoutPosyanduInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaCreateOrConnectWithoutPosyanduInput = {
+    where: BalitaWhereUniqueInput
+    create: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type BalitaCreateManyPosyanduInputEnvelope = {
+    data: BalitaCreateManyPosyanduInput | BalitaCreateManyPosyanduInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type IbuHamilCreateWithoutPosyanduInput = {
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderCreateNestedOneWithoutIbuHamilInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilUncheckedCreateWithoutPosyanduInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilCreateOrConnectWithoutPosyanduInput = {
+    where: IbuHamilWhereUniqueInput
+    create: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type IbuHamilCreateManyPosyanduInputEnvelope = {
+    data: IbuHamilCreateManyPosyanduInput | IbuHamilCreateManyPosyanduInput[]
     skipDuplicates?: boolean
   }
 
@@ -10580,8 +25242,115 @@ export namespace Prisma {
     noHp?: StringFilter<"Kader"> | string
     alamat?: StringFilter<"Kader"> | string
     posyanduId?: IntFilter<"Kader"> | number
+    userId?: StringNullableFilter<"Kader"> | string | null
     createdAt?: DateTimeFilter<"Kader"> | Date | string
     updatedAt?: DateTimeFilter<"Kader"> | Date | string
+  }
+
+  export type KegiatanUpsertWithWhereUniqueWithoutPosyanduInput = {
+    where: KegiatanWhereUniqueInput
+    update: XOR<KegiatanUpdateWithoutPosyanduInput, KegiatanUncheckedUpdateWithoutPosyanduInput>
+    create: XOR<KegiatanCreateWithoutPosyanduInput, KegiatanUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type KegiatanUpdateWithWhereUniqueWithoutPosyanduInput = {
+    where: KegiatanWhereUniqueInput
+    data: XOR<KegiatanUpdateWithoutPosyanduInput, KegiatanUncheckedUpdateWithoutPosyanduInput>
+  }
+
+  export type KegiatanUpdateManyWithWhereWithoutPosyanduInput = {
+    where: KegiatanScalarWhereInput
+    data: XOR<KegiatanUpdateManyMutationInput, KegiatanUncheckedUpdateManyWithoutPosyanduInput>
+  }
+
+  export type KegiatanScalarWhereInput = {
+    AND?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+    OR?: KegiatanScalarWhereInput[]
+    NOT?: KegiatanScalarWhereInput | KegiatanScalarWhereInput[]
+    id?: IntFilter<"Kegiatan"> | number
+    nama?: StringFilter<"Kegiatan"> | string
+    deskripsi?: StringNullableFilter<"Kegiatan"> | string | null
+    tanggalPelaksanaan?: DateTimeNullableFilter<"Kegiatan"> | Date | string | null
+    alamat?: StringNullableFilter<"Kegiatan"> | string | null
+    posyanduId?: IntFilter<"Kegiatan"> | number
+    programKesehatanId?: IntFilter<"Kegiatan"> | number
+    createdAt?: DateTimeFilter<"Kegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"Kegiatan"> | Date | string
+  }
+
+  export type BalitaUpsertWithWhereUniqueWithoutPosyanduInput = {
+    where: BalitaWhereUniqueInput
+    update: XOR<BalitaUpdateWithoutPosyanduInput, BalitaUncheckedUpdateWithoutPosyanduInput>
+    create: XOR<BalitaCreateWithoutPosyanduInput, BalitaUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type BalitaUpdateWithWhereUniqueWithoutPosyanduInput = {
+    where: BalitaWhereUniqueInput
+    data: XOR<BalitaUpdateWithoutPosyanduInput, BalitaUncheckedUpdateWithoutPosyanduInput>
+  }
+
+  export type BalitaUpdateManyWithWhereWithoutPosyanduInput = {
+    where: BalitaScalarWhereInput
+    data: XOR<BalitaUpdateManyMutationInput, BalitaUncheckedUpdateManyWithoutPosyanduInput>
+  }
+
+  export type BalitaScalarWhereInput = {
+    AND?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+    OR?: BalitaScalarWhereInput[]
+    NOT?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
+    id?: IntFilter<"Balita"> | number
+    nama?: StringFilter<"Balita"> | string
+    nik?: StringNullableFilter<"Balita"> | string | null
+    noKK?: StringFilter<"Balita"> | string
+    tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
+    jenisKelamin?: StringFilter<"Balita"> | string
+    namaAyah?: StringNullableFilter<"Balita"> | string | null
+    namaIbu?: StringNullableFilter<"Balita"> | string | null
+    alamat?: StringFilter<"Balita"> | string
+    beratLahir?: FloatNullableFilter<"Balita"> | number | null
+    panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    posyanduId?: IntFilter<"Balita"> | number
+    kaderId?: IntNullableFilter<"Balita"> | number | null
+    createdAt?: DateTimeFilter<"Balita"> | Date | string
+    updatedAt?: DateTimeFilter<"Balita"> | Date | string
+  }
+
+  export type IbuHamilUpsertWithWhereUniqueWithoutPosyanduInput = {
+    where: IbuHamilWhereUniqueInput
+    update: XOR<IbuHamilUpdateWithoutPosyanduInput, IbuHamilUncheckedUpdateWithoutPosyanduInput>
+    create: XOR<IbuHamilCreateWithoutPosyanduInput, IbuHamilUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type IbuHamilUpdateWithWhereUniqueWithoutPosyanduInput = {
+    where: IbuHamilWhereUniqueInput
+    data: XOR<IbuHamilUpdateWithoutPosyanduInput, IbuHamilUncheckedUpdateWithoutPosyanduInput>
+  }
+
+  export type IbuHamilUpdateManyWithWhereWithoutPosyanduInput = {
+    where: IbuHamilScalarWhereInput
+    data: XOR<IbuHamilUpdateManyMutationInput, IbuHamilUncheckedUpdateManyWithoutPosyanduInput>
+  }
+
+  export type IbuHamilScalarWhereInput = {
+    AND?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+    OR?: IbuHamilScalarWhereInput[]
+    NOT?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
+    id?: IntFilter<"IbuHamil"> | number
+    nama?: StringFilter<"IbuHamil"> | string
+    nik?: StringFilter<"IbuHamil"> | string
+    noKK?: StringFilter<"IbuHamil"> | string
+    tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
+    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    gravida?: IntNullableFilter<"IbuHamil"> | number | null
+    para?: IntNullableFilter<"IbuHamil"> | number | null
+    abortus?: IntNullableFilter<"IbuHamil"> | number | null
+    alamat?: StringFilter<"IbuHamil"> | string
+    posyanduId?: IntFilter<"IbuHamil"> | number
+    kaderId?: IntNullableFilter<"IbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"IbuHamil"> | Date | string
   }
 
   export type PosyanduCreateWithoutKaderInput = {
@@ -10596,6 +25365,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutKaderInput = {
@@ -10611,11 +25383,233 @@ export namespace Prisma {
     latitude: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutKaderInput = {
     where: PosyanduWhereUniqueInput
     create: XOR<PosyanduCreateWithoutKaderInput, PosyanduUncheckedCreateWithoutKaderInput>
+  }
+
+  export type UserCreateWithoutKaderInput = {
+    id?: string
+    nama: string
+    email: string
+    noHp: string
+    noKK?: string | null
+    nik: string
+    tanggalLahir: Date | string
+    alamat: string
+    password: string
+    verifiedAt?: Date | string | null
+    resetToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role: RoleCreateNestedOneWithoutUsersInput
+    otp?: OtpCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutKaderInput = {
+    id?: string
+    nama: string
+    email: string
+    noHp: string
+    noKK?: string | null
+    nik: string
+    tanggalLahir: Date | string
+    alamat: string
+    password: string
+    verifiedAt?: Date | string | null
+    resetToken?: string | null
+    roleId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    otp?: OtpUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutKaderInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutKaderInput, UserUncheckedCreateWithoutKaderInput>
+  }
+
+  export type BalitaCreateWithoutKaderInput = {
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutBalitaInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUncheckedCreateWithoutKaderInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaCreateOrConnectWithoutKaderInput = {
+    where: BalitaWhereUniqueInput
+    create: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput>
+  }
+
+  export type BalitaCreateManyKaderInputEnvelope = {
+    data: BalitaCreateManyKaderInput | BalitaCreateManyKaderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type IbuHamilCreateWithoutKaderInput = {
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilUncheckedCreateWithoutKaderInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutIbuHamilInput
+  }
+
+  export type IbuHamilCreateOrConnectWithoutKaderInput = {
+    where: IbuHamilWhereUniqueInput
+    create: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput>
+  }
+
+  export type IbuHamilCreateManyKaderInputEnvelope = {
+    data: IbuHamilCreateManyKaderInput | IbuHamilCreateManyKaderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PemeriksaanBalitaCreateWithoutKaderInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateWithoutKaderInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaCreateOrConnectWithoutKaderInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    create: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PemeriksaanBalitaCreateManyKaderInputEnvelope = {
+    data: PemeriksaanBalitaCreateManyKaderInput | PemeriksaanBalitaCreateManyKaderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PemeriksaanIbuHamilCreateWithoutKaderInput = {
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    create: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PemeriksaanIbuHamilCreateManyKaderInputEnvelope = {
+    data: PemeriksaanIbuHamilCreateManyKaderInput | PemeriksaanIbuHamilCreateManyKaderInput[]
+    skipDuplicates?: boolean
   }
 
   export type PosyanduUpsertWithoutKaderInput = {
@@ -10641,6 +25635,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutKaderInput = {
@@ -10656,6 +25653,161 @@ export namespace Prisma {
     latitude?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type UserUpsertWithoutKaderInput = {
+    update: XOR<UserUpdateWithoutKaderInput, UserUncheckedUpdateWithoutKaderInput>
+    create: XOR<UserCreateWithoutKaderInput, UserUncheckedCreateWithoutKaderInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutKaderInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutKaderInput, UserUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type UserUpdateWithoutKaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
+    nik?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    otp?: OtpUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutKaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
+    nik?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    roleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    otp?: OtpUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BalitaUpsertWithWhereUniqueWithoutKaderInput = {
+    where: BalitaWhereUniqueInput
+    update: XOR<BalitaUpdateWithoutKaderInput, BalitaUncheckedUpdateWithoutKaderInput>
+    create: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput>
+  }
+
+  export type BalitaUpdateWithWhereUniqueWithoutKaderInput = {
+    where: BalitaWhereUniqueInput
+    data: XOR<BalitaUpdateWithoutKaderInput, BalitaUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type BalitaUpdateManyWithWhereWithoutKaderInput = {
+    where: BalitaScalarWhereInput
+    data: XOR<BalitaUpdateManyMutationInput, BalitaUncheckedUpdateManyWithoutKaderInput>
+  }
+
+  export type IbuHamilUpsertWithWhereUniqueWithoutKaderInput = {
+    where: IbuHamilWhereUniqueInput
+    update: XOR<IbuHamilUpdateWithoutKaderInput, IbuHamilUncheckedUpdateWithoutKaderInput>
+    create: XOR<IbuHamilCreateWithoutKaderInput, IbuHamilUncheckedCreateWithoutKaderInput>
+  }
+
+  export type IbuHamilUpdateWithWhereUniqueWithoutKaderInput = {
+    where: IbuHamilWhereUniqueInput
+    data: XOR<IbuHamilUpdateWithoutKaderInput, IbuHamilUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type IbuHamilUpdateManyWithWhereWithoutKaderInput = {
+    where: IbuHamilScalarWhereInput
+    data: XOR<IbuHamilUpdateManyMutationInput, IbuHamilUncheckedUpdateManyWithoutKaderInput>
+  }
+
+  export type PemeriksaanBalitaUpsertWithWhereUniqueWithoutKaderInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    update: XOR<PemeriksaanBalitaUpdateWithoutKaderInput, PemeriksaanBalitaUncheckedUpdateWithoutKaderInput>
+    create: XOR<PemeriksaanBalitaCreateWithoutKaderInput, PemeriksaanBalitaUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PemeriksaanBalitaUpdateWithWhereUniqueWithoutKaderInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    data: XOR<PemeriksaanBalitaUpdateWithoutKaderInput, PemeriksaanBalitaUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithWhereWithoutKaderInput = {
+    where: PemeriksaanBalitaScalarWhereInput
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyWithoutKaderInput>
+  }
+
+  export type PemeriksaanBalitaScalarWhereInput = {
+    AND?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+    OR?: PemeriksaanBalitaScalarWhereInput[]
+    NOT?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+    id?: IntFilter<"PemeriksaanBalita"> | number
+    balitaId?: IntFilter<"PemeriksaanBalita"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    beratBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    tinggiBadan?: FloatFilter<"PemeriksaanBalita"> | number
+    lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
+    imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKaderInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    update: XOR<PemeriksaanIbuHamilUpdateWithoutKaderInput, PemeriksaanIbuHamilUncheckedUpdateWithoutKaderInput>
+    create: XOR<PemeriksaanIbuHamilCreateWithoutKaderInput, PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    data: XOR<PemeriksaanIbuHamilUpdateWithoutKaderInput, PemeriksaanIbuHamilUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput = {
+    where: PemeriksaanIbuHamilScalarWhereInput
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderInput>
+  }
+
+  export type PemeriksaanIbuHamilScalarWhereInput = {
+    AND?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+    OR?: PemeriksaanIbuHamilScalarWhereInput[]
+    NOT?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+    id?: IntFilter<"PemeriksaanIbuHamil"> | number
+    ibuHamilId?: IntFilter<"PemeriksaanIbuHamil"> | number
+    kegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tanggal?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    usiaKehamilan?: IntFilter<"PemeriksaanIbuHamil"> | number
+    beratBadan?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+    updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
   }
 
   export type UserCreateWithoutRoleInput = {
@@ -10672,6 +25824,7 @@ export namespace Prisma {
     resetToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    kader?: KaderCreateNestedOneWithoutUserInput
     otp?: OtpCreateNestedManyWithoutUserInput
   }
 
@@ -10689,6 +25842,7 @@ export namespace Prisma {
     resetToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedOneWithoutUserInput
     otp?: OtpUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -10700,6 +25854,30 @@ export namespace Prisma {
   export type UserCreateManyRoleInputEnvelope = {
     data: UserCreateManyRoleInput | UserCreateManyRoleInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ProgramKesehatanCreateWithoutRoleInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    klaster: KlasterCreateNestedOneWithoutProgramKesehatanInput
+    kegiatan?: KegiatanCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanUncheckedCreateWithoutRoleInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    klasterId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanCreateOrConnectWithoutRoleInput = {
+    where: ProgramKesehatanWhereUniqueInput
+    create: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutRoleInput = {
@@ -10738,12 +25916,43 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }
 
+  export type ProgramKesehatanUpsertWithoutRoleInput = {
+    update: XOR<ProgramKesehatanUpdateWithoutRoleInput, ProgramKesehatanUncheckedUpdateWithoutRoleInput>
+    create: XOR<ProgramKesehatanCreateWithoutRoleInput, ProgramKesehatanUncheckedCreateWithoutRoleInput>
+    where?: ProgramKesehatanWhereInput
+  }
+
+  export type ProgramKesehatanUpdateToOneWithWhereWithoutRoleInput = {
+    where?: ProgramKesehatanWhereInput
+    data: XOR<ProgramKesehatanUpdateWithoutRoleInput, ProgramKesehatanUncheckedUpdateWithoutRoleInput>
+  }
+
+  export type ProgramKesehatanUpdateWithoutRoleInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    klaster?: KlasterUpdateOneRequiredWithoutProgramKesehatanNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanUncheckedUpdateWithoutRoleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    klasterId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
   export type RoleCreateWithoutUsersInput = {
     id?: string
     nama: string
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    programKesehatan?: ProgramKesehatanCreateNestedOneWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutUsersInput = {
@@ -10752,11 +25961,46 @@ export namespace Prisma {
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    programKesehatan?: ProgramKesehatanUncheckedCreateNestedOneWithoutRoleInput
   }
 
   export type RoleCreateOrConnectWithoutUsersInput = {
     where: RoleWhereUniqueInput
     create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+  }
+
+  export type KaderCreateWithoutUserInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutUserInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutUserInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
   }
 
   export type OtpCreateWithoutUserInput = {
@@ -10802,6 +26046,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    programKesehatan?: ProgramKesehatanUpdateOneWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutUsersInput = {
@@ -10810,6 +26055,47 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    programKesehatan?: ProgramKesehatanUncheckedUpdateOneWithoutRoleNestedInput
+  }
+
+  export type KaderUpsertWithoutUserInput = {
+    update: XOR<KaderUpdateWithoutUserInput, KaderUncheckedUpdateWithoutUserInput>
+    create: XOR<KaderCreateWithoutUserInput, KaderUncheckedCreateWithoutUserInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutUserInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutUserInput, KaderUncheckedUpdateWithoutUserInput>
+  }
+
+  export type KaderUpdateWithoutUserInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type OtpUpsertWithWhereUniqueWithoutUserInput = {
@@ -10855,6 +26141,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+    kader?: KaderCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutOtpInput = {
@@ -10872,6 +26159,7 @@ export namespace Prisma {
     roleId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutOtpInput = {
@@ -10905,6 +26193,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    kader?: KaderUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOtpInput = {
@@ -10922,6 +26211,1521 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type ProgramKesehatanCreateWithoutKlasterInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: RoleCreateNestedOneWithoutProgramKesehatanInput
+    kegiatan?: KegiatanCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanUncheckedCreateWithoutKlasterInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    roleId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanCreateOrConnectWithoutKlasterInput = {
+    where: ProgramKesehatanWhereUniqueInput
+    create: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput>
+  }
+
+  export type ProgramKesehatanCreateManyKlasterInputEnvelope = {
+    data: ProgramKesehatanCreateManyKlasterInput | ProgramKesehatanCreateManyKlasterInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProgramKesehatanUpsertWithWhereUniqueWithoutKlasterInput = {
+    where: ProgramKesehatanWhereUniqueInput
+    update: XOR<ProgramKesehatanUpdateWithoutKlasterInput, ProgramKesehatanUncheckedUpdateWithoutKlasterInput>
+    create: XOR<ProgramKesehatanCreateWithoutKlasterInput, ProgramKesehatanUncheckedCreateWithoutKlasterInput>
+  }
+
+  export type ProgramKesehatanUpdateWithWhereUniqueWithoutKlasterInput = {
+    where: ProgramKesehatanWhereUniqueInput
+    data: XOR<ProgramKesehatanUpdateWithoutKlasterInput, ProgramKesehatanUncheckedUpdateWithoutKlasterInput>
+  }
+
+  export type ProgramKesehatanUpdateManyWithWhereWithoutKlasterInput = {
+    where: ProgramKesehatanScalarWhereInput
+    data: XOR<ProgramKesehatanUpdateManyMutationInput, ProgramKesehatanUncheckedUpdateManyWithoutKlasterInput>
+  }
+
+  export type ProgramKesehatanScalarWhereInput = {
+    AND?: ProgramKesehatanScalarWhereInput | ProgramKesehatanScalarWhereInput[]
+    OR?: ProgramKesehatanScalarWhereInput[]
+    NOT?: ProgramKesehatanScalarWhereInput | ProgramKesehatanScalarWhereInput[]
+    id?: IntFilter<"ProgramKesehatan"> | number
+    nama?: StringFilter<"ProgramKesehatan"> | string
+    deskripsi?: StringNullableFilter<"ProgramKesehatan"> | string | null
+    klasterId?: IntFilter<"ProgramKesehatan"> | number
+    roleId?: StringNullableFilter<"ProgramKesehatan"> | string | null
+    createdAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+    updatedAt?: DateTimeFilter<"ProgramKesehatan"> | Date | string
+  }
+
+  export type KlasterCreateWithoutProgramKesehatanInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KlasterUncheckedCreateWithoutProgramKesehatanInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KlasterCreateOrConnectWithoutProgramKesehatanInput = {
+    where: KlasterWhereUniqueInput
+    create: XOR<KlasterCreateWithoutProgramKesehatanInput, KlasterUncheckedCreateWithoutProgramKesehatanInput>
+  }
+
+  export type RoleCreateWithoutProgramKesehatanInput = {
+    id?: string
+    nama: string
+    slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserCreateNestedManyWithoutRoleInput
+  }
+
+  export type RoleUncheckedCreateWithoutProgramKesehatanInput = {
+    id?: string
+    nama: string
+    slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutRoleInput
+  }
+
+  export type RoleCreateOrConnectWithoutProgramKesehatanInput = {
+    where: RoleWhereUniqueInput
+    create: XOR<RoleCreateWithoutProgramKesehatanInput, RoleUncheckedCreateWithoutProgramKesehatanInput>
+  }
+
+  export type KegiatanCreateWithoutProgramKesehatanInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateWithoutProgramKesehatanInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanCreateOrConnectWithoutProgramKesehatanInput = {
+    where: KegiatanWhereUniqueInput
+    create: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput>
+  }
+
+  export type KegiatanCreateManyProgramKesehatanInputEnvelope = {
+    data: KegiatanCreateManyProgramKesehatanInput | KegiatanCreateManyProgramKesehatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type KlasterUpsertWithoutProgramKesehatanInput = {
+    update: XOR<KlasterUpdateWithoutProgramKesehatanInput, KlasterUncheckedUpdateWithoutProgramKesehatanInput>
+    create: XOR<KlasterCreateWithoutProgramKesehatanInput, KlasterUncheckedCreateWithoutProgramKesehatanInput>
+    where?: KlasterWhereInput
+  }
+
+  export type KlasterUpdateToOneWithWhereWithoutProgramKesehatanInput = {
+    where?: KlasterWhereInput
+    data: XOR<KlasterUpdateWithoutProgramKesehatanInput, KlasterUncheckedUpdateWithoutProgramKesehatanInput>
+  }
+
+  export type KlasterUpdateWithoutProgramKesehatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KlasterUncheckedUpdateWithoutProgramKesehatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoleUpsertWithoutProgramKesehatanInput = {
+    update: XOR<RoleUpdateWithoutProgramKesehatanInput, RoleUncheckedUpdateWithoutProgramKesehatanInput>
+    create: XOR<RoleCreateWithoutProgramKesehatanInput, RoleUncheckedCreateWithoutProgramKesehatanInput>
+    where?: RoleWhereInput
+  }
+
+  export type RoleUpdateToOneWithWhereWithoutProgramKesehatanInput = {
+    where?: RoleWhereInput
+    data: XOR<RoleUpdateWithoutProgramKesehatanInput, RoleUncheckedUpdateWithoutProgramKesehatanInput>
+  }
+
+  export type RoleUpdateWithoutProgramKesehatanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUpdateManyWithoutRoleNestedInput
+  }
+
+  export type RoleUncheckedUpdateWithoutProgramKesehatanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutRoleNestedInput
+  }
+
+  export type KegiatanUpsertWithWhereUniqueWithoutProgramKesehatanInput = {
+    where: KegiatanWhereUniqueInput
+    update: XOR<KegiatanUpdateWithoutProgramKesehatanInput, KegiatanUncheckedUpdateWithoutProgramKesehatanInput>
+    create: XOR<KegiatanCreateWithoutProgramKesehatanInput, KegiatanUncheckedCreateWithoutProgramKesehatanInput>
+  }
+
+  export type KegiatanUpdateWithWhereUniqueWithoutProgramKesehatanInput = {
+    where: KegiatanWhereUniqueInput
+    data: XOR<KegiatanUpdateWithoutProgramKesehatanInput, KegiatanUncheckedUpdateWithoutProgramKesehatanInput>
+  }
+
+  export type KegiatanUpdateManyWithWhereWithoutProgramKesehatanInput = {
+    where: KegiatanScalarWhereInput
+    data: XOR<KegiatanUpdateManyMutationInput, KegiatanUncheckedUpdateManyWithoutProgramKesehatanInput>
+  }
+
+  export type PosyanduCreateWithoutKegiatanInput = {
+    nama: string
+    alamat: string
+    wilayah: string
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
+    kader?: KaderCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduUncheckedCreateWithoutKegiatanInput = {
+    id?: number
+    nama: string
+    alamat: string
+    wilayah: string
+    kelurahanId?: number | null
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduCreateOrConnectWithoutKegiatanInput = {
+    where: PosyanduWhereUniqueInput
+    create: XOR<PosyanduCreateWithoutKegiatanInput, PosyanduUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type ProgramKesehatanCreateWithoutKegiatanInput = {
+    nama: string
+    deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    klaster: KlasterCreateNestedOneWithoutProgramKesehatanInput
+    role?: RoleCreateNestedOneWithoutProgramKesehatanInput
+  }
+
+  export type ProgramKesehatanUncheckedCreateWithoutKegiatanInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    klasterId: number
+    roleId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProgramKesehatanCreateOrConnectWithoutKegiatanInput = {
+    where: ProgramKesehatanWhereUniqueInput
+    create: XOR<ProgramKesehatanCreateWithoutKegiatanInput, ProgramKesehatanUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaCreateWithoutKegiatanInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
+    kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    create: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaCreateManyKegiatanInputEnvelope = {
+    data: PemeriksaanBalitaCreateManyKegiatanInput | PemeriksaanBalitaCreateManyKegiatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PemeriksaanIbuHamilCreateWithoutKegiatanInput = {
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
+    kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput = {
+    id?: number
+    ibuHamilId: number
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    create: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope = {
+    data: PemeriksaanIbuHamilCreateManyKegiatanInput | PemeriksaanIbuHamilCreateManyKegiatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PosyanduUpsertWithoutKegiatanInput = {
+    update: XOR<PosyanduUpdateWithoutKegiatanInput, PosyanduUncheckedUpdateWithoutKegiatanInput>
+    create: XOR<PosyanduCreateWithoutKegiatanInput, PosyanduUncheckedCreateWithoutKegiatanInput>
+    where?: PosyanduWhereInput
+  }
+
+  export type PosyanduUpdateToOneWithWhereWithoutKegiatanInput = {
+    where?: PosyanduWhereInput
+    data: XOR<PosyanduUpdateWithoutKegiatanInput, PosyanduUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type PosyanduUpdateWithoutKegiatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
+    kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type PosyanduUncheckedUpdateWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    kelurahanId?: NullableIntFieldUpdateOperationsInput | number | null
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type ProgramKesehatanUpsertWithoutKegiatanInput = {
+    update: XOR<ProgramKesehatanUpdateWithoutKegiatanInput, ProgramKesehatanUncheckedUpdateWithoutKegiatanInput>
+    create: XOR<ProgramKesehatanCreateWithoutKegiatanInput, ProgramKesehatanUncheckedCreateWithoutKegiatanInput>
+    where?: ProgramKesehatanWhereInput
+  }
+
+  export type ProgramKesehatanUpdateToOneWithWhereWithoutKegiatanInput = {
+    where?: ProgramKesehatanWhereInput
+    data: XOR<ProgramKesehatanUpdateWithoutKegiatanInput, ProgramKesehatanUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type ProgramKesehatanUpdateWithoutKegiatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    klaster?: KlasterUpdateOneRequiredWithoutProgramKesehatanNestedInput
+    role?: RoleUpdateOneWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanUncheckedUpdateWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    klasterId?: IntFieldUpdateOperationsInput | number
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUpsertWithWhereUniqueWithoutKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    update: XOR<PemeriksaanBalitaUpdateWithoutKegiatanInput, PemeriksaanBalitaUncheckedUpdateWithoutKegiatanInput>
+    create: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateWithWhereUniqueWithoutKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    data: XOR<PemeriksaanBalitaUpdateWithoutKegiatanInput, PemeriksaanBalitaUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithWhereWithoutKegiatanInput = {
+    where: PemeriksaanBalitaScalarWhereInput
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    update: XOR<PemeriksaanIbuHamilUpdateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedUpdateWithoutKegiatanInput>
+    create: XOR<PemeriksaanIbuHamilCreateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    data: XOR<PemeriksaanIbuHamilUpdateWithoutKegiatanInput, PemeriksaanIbuHamilUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput = {
+    where: PemeriksaanIbuHamilScalarWhereInput
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanInput>
+  }
+
+  export type PosyanduCreateWithoutBalitaInput = {
+    nama: string
+    alamat: string
+    wilayah: string
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
+    kader?: KaderCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduUncheckedCreateWithoutBalitaInput = {
+    id?: number
+    nama: string
+    alamat: string
+    wilayah: string
+    kelurahanId?: number | null
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduCreateOrConnectWithoutBalitaInput = {
+    where: PosyanduWhereUniqueInput
+    create: XOR<PosyanduCreateWithoutBalitaInput, PosyanduUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type KaderCreateWithoutBalitaInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutBalitaInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutBalitaInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutBalitaInput, KaderUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type PemeriksaanBalitaCreateWithoutBalitaInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateWithoutBalitaInput = {
+    id?: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaCreateOrConnectWithoutBalitaInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    create: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type PemeriksaanBalitaCreateManyBalitaInputEnvelope = {
+    data: PemeriksaanBalitaCreateManyBalitaInput | PemeriksaanBalitaCreateManyBalitaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StatusGiziBalitaCreateWithoutBalitaInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaUncheckedCreateWithoutBalitaInput = {
+    id?: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaCreateOrConnectWithoutBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    create: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type StatusGiziBalitaCreateManyBalitaInputEnvelope = {
+    data: StatusGiziBalitaCreateManyBalitaInput | StatusGiziBalitaCreateManyBalitaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PosyanduUpsertWithoutBalitaInput = {
+    update: XOR<PosyanduUpdateWithoutBalitaInput, PosyanduUncheckedUpdateWithoutBalitaInput>
+    create: XOR<PosyanduCreateWithoutBalitaInput, PosyanduUncheckedCreateWithoutBalitaInput>
+    where?: PosyanduWhereInput
+  }
+
+  export type PosyanduUpdateToOneWithWhereWithoutBalitaInput = {
+    where?: PosyanduWhereInput
+    data: XOR<PosyanduUpdateWithoutBalitaInput, PosyanduUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type PosyanduUpdateWithoutBalitaInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
+    kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type PosyanduUncheckedUpdateWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    kelurahanId?: NullableIntFieldUpdateOperationsInput | number | null
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type KaderUpsertWithoutBalitaInput = {
+    update: XOR<KaderUpdateWithoutBalitaInput, KaderUncheckedUpdateWithoutBalitaInput>
+    create: XOR<KaderCreateWithoutBalitaInput, KaderUncheckedCreateWithoutBalitaInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutBalitaInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutBalitaInput, KaderUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type KaderUpdateWithoutBalitaInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    update: XOR<PemeriksaanBalitaUpdateWithoutBalitaInput, PemeriksaanBalitaUncheckedUpdateWithoutBalitaInput>
+    create: XOR<PemeriksaanBalitaCreateWithoutBalitaInput, PemeriksaanBalitaUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type PemeriksaanBalitaUpdateWithWhereUniqueWithoutBalitaInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    data: XOR<PemeriksaanBalitaUpdateWithoutBalitaInput, PemeriksaanBalitaUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithWhereWithoutBalitaInput = {
+    where: PemeriksaanBalitaScalarWhereInput
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpsertWithWhereUniqueWithoutBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    update: XOR<StatusGiziBalitaUpdateWithoutBalitaInput, StatusGiziBalitaUncheckedUpdateWithoutBalitaInput>
+    create: XOR<StatusGiziBalitaCreateWithoutBalitaInput, StatusGiziBalitaUncheckedCreateWithoutBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpdateWithWhereUniqueWithoutBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    data: XOR<StatusGiziBalitaUpdateWithoutBalitaInput, StatusGiziBalitaUncheckedUpdateWithoutBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpdateManyWithWhereWithoutBalitaInput = {
+    where: StatusGiziBalitaScalarWhereInput
+    data: XOR<StatusGiziBalitaUpdateManyMutationInput, StatusGiziBalitaUncheckedUpdateManyWithoutBalitaInput>
+  }
+
+  export type StatusGiziBalitaScalarWhereInput = {
+    AND?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+    OR?: StatusGiziBalitaScalarWhereInput[]
+    NOT?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+    id?: IntFilter<"StatusGiziBalita"> | number
+    balitaId?: IntFilter<"StatusGiziBalita"> | number
+    tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+    beratBadan?: FloatFilter<"StatusGiziBalita"> | number
+    tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
+    zScoreBBTB?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
+    kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
+  }
+
+  export type PosyanduCreateWithoutIbuHamilInput = {
+    nama: string
+    alamat: string
+    wilayah: string
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
+    kader?: KaderCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduUncheckedCreateWithoutIbuHamilInput = {
+    id?: number
+    nama: string
+    alamat: string
+    wilayah: string
+    kelurahanId?: number | null
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduCreateOrConnectWithoutIbuHamilInput = {
+    where: PosyanduWhereUniqueInput
+    create: XOR<PosyanduCreateWithoutIbuHamilInput, PosyanduUncheckedCreateWithoutIbuHamilInput>
+  }
+
+  export type KaderCreateWithoutIbuHamilInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutIbuHamilInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutIbuHamilInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutIbuHamilInput, KaderUncheckedCreateWithoutIbuHamilInput>
+  }
+
+  export type PemeriksaanIbuHamilCreateWithoutIbuHamilInput = {
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
+    kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput = {
+    id?: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateOrConnectWithoutIbuHamilInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    create: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput>
+  }
+
+  export type PemeriksaanIbuHamilCreateManyIbuHamilInputEnvelope = {
+    data: PemeriksaanIbuHamilCreateManyIbuHamilInput | PemeriksaanIbuHamilCreateManyIbuHamilInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PosyanduUpsertWithoutIbuHamilInput = {
+    update: XOR<PosyanduUpdateWithoutIbuHamilInput, PosyanduUncheckedUpdateWithoutIbuHamilInput>
+    create: XOR<PosyanduCreateWithoutIbuHamilInput, PosyanduUncheckedCreateWithoutIbuHamilInput>
+    where?: PosyanduWhereInput
+  }
+
+  export type PosyanduUpdateToOneWithWhereWithoutIbuHamilInput = {
+    where?: PosyanduWhereInput
+    data: XOR<PosyanduUpdateWithoutIbuHamilInput, PosyanduUncheckedUpdateWithoutIbuHamilInput>
+  }
+
+  export type PosyanduUpdateWithoutIbuHamilInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
+    kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type PosyanduUncheckedUpdateWithoutIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    kelurahanId?: NullableIntFieldUpdateOperationsInput | number | null
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type KaderUpsertWithoutIbuHamilInput = {
+    update: XOR<KaderUpdateWithoutIbuHamilInput, KaderUncheckedUpdateWithoutIbuHamilInput>
+    create: XOR<KaderCreateWithoutIbuHamilInput, KaderUncheckedCreateWithoutIbuHamilInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutIbuHamilInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutIbuHamilInput, KaderUncheckedUpdateWithoutIbuHamilInput>
+  }
+
+  export type KaderUpdateWithoutIbuHamilInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    update: XOR<PemeriksaanIbuHamilUpdateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedUpdateWithoutIbuHamilInput>
+    create: XOR<PemeriksaanIbuHamilCreateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutIbuHamilInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    data: XOR<PemeriksaanIbuHamilUpdateWithoutIbuHamilInput, PemeriksaanIbuHamilUncheckedUpdateWithoutIbuHamilInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithWhereWithoutIbuHamilInput = {
+    where: PemeriksaanIbuHamilScalarWhereInput
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilInput>
+  }
+
+  export type BalitaCreateWithoutPemeriksaanBalitaInput = {
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutBalitaInput
+    kader?: KaderCreateNestedOneWithoutBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUncheckedCreateWithoutPemeriksaanBalitaInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaCreateOrConnectWithoutPemeriksaanBalitaInput = {
+    where: BalitaWhereUniqueInput
+    create: XOR<BalitaCreateWithoutPemeriksaanBalitaInput, BalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type KegiatanCreateWithoutPemeriksaanBalitaInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
+    programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanCreateOrConnectWithoutPemeriksaanBalitaInput = {
+    where: KegiatanWhereUniqueInput
+    create: XOR<KegiatanCreateWithoutPemeriksaanBalitaInput, KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type KaderCreateWithoutPeriksaBalitaInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutPeriksaBalitaInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutPeriksaBalitaInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutPeriksaBalitaInput, KaderUncheckedCreateWithoutPeriksaBalitaInput>
+  }
+
+  export type BalitaUpsertWithoutPemeriksaanBalitaInput = {
+    update: XOR<BalitaUpdateWithoutPemeriksaanBalitaInput, BalitaUncheckedUpdateWithoutPemeriksaanBalitaInput>
+    create: XOR<BalitaCreateWithoutPemeriksaanBalitaInput, BalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+    where?: BalitaWhereInput
+  }
+
+  export type BalitaUpdateToOneWithWhereWithoutPemeriksaanBalitaInput = {
+    where?: BalitaWhereInput
+    data: XOR<BalitaUpdateWithoutPemeriksaanBalitaInput, BalitaUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type BalitaUpdateWithoutPemeriksaanBalitaInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
+    kader?: KaderUpdateOneWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateWithoutPemeriksaanBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type KegiatanUpsertWithoutPemeriksaanBalitaInput = {
+    update: XOR<KegiatanUpdateWithoutPemeriksaanBalitaInput, KegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+    create: XOR<KegiatanCreateWithoutPemeriksaanBalitaInput, KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    where?: KegiatanWhereInput
+  }
+
+  export type KegiatanUpdateToOneWithWhereWithoutPemeriksaanBalitaInput = {
+    where?: KegiatanWhereInput
+    data: XOR<KegiatanUpdateWithoutPemeriksaanBalitaInput, KegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type KegiatanUpdateWithoutPemeriksaanBalitaInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
+    programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KaderUpsertWithoutPeriksaBalitaInput = {
+    update: XOR<KaderUpdateWithoutPeriksaBalitaInput, KaderUncheckedUpdateWithoutPeriksaBalitaInput>
+    create: XOR<KaderCreateWithoutPeriksaBalitaInput, KaderUncheckedCreateWithoutPeriksaBalitaInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutPeriksaBalitaInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutPeriksaBalitaInput, KaderUncheckedUpdateWithoutPeriksaBalitaInput>
+  }
+
+  export type KaderUpdateWithoutPeriksaBalitaInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutPeriksaBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type IbuHamilCreateWithoutPemeriksaanKehamilanInput = {
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
+    kader?: KaderCreateNestedOneWithoutIbuHamilInput
+  }
+
+  export type IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IbuHamilCreateOrConnectWithoutPemeriksaanKehamilanInput = {
+    where: IbuHamilWhereUniqueInput
+    create: XOR<IbuHamilCreateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput>
+  }
+
+  export type KegiatanCreateWithoutPemeriksaanIbuHamilInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
+    programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput = {
+    where: KegiatanWhereUniqueInput
+    create: XOR<KegiatanCreateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+  }
+
+  export type KaderCreateWithoutPeriksaIbuHamilInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutPeriksaIbuHamilInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutPeriksaIbuHamilInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
+  }
+
+  export type IbuHamilUpsertWithoutPemeriksaanKehamilanInput = {
+    update: XOR<IbuHamilUpdateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedUpdateWithoutPemeriksaanKehamilanInput>
+    create: XOR<IbuHamilCreateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput>
+    where?: IbuHamilWhereInput
+  }
+
+  export type IbuHamilUpdateToOneWithWhereWithoutPemeriksaanKehamilanInput = {
+    where?: IbuHamilWhereInput
+    data: XOR<IbuHamilUpdateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedUpdateWithoutPemeriksaanKehamilanInput>
+  }
+
+  export type IbuHamilUpdateWithoutPemeriksaanKehamilanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
+    kader?: KaderUpdateOneWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateWithoutPemeriksaanKehamilanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KegiatanUpsertWithoutPemeriksaanIbuHamilInput = {
+    update: XOR<KegiatanUpdateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+    create: XOR<KegiatanCreateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    where?: KegiatanWhereInput
+  }
+
+  export type KegiatanUpdateToOneWithWhereWithoutPemeriksaanIbuHamilInput = {
+    where?: KegiatanWhereInput
+    data: XOR<KegiatanUpdateWithoutPemeriksaanIbuHamilInput, KegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+  }
+
+  export type KegiatanUpdateWithoutPemeriksaanIbuHamilInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
+    programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KaderUpsertWithoutPeriksaIbuHamilInput = {
+    update: XOR<KaderUpdateWithoutPeriksaIbuHamilInput, KaderUncheckedUpdateWithoutPeriksaIbuHamilInput>
+    create: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutPeriksaIbuHamilInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutPeriksaIbuHamilInput, KaderUncheckedUpdateWithoutPeriksaIbuHamilInput>
+  }
+
+  export type KaderUpdateWithoutPeriksaIbuHamilInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutPeriksaIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type BalitaCreateWithoutStatusGiziInput = {
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutBalitaInput
+    kader?: KaderCreateNestedOneWithoutBalitaInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaUncheckedCreateWithoutStatusGiziInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutBalitaInput
+  }
+
+  export type BalitaCreateOrConnectWithoutStatusGiziInput = {
+    where: BalitaWhereUniqueInput
+    create: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
+  }
+
+  export type BalitaUpsertWithoutStatusGiziInput = {
+    update: XOR<BalitaUpdateWithoutStatusGiziInput, BalitaUncheckedUpdateWithoutStatusGiziInput>
+    create: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
+    where?: BalitaWhereInput
+  }
+
+  export type BalitaUpdateToOneWithWhereWithoutStatusGiziInput = {
+    where?: BalitaWhereInput
+    data: XOR<BalitaUpdateWithoutStatusGiziInput, BalitaUncheckedUpdateWithoutStatusGiziInput>
+  }
+
+  export type BalitaUpdateWithoutStatusGiziInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
+    kader?: KaderUpdateOneWithoutBalitaNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateWithoutStatusGiziInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput
   }
 
   export type PosyanduCreateManyKelurahanInput = {
@@ -10950,6 +27754,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutKelurahanInput = {
@@ -10965,6 +27772,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateManyWithoutKelurahanInput = {
@@ -10987,6 +27797,53 @@ export namespace Prisma {
     nik: string
     noHp: string
     alamat: string
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KegiatanCreateManyPosyanduInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BalitaCreateManyPosyanduInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IbuHamilCreateManyPosyanduInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    kaderId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10998,6 +27855,11 @@ export namespace Prisma {
     alamat?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutPosyanduInput = {
@@ -11006,8 +27868,13 @@ export namespace Prisma {
     nik?: StringFieldUpdateOperationsInput | string
     noHp?: StringFieldUpdateOperationsInput | string
     alamat?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateManyWithoutPosyanduInput = {
@@ -11016,6 +27883,426 @@ export namespace Prisma {
     nik?: StringFieldUpdateOperationsInput | string
     noHp?: StringFieldUpdateOperationsInput | string
     alamat?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KegiatanUpdateWithoutPosyanduInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateManyWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BalitaUpdateWithoutPosyanduInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUpdateOneWithoutBalitaNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateManyWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IbuHamilUpdateWithoutPosyanduInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUpdateOneWithoutIbuHamilNestedInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateManyWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BalitaCreateManyKaderInput = {
+    id?: number
+    nama: string
+    nik?: string | null
+    noKK: string
+    tanggalLahir: Date | string
+    jenisKelamin: string
+    namaAyah?: string | null
+    namaIbu?: string | null
+    alamat: string
+    beratLahir?: number | null
+    panjangLahir?: number | null
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IbuHamilCreateManyKaderInput = {
+    id?: number
+    nama: string
+    nik: string
+    noKK: string
+    tanggalLahir: Date | string
+    umurKehamilanAwal?: number | null
+    tanggalHPHT?: Date | string | null
+    tanggalHPL?: Date | string | null
+    gravida?: number | null
+    para?: number | null
+    abortus?: number | null
+    alamat: string
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaCreateManyKaderInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateManyKaderInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BalitaUpdateWithoutKaderInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutBalitaNestedInput
+  }
+
+  export type BalitaUncheckedUpdateManyWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: NullableStringFieldUpdateOperationsInput | string | null
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    jenisKelamin?: StringFieldUpdateOperationsInput | string
+    namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
+    namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IbuHamilUpdateWithoutKaderInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanKehamilan?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilNestedInput
+  }
+
+  export type IbuHamilUncheckedUpdateManyWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: StringFieldUpdateOperationsInput | string
+    tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gravida?: NullableIntFieldUpdateOperationsInput | number | null
+    para?: NullableIntFieldUpdateOperationsInput | number | null
+    abortus?: NullableIntFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateWithoutKaderInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithoutKaderInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11050,6 +28337,7 @@ export namespace Prisma {
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUpdateOneWithoutUserNestedInput
     otp?: OtpUpdateManyWithoutUserNestedInput
   }
 
@@ -11067,6 +28355,7 @@ export namespace Prisma {
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateOneWithoutUserNestedInput
     otp?: OtpUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -11114,6 +28403,397 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     kode?: StringFieldUpdateOperationsInput | string
     expiry?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProgramKesehatanCreateManyKlasterInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    roleId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProgramKesehatanUpdateWithoutKlasterInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: RoleUpdateOneWithoutProgramKesehatanNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanUncheckedUpdateWithoutKlasterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutProgramKesehatanNestedInput
+  }
+
+  export type ProgramKesehatanUncheckedUpdateManyWithoutKlasterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    roleId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type KegiatanCreateManyProgramKesehatanInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type KegiatanUpdateWithoutProgramKesehatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateWithoutProgramKesehatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateManyWithoutProgramKesehatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaCreateManyKegiatanInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateManyKegiatanInput = {
+    id?: number
+    ibuHamilId: number
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateWithoutKegiatanInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithoutKegiatanInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaCreateManyBalitaInput = {
+    id?: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    keluhan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StatusGiziBalitaCreateManyBalitaInput = {
+    id?: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    createdAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateWithoutBalitaInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaUpdateWithoutBalitaInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateManyWithoutBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateManyIbuHamilInput = {
+    id?: number
+    kegiatanId?: number | null
+    tanggal: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithoutIbuHamilInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateWithoutIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

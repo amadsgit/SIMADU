@@ -144,37 +144,37 @@ export default function RegisterPage() {
 
 
   // catatan 
-  useEffect(() => {
-    toast.custom((t) => (
-      <div className="fixed top-4 left-2 z-20">
-        <div
-          className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
-          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-        >
-          <div className="flex-1 w-500 p-4">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 pt-0.5">
-              </div>
-              <div className="ml-3 flex-1">
-                <p className="text-sm text-gray-900">
-                  untuk real project kedepannya user dengan role admin & kader hanya akan didaftarkan didalam sistem oleh admin, form register hanya untuk ibu hamil & orang tua balita.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex border-l border-gray-200">
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-teal-600 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            >
-              Tutup
-            </button>
-          </div>
-        </div>
-      </div>
-    ));
-  }, []);
+  // useEffect(() => {
+  //   toast.custom((t) => (
+  //     <div className="fixed top-4 left-2 z-20">
+  //       <div
+  //         className={`${
+  //           t.visible ? 'animate-enter' : 'animate-leave'
+  //         } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+  //       >
+  //         <div className="flex-1 w-500 p-4">
+  //           <div className="flex items-start">
+  //             <div className="flex-shrink-0 pt-0.5">
+  //             </div>
+  //             <div className="ml-3 flex-1">
+  //               <p className="text-sm text-gray-900">
+  //                 untuk real project kedepannya user dengan role admin & kader hanya akan didaftarkan didalam sistem oleh admin, form register hanya untuk ibu hamil & orang tua balita.
+  //               </p>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <div className="flex border-l border-gray-200">
+  //           <button
+  //             onClick={() => toast.dismiss(t.id)}
+  //             className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-teal-600 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+  //           >
+  //             Tutup
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   ));
+  // }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-400 to-green-600 flex items-center justify-center px-4">

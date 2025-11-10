@@ -39,6 +39,9 @@ export async function middleware(req: NextRequest) {
     else if (role === "kader") redirectPath = "/dashboard/kader";
     else if (role === "ibu_hamil") redirectPath = "/dashboard/ibu-hamil";
     else if (role === "orang_tua_balita") redirectPath = "/dashboard/orang-tua-balita";
+    else if (role === "pemegang_program_imunisasi") redirectPath = "/dashboard/pempro-imunisasi";
+    else if (role === "pemegang_program_kia") redirectPath = "/dashboard/pempro-kia";
+    else if (role === "pemegang_program_gizi") redirectPath = "/dashboard/pempro-gizi";
 
     return NextResponse.redirect(new URL(redirectPath, req.url));
   }
@@ -58,6 +61,9 @@ export async function middleware(req: NextRequest) {
       kader: "/dashboard/kader",
       ibu_hamil: "/dashboard/ibu-hamil",
       orang_tua_balita: "/dashboard/orang-tua-balita",
+      pemegang_program_imunisasi: "/dashboard/pempro-imunisasi",
+      pemegang_program_kia: "/dashboard/pempro-kia",
+      pemegang_program_gizi: "/dashboard/pempro-gizi",
     };
 
     const allowedPrefix = roleAccessMap[role || ""];

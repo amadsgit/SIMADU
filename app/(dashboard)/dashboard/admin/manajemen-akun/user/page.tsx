@@ -100,12 +100,12 @@ export default function Page() {
             <h1 className="text-2xl font-bold">Manajemen Data <span>Role & Akun User</span></h1>
             <p className="text-gray-500 dark:text-gray-400">Informasi data role & akun user</p>
           </div>
-          {/* <Link href="#">
+          <Link href="/dashboard/admin/manajemen-akun/user/create">
             <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-4 py-2 rounded-md shadow-sm transition">
               <PlusCircle className="w-4 h-4 text-white text-bold" />
               User
             </button>
-          </Link> */}
+          </Link>
         </div>
 
         <div className="flex justify-between items-center">
@@ -191,34 +191,34 @@ export default function Page() {
                         </td>
                         <td className="px-6 py-4 text-center">
                           <div className="flex justify-center items-center gap-2">
-                            {/* <Link
-                              href={`#`}
+                            <Link
+                              href={`/dashboard/admin/manajemen-akun/user/${item.id}/edit`}
                               className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
                               title="Edit"
                             >
                               <PencilSquareIcon className="h-4 w-4" />
-                            </Link> */}
+                            </Link>
 
                             <button
                               onClick={() => openDeleteModal(item.id)}
-                              disabled={item.role?.nama?.toLowerCase() === 'admin'}
+                              disabled={item.role?.nama?.toLowerCase() === ''}
                               className={`p-2 rounded-md border transition 
-                                ${item.role?.nama?.toLowerCase() === 'admin'
+                                ${item.role?.nama?.toLowerCase() === ''
                                   ? 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed'
                                   : 'bg-white border-gray-300 hover:border-rose-500 hover:text-rose-600'
                                 }`}
-                              title={item.role?.nama?.toLowerCase() === 'admin' ? 'Admin tidak dapat dihapus' : 'Hapus'}
+                              title={item.role?.nama?.toLowerCase() === '' ? 'Admin tidak dapat dihapus' : 'Hapus'}
                             >
                               <TrashIcon className="h-4 w-4" />
                             </button>
 
-                            {/* <Link
-                              href={`#`}
+                            <Link
+                              href={`/dashboard/admin/manajemen-akun/user/${item.id}`}
                               className="p-2 rounded-md bg-white border border-gray-300 hover:border-blue-500 hover:text-blue-600 transition"
-                              title="Detail Posyandu"
+                              title="Detail User"
                             >
                               <EyeIcon className="h-4 w-4" />
-                            </Link> */}
+                            </Link>
                           </div>
                         </td>
                       </tr>
@@ -241,8 +241,6 @@ export default function Page() {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         onConfirm={handleDelete}
-        title="Hapus Data Posyandu"
-        message="Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak bisa dibatalkan."
       />
     </div>
   );

@@ -274,8 +274,6 @@ export default function Page() {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         onConfirm={handleDelete}
-        title="Hapus Data Role"
-        message="Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak bisa dibatalkan."
       />
     </div>
   );

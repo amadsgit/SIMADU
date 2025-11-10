@@ -11,7 +11,7 @@ datasource db {
 model Kelurahan {
   id        Int        @id @default(autoincrement())
   nama      String     @unique
-  posyandu  Posyandu[]
+  posyandu  Posyandu[] @relation("KelurahanToPosyandu")
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 }
@@ -27,11 +27,11 @@ enum Akreditasi {
 
 model Posyandu {
   id              Int        @id @default(autoincrement())
-  nama            String
+  nama            String     @unique
   alamat          String
   wilayah         String
   kelurahanId     Int?
-  kelurahan       Kelurahan? @relation(fields: [kelurahanId], references: [id])
+  kelurahan       Kelurahan? @relation("KelurahanToPosyandu", fields: [kelurahanId], references: [id])
   penanggungJawab String
   noHp            String
   akreditasi      Akreditasi
@@ -40,54 +40,223 @@ model Posyandu {
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   kader           Kader[]
+  kegiatan        Kegiatan[]
+  balita          Balita[]
+  ibuHamil        IbuHamil[]
 }
 
 model Kader {
-  id         Int      @id @default(autoincrement())
-  nama       String
-  nik        String   @unique
-  noHp       String
-  alamat     String
-  posyanduId Int
-  posyandu   Posyandu @relation(fields: [posyanduId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  nama            String
+  nik             String   @unique
+  noHp            String
+  alamat          String
+  posyanduId      Int
+  posyandu        Posyandu @relation(fields: [posyanduId], references: [id])
+
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id])
+
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  balita          Balita[]
+  ibuHamil        IbuHamil[]
+  periksaBalita   PemeriksaanBalita[]
+  periksaIbuHamil PemeriksaanIbuHamil[]
 }
 
 model Role {
-  id        String   @id @default(cuid())
-  nama      String   @unique                      
-  slug      String   @unique                      
-  users     User[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id               String            @id @default(cuid())
+  nama             String            @unique
+  slug             String            @unique
+  users            User[]
+  programKesehatan ProgramKesehatan? @relation("RoleToProgramKesehatan")
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model User {
-  id           String       @id @default(cuid())
+  id           String    @id @default(cuid())
   nama         String
-  email        String   @unique
+  email        String    @unique
   noHp         String
-  noKK         String?                             // Nomor Kartu Keluarga
-  nik          String   @unique
+  noKK         String? // Nomor Kartu Keluarga
+  nik          String    @unique
   tanggalLahir DateTime
   alamat       String
   password     String
-  verifiedAt   DateTime?           
-  resetToken   String?                             // Token untuk reset password
+  verifiedAt   DateTime?
+  resetToken   String? // Token untuk reset password
   roleId       String
-  role         Role     @relation(fields: [roleId], references: [id])
+  role         Role      @relation(fields: [roleId], references: [id])
+
+  kader        Kader?
+
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   otp          Otp[]
 }
- 
+
 model Otp {
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   kode      String
   expiry    DateTime
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Klaster {
+  id               Int                @id @default(autoincrement())
+  nama             String             @unique
+  deskripsi        String?
+  programKesehatan ProgramKesehatan[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+}
+
+model ProgramKesehatan {
+  id        Int        @id @default(autoincrement())
+  nama      String
+  deskripsi String?
+  klasterId Int
+  klaster   Klaster    @relation(fields: [klasterId], references: [id])
+  roleId    String?    @unique
+  role      Role?      @relation("RoleToProgramKesehatan", fields: [roleId], references: [id])
+  kegiatan  Kegiatan[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Kegiatan {
+  id                 Int              @id @default(autoincrement())
+  nama               String
+  deskripsi          String?
+  tanggalPelaksanaan DateTime?
+  alamat             String?
+  posyanduId         Int
+  posyandu           Posyandu         @relation(fields: [posyanduId], references: [id])
+  programKesehatanId Int
+  programKesehatan   ProgramKesehatan @relation(fields: [programKesehatanId], references: [id])
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  // relasi tambahan
+  pemeriksaanBalita   PemeriksaanBalita[]
+  pemeriksaanIbuHamil PemeriksaanIbuHamil[]
+
+  @@index([posyanduId])
+  @@index([programKesehatanId])
+}
+
+model Balita {
+  id                Int                 @id @default(autoincrement())
+  nama              String
+  nik               String?             @unique
+  noKK              String
+  tanggalLahir      DateTime
+  jenisKelamin      String
+  namaAyah          String?
+  namaIbu           String?
+  alamat            String
+  beratLahir        Float?
+  panjangLahir      Float?
+  posyanduId        Int
+  posyandu          Posyandu            @relation(fields: [posyanduId], references: [id])
+  kaderId           Int?
+  kader             Kader?              @relation(fields: [kaderId], references: [id])
+  pemeriksaanBalita PemeriksaanBalita[]
+  statusGizi        StatusGiziBalita[] // jadi 1-N
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+
+  // relasi ke user melalui noKK (tidak FK langsung, tapi bisa lewat query custom)
+  @@index([noKK])
+}
+
+model IbuHamil {
+  id                   Int                   @id @default(autoincrement())
+  nama                 String
+  nik                  String                @unique
+  noKK                 String
+  tanggalLahir         DateTime
+  umurKehamilanAwal    Int? // usia kehamilan awal saat pertama dicatat (minggu)
+  tanggalHPHT          DateTime? // Hari Pertama Haid Terakhir
+  tanggalHPL           DateTime? // Perkiraan persalinan
+  gravida              Int? // jumlah kehamilan
+  para                 Int? // jumlah kelahiran
+  abortus              Int? // jumlah keguguran
+  alamat               String
+  posyanduId           Int
+  posyandu             Posyandu              @relation(fields: [posyanduId], references: [id])
+  kaderId              Int?
+  kader                Kader?                @relation(fields: [kaderId], references: [id])
+  pemeriksaanKehamilan PemeriksaanIbuHamil[]
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+
+  @@index([nik])
+  @@index([noKK])
+}
+
+model PemeriksaanBalita {
+  id            Int       @id @default(autoincrement())
+  balitaId      Int
+  balita        Balita    @relation(fields: [balitaId], references: [id])
+  kegiatanId    Int? // kegiatan yang menjadi konteks pemeriksaan
+  kegiatan      Kegiatan? @relation(fields: [kegiatanId], references: [id])
+  tanggal       DateTime
+  beratBadan    Float
+  tinggiBadan   Float
+  lingkarKepala Float?
+  imunisasi     String?
+  vitamin       Boolean?
+  keluhan       String?
+  catatan       String?
+  kaderId       Int?
+  kader         Kader?    @relation(fields: [kaderId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([balitaId])
+  @@index([kegiatanId])
+}
+
+model PemeriksaanIbuHamil {
+  id                Int       @id @default(autoincrement())
+  ibuHamilId        Int
+  ibuHamil          IbuHamil  @relation(fields: [ibuHamilId], references: [id])
+  kegiatanId        Int?
+  kegiatan          Kegiatan? @relation(fields: [kegiatanId], references: [id])
+  tanggal           DateTime
+  usiaKehamilan     Int
+  beratBadan        Float?
+  tekananDarah      String?
+  tinggiFundus      Float?
+  detakJantungJanin Int?
+  keluhan           String?
+  tindakan          String?
+  konseling         String?
+  kaderId           Int?
+  kader             Kader?    @relation(fields: [kaderId], references: [id])
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([ibuHamilId])
+  @@index([kegiatanId])
+}
+
+model StatusGiziBalita {
+  id           Int      @id @default(autoincrement())
+  balitaId     Int
+  balita       Balita   @relation(fields: [balitaId], references: [id])
+  tanggal      DateTime
+  beratBadan   Float
+  tinggiBadan  Float
+  zScoreBBTB   Float?
+  zScoreBBU    Float?
+  zScoreTBU    Float?
+  kategoriGizi String? // Gizi Baik, Gizi Kurang, dst
+  createdAt    DateTime @default(now())
 }

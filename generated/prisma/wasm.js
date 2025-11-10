@@ -149,6 +149,7 @@ exports.Prisma.KaderScalarFieldEnum = {
   noHp: 'noHp',
   alamat: 'alamat',
   posyanduId: 'posyanduId',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -187,6 +188,121 @@ exports.Prisma.OtpScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.KlasterScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  deskripsi: 'deskripsi',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProgramKesehatanScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  deskripsi: 'deskripsi',
+  klasterId: 'klasterId',
+  roleId: 'roleId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.KegiatanScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  deskripsi: 'deskripsi',
+  tanggalPelaksanaan: 'tanggalPelaksanaan',
+  alamat: 'alamat',
+  posyanduId: 'posyanduId',
+  programKesehatanId: 'programKesehatanId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BalitaScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  nik: 'nik',
+  noKK: 'noKK',
+  tanggalLahir: 'tanggalLahir',
+  jenisKelamin: 'jenisKelamin',
+  namaAyah: 'namaAyah',
+  namaIbu: 'namaIbu',
+  alamat: 'alamat',
+  beratLahir: 'beratLahir',
+  panjangLahir: 'panjangLahir',
+  posyanduId: 'posyanduId',
+  kaderId: 'kaderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.IbuHamilScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  nik: 'nik',
+  noKK: 'noKK',
+  tanggalLahir: 'tanggalLahir',
+  umurKehamilanAwal: 'umurKehamilanAwal',
+  tanggalHPHT: 'tanggalHPHT',
+  tanggalHPL: 'tanggalHPL',
+  gravida: 'gravida',
+  para: 'para',
+  abortus: 'abortus',
+  alamat: 'alamat',
+  posyanduId: 'posyanduId',
+  kaderId: 'kaderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PemeriksaanBalitaScalarFieldEnum = {
+  id: 'id',
+  balitaId: 'balitaId',
+  kegiatanId: 'kegiatanId',
+  tanggal: 'tanggal',
+  beratBadan: 'beratBadan',
+  tinggiBadan: 'tinggiBadan',
+  lingkarKepala: 'lingkarKepala',
+  imunisasi: 'imunisasi',
+  vitamin: 'vitamin',
+  keluhan: 'keluhan',
+  catatan: 'catatan',
+  kaderId: 'kaderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PemeriksaanIbuHamilScalarFieldEnum = {
+  id: 'id',
+  ibuHamilId: 'ibuHamilId',
+  kegiatanId: 'kegiatanId',
+  tanggal: 'tanggal',
+  usiaKehamilan: 'usiaKehamilan',
+  beratBadan: 'beratBadan',
+  tekananDarah: 'tekananDarah',
+  tinggiFundus: 'tinggiFundus',
+  detakJantungJanin: 'detakJantungJanin',
+  keluhan: 'keluhan',
+  tindakan: 'tindakan',
+  konseling: 'konseling',
+  kaderId: 'kaderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.StatusGiziBalitaScalarFieldEnum = {
+  id: 'id',
+  balitaId: 'balitaId',
+  tanggal: 'tanggal',
+  beratBadan: 'beratBadan',
+  tinggiBadan: 'tinggiBadan',
+  zScoreBBTB: 'zScoreBBTB',
+  zScoreBBU: 'zScoreBBU',
+  zScoreTBU: 'zScoreTBU',
+  kategoriGizi: 'kategoriGizi',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -216,7 +332,15 @@ exports.Prisma.ModelName = {
   Kader: 'Kader',
   Role: 'Role',
   User: 'User',
-  Otp: 'Otp'
+  Otp: 'Otp',
+  Klaster: 'Klaster',
+  ProgramKesehatan: 'ProgramKesehatan',
+  Kegiatan: 'Kegiatan',
+  Balita: 'Balita',
+  IbuHamil: 'IbuHamil',
+  PemeriksaanBalita: 'PemeriksaanBalita',
+  PemeriksaanIbuHamil: 'PemeriksaanIbuHamil',
+  StatusGiziBalita: 'StatusGiziBalita'
 };
 
 /**

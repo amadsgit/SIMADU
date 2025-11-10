@@ -1,154 +1,110 @@
 import NavbarLanding from '@/app/ui/landing/navbar-landing';
 import FooterLanding from '@/app/ui/landing/footer-landing';
-import {
-  ArrowRightIcon,
-  ChartBarIcon,
-  UserGroupIcon,
-  BellAlertIcon,
-} from '@heroicons/react/24/outline';
-import Link from 'next/link';
 import Image from 'next/image';
-import SwiperHero from '@/components/swiper-hero';
 import { getTotalPosyandu } from '@/lib/data-posyandu';
 import { getTotalKader } from '@/lib/data-kader';
+import { getTotalBalita } from '@/lib/data-balita';
+import { getTotalIbuHamil } from '@/lib/data-ibu-hamil';
+import MapSection from './map-section';
 
 export const metadata = {
-  title: 'Beranda | E‑Posyandu Care',
-  description: 'Digitalisasi layanan posyandu untuk masyarakat sehat dan terdata',
+  title: 'Sistem Informasi Manajemen Posyandu | UPTD Puskesmas Cikalapa',
+  description:
+    'Halaman resmi E-Posyandu - UPTD Puskesmas Cikalapa. Menampilkan data dan peta sebaran posyandu secara digital, profesional, dan terintegrasi.',
 };
 
 export default async function Page() {
   const totalPosyandu = await getTotalPosyandu();
   const totalKader = await getTotalKader();
+  const totalBalita = await getTotalBalita();
+  const totalIbuHamil = await getTotalIbuHamil();
 
   return (
     <main className="flex min-h-screen flex-col bg-gradient-to-b from-white via-emerald-50 to-white text-gray-800">
       <NavbarLanding />
 
-      {/* Hero Header */}
-      <section className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 rounded-xl shadow-xl mx-4 md:mx-6 mt-6 px-6 md:px-12 py-8 md:py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center gap-5">
-          <Image
-            src="/logo3.png"
-            alt="Logo E-Posyandu"
-            width={90}
-            height={90}
-            className="rounded-full bg-white p-1 shadow-lg ring-2 ring-white"
-            priority
-          />
-          <div>
-            <h1 className="text-4xl font-extrabold text-white drop-shadow-sm">
-              E‑Posyandu Care
-            </h1>
-            <p className="text-white text-sm md:text-base mt-1">
-              Digitalisasi layanan posyandu untuk masyarakat sehat dan terdata
+      {/* Header */}
+      <section className="mx-4 md:mx-10 mt-8 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl shadow-xl overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-14 gap-6">
+          {/* Logo & Title */}
+          <div className="flex items-center gap-6">
+            <Image
+              src="/logo3.png"
+              alt="Logo Puskesmas Cikalapa"
+              width={100}
+              height={100}
+              className="rounded-full bg-white p-2 shadow-md ring-4 ring-white/60"
+              priority
+            />
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                SIMADU
+              </h1>
+              <p className="text-emerald-100 text-base md:text-lg mt-1 leading-snug">
+                <span className="font-semibold">Sistem Informasi Manajemen Posyandu</span>
+                <br />
+                UPTD Puskesmas Cikalapa
+              </p>
+            </div>
+          </div>
+
+          {/* Motto */}
+          <div className="text-white text-sm md:text-base text-center md:text-right space-y-2 italic">
+            <p className="text-emerald-50 font-light">
+              “Melayani dengan data, mengabdi dengan hati.”
+            </p>
+            <p className="text-xs uppercase tracking-wide opacity-80">
+              Terintegrasi • Realtime • Informatif
             </p>
           </div>
-        </div>
-        <div className="text-white italic text-sm md:text-base text-center md:text-right space-y-1">
-          <p>“Melayani dengan data, mengabdi dengan hati.”</p>
-          <p className="text-xs opacity-90">Realtime • Terintegrasi • Mudah digunakan</p>
-        </div>
-      </section>
-
-      {/* Welcome + Swiper Section */}
-      <section className="flex flex-col md:flex-row gap-6 mt-16 mx-4 md:mx-6 items-stretch">
-        {/* Welcome Text */}
-        <div className="flex flex-col justify-center gap-6 bg-white rounded-xl shadow-lg p-6 md:p-10 w-full md:w-1/2">
-          <h2 className="text-2xl md:text-3xl font-bold text-emerald-600">
-            Selamat Datang di E‑Posyandu Care
-          </h2>
-          <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-            <strong>E‑Posyandu Care</strong> adalah sistem informasi digital yang dirancang untuk meningkatkan pelayanan kesehatan balita dan ibu hamil secara terstruktur dan terintegrasi.
-          </p>
-          <ul className="list-disc ml-5 text-gray-600 text-sm md:text-base space-y-1">
-            <li>📊 Catatan pertumbuhan balita realtime</li>
-            <li>🤰 Pemantauan ibu hamil & jadwal kunjungan</li>
-            <li>📅 Jadwal imunisasi, vitamin, dan kegiatan</li>
-            <li>📥 Laporan otomatis ke Dinas Kesehatan</li>
-            <li>💬 Informasi dan reminder ke orang tua</li>
-          </ul>
-        </div>
-
-        {/* Swiper */} 
-        <div className="w-full md:w-1/2 flex">
-          <div className="rounded-xl shadow-lg bg-white w-full h-full overflow-hidden">
-            <SwiperHero />
-          </div>
-        </div>
-      </section>
-
-      {/* Fitur Unggulan */}
-      <section className="mt-14 mx-4 md:mx-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-emerald-600 mb-6">
-          Fitur Unggulan
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: <ChartBarIcon className="h-10 w-10 text-emerald-500 mx-auto mb-3" />,
-              title: 'Statistik Kesehatan',
-              desc: 'Pantau data gizi, tumbuh kembang dan kondisi kesehatan anak secara digital.',
-            },
-            {
-              icon: <UserGroupIcon className="h-10 w-10 text-emerald-500 mx-auto mb-3" />,
-              title: 'Manajemen Kader',
-              desc: 'Atur data dan aktivitas kader posyandu dalam satu sistem yang terorganisir.',
-            },
-            {
-              icon: <BellAlertIcon className="h-10 w-10 text-emerald-500 mx-auto mb-3" />,
-              title: 'Notifikasi & Reminder',
-              desc: 'Sampaikan informasi penting langsung ke orang tua lewat notifikasi terjadwal.',
-            },
-          ].map((fitur, i) => (
-            <div
-              key={i}
-              className="group bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl"
-            >
-              <div className="transition duration-300 group-hover:rotate-6 group-hover:scale-110">
-                {fitur.icon}
-              </div>
-              <h3 className="font-semibold text-lg mt-2">{fitur.title}</h3>
-              <p className="text-sm text-gray-600 mt-1">{fitur.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 
       {/* Statistik */}
-      <section className="mt-20 mx-4 md:mx-6">
-        <div className="bg-emerald-600 rounded-xl text-white p-6 md:p-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-lg">
-          {[
-            { label: 'Posyandu Aktif', value: totalPosyandu?.toString() || '0' },
-            { label: 'Kader Terdaftar', value: totalKader?.toString() || '0' },
-            { label: 'Balita Terdata', value: '0' },
-            { label: 'Ibu Hamil Dipantau', value: '0' },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="transition duration-300 transform hover:scale-105"
-            >
-              <h3 className="text-3xl font-bold">{item.value}</h3>
-              <p className="text-sm opacity-90">{item.label}</p>
-            </div>
-          ))}
+      <section className="mt-14 mx-4 md:mx-10">
+        <div className="bg-white rounded-3xl shadow-md border border-emerald-100 p-6 md:p-10">
+          <h2 className="text-xl md:text-2xl font-semibold text-emerald-800 mb-6 text-center">
+            Statistik Data Posyandu
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: 'Posyandu Aktif', value: totalPosyandu?.toString() || '0' },
+              { label: 'Kader Terdaftar', value: totalKader?.toString() || '0' },
+              { label: 'Balita Terdata', value: totalBalita?.toString() || '0' },
+              { label: 'Ibu Hamil Dipantau', value: totalIbuHamil?.toString() || '0' },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="group bg-gradient-to-b from-emerald-50 to-white border border-emerald-100 rounded-2xl py-8 text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <h3 className="text-3xl md:text-4xl font-bold text-emerald-700">
+                  {item.value}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 mt-2 group-hover:text-emerald-700">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mt-20 mx-4 md:mx-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-emerald-600 mb-4">
-          Mulai Digitalisasi Posyandu Sekarang
-        </h2>
-        <p className="text-gray-600 mb-6 text-sm md:text-base">
-          Bergabung bersama ratusan kader dan puskesmas yang telah menggunakan <strong>E‑Posyandu Care</strong>.
-        </p>
-        <Link href="/auth/login">
-          <button className="group bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg inline-flex items-center gap-2 shadow-lg transition-transform duration-300 hover:scale-105 active:scale-95">
-            Masuk Sekarang{' '}
-            <ArrowRightIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
-        </Link>
+      {/* Peta Sebaran */}
+      <section className="mt-14 mx-4 md:mx-10">
+        <div className="bg-white rounded-3xl border border-emerald-100 shadow-md overflow-hidden">
+          <div className="px-6 py-6 md:px-10 md:py-8 border-b border-emerald-100 flex justify-between items-center">
+            <h2 className="text-xl md:text-2xl font-semibold text-emerald-800">
+              Peta Sebaran Posyandu
+            </h2>
+            <p className="text-sm text-gray-500 hidden md:block">
+              Data wilayah kerja UPTD Puskesmas Cikalapa
+            </p>
+          </div>
+          <div className="p-4 md:p-6">
+            <MapSection />
+          </div>
+        </div>
       </section>
 
       <FooterLanding />

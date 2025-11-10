@@ -22,7 +22,7 @@ export default async function Page() {
   return (
     <div className="p-6 text-gray-800">
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
-        Dashboard <span className="text-emerald-500">Admin E‑Posyandu Care</span>
+        Dashboard <span className="text-emerald-500">Admin</span>
       </h1>
       <p className="text-gray-600 mb-8">
         Selamat datang, berikut ringkasan informasi data E-Posyandu..

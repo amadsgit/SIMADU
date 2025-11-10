@@ -15,7 +15,7 @@ export default function RootLayout({
         <NextAuthSession>
           <Toaster position="top-center" reverseOrder={false} />
           {children}
-          <ClientWrapper />
+          {/* <ClientWrapper /> */}
         </NextAuthSession>
       </body>
     </html>

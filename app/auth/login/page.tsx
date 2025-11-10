@@ -27,8 +27,8 @@ export default function Page() {
     
     // Validasi langsung password
     if (name === 'password') {
-      if (value.length < 6) {
-        setErrors(prev => ({ ...prev, password: 'Minimal 6 karakter' }));
+      if (value.length < 8) {
+        setErrors(prev => ({ ...prev, password: 'Minimal 8 karakter' }));
       } else {
         setErrors(prev => ({ ...prev, password: '' }));
       }
@@ -105,11 +105,11 @@ export default function Page() {
           <img
             src="/logo3.png"
             alt="Logo Posyandu"
-            className="h-16 mx-auto mb-4"
+            className="h-20 w-20 mx-auto mb-4"
           />
-          <h2 className="text-2xl font-bold text-gray-800">Login e-Posyandu</h2>
+          <h2 className="text-2xl font-bold text-gray-800">LOGIN SIMADU</h2>
           <p className="text-sm text-gray-500">
-            Silakan masuk menggunakan email dan password
+            Sistem Informasi Manajemen Posyandu <br />UPTD Puskesmas Cikalapa
           </p>
         </div>
 

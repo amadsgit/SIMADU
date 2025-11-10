@@ -22,7 +22,7 @@ export default function NavbarLanding() {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <span className="text-lg font-bold">E-Posyandu Care</span>
+          <span className="text-lg font-bold">E-POSYANDU</span>
         </Link>
 
         {/* Hamburger Button */}
@@ -40,7 +40,7 @@ export default function NavbarLanding() {
         {/* Menu Desktop */}
         <div className="hidden sm:flex gap-6 text-sm font-medium">
           <NavItem href="/" icon={<HomeIcon className="w-5 h-5" />} pathname={pathname}>Beranda</NavItem>
-          <NavItem href="/tentang" icon={<InformationCircleIcon className="w-5 h-5" />} pathname={pathname}>Tentang</NavItem>
+          {/* <NavItem href="/tentang" icon={<InformationCircleIcon className="w-5 h-5" />} pathname={pathname}>Tentang</NavItem> */}
           <NavItem href="/kontak" icon={<PhoneIcon className="w-5 h-5" />} pathname={pathname}>Kontak</NavItem>
           <NavItem href="/auth/login" icon={<LogInIcon className="w-5 h-5" />} pathname={pathname}>Login</NavItem>
         </div>

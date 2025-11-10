@@ -1,7 +1,9 @@
 import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
+// ==================================================
 // GET: Ambil semua data posyandu dan relasi kelurahan
+// ==================================================
 export async function GET() {
   try {
     const posyandu = await prisma.posyandu.findMany({
@@ -28,12 +30,12 @@ export async function GET() {
   }
 }
 
-
-// POST: Tambah data posyandu baru dengan relasi ke kelurahan
+// ==================================================
+// POST: Tambah data posyandu baru dengan validasi unik
+// ==================================================
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-
     const {
       nama,
       alamat,
@@ -46,7 +48,7 @@ export async function POST(request: Request) {
       latitude,
     } = body;
 
-    // Validasi kosong
+    // Validasi wajib isi
     if (
       !nama ||
       !alamat ||
@@ -73,7 +75,6 @@ export async function POST(request: Request) {
       'MANDIRI',
       'BELUM_AKREDITASI',
     ];
-
     if (!validAkreditasi.includes(akreditasi)) {
       return NextResponse.json(
         { error: 'Akreditasi tidak valid.' },
@@ -81,11 +82,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert longitude & latitude ke float
+    // Convert tipe data
     const lon = parseFloat(longitude);
     const lat = parseFloat(latitude);
     const kelurahanIdInt = parseInt(kelurahanId);
-
     if (isNaN(lon) || isNaN(lat) || isNaN(kelurahanIdInt)) {
       return NextResponse.json(
         { error: 'Longitude, Latitude, dan Kelurahan ID harus berupa angka.' },
@@ -93,7 +93,24 @@ export async function POST(request: Request) {
       );
     }
 
-    // Simpan ke database
+    // alidasi nama Posyandu unik (case insensitive)
+    const existing = await prisma.posyandu.findFirst({
+      where: {
+        nama: {
+          equals: nama,
+          mode: 'insensitive',
+        },
+      },
+    });
+
+    if (existing) {
+      return NextResponse.json(
+        { error: 'Nama Posyandu sudah terdaftar. Gunakan nama lain.' },
+        { status: 409 } // Conflict
+      );
+    }
+
+    // Simpan data baru
     const newPosyandu = await prisma.posyandu.create({
       data: {
         nama,

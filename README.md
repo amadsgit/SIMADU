@@ -1,6 +1,6 @@
-# 🌿 e-Posyandu Care
+# 🌿 Sistem Informasi Manajemen Posyandu
 
-Aplikasi e-Posyandu Care adalah sistem informasi berbasis web yang dibangun untuk mendukung digitalisasi layanan Posyandu. Aplikasi ini memungkinkan pengelolaan data wilayah, posyandu, kader, dan pengguna berbasis autentikasi, serta mendukung manajemen peran berbasis role. dan state global melalui Redux.
+Aplikasi SIMADU adalah sistem informasi berbasis web yang dibangun untuk mendukung digitalisasi layanan Posyandu. Aplikasi ini memungkinkan pengelolaan data wilayah, posyandu, kader, dan pengguna berbasis autentikasi, serta mendukung manajemen peran berbasis role. dan state global melalui Redux.
 
 ---
 
@@ -100,14 +100,13 @@ Aplikasi e-Posyandu Care adalah sistem informasi berbasis web yang dibangun untu
 
 ## Demo Live
 
-🔗 https://tugasakhir-jida-git-main-mamad-ahmads-projects.vercel.app/
+🔗 
 
 ---
 
 ## Developer
 
 - Nama: Mamad Ahmad
-- Batch: JIDA Fase 2
 - Tech Stack: Next.js, Tailwind, NextAuth.js, PostgreSQL
 
 
