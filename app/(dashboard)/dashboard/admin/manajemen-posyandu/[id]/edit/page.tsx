@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonUpdate from '@/components/button-update';
 import ButtonBatal from '@/components/button-batal';
+import dynamic from 'next/dynamic';
 
 const enumOptions = [
   'PARIPURNA',
@@ -14,6 +15,10 @@ const enumOptions = [
   'MANDIRI',
   'BELUM_AKREDITASI',
 ];
+
+const ModalAmbilKoordinat = dynamic(() => import('@/components/modal-ambil-koordinat'), {
+  ssr: false,
+});
 
 export default function EditPosyanduPage() {
   const router = useRouter();
@@ -35,6 +40,7 @@ export default function EditPosyanduPage() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -133,7 +139,7 @@ export default function EditPosyanduPage() {
       <div className="max-w-4xl mx-auto">
         <div className="p-6 border bg-white shadow-md rounded-xl">
           <h1 className="text-2xl font-bold mb-8">
-            Edit <span className="">Data Posyandu</span>
+            Edit <span className="text-emerald-700">Data Posyandu</span>
           </h1>
 
           <form onSubmit={handleSubmit}>
@@ -209,7 +215,9 @@ export default function EditPosyanduPage() {
               {/* --- Koordinat Lokasi --- */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Longitude</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Longitude
+                  </label>
                   <input
                     type="text"
                     name="longitude"
@@ -218,9 +226,19 @@ export default function EditPosyanduPage() {
                     placeholder="Contoh: 107.619123"
                     className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="mt-2 text-sm text-green-600 font-medium hover:underline"
+                  >
+                    📍 Ambil dari Peta
+                  </button>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Latitude</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Latitude
+                  </label>
                   <input
                     type="text"
                     name="latitude"
@@ -277,6 +295,21 @@ export default function EditPosyanduPage() {
           </form>
         </div>
       </div>
+      {/* Modal Ambil Koordinat */}
+      {showMap && (
+        <ModalAmbilKoordinat
+          onPick={(lat, lng) => {
+            setFormData({
+              ...formData,
+              latitude: lat.toString(),
+              longitude: lng.toString(),
+            });
+            setShowMap(false);
+          }}
+          onClose={() => setShowMap(false)}
+        />
+      )}
+
     </div>
   );
 }

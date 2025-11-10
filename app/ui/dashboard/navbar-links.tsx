@@ -21,7 +21,7 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
   switch (role) {
     case 'admin':
       return [
-        { name: 'Dashboard', href: '/dashboard/admin', icon: HomeIcon },
+        { name: 'Home', href: '/dashboard/admin', icon: HomeIcon },
         { name: 'Manajemen Posyandu & Kader', href: '/dashboard/admin/manajemen-posyandu/wilayah-kerja', icon: UserGroupIcon },
         { name: 'Manajemen User', href: '/dashboard/admin/manajemen-akun/role', icon: UserIcon },
         { name: 'Manajemen Program', href: '/dashboard/admin/manajemen-program/klaster', icon: HeartPulse },

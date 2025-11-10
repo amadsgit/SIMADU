@@ -165,7 +165,7 @@ export default function Page() {
       <div className="max-w-4xl mx-auto">
         <div className="p-6 border bg-white shadow-md rounded-xl">
           <h1 className="text-2xl font-bold mb-8">
-            Tambah <span className="">Data Posyandu</span>
+            Tambah <span className="text-emerald-700">Data Posyandu</span>
           </h1>
 
           <form onSubmit={handleSubmit}>
