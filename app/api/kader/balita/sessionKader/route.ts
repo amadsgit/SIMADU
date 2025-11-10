@@ -1,8 +1,7 @@
-// app/api/session-kader/route.ts
-import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth-options";
 
 export async function GET() {
   try {
@@ -11,7 +10,7 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // ambil data kader login lengkap dengan posyandu & kelurahan
+    // ambil data kader login lengkap dengan posyandu & kelurahan 
     const kader = await prisma.kader.findUnique({
       where: { userId: session.user.id },
       select: {

@@ -1,8 +1,7 @@
-// app/api/session-kader/route.ts
-import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth-options";
 
 export async function GET() {
   try {
