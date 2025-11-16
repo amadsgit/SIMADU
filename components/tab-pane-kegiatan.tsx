@@ -1,0 +1,62 @@
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+import { ClipboardList, BarChart3 } from 'lucide-react';
+import ButtonKembali from './button-kembali';
+
+export default function TabsUser() {
+  const pathname = usePathname();
+
+  // Ambil ID kegiatan dari URL: /dashboard/kader/kegiatan/[id]/pelaksanaan
+  const pathParts = pathname.split('/');
+  const kegiatanId = pathParts[4]; // indeks ke-4: ['', 'dashboard', 'kader', 'kegiatan', '10', 'pelaksanaan']
+
+  const tabs = [
+    {
+      name: 'Pelaksanaan Kegiatan',
+      href: `/dashboard/kader/kegiatan/${kegiatanId}/pelaksanaan`,
+      icon: ClipboardList,
+    },
+    {
+      name: 'Rekap Hasil Kegiatan',
+      href: `/dashboard/kader/kegiatan/${kegiatanId}/rekap`,
+      icon: BarChart3,
+    },
+  ];
+
+  return (
+    <div className="flex items-center justify-between border-b border-gray-200 mb-3 flex-wrap gap-2">
+      {/* Tabs di kiri */}
+      <div className="flex flex-wrap gap-2">
+        {tabs.map((tab) => {
+          const isActive =
+            pathname === tab.href || pathname.startsWith(tab.href + '/');
+          const Icon = tab.icon;
+
+          return (
+            <Link
+              key={tab.name}
+              href={tab.href}
+              className={clsx(
+                'flex items-center gap-2 px-4 py-2.5 rounded-t-xl font-medium text-sm transition-all duration-200',
+                isActive
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-md'
+                  : 'bg-white text-emerald-700 border border-transparent hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800'
+              )}
+            >
+              <Icon className="w-4 h-4" />
+              {tab.name}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Tombol kembali di kanan */}
+      <Link href="/dashboard/kader/kegiatan">
+        <ButtonKembali />
+      </Link>
+    </div>
+  );
+}

@@ -80,7 +80,7 @@ export default function TopNavbar() {
       <div className="px-6 py-3 flex justify-between items-center">
         {/* Judul kiri */}
         <h1 className="font-semibold tracking-wide text-lg">
-          Dashboard <span className="text-emerald-100">SIMADU</span>
+          <span className="text-emerald-100">⚘ SIMADU</span>
         </h1>
 
         {/* Kanan: Notifikasi & Profil */}

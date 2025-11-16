@@ -70,7 +70,7 @@ export default function TambahKegiatanPage() {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/pemproKiaJadwal', {
+      const res = await fetch('/api/pemproKia/jadwal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -108,7 +108,7 @@ export default function TambahKegiatanPage() {
                 name="nama"
                 value={formData.nama}
                 onChange={handleChange}
-                placeholder="Contoh: Imunisasi BCG Balita"
+                placeholder="Contoh: Pemeriksaan Kesehatan balita"
                 ref={namaRef}
                 className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-400 outline-none transition"
               />
@@ -124,7 +124,7 @@ export default function TambahKegiatanPage() {
                 value={formData.deskripsi}
                 onChange={handleChange}
                 rows={3}
-                placeholder="Contoh: Imunisasi rutin untuk bayi usia 0–12 bulan"
+                placeholder="Contoh: Pemeriksaan Kesehatan balita"
                 className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-400 outline-none transition"
               ></textarea>
             </div>

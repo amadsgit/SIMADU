@@ -26,23 +26,24 @@ enum Akreditasi {
 }
 
 model Posyandu {
-  id              Int        @id @default(autoincrement())
-  nama            String     @unique
-  alamat          String
-  wilayah         String
-  kelurahanId     Int?
-  kelurahan       Kelurahan? @relation("KelurahanToPosyandu", fields: [kelurahanId], references: [id])
-  penanggungJawab String
-  noHp            String
-  akreditasi      Akreditasi
-  longitude       Float
-  latitude        Float
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  kader           Kader[]
-  kegiatan        Kegiatan[]
-  balita          Balita[]
-  ibuHamil        IbuHamil[]
+  id                  Int                   @id @default(autoincrement())
+  nama                String                @unique
+  alamat              String
+  wilayah             String
+  kelurahanId         Int?
+  kelurahan           Kelurahan?            @relation("KelurahanToPosyandu", fields: [kelurahanId], references: [id])
+  penanggungJawab     String
+  noHp                String
+  akreditasi          Akreditasi
+  longitude           Float
+  latitude            Float
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  kader               Kader[]
+  kegiatan            Kegiatan[]
+  balita              Balita[]
+  ibuHamil            IbuHamil[]
+  pelaksanaanKegiatan PelaksanaanKegiatan[]
 }
 
 model Kader {
@@ -57,12 +58,13 @@ model Kader {
   userId String? @unique
   user   User?   @relation(fields: [userId], references: [id])
 
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
-  balita          Balita[]
-  ibuHamil        IbuHamil[]
-  periksaBalita   PemeriksaanBalita[]
-  periksaIbuHamil PemeriksaanIbuHamil[]
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  balita              Balita[]
+  ibuHamil            IbuHamil[]
+  periksaBalita       PemeriksaanBalita[]
+  periksaIbuHamil     PemeriksaanIbuHamil[]
+  pelaksanaanKegiatan PelaksanaanKegiatan[]
 }
 
 model Role {
@@ -145,6 +147,7 @@ model Kegiatan {
   // relasi tambahan
   pemeriksaanBalita   PemeriksaanBalita[]
   pemeriksaanIbuHamil PemeriksaanIbuHamil[]
+  pelaksanaanKegiatan PelaksanaanKegiatan[]
 
   @@index([posyanduId])
   @@index([programKesehatanId])
@@ -201,62 +204,107 @@ model IbuHamil {
 }
 
 model PemeriksaanBalita {
-  id            Int       @id @default(autoincrement())
-  balitaId      Int
-  balita        Balita    @relation(fields: [balitaId], references: [id])
-  kegiatanId    Int? // kegiatan yang menjadi konteks pemeriksaan
-  kegiatan      Kegiatan? @relation(fields: [kegiatanId], references: [id])
-  tanggal       DateTime
-  beratBadan    Float
-  tinggiBadan   Float
-  lingkarKepala Float?
-  imunisasi     String?
-  vitamin       Boolean?
-  keluhan       String?
-  catatan       String?
-  kaderId       Int?
-  kader         Kader?    @relation(fields: [kaderId], references: [id])
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                    Int                  @id @default(autoincrement())
+  balitaId              Int
+  balita                Balita               @relation(fields: [balitaId], references: [id])
+  kegiatanId            Int?
+  kegiatan              Kegiatan?            @relation(fields: [kegiatanId], references: [id])
+  tanggal               DateTime             @default(now())
+  beratBadan            Float
+  tinggiBadan           Float
+  lingkarKepala         Float?
+  imunisasi             String? // misal: BCG, DPT, Campak
+  vitamin               Boolean? // true jika diberi vitamin A
+  jenisVitamin          String? // jenis vitamin: misal A, B kompleks, D, E, dst.
+  pmt                   Boolean? // true jika diberi PMT
+  jenisPmt              String? // jenis PMT
+  keluhan               String?
+  tindakan              String?
+  catatan               String?
+  kaderId               Int?
+  kader                 Kader?               @relation(fields: [kaderId], references: [id])
+  pelaksanaanKegiatanId Int?
+  pelaksanaanKegiatan   PelaksanaanKegiatan? @relation(fields: [pelaksanaanKegiatanId], references: [id])
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+  statusGizi            StatusGiziBalita[] // relasi 1-N ke status gizi
 
   @@index([balitaId])
   @@index([kegiatanId])
 }
 
 model PemeriksaanIbuHamil {
-  id                Int       @id @default(autoincrement())
-  ibuHamilId        Int
-  ibuHamil          IbuHamil  @relation(fields: [ibuHamilId], references: [id])
-  kegiatanId        Int?
-  kegiatan          Kegiatan? @relation(fields: [kegiatanId], references: [id])
-  tanggal           DateTime
-  usiaKehamilan     Int
-  beratBadan        Float?
-  tekananDarah      String?
-  tinggiFundus      Float?
-  detakJantungJanin Int?
-  keluhan           String?
-  tindakan          String?
-  konseling         String?
-  kaderId           Int?
-  kader             Kader?    @relation(fields: [kaderId], references: [id])
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
+  id                    Int                  @id @default(autoincrement())
+  ibuHamilId            Int
+  ibuHamil              IbuHamil             @relation(fields: [ibuHamilId], references: [id])
+  kegiatanId            Int?
+  kegiatan              Kegiatan?            @relation(fields: [kegiatanId], references: [id])
+  tanggal               DateTime             @default(now())
+  usiaKehamilan         Int
+  beratBadan            Float?
+  tekananDarah          String?
+  tinggiFundus          Float?
+  detakJantungJanin     Int?
+  pemberianFe           Boolean? // Tablet Fe (zat besi)
+  pmt                   Boolean? // true jika diberi PMT (misal biskuit ibu hamil)
+  jenisPmt              String? // jenis PMT
+  keluhan               String?
+  tindakan              String?
+  konseling             String?
+  kaderId               Int?
+  kader                 Kader?               @relation(fields: [kaderId], references: [id])
+  pelaksanaanKegiatanId Int?
+  pelaksanaanKegiatan   PelaksanaanKegiatan? @relation(fields: [pelaksanaanKegiatanId], references: [id])
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
 
   @@index([ibuHamilId])
   @@index([kegiatanId])
 }
 
+enum StatusPelaksanaan {
+  belum_mulai
+  berjalan
+  selesai
+}
+
+model PelaksanaanKegiatan {
+  id                  Int                   @id @default(autoincrement())
+  kegiatanId          Int
+  kegiatan            Kegiatan              @relation(fields: [kegiatanId], references: [id])
+  posyanduId          Int
+  posyandu            Posyandu              @relation(fields: [posyanduId], references: [id])
+  kaderId             Int
+  kader               Kader                 @relation(fields: [kaderId], references: [id])
+  tanggalMulai        DateTime?
+  tanggalSelesai      DateTime?
+  status              StatusPelaksanaan     @default(belum_mulai)
+  jumlahBalita        Int? // total balita yang diperiksa
+  jumlahIbuHamil      Int? // total ibu hamil yang diperiksa
+  catatanUmum         String?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  pemeriksaanBalita   PemeriksaanBalita[]
+  pemeriksaanIbuHamil PemeriksaanIbuHamil[]
+
+  @@index([kegiatanId])
+  @@index([posyanduId])
+  @@index([kaderId])
+}
+
 model StatusGiziBalita {
-  id           Int      @id @default(autoincrement())
-  balitaId     Int
-  balita       Balita   @relation(fields: [balitaId], references: [id])
-  tanggal      DateTime
-  beratBadan   Float
-  tinggiBadan  Float
-  zScoreBBTB   Float?
-  zScoreBBU    Float?
-  zScoreTBU    Float?
-  kategoriGizi String? // Gizi Baik, Gizi Kurang, dst
-  createdAt    DateTime @default(now())
+  id                  Int                @id @default(autoincrement())
+  balitaId            Int
+  balita              Balita             @relation(fields: [balitaId], references: [id])
+  pemeriksaanBalitaId Int? // bisa null jika status gizi bukan hasil pemeriksaan
+  pemeriksaanBalita   PemeriksaanBalita? @relation(fields: [pemeriksaanBalitaId], references: [id])
+  tanggal             DateTime
+  beratBadan          Float
+  tinggiBadan         Float
+  zScoreBBTB          Float?
+  zScoreBBU           Float?
+  zScoreTBU           Float?
+  kategoriGizi        String? // Gizi Baik, Gizi Kurang, dst
+  statusStunting      String? // Normal, Pendek, Sangat Pendek
+  createdAt           DateTime           @default(now())
 }

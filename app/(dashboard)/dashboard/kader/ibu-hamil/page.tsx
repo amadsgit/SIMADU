@@ -181,7 +181,7 @@ export default function Page() {
             <table className="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
               <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
                 <tr>
-                  <th className="p-4 text-left">#</th>
+                  <th className="p-4 text-left">No</th>
                   <th className="px-6 py-4 text-left">Nama Ibu Hamil</th>
                   <th className="px-6 py-4 text-left">No KK & NIK</th>
                   <th className="px-6 py-4 text-left">Tanggal Lahir</th>

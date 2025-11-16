@@ -41,7 +41,7 @@ export async function GET() {
           select: { id: true, nama: true },
         },
       },
-      orderBy: { tanggalPelaksanaan: 'asc' },
+      orderBy: { id: 'desc' },
     });
 
     return NextResponse.json(kegiatan);

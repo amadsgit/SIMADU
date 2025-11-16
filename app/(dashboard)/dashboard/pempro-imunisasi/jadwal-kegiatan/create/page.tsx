@@ -70,7 +70,7 @@ export default function TambahKegiatanPage() {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/pemproImunisasiJadwal', {
+      const res = await fetch('/api/pemproImunisasi/jadwal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

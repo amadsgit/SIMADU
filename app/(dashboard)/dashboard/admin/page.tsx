@@ -1,7 +1,6 @@
 import {
   UsersIcon,
   ClipboardDocumentListIcon,
-  CalendarDaysIcon,
   DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import SummaryCard from '@/app/ui/dashboard/summary-card';

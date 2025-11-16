@@ -56,7 +56,7 @@ export default function EditKegiatanPage() {
   useEffect(() => {
     const fetchKegiatan = async () => {
       try {
-        const res = await fetch(`/api/pemproImunisasiJadwal/${id}`);
+        const res = await fetch(`/api/pemproImunisasi/jadwal/${id}`);
         if (!res.ok) throw new Error('Data kegiatan tidak ditemukan');
         const data = await res.json();
 

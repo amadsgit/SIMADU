@@ -63,7 +63,7 @@ export default function JadwalKegiatanPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/pemproKiaJadwal');
+        const res = await fetch('/api/pemproKia/jadwal');
         const data = await res.json();
         setKegiatanList(data);
       } catch (error) {

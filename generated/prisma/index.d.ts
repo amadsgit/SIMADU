@@ -79,6 +79,11 @@ export type PemeriksaanBalita = $Result.DefaultSelection<Prisma.$PemeriksaanBali
  */
 export type PemeriksaanIbuHamil = $Result.DefaultSelection<Prisma.$PemeriksaanIbuHamilPayload>
 /**
+ * Model PelaksanaanKegiatan
+ * 
+ */
+export type PelaksanaanKegiatan = $Result.DefaultSelection<Prisma.$PelaksanaanKegiatanPayload>
+/**
  * Model StatusGiziBalita
  * 
  */
@@ -99,11 +104,24 @@ export namespace $Enums {
 
 export type Akreditasi = (typeof Akreditasi)[keyof typeof Akreditasi]
 
+
+export const StatusPelaksanaan: {
+  belum_mulai: 'belum_mulai',
+  berjalan: 'berjalan',
+  selesai: 'selesai'
+};
+
+export type StatusPelaksanaan = (typeof StatusPelaksanaan)[keyof typeof StatusPelaksanaan]
+
 }
 
 export type Akreditasi = $Enums.Akreditasi
 
 export const Akreditasi: typeof $Enums.Akreditasi
+
+export type StatusPelaksanaan = $Enums.StatusPelaksanaan
+
+export const StatusPelaksanaan: typeof $Enums.StatusPelaksanaan
 
 /**
  * ##  Prisma Client ʲˢ
@@ -359,6 +377,16 @@ export class PrismaClient<
     * ```
     */
   get pemeriksaanIbuHamil(): Prisma.PemeriksaanIbuHamilDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pelaksanaanKegiatan`: Exposes CRUD operations for the **PelaksanaanKegiatan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PelaksanaanKegiatans
+    * const pelaksanaanKegiatans = await prisma.pelaksanaanKegiatan.findMany()
+    * ```
+    */
+  get pelaksanaanKegiatan(): Prisma.PelaksanaanKegiatanDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.statusGiziBalita`: Exposes CRUD operations for the **StatusGiziBalita** model.
@@ -822,6 +850,7 @@ export namespace Prisma {
     IbuHamil: 'IbuHamil',
     PemeriksaanBalita: 'PemeriksaanBalita',
     PemeriksaanIbuHamil: 'PemeriksaanIbuHamil',
+    PelaksanaanKegiatan: 'PelaksanaanKegiatan',
     StatusGiziBalita: 'StatusGiziBalita'
   };
 
@@ -841,7 +870,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "kelurahan" | "posyandu" | "kader" | "role" | "user" | "otp" | "klaster" | "programKesehatan" | "kegiatan" | "balita" | "ibuHamil" | "pemeriksaanBalita" | "pemeriksaanIbuHamil" | "statusGiziBalita"
+      modelProps: "kelurahan" | "posyandu" | "kader" | "role" | "user" | "otp" | "klaster" | "programKesehatan" | "kegiatan" | "balita" | "ibuHamil" | "pemeriksaanBalita" | "pemeriksaanIbuHamil" | "pelaksanaanKegiatan" | "statusGiziBalita"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1807,6 +1836,80 @@ export namespace Prisma {
           }
         }
       }
+      PelaksanaanKegiatan: {
+        payload: Prisma.$PelaksanaanKegiatanPayload<ExtArgs>
+        fields: Prisma.PelaksanaanKegiatanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PelaksanaanKegiatanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PelaksanaanKegiatanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          findFirst: {
+            args: Prisma.PelaksanaanKegiatanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PelaksanaanKegiatanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          findMany: {
+            args: Prisma.PelaksanaanKegiatanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>[]
+          }
+          create: {
+            args: Prisma.PelaksanaanKegiatanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          createMany: {
+            args: Prisma.PelaksanaanKegiatanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PelaksanaanKegiatanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>[]
+          }
+          delete: {
+            args: Prisma.PelaksanaanKegiatanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          update: {
+            args: Prisma.PelaksanaanKegiatanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PelaksanaanKegiatanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PelaksanaanKegiatanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PelaksanaanKegiatanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>[]
+          }
+          upsert: {
+            args: Prisma.PelaksanaanKegiatanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PelaksanaanKegiatanPayload>
+          }
+          aggregate: {
+            args: Prisma.PelaksanaanKegiatanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePelaksanaanKegiatan>
+          }
+          groupBy: {
+            args: Prisma.PelaksanaanKegiatanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PelaksanaanKegiatanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PelaksanaanKegiatanCountArgs<ExtArgs>
+            result: $Utils.Optional<PelaksanaanKegiatanCountAggregateOutputType> | number
+          }
+        }
+      }
       StatusGiziBalita: {
         payload: Prisma.$StatusGiziBalitaPayload<ExtArgs>
         fields: Prisma.StatusGiziBalitaFieldRefs
@@ -1986,6 +2089,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilOmit
     pemeriksaanBalita?: PemeriksaanBalitaOmit
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilOmit
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOmit
     statusGiziBalita?: StatusGiziBalitaOmit
   }
 
@@ -2121,6 +2225,7 @@ export namespace Prisma {
     kegiatan: number
     balita: number
     ibuHamil: number
+    pelaksanaanKegiatan: number
   }
 
   export type PosyanduCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2128,6 +2233,7 @@ export namespace Prisma {
     kegiatan?: boolean | PosyanduCountOutputTypeCountKegiatanArgs
     balita?: boolean | PosyanduCountOutputTypeCountBalitaArgs
     ibuHamil?: boolean | PosyanduCountOutputTypeCountIbuHamilArgs
+    pelaksanaanKegiatan?: boolean | PosyanduCountOutputTypeCountPelaksanaanKegiatanArgs
   }
 
   // Custom InputTypes
@@ -2169,6 +2275,13 @@ export namespace Prisma {
     where?: IbuHamilWhereInput
   }
 
+  /**
+   * PosyanduCountOutputType without action
+   */
+  export type PosyanduCountOutputTypeCountPelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PelaksanaanKegiatanWhereInput
+  }
+
 
   /**
    * Count Type KaderCountOutputType
@@ -2179,6 +2292,7 @@ export namespace Prisma {
     ibuHamil: number
     periksaBalita: number
     periksaIbuHamil: number
+    pelaksanaanKegiatan: number
   }
 
   export type KaderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2186,6 +2300,7 @@ export namespace Prisma {
     ibuHamil?: boolean | KaderCountOutputTypeCountIbuHamilArgs
     periksaBalita?: boolean | KaderCountOutputTypeCountPeriksaBalitaArgs
     periksaIbuHamil?: boolean | KaderCountOutputTypeCountPeriksaIbuHamilArgs
+    pelaksanaanKegiatan?: boolean | KaderCountOutputTypeCountPelaksanaanKegiatanArgs
   }
 
   // Custom InputTypes
@@ -2225,6 +2340,13 @@ export namespace Prisma {
    */
   export type KaderCountOutputTypeCountPeriksaIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PemeriksaanIbuHamilWhereInput
+  }
+
+  /**
+   * KaderCountOutputType without action
+   */
+  export type KaderCountOutputTypeCountPelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PelaksanaanKegiatanWhereInput
   }
 
 
@@ -2359,11 +2481,13 @@ export namespace Prisma {
   export type KegiatanCountOutputType = {
     pemeriksaanBalita: number
     pemeriksaanIbuHamil: number
+    pelaksanaanKegiatan: number
   }
 
   export type KegiatanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pemeriksaanBalita?: boolean | KegiatanCountOutputTypeCountPemeriksaanBalitaArgs
     pemeriksaanIbuHamil?: boolean | KegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs
+    pelaksanaanKegiatan?: boolean | KegiatanCountOutputTypeCountPelaksanaanKegiatanArgs
   }
 
   // Custom InputTypes
@@ -2389,6 +2513,13 @@ export namespace Prisma {
    */
   export type KegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PemeriksaanIbuHamilWhereInput
+  }
+
+  /**
+   * KegiatanCountOutputType without action
+   */
+  export type KegiatanCountOutputTypeCountPelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PelaksanaanKegiatanWhereInput
   }
 
 
@@ -2459,6 +2590,77 @@ export namespace Prisma {
    * IbuHamilCountOutputType without action
    */
   export type IbuHamilCountOutputTypeCountPemeriksaanKehamilanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanIbuHamilWhereInput
+  }
+
+
+  /**
+   * Count Type PemeriksaanBalitaCountOutputType
+   */
+
+  export type PemeriksaanBalitaCountOutputType = {
+    statusGizi: number
+  }
+
+  export type PemeriksaanBalitaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    statusGizi?: boolean | PemeriksaanBalitaCountOutputTypeCountStatusGiziArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PemeriksaanBalitaCountOutputType without action
+   */
+  export type PemeriksaanBalitaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalitaCountOutputType
+     */
+    select?: PemeriksaanBalitaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PemeriksaanBalitaCountOutputType without action
+   */
+  export type PemeriksaanBalitaCountOutputTypeCountStatusGiziArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StatusGiziBalitaWhereInput
+  }
+
+
+  /**
+   * Count Type PelaksanaanKegiatanCountOutputType
+   */
+
+  export type PelaksanaanKegiatanCountOutputType = {
+    pemeriksaanBalita: number
+    pemeriksaanIbuHamil: number
+  }
+
+  export type PelaksanaanKegiatanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pemeriksaanBalita?: boolean | PelaksanaanKegiatanCountOutputTypeCountPemeriksaanBalitaArgs
+    pemeriksaanIbuHamil?: boolean | PelaksanaanKegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PelaksanaanKegiatanCountOutputType without action
+   */
+  export type PelaksanaanKegiatanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatanCountOutputType
+     */
+    select?: PelaksanaanKegiatanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PelaksanaanKegiatanCountOutputType without action
+   */
+  export type PelaksanaanKegiatanCountOutputTypeCountPemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  /**
+   * PelaksanaanKegiatanCountOutputType without action
+   */
+  export type PelaksanaanKegiatanCountOutputTypeCountPemeriksaanIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PemeriksaanIbuHamilWhereInput
   }
 
@@ -3829,6 +4031,7 @@ export namespace Prisma {
     kegiatan?: boolean | Posyandu$kegiatanArgs<ExtArgs>
     balita?: boolean | Posyandu$balitaArgs<ExtArgs>
     ibuHamil?: boolean | Posyandu$ibuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Posyandu$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | PosyanduCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["posyandu"]>
 
@@ -3886,6 +4089,7 @@ export namespace Prisma {
     kegiatan?: boolean | Posyandu$kegiatanArgs<ExtArgs>
     balita?: boolean | Posyandu$balitaArgs<ExtArgs>
     ibuHamil?: boolean | Posyandu$ibuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Posyandu$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | PosyanduCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PosyanduIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3903,6 +4107,7 @@ export namespace Prisma {
       kegiatan: Prisma.$KegiatanPayload<ExtArgs>[]
       balita: Prisma.$BalitaPayload<ExtArgs>[]
       ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>[]
+      pelaksanaanKegiatan: Prisma.$PelaksanaanKegiatanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4316,6 +4521,7 @@ export namespace Prisma {
     kegiatan<T extends Posyandu$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$kegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     balita<T extends Posyandu$balitaArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$balitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ibuHamil<T extends Posyandu$ibuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$ibuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pelaksanaanKegiatan<T extends Posyandu$pelaksanaanKegiatanArgs<ExtArgs> = {}>(args?: Subset<T, Posyandu$pelaksanaanKegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4868,6 +5074,30 @@ export namespace Prisma {
   }
 
   /**
+   * Posyandu.pelaksanaanKegiatan
+   */
+  export type Posyandu$pelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    where?: PelaksanaanKegiatanWhereInput
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
+  }
+
+  /**
    * Posyandu without action
    */
   export type PosyanduDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5126,6 +5356,7 @@ export namespace Prisma {
     ibuHamil?: boolean | Kader$ibuHamilArgs<ExtArgs>
     periksaBalita?: boolean | Kader$periksaBalitaArgs<ExtArgs>
     periksaIbuHamil?: boolean | Kader$periksaIbuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Kader$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | KaderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["kader"]>
 
@@ -5177,6 +5408,7 @@ export namespace Prisma {
     ibuHamil?: boolean | Kader$ibuHamilArgs<ExtArgs>
     periksaBalita?: boolean | Kader$periksaBalitaArgs<ExtArgs>
     periksaIbuHamil?: boolean | Kader$periksaIbuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Kader$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | KaderCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type KaderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5197,6 +5429,7 @@ export namespace Prisma {
       ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>[]
       periksaBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
       periksaIbuHamil: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
+      pelaksanaanKegiatan: Prisma.$PelaksanaanKegiatanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5608,6 +5841,7 @@ export namespace Prisma {
     ibuHamil<T extends Kader$ibuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kader$ibuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     periksaBalita<T extends Kader$periksaBalitaArgs<ExtArgs> = {}>(args?: Subset<T, Kader$periksaBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     periksaIbuHamil<T extends Kader$periksaIbuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kader$periksaIbuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pelaksanaanKegiatan<T extends Kader$pelaksanaanKegiatanArgs<ExtArgs> = {}>(args?: Subset<T, Kader$pelaksanaanKegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6154,6 +6388,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * Kader.pelaksanaanKegiatan
+   */
+  export type Kader$pelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    where?: PelaksanaanKegiatanWhereInput
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
   }
 
   /**
@@ -12092,6 +12350,7 @@ export namespace Prisma {
     programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
     pemeriksaanBalita?: boolean | Kegiatan$pemeriksaanBalitaArgs<ExtArgs>
     pemeriksaanIbuHamil?: boolean | Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Kegiatan$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | KegiatanCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["kegiatan"]>
 
@@ -12141,6 +12400,7 @@ export namespace Prisma {
     programKesehatan?: boolean | ProgramKesehatanDefaultArgs<ExtArgs>
     pemeriksaanBalita?: boolean | Kegiatan$pemeriksaanBalitaArgs<ExtArgs>
     pemeriksaanIbuHamil?: boolean | Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | Kegiatan$pelaksanaanKegiatanArgs<ExtArgs>
     _count?: boolean | KegiatanCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type KegiatanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12159,6 +12419,7 @@ export namespace Prisma {
       programKesehatan: Prisma.$ProgramKesehatanPayload<ExtArgs>
       pemeriksaanBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
       pemeriksaanIbuHamil: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
+      pelaksanaanKegiatan: Prisma.$PelaksanaanKegiatanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -12568,6 +12829,7 @@ export namespace Prisma {
     programKesehatan<T extends ProgramKesehatanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProgramKesehatanDefaultArgs<ExtArgs>>): Prisma__ProgramKesehatanClient<$Result.GetResult<Prisma.$ProgramKesehatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     pemeriksaanBalita<T extends Kegiatan$pemeriksaanBalitaArgs<ExtArgs> = {}>(args?: Subset<T, Kegiatan$pemeriksaanBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pemeriksaanIbuHamil<T extends Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs> = {}>(args?: Subset<T, Kegiatan$pemeriksaanIbuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pelaksanaanKegiatan<T extends Kegiatan$pelaksanaanKegiatanArgs<ExtArgs> = {}>(args?: Subset<T, Kegiatan$pelaksanaanKegiatanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13047,6 +13309,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * Kegiatan.pelaksanaanKegiatan
+   */
+  export type Kegiatan$pelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    where?: PelaksanaanKegiatanWhereInput
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
   }
 
   /**
@@ -15727,6 +16013,7 @@ export namespace Prisma {
     tinggiBadan: number | null
     lingkarKepala: number | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
   }
 
   export type PemeriksaanBalitaSumAggregateOutputType = {
@@ -15737,6 +16024,7 @@ export namespace Prisma {
     tinggiBadan: number | null
     lingkarKepala: number | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
   }
 
   export type PemeriksaanBalitaMinAggregateOutputType = {
@@ -15749,9 +16037,14 @@ export namespace Prisma {
     lingkarKepala: number | null
     imunisasi: string | null
     vitamin: boolean | null
+    jenisVitamin: string | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
+    tindakan: string | null
     catatan: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15766,9 +16059,14 @@ export namespace Prisma {
     lingkarKepala: number | null
     imunisasi: string | null
     vitamin: boolean | null
+    jenisVitamin: string | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
+    tindakan: string | null
     catatan: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15783,9 +16081,14 @@ export namespace Prisma {
     lingkarKepala: number
     imunisasi: number
     vitamin: number
+    jenisVitamin: number
+    pmt: number
+    jenisPmt: number
     keluhan: number
+    tindakan: number
     catatan: number
     kaderId: number
+    pelaksanaanKegiatanId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -15800,6 +16103,7 @@ export namespace Prisma {
     tinggiBadan?: true
     lingkarKepala?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
   }
 
   export type PemeriksaanBalitaSumAggregateInputType = {
@@ -15810,6 +16114,7 @@ export namespace Prisma {
     tinggiBadan?: true
     lingkarKepala?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
   }
 
   export type PemeriksaanBalitaMinAggregateInputType = {
@@ -15822,9 +16127,14 @@ export namespace Prisma {
     lingkarKepala?: true
     imunisasi?: true
     vitamin?: true
+    jenisVitamin?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
+    tindakan?: true
     catatan?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15839,9 +16149,14 @@ export namespace Prisma {
     lingkarKepala?: true
     imunisasi?: true
     vitamin?: true
+    jenisVitamin?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
+    tindakan?: true
     catatan?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15856,9 +16171,14 @@ export namespace Prisma {
     lingkarKepala?: true
     imunisasi?: true
     vitamin?: true
+    jenisVitamin?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
+    tindakan?: true
     catatan?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -15960,9 +16280,14 @@ export namespace Prisma {
     lingkarKepala: number | null
     imunisasi: string | null
     vitamin: boolean | null
+    jenisVitamin: string | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
+    tindakan: string | null
     catatan: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date
     updatedAt: Date
     _count: PemeriksaanBalitaCountAggregateOutputType | null
@@ -15996,14 +16321,22 @@ export namespace Prisma {
     lingkarKepala?: boolean
     imunisasi?: boolean
     vitamin?: boolean
+    jenisVitamin?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
+    tindakan?: boolean
     catatan?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
+    statusGizi?: boolean | PemeriksaanBalita$statusGiziArgs<ExtArgs>
+    _count?: boolean | PemeriksaanBalitaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanBalita"]>
 
   export type PemeriksaanBalitaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -16016,14 +16349,20 @@ export namespace Prisma {
     lingkarKepala?: boolean
     imunisasi?: boolean
     vitamin?: boolean
+    jenisVitamin?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
+    tindakan?: boolean
     catatan?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanBalita"]>
 
   export type PemeriksaanBalitaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -16036,14 +16375,20 @@ export namespace Prisma {
     lingkarKepala?: boolean
     imunisasi?: boolean
     vitamin?: boolean
+    jenisVitamin?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
+    tindakan?: boolean
     catatan?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanBalita"]>
 
   export type PemeriksaanBalitaSelectScalar = {
@@ -16056,28 +16401,38 @@ export namespace Prisma {
     lingkarKepala?: boolean
     imunisasi?: boolean
     vitamin?: boolean
+    jenisVitamin?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
+    tindakan?: boolean
     catatan?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PemeriksaanBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "kegiatanId" | "tanggal" | "beratBadan" | "tinggiBadan" | "lingkarKepala" | "imunisasi" | "vitamin" | "keluhan" | "catatan" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanBalita"]>
+  export type PemeriksaanBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "kegiatanId" | "tanggal" | "beratBadan" | "tinggiBadan" | "lingkarKepala" | "imunisasi" | "vitamin" | "jenisVitamin" | "pmt" | "jenisPmt" | "keluhan" | "tindakan" | "catatan" | "kaderId" | "pelaksanaanKegiatanId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanBalita"]>
   export type PemeriksaanBalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
+    statusGizi?: boolean | PemeriksaanBalita$statusGiziArgs<ExtArgs>
+    _count?: boolean | PemeriksaanBalitaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PemeriksaanBalitaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
   }
   export type PemeriksaanBalitaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanBalita$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanBalita$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>
   }
 
   export type $PemeriksaanBalitaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16086,6 +16441,8 @@ export namespace Prisma {
       balita: Prisma.$BalitaPayload<ExtArgs>
       kegiatan: Prisma.$KegiatanPayload<ExtArgs> | null
       kader: Prisma.$KaderPayload<ExtArgs> | null
+      pelaksanaanKegiatan: Prisma.$PelaksanaanKegiatanPayload<ExtArgs> | null
+      statusGizi: Prisma.$StatusGiziBalitaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -16097,9 +16454,14 @@ export namespace Prisma {
       lingkarKepala: number | null
       imunisasi: string | null
       vitamin: boolean | null
+      jenisVitamin: string | null
+      pmt: boolean | null
+      jenisPmt: string | null
       keluhan: string | null
+      tindakan: string | null
       catatan: string | null
       kaderId: number | null
+      pelaksanaanKegiatanId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["pemeriksaanBalita"]>
@@ -16499,6 +16861,8 @@ export namespace Prisma {
     balita<T extends BalitaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BalitaDefaultArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     kegiatan<T extends PemeriksaanBalita$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$kegiatanArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     kader<T extends PemeriksaanBalita$kaderArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    pelaksanaanKegiatan<T extends PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    statusGizi<T extends PemeriksaanBalita$statusGiziArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanBalita$statusGiziArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusGiziBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16537,9 +16901,14 @@ export namespace Prisma {
     readonly lingkarKepala: FieldRef<"PemeriksaanBalita", 'Float'>
     readonly imunisasi: FieldRef<"PemeriksaanBalita", 'String'>
     readonly vitamin: FieldRef<"PemeriksaanBalita", 'Boolean'>
+    readonly jenisVitamin: FieldRef<"PemeriksaanBalita", 'String'>
+    readonly pmt: FieldRef<"PemeriksaanBalita", 'Boolean'>
+    readonly jenisPmt: FieldRef<"PemeriksaanBalita", 'String'>
     readonly keluhan: FieldRef<"PemeriksaanBalita", 'String'>
+    readonly tindakan: FieldRef<"PemeriksaanBalita", 'String'>
     readonly catatan: FieldRef<"PemeriksaanBalita", 'String'>
     readonly kaderId: FieldRef<"PemeriksaanBalita", 'Int'>
+    readonly pelaksanaanKegiatanId: FieldRef<"PemeriksaanBalita", 'Int'>
     readonly createdAt: FieldRef<"PemeriksaanBalita", 'DateTime'>
     readonly updatedAt: FieldRef<"PemeriksaanBalita", 'DateTime'>
   }
@@ -16976,6 +17345,49 @@ export namespace Prisma {
   }
 
   /**
+   * PemeriksaanBalita.pelaksanaanKegiatan
+   */
+  export type PemeriksaanBalita$pelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    where?: PelaksanaanKegiatanWhereInput
+  }
+
+  /**
+   * PemeriksaanBalita.statusGizi
+   */
+  export type PemeriksaanBalita$statusGiziArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusGiziBalita
+     */
+    select?: StatusGiziBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusGiziBalita
+     */
+    omit?: StatusGiziBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusGiziBalitaInclude<ExtArgs> | null
+    where?: StatusGiziBalitaWhereInput
+    orderBy?: StatusGiziBalitaOrderByWithRelationInput | StatusGiziBalitaOrderByWithRelationInput[]
+    cursor?: StatusGiziBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StatusGiziBalitaScalarFieldEnum | StatusGiziBalitaScalarFieldEnum[]
+  }
+
+  /**
    * PemeriksaanBalita without action
    */
   export type PemeriksaanBalitaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17015,6 +17427,7 @@ export namespace Prisma {
     tinggiFundus: number | null
     detakJantungJanin: number | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
   }
 
   export type PemeriksaanIbuHamilSumAggregateOutputType = {
@@ -17026,6 +17439,7 @@ export namespace Prisma {
     tinggiFundus: number | null
     detakJantungJanin: number | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
   }
 
   export type PemeriksaanIbuHamilMinAggregateOutputType = {
@@ -17038,10 +17452,14 @@ export namespace Prisma {
     tekananDarah: string | null
     tinggiFundus: number | null
     detakJantungJanin: number | null
+    pemberianFe: boolean | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
     konseling: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -17056,10 +17474,14 @@ export namespace Prisma {
     tekananDarah: string | null
     tinggiFundus: number | null
     detakJantungJanin: number | null
+    pemberianFe: boolean | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
     konseling: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -17074,10 +17496,14 @@ export namespace Prisma {
     tekananDarah: number
     tinggiFundus: number
     detakJantungJanin: number
+    pemberianFe: number
+    pmt: number
+    jenisPmt: number
     keluhan: number
     tindakan: number
     konseling: number
     kaderId: number
+    pelaksanaanKegiatanId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -17093,6 +17519,7 @@ export namespace Prisma {
     tinggiFundus?: true
     detakJantungJanin?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
   }
 
   export type PemeriksaanIbuHamilSumAggregateInputType = {
@@ -17104,6 +17531,7 @@ export namespace Prisma {
     tinggiFundus?: true
     detakJantungJanin?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
   }
 
   export type PemeriksaanIbuHamilMinAggregateInputType = {
@@ -17116,10 +17544,14 @@ export namespace Prisma {
     tekananDarah?: true
     tinggiFundus?: true
     detakJantungJanin?: true
+    pemberianFe?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
     tindakan?: true
     konseling?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -17134,10 +17566,14 @@ export namespace Prisma {
     tekananDarah?: true
     tinggiFundus?: true
     detakJantungJanin?: true
+    pemberianFe?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
     tindakan?: true
     konseling?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -17152,10 +17588,14 @@ export namespace Prisma {
     tekananDarah?: true
     tinggiFundus?: true
     detakJantungJanin?: true
+    pemberianFe?: true
+    pmt?: true
+    jenisPmt?: true
     keluhan?: true
     tindakan?: true
     konseling?: true
     kaderId?: true
+    pelaksanaanKegiatanId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -17257,10 +17697,14 @@ export namespace Prisma {
     tekananDarah: string | null
     tinggiFundus: number | null
     detakJantungJanin: number | null
+    pemberianFe: boolean | null
+    pmt: boolean | null
+    jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
     konseling: string | null
     kaderId: number | null
+    pelaksanaanKegiatanId: number | null
     createdAt: Date
     updatedAt: Date
     _count: PemeriksaanIbuHamilCountAggregateOutputType | null
@@ -17294,15 +17738,20 @@ export namespace Prisma {
     tekananDarah?: boolean
     tinggiFundus?: boolean
     detakJantungJanin?: boolean
+    pemberianFe?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
     konseling?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
 
   export type PemeriksaanIbuHamilSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17315,15 +17764,20 @@ export namespace Prisma {
     tekananDarah?: boolean
     tinggiFundus?: boolean
     detakJantungJanin?: boolean
+    pemberianFe?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
     konseling?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
 
   export type PemeriksaanIbuHamilSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17336,15 +17790,20 @@ export namespace Prisma {
     tekananDarah?: boolean
     tinggiFundus?: boolean
     detakJantungJanin?: boolean
+    pemberianFe?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
     konseling?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
 
   export type PemeriksaanIbuHamilSelectScalar = {
@@ -17357,29 +17816,36 @@ export namespace Prisma {
     tekananDarah?: boolean
     tinggiFundus?: boolean
     detakJantungJanin?: boolean
+    pemberianFe?: boolean
+    pmt?: boolean
+    jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
     konseling?: boolean
     kaderId?: boolean
+    pelaksanaanKegiatanId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PemeriksaanIbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ibuHamilId" | "kegiatanId" | "tanggal" | "usiaKehamilan" | "beratBadan" | "tekananDarah" | "tinggiFundus" | "detakJantungJanin" | "keluhan" | "tindakan" | "konseling" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanIbuHamil"]>
+  export type PemeriksaanIbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ibuHamilId" | "kegiatanId" | "tanggal" | "usiaKehamilan" | "beratBadan" | "tekananDarah" | "tinggiFundus" | "detakJantungJanin" | "pemberianFe" | "pmt" | "jenisPmt" | "keluhan" | "tindakan" | "konseling" | "kaderId" | "pelaksanaanKegiatanId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanIbuHamil"]>
   export type PemeriksaanIbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }
   export type PemeriksaanIbuHamilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }
   export type PemeriksaanIbuHamilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
     kader?: boolean | PemeriksaanIbuHamil$kaderArgs<ExtArgs>
+    pelaksanaanKegiatan?: boolean | PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>
   }
 
   export type $PemeriksaanIbuHamilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17388,6 +17854,7 @@ export namespace Prisma {
       ibuHamil: Prisma.$IbuHamilPayload<ExtArgs>
       kegiatan: Prisma.$KegiatanPayload<ExtArgs> | null
       kader: Prisma.$KaderPayload<ExtArgs> | null
+      pelaksanaanKegiatan: Prisma.$PelaksanaanKegiatanPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -17399,10 +17866,14 @@ export namespace Prisma {
       tekananDarah: string | null
       tinggiFundus: number | null
       detakJantungJanin: number | null
+      pemberianFe: boolean | null
+      pmt: boolean | null
+      jenisPmt: string | null
       keluhan: string | null
       tindakan: string | null
       konseling: string | null
       kaderId: number | null
+      pelaksanaanKegiatanId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["pemeriksaanIbuHamil"]>
@@ -17802,6 +18273,7 @@ export namespace Prisma {
     ibuHamil<T extends IbuHamilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IbuHamilDefaultArgs<ExtArgs>>): Prisma__IbuHamilClient<$Result.GetResult<Prisma.$IbuHamilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     kegiatan<T extends PemeriksaanIbuHamil$kegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     kader<T extends PemeriksaanIbuHamil$kaderArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanIbuHamil$kaderArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    pelaksanaanKegiatan<T extends PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs> = {}>(args?: Subset<T, PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17840,10 +18312,14 @@ export namespace Prisma {
     readonly tekananDarah: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly tinggiFundus: FieldRef<"PemeriksaanIbuHamil", 'Float'>
     readonly detakJantungJanin: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly pemberianFe: FieldRef<"PemeriksaanIbuHamil", 'Boolean'>
+    readonly pmt: FieldRef<"PemeriksaanIbuHamil", 'Boolean'>
+    readonly jenisPmt: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly keluhan: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly tindakan: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly konseling: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly kaderId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
+    readonly pelaksanaanKegiatanId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
     readonly createdAt: FieldRef<"PemeriksaanIbuHamil", 'DateTime'>
     readonly updatedAt: FieldRef<"PemeriksaanIbuHamil", 'DateTime'>
   }
@@ -18280,6 +18756,25 @@ export namespace Prisma {
   }
 
   /**
+   * PemeriksaanIbuHamil.pelaksanaanKegiatan
+   */
+  export type PemeriksaanIbuHamil$pelaksanaanKegiatanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    where?: PelaksanaanKegiatanWhereInput
+  }
+
+  /**
    * PemeriksaanIbuHamil without action
    */
   export type PemeriksaanIbuHamilDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18299,6 +18794,1283 @@ export namespace Prisma {
 
 
   /**
+   * Model PelaksanaanKegiatan
+   */
+
+  export type AggregatePelaksanaanKegiatan = {
+    _count: PelaksanaanKegiatanCountAggregateOutputType | null
+    _avg: PelaksanaanKegiatanAvgAggregateOutputType | null
+    _sum: PelaksanaanKegiatanSumAggregateOutputType | null
+    _min: PelaksanaanKegiatanMinAggregateOutputType | null
+    _max: PelaksanaanKegiatanMaxAggregateOutputType | null
+  }
+
+  export type PelaksanaanKegiatanAvgAggregateOutputType = {
+    id: number | null
+    kegiatanId: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    jumlahBalita: number | null
+    jumlahIbuHamil: number | null
+  }
+
+  export type PelaksanaanKegiatanSumAggregateOutputType = {
+    id: number | null
+    kegiatanId: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    jumlahBalita: number | null
+    jumlahIbuHamil: number | null
+  }
+
+  export type PelaksanaanKegiatanMinAggregateOutputType = {
+    id: number | null
+    kegiatanId: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    tanggalMulai: Date | null
+    tanggalSelesai: Date | null
+    status: $Enums.StatusPelaksanaan | null
+    jumlahBalita: number | null
+    jumlahIbuHamil: number | null
+    catatanUmum: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PelaksanaanKegiatanMaxAggregateOutputType = {
+    id: number | null
+    kegiatanId: number | null
+    posyanduId: number | null
+    kaderId: number | null
+    tanggalMulai: Date | null
+    tanggalSelesai: Date | null
+    status: $Enums.StatusPelaksanaan | null
+    jumlahBalita: number | null
+    jumlahIbuHamil: number | null
+    catatanUmum: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PelaksanaanKegiatanCountAggregateOutputType = {
+    id: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai: number
+    tanggalSelesai: number
+    status: number
+    jumlahBalita: number
+    jumlahIbuHamil: number
+    catatanUmum: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PelaksanaanKegiatanAvgAggregateInputType = {
+    id?: true
+    kegiatanId?: true
+    posyanduId?: true
+    kaderId?: true
+    jumlahBalita?: true
+    jumlahIbuHamil?: true
+  }
+
+  export type PelaksanaanKegiatanSumAggregateInputType = {
+    id?: true
+    kegiatanId?: true
+    posyanduId?: true
+    kaderId?: true
+    jumlahBalita?: true
+    jumlahIbuHamil?: true
+  }
+
+  export type PelaksanaanKegiatanMinAggregateInputType = {
+    id?: true
+    kegiatanId?: true
+    posyanduId?: true
+    kaderId?: true
+    tanggalMulai?: true
+    tanggalSelesai?: true
+    status?: true
+    jumlahBalita?: true
+    jumlahIbuHamil?: true
+    catatanUmum?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PelaksanaanKegiatanMaxAggregateInputType = {
+    id?: true
+    kegiatanId?: true
+    posyanduId?: true
+    kaderId?: true
+    tanggalMulai?: true
+    tanggalSelesai?: true
+    status?: true
+    jumlahBalita?: true
+    jumlahIbuHamil?: true
+    catatanUmum?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PelaksanaanKegiatanCountAggregateInputType = {
+    id?: true
+    kegiatanId?: true
+    posyanduId?: true
+    kaderId?: true
+    tanggalMulai?: true
+    tanggalSelesai?: true
+    status?: true
+    jumlahBalita?: true
+    jumlahIbuHamil?: true
+    catatanUmum?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PelaksanaanKegiatanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PelaksanaanKegiatan to aggregate.
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PelaksanaanKegiatans to fetch.
+     */
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PelaksanaanKegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PelaksanaanKegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PelaksanaanKegiatans
+    **/
+    _count?: true | PelaksanaanKegiatanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PelaksanaanKegiatanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PelaksanaanKegiatanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PelaksanaanKegiatanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PelaksanaanKegiatanMaxAggregateInputType
+  }
+
+  export type GetPelaksanaanKegiatanAggregateType<T extends PelaksanaanKegiatanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePelaksanaanKegiatan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePelaksanaanKegiatan[P]>
+      : GetScalarType<T[P], AggregatePelaksanaanKegiatan[P]>
+  }
+
+
+
+
+  export type PelaksanaanKegiatanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PelaksanaanKegiatanWhereInput
+    orderBy?: PelaksanaanKegiatanOrderByWithAggregationInput | PelaksanaanKegiatanOrderByWithAggregationInput[]
+    by: PelaksanaanKegiatanScalarFieldEnum[] | PelaksanaanKegiatanScalarFieldEnum
+    having?: PelaksanaanKegiatanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PelaksanaanKegiatanCountAggregateInputType | true
+    _avg?: PelaksanaanKegiatanAvgAggregateInputType
+    _sum?: PelaksanaanKegiatanSumAggregateInputType
+    _min?: PelaksanaanKegiatanMinAggregateInputType
+    _max?: PelaksanaanKegiatanMaxAggregateInputType
+  }
+
+  export type PelaksanaanKegiatanGroupByOutputType = {
+    id: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai: Date | null
+    tanggalSelesai: Date | null
+    status: $Enums.StatusPelaksanaan
+    jumlahBalita: number | null
+    jumlahIbuHamil: number | null
+    catatanUmum: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PelaksanaanKegiatanCountAggregateOutputType | null
+    _avg: PelaksanaanKegiatanAvgAggregateOutputType | null
+    _sum: PelaksanaanKegiatanSumAggregateOutputType | null
+    _min: PelaksanaanKegiatanMinAggregateOutputType | null
+    _max: PelaksanaanKegiatanMaxAggregateOutputType | null
+  }
+
+  type GetPelaksanaanKegiatanGroupByPayload<T extends PelaksanaanKegiatanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PelaksanaanKegiatanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PelaksanaanKegiatanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PelaksanaanKegiatanGroupByOutputType[P]>
+            : GetScalarType<T[P], PelaksanaanKegiatanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PelaksanaanKegiatanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kegiatanId?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    tanggalMulai?: boolean
+    tanggalSelesai?: boolean
+    status?: boolean
+    jumlahBalita?: boolean
+    jumlahIbuHamil?: boolean
+    catatanUmum?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | PelaksanaanKegiatan$pemeriksaanBalitaArgs<ExtArgs>
+    pemeriksaanIbuHamil?: boolean | PelaksanaanKegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    _count?: boolean | PelaksanaanKegiatanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pelaksanaanKegiatan"]>
+
+  export type PelaksanaanKegiatanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kegiatanId?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    tanggalMulai?: boolean
+    tanggalSelesai?: boolean
+    status?: boolean
+    jumlahBalita?: boolean
+    jumlahIbuHamil?: boolean
+    catatanUmum?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pelaksanaanKegiatan"]>
+
+  export type PelaksanaanKegiatanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kegiatanId?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    tanggalMulai?: boolean
+    tanggalSelesai?: boolean
+    status?: boolean
+    jumlahBalita?: boolean
+    jumlahIbuHamil?: boolean
+    catatanUmum?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pelaksanaanKegiatan"]>
+
+  export type PelaksanaanKegiatanSelectScalar = {
+    id?: boolean
+    kegiatanId?: boolean
+    posyanduId?: boolean
+    kaderId?: boolean
+    tanggalMulai?: boolean
+    tanggalSelesai?: boolean
+    status?: boolean
+    jumlahBalita?: boolean
+    jumlahIbuHamil?: boolean
+    catatanUmum?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PelaksanaanKegiatanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kegiatanId" | "posyanduId" | "kaderId" | "tanggalMulai" | "tanggalSelesai" | "status" | "jumlahBalita" | "jumlahIbuHamil" | "catatanUmum" | "createdAt" | "updatedAt", ExtArgs["result"]["pelaksanaanKegiatan"]>
+  export type PelaksanaanKegiatanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | PelaksanaanKegiatan$pemeriksaanBalitaArgs<ExtArgs>
+    pemeriksaanIbuHamil?: boolean | PelaksanaanKegiatan$pemeriksaanIbuHamilArgs<ExtArgs>
+    _count?: boolean | PelaksanaanKegiatanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PelaksanaanKegiatanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+  }
+  export type PelaksanaanKegiatanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kegiatan?: boolean | KegiatanDefaultArgs<ExtArgs>
+    posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
+    kader?: boolean | KaderDefaultArgs<ExtArgs>
+  }
+
+  export type $PelaksanaanKegiatanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PelaksanaanKegiatan"
+    objects: {
+      kegiatan: Prisma.$KegiatanPayload<ExtArgs>
+      posyandu: Prisma.$PosyanduPayload<ExtArgs>
+      kader: Prisma.$KaderPayload<ExtArgs>
+      pemeriksaanBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs>[]
+      pemeriksaanIbuHamil: Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      kegiatanId: number
+      posyanduId: number
+      kaderId: number
+      tanggalMulai: Date | null
+      tanggalSelesai: Date | null
+      status: $Enums.StatusPelaksanaan
+      jumlahBalita: number | null
+      jumlahIbuHamil: number | null
+      catatanUmum: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["pelaksanaanKegiatan"]>
+    composites: {}
+  }
+
+  type PelaksanaanKegiatanGetPayload<S extends boolean | null | undefined | PelaksanaanKegiatanDefaultArgs> = $Result.GetResult<Prisma.$PelaksanaanKegiatanPayload, S>
+
+  type PelaksanaanKegiatanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PelaksanaanKegiatanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PelaksanaanKegiatanCountAggregateInputType | true
+    }
+
+  export interface PelaksanaanKegiatanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PelaksanaanKegiatan'], meta: { name: 'PelaksanaanKegiatan' } }
+    /**
+     * Find zero or one PelaksanaanKegiatan that matches the filter.
+     * @param {PelaksanaanKegiatanFindUniqueArgs} args - Arguments to find a PelaksanaanKegiatan
+     * @example
+     * // Get one PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PelaksanaanKegiatanFindUniqueArgs>(args: SelectSubset<T, PelaksanaanKegiatanFindUniqueArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PelaksanaanKegiatan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PelaksanaanKegiatanFindUniqueOrThrowArgs} args - Arguments to find a PelaksanaanKegiatan
+     * @example
+     * // Get one PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PelaksanaanKegiatanFindUniqueOrThrowArgs>(args: SelectSubset<T, PelaksanaanKegiatanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PelaksanaanKegiatan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanFindFirstArgs} args - Arguments to find a PelaksanaanKegiatan
+     * @example
+     * // Get one PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PelaksanaanKegiatanFindFirstArgs>(args?: SelectSubset<T, PelaksanaanKegiatanFindFirstArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PelaksanaanKegiatan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanFindFirstOrThrowArgs} args - Arguments to find a PelaksanaanKegiatan
+     * @example
+     * // Get one PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PelaksanaanKegiatanFindFirstOrThrowArgs>(args?: SelectSubset<T, PelaksanaanKegiatanFindFirstOrThrowArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PelaksanaanKegiatans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PelaksanaanKegiatans
+     * const pelaksanaanKegiatans = await prisma.pelaksanaanKegiatan.findMany()
+     * 
+     * // Get first 10 PelaksanaanKegiatans
+     * const pelaksanaanKegiatans = await prisma.pelaksanaanKegiatan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pelaksanaanKegiatanWithIdOnly = await prisma.pelaksanaanKegiatan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PelaksanaanKegiatanFindManyArgs>(args?: SelectSubset<T, PelaksanaanKegiatanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PelaksanaanKegiatan.
+     * @param {PelaksanaanKegiatanCreateArgs} args - Arguments to create a PelaksanaanKegiatan.
+     * @example
+     * // Create one PelaksanaanKegiatan
+     * const PelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.create({
+     *   data: {
+     *     // ... data to create a PelaksanaanKegiatan
+     *   }
+     * })
+     * 
+     */
+    create<T extends PelaksanaanKegiatanCreateArgs>(args: SelectSubset<T, PelaksanaanKegiatanCreateArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PelaksanaanKegiatans.
+     * @param {PelaksanaanKegiatanCreateManyArgs} args - Arguments to create many PelaksanaanKegiatans.
+     * @example
+     * // Create many PelaksanaanKegiatans
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PelaksanaanKegiatanCreateManyArgs>(args?: SelectSubset<T, PelaksanaanKegiatanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PelaksanaanKegiatans and returns the data saved in the database.
+     * @param {PelaksanaanKegiatanCreateManyAndReturnArgs} args - Arguments to create many PelaksanaanKegiatans.
+     * @example
+     * // Create many PelaksanaanKegiatans
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PelaksanaanKegiatans and only return the `id`
+     * const pelaksanaanKegiatanWithIdOnly = await prisma.pelaksanaanKegiatan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PelaksanaanKegiatanCreateManyAndReturnArgs>(args?: SelectSubset<T, PelaksanaanKegiatanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PelaksanaanKegiatan.
+     * @param {PelaksanaanKegiatanDeleteArgs} args - Arguments to delete one PelaksanaanKegiatan.
+     * @example
+     * // Delete one PelaksanaanKegiatan
+     * const PelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.delete({
+     *   where: {
+     *     // ... filter to delete one PelaksanaanKegiatan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PelaksanaanKegiatanDeleteArgs>(args: SelectSubset<T, PelaksanaanKegiatanDeleteArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PelaksanaanKegiatan.
+     * @param {PelaksanaanKegiatanUpdateArgs} args - Arguments to update one PelaksanaanKegiatan.
+     * @example
+     * // Update one PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PelaksanaanKegiatanUpdateArgs>(args: SelectSubset<T, PelaksanaanKegiatanUpdateArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PelaksanaanKegiatans.
+     * @param {PelaksanaanKegiatanDeleteManyArgs} args - Arguments to filter PelaksanaanKegiatans to delete.
+     * @example
+     * // Delete a few PelaksanaanKegiatans
+     * const { count } = await prisma.pelaksanaanKegiatan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PelaksanaanKegiatanDeleteManyArgs>(args?: SelectSubset<T, PelaksanaanKegiatanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PelaksanaanKegiatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PelaksanaanKegiatans
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PelaksanaanKegiatanUpdateManyArgs>(args: SelectSubset<T, PelaksanaanKegiatanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PelaksanaanKegiatans and returns the data updated in the database.
+     * @param {PelaksanaanKegiatanUpdateManyAndReturnArgs} args - Arguments to update many PelaksanaanKegiatans.
+     * @example
+     * // Update many PelaksanaanKegiatans
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PelaksanaanKegiatans and only return the `id`
+     * const pelaksanaanKegiatanWithIdOnly = await prisma.pelaksanaanKegiatan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PelaksanaanKegiatanUpdateManyAndReturnArgs>(args: SelectSubset<T, PelaksanaanKegiatanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PelaksanaanKegiatan.
+     * @param {PelaksanaanKegiatanUpsertArgs} args - Arguments to update or create a PelaksanaanKegiatan.
+     * @example
+     * // Update or create a PelaksanaanKegiatan
+     * const pelaksanaanKegiatan = await prisma.pelaksanaanKegiatan.upsert({
+     *   create: {
+     *     // ... data to create a PelaksanaanKegiatan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PelaksanaanKegiatan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PelaksanaanKegiatanUpsertArgs>(args: SelectSubset<T, PelaksanaanKegiatanUpsertArgs<ExtArgs>>): Prisma__PelaksanaanKegiatanClient<$Result.GetResult<Prisma.$PelaksanaanKegiatanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PelaksanaanKegiatans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanCountArgs} args - Arguments to filter PelaksanaanKegiatans to count.
+     * @example
+     * // Count the number of PelaksanaanKegiatans
+     * const count = await prisma.pelaksanaanKegiatan.count({
+     *   where: {
+     *     // ... the filter for the PelaksanaanKegiatans we want to count
+     *   }
+     * })
+    **/
+    count<T extends PelaksanaanKegiatanCountArgs>(
+      args?: Subset<T, PelaksanaanKegiatanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PelaksanaanKegiatanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PelaksanaanKegiatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PelaksanaanKegiatanAggregateArgs>(args: Subset<T, PelaksanaanKegiatanAggregateArgs>): Prisma.PrismaPromise<GetPelaksanaanKegiatanAggregateType<T>>
+
+    /**
+     * Group by PelaksanaanKegiatan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PelaksanaanKegiatanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PelaksanaanKegiatanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PelaksanaanKegiatanGroupByArgs['orderBy'] }
+        : { orderBy?: PelaksanaanKegiatanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PelaksanaanKegiatanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPelaksanaanKegiatanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PelaksanaanKegiatan model
+   */
+  readonly fields: PelaksanaanKegiatanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PelaksanaanKegiatan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PelaksanaanKegiatanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    kegiatan<T extends KegiatanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KegiatanDefaultArgs<ExtArgs>>): Prisma__KegiatanClient<$Result.GetResult<Prisma.$KegiatanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    posyandu<T extends PosyanduDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PosyanduDefaultArgs<ExtArgs>>): Prisma__PosyanduClient<$Result.GetResult<Prisma.$PosyanduPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kader<T extends KaderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KaderDefaultArgs<ExtArgs>>): Prisma__KaderClient<$Result.GetResult<Prisma.$KaderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pemeriksaanBalita<T extends PelaksanaanKegiatan$pemeriksaanBalitaArgs<ExtArgs> = {}>(args?: Subset<T, PelaksanaanKegiatan$pemeriksaanBalitaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pemeriksaanIbuHamil<T extends PelaksanaanKegiatan$pemeriksaanIbuHamilArgs<ExtArgs> = {}>(args?: Subset<T, PelaksanaanKegiatan$pemeriksaanIbuHamilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PemeriksaanIbuHamilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PelaksanaanKegiatan model
+   */
+  interface PelaksanaanKegiatanFieldRefs {
+    readonly id: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly kegiatanId: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly posyanduId: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly kaderId: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly tanggalMulai: FieldRef<"PelaksanaanKegiatan", 'DateTime'>
+    readonly tanggalSelesai: FieldRef<"PelaksanaanKegiatan", 'DateTime'>
+    readonly status: FieldRef<"PelaksanaanKegiatan", 'StatusPelaksanaan'>
+    readonly jumlahBalita: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly jumlahIbuHamil: FieldRef<"PelaksanaanKegiatan", 'Int'>
+    readonly catatanUmum: FieldRef<"PelaksanaanKegiatan", 'String'>
+    readonly createdAt: FieldRef<"PelaksanaanKegiatan", 'DateTime'>
+    readonly updatedAt: FieldRef<"PelaksanaanKegiatan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PelaksanaanKegiatan findUnique
+   */
+  export type PelaksanaanKegiatanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which PelaksanaanKegiatan to fetch.
+     */
+    where: PelaksanaanKegiatanWhereUniqueInput
+  }
+
+  /**
+   * PelaksanaanKegiatan findUniqueOrThrow
+   */
+  export type PelaksanaanKegiatanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which PelaksanaanKegiatan to fetch.
+     */
+    where: PelaksanaanKegiatanWhereUniqueInput
+  }
+
+  /**
+   * PelaksanaanKegiatan findFirst
+   */
+  export type PelaksanaanKegiatanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which PelaksanaanKegiatan to fetch.
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PelaksanaanKegiatans to fetch.
+     */
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PelaksanaanKegiatans.
+     */
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PelaksanaanKegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PelaksanaanKegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PelaksanaanKegiatans.
+     */
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * PelaksanaanKegiatan findFirstOrThrow
+   */
+  export type PelaksanaanKegiatanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which PelaksanaanKegiatan to fetch.
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PelaksanaanKegiatans to fetch.
+     */
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PelaksanaanKegiatans.
+     */
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PelaksanaanKegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PelaksanaanKegiatans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PelaksanaanKegiatans.
+     */
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * PelaksanaanKegiatan findMany
+   */
+  export type PelaksanaanKegiatanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter, which PelaksanaanKegiatans to fetch.
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PelaksanaanKegiatans to fetch.
+     */
+    orderBy?: PelaksanaanKegiatanOrderByWithRelationInput | PelaksanaanKegiatanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PelaksanaanKegiatans.
+     */
+    cursor?: PelaksanaanKegiatanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PelaksanaanKegiatans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PelaksanaanKegiatans.
+     */
+    skip?: number
+    distinct?: PelaksanaanKegiatanScalarFieldEnum | PelaksanaanKegiatanScalarFieldEnum[]
+  }
+
+  /**
+   * PelaksanaanKegiatan create
+   */
+  export type PelaksanaanKegiatanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PelaksanaanKegiatan.
+     */
+    data: XOR<PelaksanaanKegiatanCreateInput, PelaksanaanKegiatanUncheckedCreateInput>
+  }
+
+  /**
+   * PelaksanaanKegiatan createMany
+   */
+  export type PelaksanaanKegiatanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PelaksanaanKegiatans.
+     */
+    data: PelaksanaanKegiatanCreateManyInput | PelaksanaanKegiatanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PelaksanaanKegiatan createManyAndReturn
+   */
+  export type PelaksanaanKegiatanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * The data used to create many PelaksanaanKegiatans.
+     */
+    data: PelaksanaanKegiatanCreateManyInput | PelaksanaanKegiatanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PelaksanaanKegiatan update
+   */
+  export type PelaksanaanKegiatanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PelaksanaanKegiatan.
+     */
+    data: XOR<PelaksanaanKegiatanUpdateInput, PelaksanaanKegiatanUncheckedUpdateInput>
+    /**
+     * Choose, which PelaksanaanKegiatan to update.
+     */
+    where: PelaksanaanKegiatanWhereUniqueInput
+  }
+
+  /**
+   * PelaksanaanKegiatan updateMany
+   */
+  export type PelaksanaanKegiatanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PelaksanaanKegiatans.
+     */
+    data: XOR<PelaksanaanKegiatanUpdateManyMutationInput, PelaksanaanKegiatanUncheckedUpdateManyInput>
+    /**
+     * Filter which PelaksanaanKegiatans to update
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * Limit how many PelaksanaanKegiatans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PelaksanaanKegiatan updateManyAndReturn
+   */
+  export type PelaksanaanKegiatanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * The data used to update PelaksanaanKegiatans.
+     */
+    data: XOR<PelaksanaanKegiatanUpdateManyMutationInput, PelaksanaanKegiatanUncheckedUpdateManyInput>
+    /**
+     * Filter which PelaksanaanKegiatans to update
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * Limit how many PelaksanaanKegiatans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PelaksanaanKegiatan upsert
+   */
+  export type PelaksanaanKegiatanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PelaksanaanKegiatan to update in case it exists.
+     */
+    where: PelaksanaanKegiatanWhereUniqueInput
+    /**
+     * In case the PelaksanaanKegiatan found by the `where` argument doesn't exist, create a new PelaksanaanKegiatan with this data.
+     */
+    create: XOR<PelaksanaanKegiatanCreateInput, PelaksanaanKegiatanUncheckedCreateInput>
+    /**
+     * In case the PelaksanaanKegiatan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PelaksanaanKegiatanUpdateInput, PelaksanaanKegiatanUncheckedUpdateInput>
+  }
+
+  /**
+   * PelaksanaanKegiatan delete
+   */
+  export type PelaksanaanKegiatanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+    /**
+     * Filter which PelaksanaanKegiatan to delete.
+     */
+    where: PelaksanaanKegiatanWhereUniqueInput
+  }
+
+  /**
+   * PelaksanaanKegiatan deleteMany
+   */
+  export type PelaksanaanKegiatanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PelaksanaanKegiatans to delete
+     */
+    where?: PelaksanaanKegiatanWhereInput
+    /**
+     * Limit how many PelaksanaanKegiatans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PelaksanaanKegiatan.pemeriksaanBalita
+   */
+  export type PelaksanaanKegiatan$pemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    where?: PemeriksaanBalitaWhereInput
+    orderBy?: PemeriksaanBalitaOrderByWithRelationInput | PemeriksaanBalitaOrderByWithRelationInput[]
+    cursor?: PemeriksaanBalitaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanBalitaScalarFieldEnum | PemeriksaanBalitaScalarFieldEnum[]
+  }
+
+  /**
+   * PelaksanaanKegiatan.pemeriksaanIbuHamil
+   */
+  export type PelaksanaanKegiatan$pemeriksaanIbuHamilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanIbuHamil
+     */
+    select?: PemeriksaanIbuHamilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanIbuHamil
+     */
+    omit?: PemeriksaanIbuHamilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanIbuHamilInclude<ExtArgs> | null
+    where?: PemeriksaanIbuHamilWhereInput
+    orderBy?: PemeriksaanIbuHamilOrderByWithRelationInput | PemeriksaanIbuHamilOrderByWithRelationInput[]
+    cursor?: PemeriksaanIbuHamilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PemeriksaanIbuHamilScalarFieldEnum | PemeriksaanIbuHamilScalarFieldEnum[]
+  }
+
+  /**
+   * PelaksanaanKegiatan without action
+   */
+  export type PelaksanaanKegiatanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PelaksanaanKegiatan
+     */
+    select?: PelaksanaanKegiatanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PelaksanaanKegiatan
+     */
+    omit?: PelaksanaanKegiatanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PelaksanaanKegiatanInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model StatusGiziBalita
    */
 
@@ -18313,6 +20085,7 @@ export namespace Prisma {
   export type StatusGiziBalitaAvgAggregateOutputType = {
     id: number | null
     balitaId: number | null
+    pemeriksaanBalitaId: number | null
     beratBadan: number | null
     tinggiBadan: number | null
     zScoreBBTB: number | null
@@ -18323,6 +20096,7 @@ export namespace Prisma {
   export type StatusGiziBalitaSumAggregateOutputType = {
     id: number | null
     balitaId: number | null
+    pemeriksaanBalitaId: number | null
     beratBadan: number | null
     tinggiBadan: number | null
     zScoreBBTB: number | null
@@ -18333,6 +20107,7 @@ export namespace Prisma {
   export type StatusGiziBalitaMinAggregateOutputType = {
     id: number | null
     balitaId: number | null
+    pemeriksaanBalitaId: number | null
     tanggal: Date | null
     beratBadan: number | null
     tinggiBadan: number | null
@@ -18340,12 +20115,14 @@ export namespace Prisma {
     zScoreBBU: number | null
     zScoreTBU: number | null
     kategoriGizi: string | null
+    statusStunting: string | null
     createdAt: Date | null
   }
 
   export type StatusGiziBalitaMaxAggregateOutputType = {
     id: number | null
     balitaId: number | null
+    pemeriksaanBalitaId: number | null
     tanggal: Date | null
     beratBadan: number | null
     tinggiBadan: number | null
@@ -18353,12 +20130,14 @@ export namespace Prisma {
     zScoreBBU: number | null
     zScoreTBU: number | null
     kategoriGizi: string | null
+    statusStunting: string | null
     createdAt: Date | null
   }
 
   export type StatusGiziBalitaCountAggregateOutputType = {
     id: number
     balitaId: number
+    pemeriksaanBalitaId: number
     tanggal: number
     beratBadan: number
     tinggiBadan: number
@@ -18366,6 +20145,7 @@ export namespace Prisma {
     zScoreBBU: number
     zScoreTBU: number
     kategoriGizi: number
+    statusStunting: number
     createdAt: number
     _all: number
   }
@@ -18374,6 +20154,7 @@ export namespace Prisma {
   export type StatusGiziBalitaAvgAggregateInputType = {
     id?: true
     balitaId?: true
+    pemeriksaanBalitaId?: true
     beratBadan?: true
     tinggiBadan?: true
     zScoreBBTB?: true
@@ -18384,6 +20165,7 @@ export namespace Prisma {
   export type StatusGiziBalitaSumAggregateInputType = {
     id?: true
     balitaId?: true
+    pemeriksaanBalitaId?: true
     beratBadan?: true
     tinggiBadan?: true
     zScoreBBTB?: true
@@ -18394,6 +20176,7 @@ export namespace Prisma {
   export type StatusGiziBalitaMinAggregateInputType = {
     id?: true
     balitaId?: true
+    pemeriksaanBalitaId?: true
     tanggal?: true
     beratBadan?: true
     tinggiBadan?: true
@@ -18401,12 +20184,14 @@ export namespace Prisma {
     zScoreBBU?: true
     zScoreTBU?: true
     kategoriGizi?: true
+    statusStunting?: true
     createdAt?: true
   }
 
   export type StatusGiziBalitaMaxAggregateInputType = {
     id?: true
     balitaId?: true
+    pemeriksaanBalitaId?: true
     tanggal?: true
     beratBadan?: true
     tinggiBadan?: true
@@ -18414,12 +20199,14 @@ export namespace Prisma {
     zScoreBBU?: true
     zScoreTBU?: true
     kategoriGizi?: true
+    statusStunting?: true
     createdAt?: true
   }
 
   export type StatusGiziBalitaCountAggregateInputType = {
     id?: true
     balitaId?: true
+    pemeriksaanBalitaId?: true
     tanggal?: true
     beratBadan?: true
     tinggiBadan?: true
@@ -18427,6 +20214,7 @@ export namespace Prisma {
     zScoreBBU?: true
     zScoreTBU?: true
     kategoriGizi?: true
+    statusStunting?: true
     createdAt?: true
     _all?: true
   }
@@ -18520,6 +20308,7 @@ export namespace Prisma {
   export type StatusGiziBalitaGroupByOutputType = {
     id: number
     balitaId: number
+    pemeriksaanBalitaId: number | null
     tanggal: Date
     beratBadan: number
     tinggiBadan: number
@@ -18527,6 +20316,7 @@ export namespace Prisma {
     zScoreBBU: number | null
     zScoreTBU: number | null
     kategoriGizi: string | null
+    statusStunting: string | null
     createdAt: Date
     _count: StatusGiziBalitaCountAggregateOutputType | null
     _avg: StatusGiziBalitaAvgAggregateOutputType | null
@@ -18552,6 +20342,7 @@ export namespace Prisma {
   export type StatusGiziBalitaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balitaId?: boolean
+    pemeriksaanBalitaId?: boolean
     tanggal?: boolean
     beratBadan?: boolean
     tinggiBadan?: boolean
@@ -18559,13 +20350,16 @@ export namespace Prisma {
     zScoreBBU?: boolean
     zScoreTBU?: boolean
     kategoriGizi?: boolean
+    statusStunting?: boolean
     createdAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }, ExtArgs["result"]["statusGiziBalita"]>
 
   export type StatusGiziBalitaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balitaId?: boolean
+    pemeriksaanBalitaId?: boolean
     tanggal?: boolean
     beratBadan?: boolean
     tinggiBadan?: boolean
@@ -18573,13 +20367,16 @@ export namespace Prisma {
     zScoreBBU?: boolean
     zScoreTBU?: boolean
     kategoriGizi?: boolean
+    statusStunting?: boolean
     createdAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }, ExtArgs["result"]["statusGiziBalita"]>
 
   export type StatusGiziBalitaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     balitaId?: boolean
+    pemeriksaanBalitaId?: boolean
     tanggal?: boolean
     beratBadan?: boolean
     tinggiBadan?: boolean
@@ -18587,13 +20384,16 @@ export namespace Prisma {
     zScoreBBU?: boolean
     zScoreTBU?: boolean
     kategoriGizi?: boolean
+    statusStunting?: boolean
     createdAt?: boolean
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }, ExtArgs["result"]["statusGiziBalita"]>
 
   export type StatusGiziBalitaSelectScalar = {
     id?: boolean
     balitaId?: boolean
+    pemeriksaanBalitaId?: boolean
     tanggal?: boolean
     beratBadan?: boolean
     tinggiBadan?: boolean
@@ -18601,28 +20401,34 @@ export namespace Prisma {
     zScoreBBU?: boolean
     zScoreTBU?: boolean
     kategoriGizi?: boolean
+    statusStunting?: boolean
     createdAt?: boolean
   }
 
-  export type StatusGiziBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "tanggal" | "beratBadan" | "tinggiBadan" | "zScoreBBTB" | "zScoreBBU" | "zScoreTBU" | "kategoriGizi" | "createdAt", ExtArgs["result"]["statusGiziBalita"]>
+  export type StatusGiziBalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "balitaId" | "pemeriksaanBalitaId" | "tanggal" | "beratBadan" | "tinggiBadan" | "zScoreBBTB" | "zScoreBBU" | "zScoreTBU" | "kategoriGizi" | "statusStunting" | "createdAt", ExtArgs["result"]["statusGiziBalita"]>
   export type StatusGiziBalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }
   export type StatusGiziBalitaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }
   export type StatusGiziBalitaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     balita?: boolean | BalitaDefaultArgs<ExtArgs>
+    pemeriksaanBalita?: boolean | StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>
   }
 
   export type $StatusGiziBalitaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "StatusGiziBalita"
     objects: {
       balita: Prisma.$BalitaPayload<ExtArgs>
+      pemeriksaanBalita: Prisma.$PemeriksaanBalitaPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       balitaId: number
+      pemeriksaanBalitaId: number | null
       tanggal: Date
       beratBadan: number
       tinggiBadan: number
@@ -18630,6 +20436,7 @@ export namespace Prisma {
       zScoreBBU: number | null
       zScoreTBU: number | null
       kategoriGizi: string | null
+      statusStunting: string | null
       createdAt: Date
     }, ExtArgs["result"]["statusGiziBalita"]>
     composites: {}
@@ -19026,6 +20833,7 @@ export namespace Prisma {
   export interface Prisma__StatusGiziBalitaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     balita<T extends BalitaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BalitaDefaultArgs<ExtArgs>>): Prisma__BalitaClient<$Result.GetResult<Prisma.$BalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pemeriksaanBalita<T extends StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs> = {}>(args?: Subset<T, StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs>>): Prisma__PemeriksaanBalitaClient<$Result.GetResult<Prisma.$PemeriksaanBalitaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19057,6 +20865,7 @@ export namespace Prisma {
   interface StatusGiziBalitaFieldRefs {
     readonly id: FieldRef<"StatusGiziBalita", 'Int'>
     readonly balitaId: FieldRef<"StatusGiziBalita", 'Int'>
+    readonly pemeriksaanBalitaId: FieldRef<"StatusGiziBalita", 'Int'>
     readonly tanggal: FieldRef<"StatusGiziBalita", 'DateTime'>
     readonly beratBadan: FieldRef<"StatusGiziBalita", 'Float'>
     readonly tinggiBadan: FieldRef<"StatusGiziBalita", 'Float'>
@@ -19064,6 +20873,7 @@ export namespace Prisma {
     readonly zScoreBBU: FieldRef<"StatusGiziBalita", 'Float'>
     readonly zScoreTBU: FieldRef<"StatusGiziBalita", 'Float'>
     readonly kategoriGizi: FieldRef<"StatusGiziBalita", 'String'>
+    readonly statusStunting: FieldRef<"StatusGiziBalita", 'String'>
     readonly createdAt: FieldRef<"StatusGiziBalita", 'DateTime'>
   }
     
@@ -19461,6 +21271,25 @@ export namespace Prisma {
   }
 
   /**
+   * StatusGiziBalita.pemeriksaanBalita
+   */
+  export type StatusGiziBalita$pemeriksaanBalitaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PemeriksaanBalita
+     */
+    select?: PemeriksaanBalitaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PemeriksaanBalita
+     */
+    omit?: PemeriksaanBalitaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PemeriksaanBalitaInclude<ExtArgs> | null
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  /**
    * StatusGiziBalita without action
    */
   export type StatusGiziBalitaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -19671,9 +21500,14 @@ export namespace Prisma {
     lingkarKepala: 'lingkarKepala',
     imunisasi: 'imunisasi',
     vitamin: 'vitamin',
+    jenisVitamin: 'jenisVitamin',
+    pmt: 'pmt',
+    jenisPmt: 'jenisPmt',
     keluhan: 'keluhan',
+    tindakan: 'tindakan',
     catatan: 'catatan',
     kaderId: 'kaderId',
+    pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -19691,10 +21525,14 @@ export namespace Prisma {
     tekananDarah: 'tekananDarah',
     tinggiFundus: 'tinggiFundus',
     detakJantungJanin: 'detakJantungJanin',
+    pemberianFe: 'pemberianFe',
+    pmt: 'pmt',
+    jenisPmt: 'jenisPmt',
     keluhan: 'keluhan',
     tindakan: 'tindakan',
     konseling: 'konseling',
     kaderId: 'kaderId',
+    pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -19702,9 +21540,28 @@ export namespace Prisma {
   export type PemeriksaanIbuHamilScalarFieldEnum = (typeof PemeriksaanIbuHamilScalarFieldEnum)[keyof typeof PemeriksaanIbuHamilScalarFieldEnum]
 
 
+  export const PelaksanaanKegiatanScalarFieldEnum: {
+    id: 'id',
+    kegiatanId: 'kegiatanId',
+    posyanduId: 'posyanduId',
+    kaderId: 'kaderId',
+    tanggalMulai: 'tanggalMulai',
+    tanggalSelesai: 'tanggalSelesai',
+    status: 'status',
+    jumlahBalita: 'jumlahBalita',
+    jumlahIbuHamil: 'jumlahIbuHamil',
+    catatanUmum: 'catatanUmum',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PelaksanaanKegiatanScalarFieldEnum = (typeof PelaksanaanKegiatanScalarFieldEnum)[keyof typeof PelaksanaanKegiatanScalarFieldEnum]
+
+
   export const StatusGiziBalitaScalarFieldEnum: {
     id: 'id',
     balitaId: 'balitaId',
+    pemeriksaanBalitaId: 'pemeriksaanBalitaId',
     tanggal: 'tanggal',
     beratBadan: 'beratBadan',
     tinggiBadan: 'tinggiBadan',
@@ -19712,6 +21569,7 @@ export namespace Prisma {
     zScoreBBU: 'zScoreBBU',
     zScoreTBU: 'zScoreTBU',
     kategoriGizi: 'kategoriGizi',
+    statusStunting: 'statusStunting',
     createdAt: 'createdAt'
   };
 
@@ -19822,6 +21680,20 @@ export namespace Prisma {
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
+
+
+  /**
+   * Reference to a field of type 'StatusPelaksanaan'
+   */
+  export type EnumStatusPelaksanaanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPelaksanaan'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusPelaksanaan[]'
+   */
+  export type ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPelaksanaan[]'>
+    
   /**
    * Deep Input Types
    */
@@ -19900,6 +21772,7 @@ export namespace Prisma {
     kegiatan?: KegiatanListRelationFilter
     balita?: BalitaListRelationFilter
     ibuHamil?: IbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }
 
   export type PosyanduOrderByWithRelationInput = {
@@ -19920,6 +21793,7 @@ export namespace Prisma {
     kegiatan?: KegiatanOrderByRelationAggregateInput
     balita?: BalitaOrderByRelationAggregateInput
     ibuHamil?: IbuHamilOrderByRelationAggregateInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOrderByRelationAggregateInput
   }
 
   export type PosyanduWhereUniqueInput = Prisma.AtLeast<{
@@ -19943,6 +21817,7 @@ export namespace Prisma {
     kegiatan?: KegiatanListRelationFilter
     balita?: BalitaListRelationFilter
     ibuHamil?: IbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }, "id" | "nama">
 
   export type PosyanduOrderByWithAggregationInput = {
@@ -20002,6 +21877,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilListRelationFilter
     periksaBalita?: PemeriksaanBalitaListRelationFilter
     periksaIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }
 
   export type KaderOrderByWithRelationInput = {
@@ -20020,6 +21896,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilOrderByRelationAggregateInput
     periksaBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
     periksaIbuHamil?: PemeriksaanIbuHamilOrderByRelationAggregateInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOrderByRelationAggregateInput
   }
 
   export type KaderWhereUniqueInput = Prisma.AtLeast<{
@@ -20041,6 +21918,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilListRelationFilter
     periksaBalita?: PemeriksaanBalitaListRelationFilter
     periksaIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }, "id" | "nik" | "userId">
 
   export type KaderOrderByWithAggregationInput = {
@@ -20446,6 +22324,7 @@ export namespace Prisma {
     programKesehatan?: XOR<ProgramKesehatanScalarRelationFilter, ProgramKesehatanWhereInput>
     pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }
 
   export type KegiatanOrderByWithRelationInput = {
@@ -20462,6 +22341,7 @@ export namespace Prisma {
     programKesehatan?: ProgramKesehatanOrderByWithRelationInput
     pemeriksaanBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilOrderByRelationAggregateInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOrderByRelationAggregateInput
   }
 
   export type KegiatanWhereUniqueInput = Prisma.AtLeast<{
@@ -20481,6 +22361,7 @@ export namespace Prisma {
     programKesehatan?: XOR<ProgramKesehatanScalarRelationFilter, ProgramKesehatanWhereInput>
     pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+    pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
   }, "id">
 
   export type KegiatanOrderByWithAggregationInput = {
@@ -20762,14 +22643,21 @@ export namespace Prisma {
     lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
     imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisVitamin?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    pmt?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
     balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
     kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
     kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pelaksanaanKegiatan?: XOR<PelaksanaanKegiatanNullableScalarRelationFilter, PelaksanaanKegiatanWhereInput> | null
+    statusGizi?: StatusGiziBalitaListRelationFilter
   }
 
   export type PemeriksaanBalitaOrderByWithRelationInput = {
@@ -20782,14 +22670,21 @@ export namespace Prisma {
     lingkarKepala?: SortOrderInput | SortOrder
     imunisasi?: SortOrderInput | SortOrder
     vitamin?: SortOrderInput | SortOrder
+    jenisVitamin?: SortOrderInput | SortOrder
+    pmt?: SortOrderInput | SortOrder
+    jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
+    tindakan?: SortOrderInput | SortOrder
     catatan?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
+    pelaksanaanKegiatanId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     balita?: BalitaOrderByWithRelationInput
     kegiatan?: KegiatanOrderByWithRelationInput
     kader?: KaderOrderByWithRelationInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOrderByWithRelationInput
+    statusGizi?: StatusGiziBalitaOrderByRelationAggregateInput
   }
 
   export type PemeriksaanBalitaWhereUniqueInput = Prisma.AtLeast<{
@@ -20805,14 +22700,21 @@ export namespace Prisma {
     lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
     imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisVitamin?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    pmt?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
     balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
     kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
     kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pelaksanaanKegiatan?: XOR<PelaksanaanKegiatanNullableScalarRelationFilter, PelaksanaanKegiatanWhereInput> | null
+    statusGizi?: StatusGiziBalitaListRelationFilter
   }, "id">
 
   export type PemeriksaanBalitaOrderByWithAggregationInput = {
@@ -20825,9 +22727,14 @@ export namespace Prisma {
     lingkarKepala?: SortOrderInput | SortOrder
     imunisasi?: SortOrderInput | SortOrder
     vitamin?: SortOrderInput | SortOrder
+    jenisVitamin?: SortOrderInput | SortOrder
+    pmt?: SortOrderInput | SortOrder
+    jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
+    tindakan?: SortOrderInput | SortOrder
     catatan?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
+    pelaksanaanKegiatanId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PemeriksaanBalitaCountOrderByAggregateInput
@@ -20850,9 +22757,14 @@ export namespace Prisma {
     lingkarKepala?: FloatNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
     imunisasi?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
     vitamin?: BoolNullableWithAggregatesFilter<"PemeriksaanBalita"> | boolean | null
+    jenisVitamin?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
+    pmt?: BoolNullableWithAggregatesFilter<"PemeriksaanBalita"> | boolean | null
+    jenisPmt?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
     keluhan?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
+    tindakan?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
     catatan?: StringNullableWithAggregatesFilter<"PemeriksaanBalita"> | string | null
     kaderId?: IntNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
+    pelaksanaanKegiatanId?: IntNullableWithAggregatesFilter<"PemeriksaanBalita"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"PemeriksaanBalita"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PemeriksaanBalita"> | Date | string
   }
@@ -20870,15 +22782,20 @@ export namespace Prisma {
     tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
     detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pemberianFe?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    pmt?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
     ibuHamil?: XOR<IbuHamilScalarRelationFilter, IbuHamilWhereInput>
     kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
     kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pelaksanaanKegiatan?: XOR<PelaksanaanKegiatanNullableScalarRelationFilter, PelaksanaanKegiatanWhereInput> | null
   }
 
   export type PemeriksaanIbuHamilOrderByWithRelationInput = {
@@ -20891,15 +22808,20 @@ export namespace Prisma {
     tekananDarah?: SortOrderInput | SortOrder
     tinggiFundus?: SortOrderInput | SortOrder
     detakJantungJanin?: SortOrderInput | SortOrder
+    pemberianFe?: SortOrderInput | SortOrder
+    pmt?: SortOrderInput | SortOrder
+    jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
     tindakan?: SortOrderInput | SortOrder
     konseling?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
+    pelaksanaanKegiatanId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ibuHamil?: IbuHamilOrderByWithRelationInput
     kegiatan?: KegiatanOrderByWithRelationInput
     kader?: KaderOrderByWithRelationInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanOrderByWithRelationInput
   }
 
   export type PemeriksaanIbuHamilWhereUniqueInput = Prisma.AtLeast<{
@@ -20915,15 +22837,20 @@ export namespace Prisma {
     tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
     detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pemberianFe?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    pmt?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
     ibuHamil?: XOR<IbuHamilScalarRelationFilter, IbuHamilWhereInput>
     kegiatan?: XOR<KegiatanNullableScalarRelationFilter, KegiatanWhereInput> | null
     kader?: XOR<KaderNullableScalarRelationFilter, KaderWhereInput> | null
+    pelaksanaanKegiatan?: XOR<PelaksanaanKegiatanNullableScalarRelationFilter, PelaksanaanKegiatanWhereInput> | null
   }, "id">
 
   export type PemeriksaanIbuHamilOrderByWithAggregationInput = {
@@ -20936,10 +22863,14 @@ export namespace Prisma {
     tekananDarah?: SortOrderInput | SortOrder
     tinggiFundus?: SortOrderInput | SortOrder
     detakJantungJanin?: SortOrderInput | SortOrder
+    pemberianFe?: SortOrderInput | SortOrder
+    pmt?: SortOrderInput | SortOrder
+    jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
     tindakan?: SortOrderInput | SortOrder
     konseling?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
+    pelaksanaanKegiatanId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PemeriksaanIbuHamilCountOrderByAggregateInput
@@ -20962,12 +22893,120 @@ export namespace Prisma {
     tekananDarah?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     tinggiFundus?: FloatNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
     detakJantungJanin?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    pemberianFe?: BoolNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | boolean | null
+    pmt?: BoolNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | boolean | null
+    jenisPmt?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
+    pelaksanaanKegiatanId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"PemeriksaanIbuHamil"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PemeriksaanIbuHamil"> | Date | string
+  }
+
+  export type PelaksanaanKegiatanWhereInput = {
+    AND?: PelaksanaanKegiatanWhereInput | PelaksanaanKegiatanWhereInput[]
+    OR?: PelaksanaanKegiatanWhereInput[]
+    NOT?: PelaksanaanKegiatanWhereInput | PelaksanaanKegiatanWhereInput[]
+    id?: IntFilter<"PelaksanaanKegiatan"> | number
+    kegiatanId?: IntFilter<"PelaksanaanKegiatan"> | number
+    posyanduId?: IntFilter<"PelaksanaanKegiatan"> | number
+    kaderId?: IntFilter<"PelaksanaanKegiatan"> | number
+    tanggalMulai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    tanggalSelesai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    status?: EnumStatusPelaksanaanFilter<"PelaksanaanKegiatan"> | $Enums.StatusPelaksanaan
+    jumlahBalita?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    jumlahIbuHamil?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    catatanUmum?: StringNullableFilter<"PelaksanaanKegiatan"> | string | null
+    createdAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+    kegiatan?: XOR<KegiatanScalarRelationFilter, KegiatanWhereInput>
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderScalarRelationFilter, KaderWhereInput>
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+  }
+
+  export type PelaksanaanKegiatanOrderByWithRelationInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    tanggalMulai?: SortOrderInput | SortOrder
+    tanggalSelesai?: SortOrderInput | SortOrder
+    status?: SortOrder
+    jumlahBalita?: SortOrderInput | SortOrder
+    jumlahIbuHamil?: SortOrderInput | SortOrder
+    catatanUmum?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    kegiatan?: KegiatanOrderByWithRelationInput
+    posyandu?: PosyanduOrderByWithRelationInput
+    kader?: KaderOrderByWithRelationInput
+    pemeriksaanBalita?: PemeriksaanBalitaOrderByRelationAggregateInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilOrderByRelationAggregateInput
+  }
+
+  export type PelaksanaanKegiatanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PelaksanaanKegiatanWhereInput | PelaksanaanKegiatanWhereInput[]
+    OR?: PelaksanaanKegiatanWhereInput[]
+    NOT?: PelaksanaanKegiatanWhereInput | PelaksanaanKegiatanWhereInput[]
+    kegiatanId?: IntFilter<"PelaksanaanKegiatan"> | number
+    posyanduId?: IntFilter<"PelaksanaanKegiatan"> | number
+    kaderId?: IntFilter<"PelaksanaanKegiatan"> | number
+    tanggalMulai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    tanggalSelesai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    status?: EnumStatusPelaksanaanFilter<"PelaksanaanKegiatan"> | $Enums.StatusPelaksanaan
+    jumlahBalita?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    jumlahIbuHamil?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    catatanUmum?: StringNullableFilter<"PelaksanaanKegiatan"> | string | null
+    createdAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+    kegiatan?: XOR<KegiatanScalarRelationFilter, KegiatanWhereInput>
+    posyandu?: XOR<PosyanduScalarRelationFilter, PosyanduWhereInput>
+    kader?: XOR<KaderScalarRelationFilter, KaderWhereInput>
+    pemeriksaanBalita?: PemeriksaanBalitaListRelationFilter
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilListRelationFilter
+  }, "id">
+
+  export type PelaksanaanKegiatanOrderByWithAggregationInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    tanggalMulai?: SortOrderInput | SortOrder
+    tanggalSelesai?: SortOrderInput | SortOrder
+    status?: SortOrder
+    jumlahBalita?: SortOrderInput | SortOrder
+    jumlahIbuHamil?: SortOrderInput | SortOrder
+    catatanUmum?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PelaksanaanKegiatanCountOrderByAggregateInput
+    _avg?: PelaksanaanKegiatanAvgOrderByAggregateInput
+    _max?: PelaksanaanKegiatanMaxOrderByAggregateInput
+    _min?: PelaksanaanKegiatanMinOrderByAggregateInput
+    _sum?: PelaksanaanKegiatanSumOrderByAggregateInput
+  }
+
+  export type PelaksanaanKegiatanScalarWhereWithAggregatesInput = {
+    AND?: PelaksanaanKegiatanScalarWhereWithAggregatesInput | PelaksanaanKegiatanScalarWhereWithAggregatesInput[]
+    OR?: PelaksanaanKegiatanScalarWhereWithAggregatesInput[]
+    NOT?: PelaksanaanKegiatanScalarWhereWithAggregatesInput | PelaksanaanKegiatanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PelaksanaanKegiatan"> | number
+    kegiatanId?: IntWithAggregatesFilter<"PelaksanaanKegiatan"> | number
+    posyanduId?: IntWithAggregatesFilter<"PelaksanaanKegiatan"> | number
+    kaderId?: IntWithAggregatesFilter<"PelaksanaanKegiatan"> | number
+    tanggalMulai?: DateTimeNullableWithAggregatesFilter<"PelaksanaanKegiatan"> | Date | string | null
+    tanggalSelesai?: DateTimeNullableWithAggregatesFilter<"PelaksanaanKegiatan"> | Date | string | null
+    status?: EnumStatusPelaksanaanWithAggregatesFilter<"PelaksanaanKegiatan"> | $Enums.StatusPelaksanaan
+    jumlahBalita?: IntNullableWithAggregatesFilter<"PelaksanaanKegiatan"> | number | null
+    jumlahIbuHamil?: IntNullableWithAggregatesFilter<"PelaksanaanKegiatan"> | number | null
+    catatanUmum?: StringNullableWithAggregatesFilter<"PelaksanaanKegiatan"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PelaksanaanKegiatan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PelaksanaanKegiatan"> | Date | string
   }
 
   export type StatusGiziBalitaWhereInput = {
@@ -20976,6 +23015,7 @@ export namespace Prisma {
     NOT?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
     id?: IntFilter<"StatusGiziBalita"> | number
     balitaId?: IntFilter<"StatusGiziBalita"> | number
+    pemeriksaanBalitaId?: IntNullableFilter<"StatusGiziBalita"> | number | null
     tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
     beratBadan?: FloatFilter<"StatusGiziBalita"> | number
     tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
@@ -20983,13 +23023,16 @@ export namespace Prisma {
     zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    statusStunting?: StringNullableFilter<"StatusGiziBalita"> | string | null
     createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
     balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+    pemeriksaanBalita?: XOR<PemeriksaanBalitaNullableScalarRelationFilter, PemeriksaanBalitaWhereInput> | null
   }
 
   export type StatusGiziBalitaOrderByWithRelationInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrderInput | SortOrder
     tanggal?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
@@ -20997,8 +23040,10 @@ export namespace Prisma {
     zScoreBBU?: SortOrderInput | SortOrder
     zScoreTBU?: SortOrderInput | SortOrder
     kategoriGizi?: SortOrderInput | SortOrder
+    statusStunting?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     balita?: BalitaOrderByWithRelationInput
+    pemeriksaanBalita?: PemeriksaanBalitaOrderByWithRelationInput
   }
 
   export type StatusGiziBalitaWhereUniqueInput = Prisma.AtLeast<{
@@ -21007,6 +23052,7 @@ export namespace Prisma {
     OR?: StatusGiziBalitaWhereInput[]
     NOT?: StatusGiziBalitaWhereInput | StatusGiziBalitaWhereInput[]
     balitaId?: IntFilter<"StatusGiziBalita"> | number
+    pemeriksaanBalitaId?: IntNullableFilter<"StatusGiziBalita"> | number | null
     tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
     beratBadan?: FloatFilter<"StatusGiziBalita"> | number
     tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
@@ -21014,13 +23060,16 @@ export namespace Prisma {
     zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    statusStunting?: StringNullableFilter<"StatusGiziBalita"> | string | null
     createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
     balita?: XOR<BalitaScalarRelationFilter, BalitaWhereInput>
+    pemeriksaanBalita?: XOR<PemeriksaanBalitaNullableScalarRelationFilter, PemeriksaanBalitaWhereInput> | null
   }, "id">
 
   export type StatusGiziBalitaOrderByWithAggregationInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrderInput | SortOrder
     tanggal?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
@@ -21028,6 +23077,7 @@ export namespace Prisma {
     zScoreBBU?: SortOrderInput | SortOrder
     zScoreTBU?: SortOrderInput | SortOrder
     kategoriGizi?: SortOrderInput | SortOrder
+    statusStunting?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: StatusGiziBalitaCountOrderByAggregateInput
     _avg?: StatusGiziBalitaAvgOrderByAggregateInput
@@ -21042,6 +23092,7 @@ export namespace Prisma {
     NOT?: StatusGiziBalitaScalarWhereWithAggregatesInput | StatusGiziBalitaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"StatusGiziBalita"> | number
     balitaId?: IntWithAggregatesFilter<"StatusGiziBalita"> | number
+    pemeriksaanBalitaId?: IntNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
     tanggal?: DateTimeWithAggregatesFilter<"StatusGiziBalita"> | Date | string
     beratBadan?: FloatWithAggregatesFilter<"StatusGiziBalita"> | number
     tinggiBadan?: FloatWithAggregatesFilter<"StatusGiziBalita"> | number
@@ -21049,6 +23100,7 @@ export namespace Prisma {
     zScoreBBU?: FloatNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
     zScoreTBU?: FloatNullableWithAggregatesFilter<"StatusGiziBalita"> | number | null
     kategoriGizi?: StringNullableWithAggregatesFilter<"StatusGiziBalita"> | string | null
+    statusStunting?: StringNullableWithAggregatesFilter<"StatusGiziBalita"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"StatusGiziBalita"> | Date | string
   }
 
@@ -21118,6 +23170,7 @@ export namespace Prisma {
     kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
     balita?: BalitaCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateInput = {
@@ -21137,6 +23190,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
     balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUpdateInput = {
@@ -21155,6 +23209,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateInput = {
@@ -21174,6 +23229,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduCreateManyInput = {
@@ -21232,6 +23288,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateInput = {
@@ -21248,6 +23305,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUpdateInput = {
@@ -21263,6 +23321,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateInput = {
@@ -21279,6 +23338,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderCreateManyInput = {
@@ -21703,6 +23763,7 @@ export namespace Prisma {
     programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
     pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUncheckedCreateInput = {
@@ -21717,6 +23778,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUpdateInput = {
@@ -21730,6 +23792,7 @@ export namespace Prisma {
     programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
     pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateInput = {
@@ -21744,6 +23807,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanCreateManyInput = {
@@ -22041,36 +24105,48 @@ export namespace Prisma {
   }
 
   export type PemeriksaanBalitaCreateInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
     kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaUncheckedCreateInput = {
     id?: number
     balitaId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaUpdateInput = {
@@ -22080,13 +24156,19 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
     kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateInput = {
@@ -22099,26 +24181,37 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaCreateManyInput = {
     id?: number
     balitaId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22130,7 +24223,11 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22146,20 +24243,28 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PemeriksaanIbuHamilCreateInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
@@ -22168,22 +24273,27 @@ export namespace Prisma {
     ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
     kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
   }
 
   export type PemeriksaanIbuHamilUncheckedCreateInput = {
     id?: number
     ibuHamilId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22195,6 +24305,9 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22203,6 +24316,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
     kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
   }
 
   export type PemeriksaanIbuHamilUncheckedUpdateInput = {
@@ -22215,10 +24329,14 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22227,16 +24345,20 @@ export namespace Prisma {
     id?: number
     ibuHamilId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22248,6 +24370,9 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22265,10 +24390,121 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PelaksanaanKegiatanCreateInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan: KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput
+    posyandu: PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput
+    kader: KaderCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUpdateInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    posyandu?: PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    kader?: KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanCreateManyInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PelaksanaanKegiatanUpdateManyMutationInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22281,13 +24517,16 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
     balita: BalitaCreateNestedOneWithoutStatusGiziInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedOneWithoutStatusGiziInput
   }
 
   export type StatusGiziBalitaUncheckedCreateInput = {
     id?: number
     balitaId: number
+    pemeriksaanBalitaId?: number | null
     tanggal: Date | string
     beratBadan: number
     tinggiBadan: number
@@ -22295,6 +24534,7 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
   }
 
@@ -22306,13 +24546,16 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     balita?: BalitaUpdateOneRequiredWithoutStatusGiziNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateOneWithoutStatusGiziNestedInput
   }
 
   export type StatusGiziBalitaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     balitaId?: IntFieldUpdateOperationsInput | number
+    pemeriksaanBalitaId?: NullableIntFieldUpdateOperationsInput | number | null
     tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     beratBadan?: FloatFieldUpdateOperationsInput | number
     tinggiBadan?: FloatFieldUpdateOperationsInput | number
@@ -22320,12 +24563,14 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StatusGiziBalitaCreateManyInput = {
     id?: number
     balitaId: number
+    pemeriksaanBalitaId?: number | null
     tanggal: Date | string
     beratBadan: number
     tinggiBadan: number
@@ -22333,6 +24578,7 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
   }
 
@@ -22344,12 +24590,14 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StatusGiziBalitaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     balitaId?: IntFieldUpdateOperationsInput | number
+    pemeriksaanBalitaId?: NullableIntFieldUpdateOperationsInput | number | null
     tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     beratBadan?: FloatFieldUpdateOperationsInput | number
     tinggiBadan?: FloatFieldUpdateOperationsInput | number
@@ -22357,6 +24605,7 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -22542,6 +24791,12 @@ export namespace Prisma {
     none?: IbuHamilWhereInput
   }
 
+  export type PelaksanaanKegiatanListRelationFilter = {
+    every?: PelaksanaanKegiatanWhereInput
+    some?: PelaksanaanKegiatanWhereInput
+    none?: PelaksanaanKegiatanWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -22560,6 +24815,10 @@ export namespace Prisma {
   }
 
   export type IbuHamilOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PelaksanaanKegiatanOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23284,6 +25543,11 @@ export namespace Prisma {
     isNot?: KegiatanWhereInput | null
   }
 
+  export type PelaksanaanKegiatanNullableScalarRelationFilter = {
+    is?: PelaksanaanKegiatanWhereInput | null
+    isNot?: PelaksanaanKegiatanWhereInput | null
+  }
+
   export type PemeriksaanBalitaCountOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
@@ -23294,9 +25558,14 @@ export namespace Prisma {
     lingkarKepala?: SortOrder
     imunisasi?: SortOrder
     vitamin?: SortOrder
+    jenisVitamin?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
+    tindakan?: SortOrder
     catatan?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23309,6 +25578,7 @@ export namespace Prisma {
     tinggiBadan?: SortOrder
     lingkarKepala?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
   }
 
   export type PemeriksaanBalitaMaxOrderByAggregateInput = {
@@ -23321,9 +25591,14 @@ export namespace Prisma {
     lingkarKepala?: SortOrder
     imunisasi?: SortOrder
     vitamin?: SortOrder
+    jenisVitamin?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
+    tindakan?: SortOrder
     catatan?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23338,9 +25613,14 @@ export namespace Prisma {
     lingkarKepala?: SortOrder
     imunisasi?: SortOrder
     vitamin?: SortOrder
+    jenisVitamin?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
+    tindakan?: SortOrder
     catatan?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23353,6 +25633,7 @@ export namespace Prisma {
     tinggiBadan?: SortOrder
     lingkarKepala?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
   }
 
   export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -23378,10 +25659,14 @@ export namespace Prisma {
     tekananDarah?: SortOrder
     tinggiFundus?: SortOrder
     detakJantungJanin?: SortOrder
+    pemberianFe?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23395,6 +25680,7 @@ export namespace Prisma {
     tinggiFundus?: SortOrder
     detakJantungJanin?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
   }
 
   export type PemeriksaanIbuHamilMaxOrderByAggregateInput = {
@@ -23407,10 +25693,14 @@ export namespace Prisma {
     tekananDarah?: SortOrder
     tinggiFundus?: SortOrder
     detakJantungJanin?: SortOrder
+    pemberianFe?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23425,10 +25715,14 @@ export namespace Prisma {
     tekananDarah?: SortOrder
     tinggiFundus?: SortOrder
     detakJantungJanin?: SortOrder
+    pemberianFe?: SortOrder
+    pmt?: SortOrder
+    jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23442,11 +25736,108 @@ export namespace Prisma {
     tinggiFundus?: SortOrder
     detakJantungJanin?: SortOrder
     kaderId?: SortOrder
+    pelaksanaanKegiatanId?: SortOrder
+  }
+
+  export type EnumStatusPelaksanaanFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPelaksanaan | EnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPelaksanaanFilter<$PrismaModel> | $Enums.StatusPelaksanaan
+  }
+
+  export type KegiatanScalarRelationFilter = {
+    is?: KegiatanWhereInput
+    isNot?: KegiatanWhereInput
+  }
+
+  export type KaderScalarRelationFilter = {
+    is?: KaderWhereInput
+    isNot?: KaderWhereInput
+  }
+
+  export type PelaksanaanKegiatanCountOrderByAggregateInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    tanggalMulai?: SortOrder
+    tanggalSelesai?: SortOrder
+    status?: SortOrder
+    jumlahBalita?: SortOrder
+    jumlahIbuHamil?: SortOrder
+    catatanUmum?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PelaksanaanKegiatanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    jumlahBalita?: SortOrder
+    jumlahIbuHamil?: SortOrder
+  }
+
+  export type PelaksanaanKegiatanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    tanggalMulai?: SortOrder
+    tanggalSelesai?: SortOrder
+    status?: SortOrder
+    jumlahBalita?: SortOrder
+    jumlahIbuHamil?: SortOrder
+    catatanUmum?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PelaksanaanKegiatanMinOrderByAggregateInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    tanggalMulai?: SortOrder
+    tanggalSelesai?: SortOrder
+    status?: SortOrder
+    jumlahBalita?: SortOrder
+    jumlahIbuHamil?: SortOrder
+    catatanUmum?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PelaksanaanKegiatanSumOrderByAggregateInput = {
+    id?: SortOrder
+    kegiatanId?: SortOrder
+    posyanduId?: SortOrder
+    kaderId?: SortOrder
+    jumlahBalita?: SortOrder
+    jumlahIbuHamil?: SortOrder
+  }
+
+  export type EnumStatusPelaksanaanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPelaksanaan | EnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPelaksanaanWithAggregatesFilter<$PrismaModel> | $Enums.StatusPelaksanaan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusPelaksanaanFilter<$PrismaModel>
+    _max?: NestedEnumStatusPelaksanaanFilter<$PrismaModel>
+  }
+
+  export type PemeriksaanBalitaNullableScalarRelationFilter = {
+    is?: PemeriksaanBalitaWhereInput | null
+    isNot?: PemeriksaanBalitaWhereInput | null
   }
 
   export type StatusGiziBalitaCountOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrder
     tanggal?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
@@ -23454,12 +25845,14 @@ export namespace Prisma {
     zScoreBBU?: SortOrder
     zScoreTBU?: SortOrder
     kategoriGizi?: SortOrder
+    statusStunting?: SortOrder
     createdAt?: SortOrder
   }
 
   export type StatusGiziBalitaAvgOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
     zScoreBBTB?: SortOrder
@@ -23470,6 +25863,7 @@ export namespace Prisma {
   export type StatusGiziBalitaMaxOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrder
     tanggal?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
@@ -23477,12 +25871,14 @@ export namespace Prisma {
     zScoreBBU?: SortOrder
     zScoreTBU?: SortOrder
     kategoriGizi?: SortOrder
+    statusStunting?: SortOrder
     createdAt?: SortOrder
   }
 
   export type StatusGiziBalitaMinOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrder
     tanggal?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
@@ -23490,12 +25886,14 @@ export namespace Prisma {
     zScoreBBU?: SortOrder
     zScoreTBU?: SortOrder
     kategoriGizi?: SortOrder
+    statusStunting?: SortOrder
     createdAt?: SortOrder
   }
 
   export type StatusGiziBalitaSumOrderByAggregateInput = {
     id?: SortOrder
     balitaId?: SortOrder
+    pemeriksaanBalitaId?: SortOrder
     beratBadan?: SortOrder
     tinggiBadan?: SortOrder
     zScoreBBTB?: SortOrder
@@ -23595,6 +25993,13 @@ export namespace Prisma {
     connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
   }
 
+  export type PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput> | PelaksanaanKegiatanCreateWithoutPosyanduInput[] | PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput | PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput[]
+    createMany?: PelaksanaanKegiatanCreateManyPosyanduInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+  }
+
   export type KaderUncheckedCreateNestedManyWithoutPosyanduInput = {
     create?: XOR<KaderCreateWithoutPosyanduInput, KaderUncheckedCreateWithoutPosyanduInput> | KaderCreateWithoutPosyanduInput[] | KaderUncheckedCreateWithoutPosyanduInput[]
     connectOrCreate?: KaderCreateOrConnectWithoutPosyanduInput | KaderCreateOrConnectWithoutPosyanduInput[]
@@ -23621,6 +26026,13 @@ export namespace Prisma {
     connectOrCreate?: IbuHamilCreateOrConnectWithoutPosyanduInput | IbuHamilCreateOrConnectWithoutPosyanduInput[]
     createMany?: IbuHamilCreateManyPosyanduInputEnvelope
     connect?: IbuHamilWhereUniqueInput | IbuHamilWhereUniqueInput[]
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput> | PelaksanaanKegiatanCreateWithoutPosyanduInput[] | PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput | PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput[]
+    createMany?: PelaksanaanKegiatanCreateManyPosyanduInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
   }
 
   export type EnumAkreditasiFieldUpdateOperationsInput = {
@@ -23701,6 +26113,20 @@ export namespace Prisma {
     deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
   }
 
+  export type PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput> | PelaksanaanKegiatanCreateWithoutPosyanduInput[] | PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput | PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutPosyanduInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: PelaksanaanKegiatanCreateManyPosyanduInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutPosyanduInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutPosyanduInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -23765,6 +26191,20 @@ export namespace Prisma {
     deleteMany?: IbuHamilScalarWhereInput | IbuHamilScalarWhereInput[]
   }
 
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput> | PelaksanaanKegiatanCreateWithoutPosyanduInput[] | PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput | PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutPosyanduInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutPosyanduInput[]
+    createMany?: PelaksanaanKegiatanCreateManyPosyanduInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutPosyanduInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutPosyanduInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutPosyanduInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutPosyanduInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+  }
+
   export type PosyanduCreateNestedOneWithoutKaderInput = {
     create?: XOR<PosyanduCreateWithoutKaderInput, PosyanduUncheckedCreateWithoutKaderInput>
     connectOrCreate?: PosyanduCreateOrConnectWithoutKaderInput
@@ -23805,6 +26245,13 @@ export namespace Prisma {
     connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
   }
 
+  export type PelaksanaanKegiatanCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput> | PelaksanaanKegiatanCreateWithoutKaderInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKaderInput | PelaksanaanKegiatanCreateOrConnectWithoutKaderInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKaderInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+  }
+
   export type BalitaUncheckedCreateNestedManyWithoutKaderInput = {
     create?: XOR<BalitaCreateWithoutKaderInput, BalitaUncheckedCreateWithoutKaderInput> | BalitaCreateWithoutKaderInput[] | BalitaUncheckedCreateWithoutKaderInput[]
     connectOrCreate?: BalitaCreateOrConnectWithoutKaderInput | BalitaCreateOrConnectWithoutKaderInput[]
@@ -23831,6 +26278,13 @@ export namespace Prisma {
     connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput | PemeriksaanIbuHamilCreateOrConnectWithoutKaderInput[]
     createMany?: PemeriksaanIbuHamilCreateManyKaderInputEnvelope
     connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput> | PelaksanaanKegiatanCreateWithoutKaderInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKaderInput | PelaksanaanKegiatanCreateOrConnectWithoutKaderInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKaderInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
   }
 
   export type PosyanduUpdateOneRequiredWithoutKaderNestedInput = {
@@ -23907,6 +26361,20 @@ export namespace Prisma {
     deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
   }
 
+  export type PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput> | PelaksanaanKegiatanCreateWithoutKaderInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKaderInput | PelaksanaanKegiatanCreateOrConnectWithoutKaderInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKaderInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKaderInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKaderInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutKaderInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -23965,6 +26433,20 @@ export namespace Prisma {
     update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKaderInput[]
     updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKaderInput[]
     deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput> | PelaksanaanKegiatanCreateWithoutKaderInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKaderInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKaderInput | PelaksanaanKegiatanCreateOrConnectWithoutKaderInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKaderInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKaderInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKaderInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKaderInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKaderInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutKaderInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutKaderInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
   }
 
   export type UserCreateNestedManyWithoutRoleInput = {
@@ -24287,6 +26769,13 @@ export namespace Prisma {
     connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
   }
 
+  export type PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput> | PelaksanaanKegiatanCreateWithoutKegiatanInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput | PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKegiatanInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+  }
+
   export type PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput = {
     create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
     connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
@@ -24299,6 +26788,13 @@ export namespace Prisma {
     connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutKegiatanInput[]
     createMany?: PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope
     connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput> | PelaksanaanKegiatanCreateWithoutKegiatanInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput | PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKegiatanInputEnvelope
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
   }
 
   export type PosyanduUpdateOneRequiredWithoutKegiatanNestedInput = {
@@ -24345,6 +26841,20 @@ export namespace Prisma {
     deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
   }
 
+  export type PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput> | PelaksanaanKegiatanCreateWithoutKegiatanInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput | PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKegiatanInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKegiatanInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKegiatanInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutKegiatanInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+  }
+
   export type PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput = {
     create?: XOR<PemeriksaanBalitaCreateWithoutKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput> | PemeriksaanBalitaCreateWithoutKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput[]
     connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput[]
@@ -24371,6 +26881,20 @@ export namespace Prisma {
     update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutKegiatanInput[]
     updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutKegiatanInput[]
     deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput> | PelaksanaanKegiatanCreateWithoutKegiatanInput[] | PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput[]
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput | PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput[]
+    upsert?: PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKegiatanInput | PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKegiatanInput[]
+    createMany?: PelaksanaanKegiatanCreateManyKegiatanInputEnvelope
+    set?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    disconnect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    delete?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    connect?: PelaksanaanKegiatanWhereUniqueInput | PelaksanaanKegiatanWhereUniqueInput[]
+    update?: PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKegiatanInput | PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKegiatanInput[]
+    updateMany?: PelaksanaanKegiatanUpdateManyWithWhereWithoutKegiatanInput | PelaksanaanKegiatanUpdateManyWithWhereWithoutKegiatanInput[]
+    deleteMany?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
   }
 
   export type PosyanduCreateNestedOneWithoutBalitaInput = {
@@ -24585,6 +27109,26 @@ export namespace Prisma {
     connect?: KaderWhereUniqueInput
   }
 
+  export type PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanBalitaInput
+    connect?: PelaksanaanKegiatanWhereUniqueInput
+  }
+
+  export type StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput> | StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput | StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyPemeriksaanBalitaInputEnvelope
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+  }
+
+  export type StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput> | StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput | StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyPemeriksaanBalitaInputEnvelope
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+  }
+
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
   }
@@ -24617,6 +27161,44 @@ export namespace Prisma {
     update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutPeriksaBalitaInput, KaderUpdateWithoutPeriksaBalitaInput>, KaderUncheckedUpdateWithoutPeriksaBalitaInput>
   }
 
+  export type PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanBalitaInput
+    upsert?: PelaksanaanKegiatanUpsertWithoutPemeriksaanBalitaInput
+    disconnect?: PelaksanaanKegiatanWhereInput | boolean
+    delete?: PelaksanaanKegiatanWhereInput | boolean
+    connect?: PelaksanaanKegiatanWhereUniqueInput
+    update?: XOR<XOR<PelaksanaanKegiatanUpdateToOneWithWhereWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUpdateWithoutPemeriksaanBalitaInput>, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput> | StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput | StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput[]
+    upsert?: StatusGiziBalitaUpsertWithWhereUniqueWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpsertWithWhereUniqueWithoutPemeriksaanBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyPemeriksaanBalitaInputEnvelope
+    set?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    disconnect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    delete?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    update?: StatusGiziBalitaUpdateWithWhereUniqueWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpdateWithWhereUniqueWithoutPemeriksaanBalitaInput[]
+    updateMany?: StatusGiziBalitaUpdateManyWithWhereWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpdateManyWithWhereWithoutPemeriksaanBalitaInput[]
+    deleteMany?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput = {
+    create?: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput> | StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput[] | StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput[]
+    connectOrCreate?: StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput | StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput[]
+    upsert?: StatusGiziBalitaUpsertWithWhereUniqueWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpsertWithWhereUniqueWithoutPemeriksaanBalitaInput[]
+    createMany?: StatusGiziBalitaCreateManyPemeriksaanBalitaInputEnvelope
+    set?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    disconnect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    delete?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    connect?: StatusGiziBalitaWhereUniqueInput | StatusGiziBalitaWhereUniqueInput[]
+    update?: StatusGiziBalitaUpdateWithWhereUniqueWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpdateWithWhereUniqueWithoutPemeriksaanBalitaInput[]
+    updateMany?: StatusGiziBalitaUpdateManyWithWhereWithoutPemeriksaanBalitaInput | StatusGiziBalitaUpdateManyWithWhereWithoutPemeriksaanBalitaInput[]
+    deleteMany?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
+  }
+
   export type IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput = {
     create?: XOR<IbuHamilCreateWithoutPemeriksaanKehamilanInput, IbuHamilUncheckedCreateWithoutPemeriksaanKehamilanInput>
     connectOrCreate?: IbuHamilCreateOrConnectWithoutPemeriksaanKehamilanInput
@@ -24633,6 +27215,12 @@ export namespace Prisma {
     create?: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
     connectOrCreate?: KaderCreateOrConnectWithoutPeriksaIbuHamilInput
     connect?: KaderWhereUniqueInput
+  }
+
+  export type PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput
+    connect?: PelaksanaanKegiatanWhereUniqueInput
   }
 
   export type IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput = {
@@ -24663,10 +27251,156 @@ export namespace Prisma {
     update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutPeriksaIbuHamilInput, KaderUpdateWithoutPeriksaIbuHamilInput>, KaderUncheckedUpdateWithoutPeriksaIbuHamilInput>
   }
 
+  export type PelaksanaanKegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput = {
+    create?: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    connectOrCreate?: PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput
+    upsert?: PelaksanaanKegiatanUpsertWithoutPemeriksaanIbuHamilInput
+    disconnect?: PelaksanaanKegiatanWhereInput | boolean
+    delete?: PelaksanaanKegiatanWhereInput | boolean
+    connect?: PelaksanaanKegiatanWhereUniqueInput
+    update?: XOR<XOR<PelaksanaanKegiatanUpdateToOneWithWhereWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUpdateWithoutPemeriksaanIbuHamilInput>, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+  }
+
+  export type KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<KegiatanCreateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPelaksanaanKegiatanInput
+    connect?: KegiatanWhereUniqueInput
+  }
+
+  export type PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<PosyanduCreateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutPelaksanaanKegiatanInput
+    connect?: PosyanduWhereUniqueInput
+  }
+
+  export type KaderCreateNestedOneWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<KaderCreateWithoutPelaksanaanKegiatanInput, KaderUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPelaksanaanKegiatanInput
+    connect?: KaderWhereUniqueInput
+  }
+
+  export type PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyPelaksanaanKegiatanInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyPelaksanaanKegiatanInputEnvelope
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInputEnvelope
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+  }
+
+  export type EnumStatusPelaksanaanFieldUpdateOperationsInput = {
+    set?: $Enums.StatusPelaksanaan
+  }
+
+  export type KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<KegiatanCreateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: KegiatanCreateOrConnectWithoutPelaksanaanKegiatanInput
+    upsert?: KegiatanUpsertWithoutPelaksanaanKegiatanInput
+    connect?: KegiatanWhereUniqueInput
+    update?: XOR<XOR<KegiatanUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput, KegiatanUpdateWithoutPelaksanaanKegiatanInput>, KegiatanUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<PosyanduCreateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: PosyanduCreateOrConnectWithoutPelaksanaanKegiatanInput
+    upsert?: PosyanduUpsertWithoutPelaksanaanKegiatanInput
+    connect?: PosyanduWhereUniqueInput
+    update?: XOR<XOR<PosyanduUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput, PosyanduUpdateWithoutPelaksanaanKegiatanInput>, PosyanduUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<KaderCreateWithoutPelaksanaanKegiatanInput, KaderUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    connectOrCreate?: KaderCreateOrConnectWithoutPelaksanaanKegiatanInput
+    upsert?: KaderUpsertWithoutPelaksanaanKegiatanInput
+    connect?: KaderWhereUniqueInput
+    update?: XOR<XOR<KaderUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput, KaderUpdateWithoutPelaksanaanKegiatanInput>, KaderUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyPelaksanaanKegiatanInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpdateManyWithWhereWithoutPelaksanaanKegiatanInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutPelaksanaanKegiatanInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    upsert?: PemeriksaanBalitaUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanBalitaCreateManyPelaksanaanKegiatanInputEnvelope
+    set?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    disconnect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    delete?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    connect?: PemeriksaanBalitaWhereUniqueInput | PemeriksaanBalitaWhereUniqueInput[]
+    update?: PemeriksaanBalitaUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    updateMany?: PemeriksaanBalitaUpdateManyWithWhereWithoutPelaksanaanKegiatanInput | PemeriksaanBalitaUpdateManyWithWhereWithoutPelaksanaanKegiatanInput[]
+    deleteMany?: PemeriksaanBalitaScalarWhereInput | PemeriksaanBalitaScalarWhereInput[]
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput = {
+    create?: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput> | PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput[] | PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput[]
+    connectOrCreate?: PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput[]
+    upsert?: PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    createMany?: PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInputEnvelope
+    set?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    disconnect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    delete?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
+    update?: PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput[]
+    updateMany?: PemeriksaanIbuHamilUpdateManyWithWhereWithoutPelaksanaanKegiatanInput | PemeriksaanIbuHamilUpdateManyWithWhereWithoutPelaksanaanKegiatanInput[]
+    deleteMany?: PemeriksaanIbuHamilScalarWhereInput | PemeriksaanIbuHamilScalarWhereInput[]
+  }
+
   export type BalitaCreateNestedOneWithoutStatusGiziInput = {
     create?: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
     connectOrCreate?: BalitaCreateOrConnectWithoutStatusGiziInput
     connect?: BalitaWhereUniqueInput
+  }
+
+  export type PemeriksaanBalitaCreateNestedOneWithoutStatusGiziInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedCreateWithoutStatusGiziInput>
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutStatusGiziInput
+    connect?: PemeriksaanBalitaWhereUniqueInput
   }
 
   export type BalitaUpdateOneRequiredWithoutStatusGiziNestedInput = {
@@ -24675,6 +27409,16 @@ export namespace Prisma {
     upsert?: BalitaUpsertWithoutStatusGiziInput
     connect?: BalitaWhereUniqueInput
     update?: XOR<XOR<BalitaUpdateToOneWithWhereWithoutStatusGiziInput, BalitaUpdateWithoutStatusGiziInput>, BalitaUncheckedUpdateWithoutStatusGiziInput>
+  }
+
+  export type PemeriksaanBalitaUpdateOneWithoutStatusGiziNestedInput = {
+    create?: XOR<PemeriksaanBalitaCreateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedCreateWithoutStatusGiziInput>
+    connectOrCreate?: PemeriksaanBalitaCreateOrConnectWithoutStatusGiziInput
+    upsert?: PemeriksaanBalitaUpsertWithoutStatusGiziInput
+    disconnect?: PemeriksaanBalitaWhereInput | boolean
+    delete?: PemeriksaanBalitaWhereInput | boolean
+    connect?: PemeriksaanBalitaWhereUniqueInput
+    update?: XOR<XOR<PemeriksaanBalitaUpdateToOneWithWhereWithoutStatusGiziInput, PemeriksaanBalitaUpdateWithoutStatusGiziInput>, PemeriksaanBalitaUncheckedUpdateWithoutStatusGiziInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -24927,6 +27671,23 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumStatusPelaksanaanFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPelaksanaan | EnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPelaksanaanFilter<$PrismaModel> | $Enums.StatusPelaksanaan
+  }
+
+  export type NestedEnumStatusPelaksanaanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPelaksanaan | EnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPelaksanaan[] | ListEnumStatusPelaksanaanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPelaksanaanWithAggregatesFilter<$PrismaModel> | $Enums.StatusPelaksanaan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusPelaksanaanFilter<$PrismaModel>
+    _max?: NestedEnumStatusPelaksanaanFilter<$PrismaModel>
+  }
+
   export type PosyanduCreateWithoutKelurahanInput = {
     nama: string
     alamat: string
@@ -24942,6 +27703,7 @@ export namespace Prisma {
     kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
     balita?: BalitaCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutKelurahanInput = {
@@ -24960,6 +27722,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
     balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutKelurahanInput = {
@@ -25036,6 +27799,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutPosyanduInput = {
@@ -25051,6 +27815,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutPosyanduInput = {
@@ -25073,6 +27838,7 @@ export namespace Prisma {
     programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
     pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUncheckedCreateWithoutPosyanduInput = {
@@ -25086,6 +27852,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanCreateOrConnectWithoutPosyanduInput = {
@@ -25189,6 +27956,47 @@ export namespace Prisma {
 
   export type IbuHamilCreateManyPosyanduInputEnvelope = {
     data: IbuHamilCreateManyPosyanduInput | IbuHamilCreateManyPosyanduInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PelaksanaanKegiatanCreateWithoutPosyanduInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan: KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput
+    kader: KaderCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput = {
+    id?: number
+    kegiatanId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanCreateOrConnectWithoutPosyanduInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    create: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type PelaksanaanKegiatanCreateManyPosyanduInputEnvelope = {
+    data: PelaksanaanKegiatanCreateManyPosyanduInput | PelaksanaanKegiatanCreateManyPosyanduInput[]
     skipDuplicates?: boolean
   }
 
@@ -25353,6 +28161,40 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"IbuHamil"> | Date | string
   }
 
+  export type PelaksanaanKegiatanUpsertWithWhereUniqueWithoutPosyanduInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    update: XOR<PelaksanaanKegiatanUpdateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedUpdateWithoutPosyanduInput>
+    create: XOR<PelaksanaanKegiatanCreateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedCreateWithoutPosyanduInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateWithWhereUniqueWithoutPosyanduInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    data: XOR<PelaksanaanKegiatanUpdateWithoutPosyanduInput, PelaksanaanKegiatanUncheckedUpdateWithoutPosyanduInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateManyWithWhereWithoutPosyanduInput = {
+    where: PelaksanaanKegiatanScalarWhereInput
+    data: XOR<PelaksanaanKegiatanUpdateManyMutationInput, PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduInput>
+  }
+
+  export type PelaksanaanKegiatanScalarWhereInput = {
+    AND?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+    OR?: PelaksanaanKegiatanScalarWhereInput[]
+    NOT?: PelaksanaanKegiatanScalarWhereInput | PelaksanaanKegiatanScalarWhereInput[]
+    id?: IntFilter<"PelaksanaanKegiatan"> | number
+    kegiatanId?: IntFilter<"PelaksanaanKegiatan"> | number
+    posyanduId?: IntFilter<"PelaksanaanKegiatan"> | number
+    kaderId?: IntFilter<"PelaksanaanKegiatan"> | number
+    tanggalMulai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    tanggalSelesai?: DateTimeNullableFilter<"PelaksanaanKegiatan"> | Date | string | null
+    status?: EnumStatusPelaksanaanFilter<"PelaksanaanKegiatan"> | $Enums.StatusPelaksanaan
+    jumlahBalita?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    jumlahIbuHamil?: IntNullableFilter<"PelaksanaanKegiatan"> | number | null
+    catatanUmum?: StringNullableFilter<"PelaksanaanKegiatan"> | string | null
+    createdAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+    updatedAt?: DateTimeFilter<"PelaksanaanKegiatan"> | Date | string
+  }
+
   export type PosyanduCreateWithoutKaderInput = {
     nama: string
     alamat: string
@@ -25368,6 +28210,7 @@ export namespace Prisma {
     kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
     balita?: BalitaCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutKaderInput = {
@@ -25386,6 +28229,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
     balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutKaderInput = {
@@ -25529,34 +28373,46 @@ export namespace Prisma {
   }
 
   export type PemeriksaanBalitaCreateWithoutKaderInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaUncheckedCreateWithoutKaderInput = {
     id?: number
     balitaId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaCreateOrConnectWithoutKaderInput = {
@@ -25570,12 +28426,15 @@ export namespace Prisma {
   }
 
   export type PemeriksaanIbuHamilCreateWithoutKaderInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
@@ -25583,21 +28442,26 @@ export namespace Prisma {
     updatedAt?: Date | string
     ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
   }
 
   export type PemeriksaanIbuHamilUncheckedCreateWithoutKaderInput = {
     id?: number
     ibuHamilId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -25609,6 +28473,47 @@ export namespace Prisma {
 
   export type PemeriksaanIbuHamilCreateManyKaderInputEnvelope = {
     data: PemeriksaanIbuHamilCreateManyKaderInput | PemeriksaanIbuHamilCreateManyKaderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PelaksanaanKegiatanCreateWithoutKaderInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan: KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput
+    posyandu: PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateWithoutKaderInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanCreateOrConnectWithoutKaderInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    create: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PelaksanaanKegiatanCreateManyKaderInputEnvelope = {
+    data: PelaksanaanKegiatanCreateManyKaderInput | PelaksanaanKegiatanCreateManyKaderInput[]
     skipDuplicates?: boolean
   }
 
@@ -25638,6 +28543,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutKaderInput = {
@@ -25656,6 +28562,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type UserUpsertWithoutKaderInput = {
@@ -25766,9 +28673,14 @@ export namespace Prisma {
     lingkarKepala?: FloatNullableFilter<"PemeriksaanBalita"> | number | null
     imunisasi?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     vitamin?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisVitamin?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    pmt?: BoolNullableFilter<"PemeriksaanBalita"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
+    tindakan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     catatan?: StringNullableFilter<"PemeriksaanBalita"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanBalita"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanBalita"> | Date | string
   }
@@ -25802,12 +28714,32 @@ export namespace Prisma {
     tekananDarah?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tinggiFundus?: FloatNullableFilter<"PemeriksaanIbuHamil"> | number | null
     detakJantungJanin?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pemberianFe?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    pmt?: BoolNullableFilter<"PemeriksaanIbuHamil"> | boolean | null
+    jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
+    pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     createdAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
     updatedAt?: DateTimeFilter<"PemeriksaanIbuHamil"> | Date | string
+  }
+
+  export type PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKaderInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    update: XOR<PelaksanaanKegiatanUpdateWithoutKaderInput, PelaksanaanKegiatanUncheckedUpdateWithoutKaderInput>
+    create: XOR<PelaksanaanKegiatanCreateWithoutKaderInput, PelaksanaanKegiatanUncheckedCreateWithoutKaderInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKaderInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    data: XOR<PelaksanaanKegiatanUpdateWithoutKaderInput, PelaksanaanKegiatanUncheckedUpdateWithoutKaderInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateManyWithWhereWithoutKaderInput = {
+    where: PelaksanaanKegiatanScalarWhereInput
+    data: XOR<PelaksanaanKegiatanUpdateManyMutationInput, PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderInput>
   }
 
   export type UserCreateWithoutRoleInput = {
@@ -25981,6 +28913,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutUserInput = {
@@ -25996,6 +28929,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutUserInput = {
@@ -26081,6 +29015,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutUserInput = {
@@ -26096,6 +29031,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type OtpUpsertWithWhereUniqueWithoutUserInput = {
@@ -26325,6 +29261,7 @@ export namespace Prisma {
     posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
     pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUncheckedCreateWithoutProgramKesehatanInput = {
@@ -26338,6 +29275,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanCreateOrConnectWithoutProgramKesehatanInput = {
@@ -26436,6 +29374,7 @@ export namespace Prisma {
     kader?: KaderCreateNestedManyWithoutPosyanduInput
     balita?: BalitaCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutKegiatanInput = {
@@ -26454,6 +29393,7 @@ export namespace Prisma {
     kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
     balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutKegiatanInput = {
@@ -26486,34 +29426,46 @@ export namespace Prisma {
   }
 
   export type PemeriksaanBalitaCreateWithoutKegiatanInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
     kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaUncheckedCreateWithoutKegiatanInput = {
     id?: number
     balitaId: number
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaCreateOrConnectWithoutKegiatanInput = {
@@ -26527,12 +29479,15 @@ export namespace Prisma {
   }
 
   export type PemeriksaanIbuHamilCreateWithoutKegiatanInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
@@ -26540,21 +29495,26 @@ export namespace Prisma {
     updatedAt?: Date | string
     ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
     kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
   }
 
   export type PemeriksaanIbuHamilUncheckedCreateWithoutKegiatanInput = {
     id?: number
     ibuHamilId: number
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -26566,6 +29526,47 @@ export namespace Prisma {
 
   export type PemeriksaanIbuHamilCreateManyKegiatanInputEnvelope = {
     data: PemeriksaanIbuHamilCreateManyKegiatanInput | PemeriksaanIbuHamilCreateManyKegiatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PelaksanaanKegiatanCreateWithoutKegiatanInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput
+    kader: KaderCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput = {
+    id?: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanCreateOrConnectWithoutKegiatanInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    create: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PelaksanaanKegiatanCreateManyKegiatanInputEnvelope = {
+    data: PelaksanaanKegiatanCreateManyKegiatanInput | PelaksanaanKegiatanCreateManyKegiatanInput[]
     skipDuplicates?: boolean
   }
 
@@ -26595,6 +29596,7 @@ export namespace Prisma {
     kader?: KaderUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutKegiatanInput = {
@@ -26613,6 +29615,7 @@ export namespace Prisma {
     kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type ProgramKesehatanUpsertWithoutKegiatanInput = {
@@ -26677,6 +29680,22 @@ export namespace Prisma {
     data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanInput>
   }
 
+  export type PelaksanaanKegiatanUpsertWithWhereUniqueWithoutKegiatanInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    update: XOR<PelaksanaanKegiatanUpdateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedUpdateWithoutKegiatanInput>
+    create: XOR<PelaksanaanKegiatanCreateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedCreateWithoutKegiatanInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateWithWhereUniqueWithoutKegiatanInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    data: XOR<PelaksanaanKegiatanUpdateWithoutKegiatanInput, PelaksanaanKegiatanUncheckedUpdateWithoutKegiatanInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateManyWithWhereWithoutKegiatanInput = {
+    where: PelaksanaanKegiatanScalarWhereInput
+    data: XOR<PelaksanaanKegiatanUpdateManyMutationInput, PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanInput>
+  }
+
   export type PosyanduCreateWithoutBalitaInput = {
     nama: string
     alamat: string
@@ -26692,6 +29711,7 @@ export namespace Prisma {
     kader?: KaderCreateNestedManyWithoutPosyanduInput
     kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutBalitaInput = {
@@ -26710,6 +29730,7 @@ export namespace Prisma {
     kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
     kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutBalitaInput = {
@@ -26729,6 +29750,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutBalitaInput = {
@@ -26744,6 +29766,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutBalitaInput = {
@@ -26752,34 +29775,46 @@ export namespace Prisma {
   }
 
   export type PemeriksaanBalitaCreateWithoutBalitaInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
     kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaUncheckedCreateWithoutBalitaInput = {
     id?: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput
   }
 
   export type PemeriksaanBalitaCreateOrConnectWithoutBalitaInput = {
@@ -26800,11 +29835,14 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedOneWithoutStatusGiziInput
   }
 
   export type StatusGiziBalitaUncheckedCreateWithoutBalitaInput = {
     id?: number
+    pemeriksaanBalitaId?: number | null
     tanggal: Date | string
     beratBadan: number
     tinggiBadan: number
@@ -26812,6 +29850,7 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
   }
 
@@ -26851,6 +29890,7 @@ export namespace Prisma {
     kader?: KaderUpdateManyWithoutPosyanduNestedInput
     kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutBalitaInput = {
@@ -26869,6 +29909,7 @@ export namespace Prisma {
     kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
     kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type KaderUpsertWithoutBalitaInput = {
@@ -26894,6 +29935,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutBalitaInput = {
@@ -26909,6 +29951,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type PemeriksaanBalitaUpsertWithWhereUniqueWithoutBalitaInput = {
@@ -26949,6 +29992,7 @@ export namespace Prisma {
     NOT?: StatusGiziBalitaScalarWhereInput | StatusGiziBalitaScalarWhereInput[]
     id?: IntFilter<"StatusGiziBalita"> | number
     balitaId?: IntFilter<"StatusGiziBalita"> | number
+    pemeriksaanBalitaId?: IntNullableFilter<"StatusGiziBalita"> | number | null
     tanggal?: DateTimeFilter<"StatusGiziBalita"> | Date | string
     beratBadan?: FloatFilter<"StatusGiziBalita"> | number
     tinggiBadan?: FloatFilter<"StatusGiziBalita"> | number
@@ -26956,6 +30000,7 @@ export namespace Prisma {
     zScoreBBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     zScoreTBU?: FloatNullableFilter<"StatusGiziBalita"> | number | null
     kategoriGizi?: StringNullableFilter<"StatusGiziBalita"> | string | null
+    statusStunting?: StringNullableFilter<"StatusGiziBalita"> | string | null
     createdAt?: DateTimeFilter<"StatusGiziBalita"> | Date | string
   }
 
@@ -26974,6 +30019,7 @@ export namespace Prisma {
     kader?: KaderCreateNestedManyWithoutPosyanduInput
     kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
     balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduUncheckedCreateWithoutIbuHamilInput = {
@@ -26992,6 +30038,7 @@ export namespace Prisma {
     kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
     kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
     balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutPosyanduInput
   }
 
   export type PosyanduCreateOrConnectWithoutIbuHamilInput = {
@@ -27011,6 +30058,7 @@ export namespace Prisma {
     balita?: BalitaCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutIbuHamilInput = {
@@ -27026,6 +30074,7 @@ export namespace Prisma {
     balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutIbuHamilInput = {
@@ -27034,12 +30083,15 @@ export namespace Prisma {
   }
 
   export type PemeriksaanIbuHamilCreateWithoutIbuHamilInput = {
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
@@ -27047,21 +30099,26 @@ export namespace Prisma {
     updatedAt?: Date | string
     kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
     kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
   }
 
   export type PemeriksaanIbuHamilUncheckedCreateWithoutIbuHamilInput = {
     id?: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -27102,6 +30159,7 @@ export namespace Prisma {
     kader?: KaderUpdateManyWithoutPosyanduNestedInput
     kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutIbuHamilInput = {
@@ -27120,6 +30178,7 @@ export namespace Prisma {
     kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
     kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type KaderUpsertWithoutIbuHamilInput = {
@@ -27145,6 +30204,7 @@ export namespace Prisma {
     balita?: BalitaUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutIbuHamilInput = {
@@ -27160,6 +30220,7 @@ export namespace Prisma {
     balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutIbuHamilInput = {
@@ -27230,6 +30291,7 @@ export namespace Prisma {
     posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
     programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUncheckedCreateWithoutPemeriksaanBalitaInput = {
@@ -27243,6 +30305,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanCreateOrConnectWithoutPemeriksaanBalitaInput = {
@@ -27262,6 +30325,7 @@ export namespace Prisma {
     balita?: BalitaCreateNestedManyWithoutKaderInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutPeriksaBalitaInput = {
@@ -27277,11 +30341,85 @@ export namespace Prisma {
     balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutPeriksaBalitaInput = {
     where: KaderWhereUniqueInput
     create: XOR<KaderCreateWithoutPeriksaBalitaInput, KaderUncheckedCreateWithoutPeriksaBalitaInput>
+  }
+
+  export type PelaksanaanKegiatanCreateWithoutPemeriksaanBalitaInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan: KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput
+    posyandu: PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput
+    kader: KaderCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanBalitaInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanBalitaInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    create: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput = {
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    statusStunting?: string | null
+    createdAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutStatusGiziInput
+  }
+
+  export type StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    statusStunting?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaCreateOrConnectWithoutPemeriksaanBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    create: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type StatusGiziBalitaCreateManyPemeriksaanBalitaInputEnvelope = {
+    data: StatusGiziBalitaCreateManyPemeriksaanBalitaInput | StatusGiziBalitaCreateManyPemeriksaanBalitaInput[]
+    skipDuplicates?: boolean
   }
 
   export type BalitaUpsertWithoutPemeriksaanBalitaInput = {
@@ -27353,6 +30491,7 @@ export namespace Prisma {
     posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
     programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput = {
@@ -27366,6 +30505,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KaderUpsertWithoutPeriksaBalitaInput = {
@@ -27391,6 +30531,7 @@ export namespace Prisma {
     balita?: BalitaUpdateManyWithoutKaderNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutPeriksaBalitaInput = {
@@ -27406,6 +30547,65 @@ export namespace Prisma {
     balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type PelaksanaanKegiatanUpsertWithoutPemeriksaanBalitaInput = {
+    update: XOR<PelaksanaanKegiatanUpdateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+    create: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanBalitaInput>
+    where?: PelaksanaanKegiatanWhereInput
+  }
+
+  export type PelaksanaanKegiatanUpdateToOneWithWhereWithoutPemeriksaanBalitaInput = {
+    where?: PelaksanaanKegiatanWhereInput
+    data: XOR<PelaksanaanKegiatanUpdateWithoutPemeriksaanBalitaInput, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateWithoutPemeriksaanBalitaInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    posyandu?: PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    kader?: KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type StatusGiziBalitaUpsertWithWhereUniqueWithoutPemeriksaanBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    update: XOR<StatusGiziBalitaUpdateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedUpdateWithoutPemeriksaanBalitaInput>
+    create: XOR<StatusGiziBalitaCreateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedCreateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpdateWithWhereUniqueWithoutPemeriksaanBalitaInput = {
+    where: StatusGiziBalitaWhereUniqueInput
+    data: XOR<StatusGiziBalitaUpdateWithoutPemeriksaanBalitaInput, StatusGiziBalitaUncheckedUpdateWithoutPemeriksaanBalitaInput>
+  }
+
+  export type StatusGiziBalitaUpdateManyWithWhereWithoutPemeriksaanBalitaInput = {
+    where: StatusGiziBalitaScalarWhereInput
+    data: XOR<StatusGiziBalitaUpdateManyMutationInput, StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaInput>
   }
 
   export type IbuHamilCreateWithoutPemeriksaanKehamilanInput = {
@@ -27460,6 +30660,7 @@ export namespace Prisma {
     posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
     programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
     pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput = {
@@ -27473,6 +30674,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKegiatanInput
   }
 
   export type KegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput = {
@@ -27492,6 +30694,7 @@ export namespace Prisma {
     balita?: BalitaCreateNestedManyWithoutKaderInput
     ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedManyWithoutKaderInput
   }
 
   export type KaderUncheckedCreateWithoutPeriksaIbuHamilInput = {
@@ -27507,11 +30710,48 @@ export namespace Prisma {
     balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
     ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
     periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedCreateNestedManyWithoutKaderInput
   }
 
   export type KaderCreateOrConnectWithoutPeriksaIbuHamilInput = {
     where: KaderWhereUniqueInput
     create: XOR<KaderCreateWithoutPeriksaIbuHamilInput, KaderUncheckedCreateWithoutPeriksaIbuHamilInput>
+  }
+
+  export type PelaksanaanKegiatanCreateWithoutPemeriksaanIbuHamilInput = {
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kegiatan: KegiatanCreateNestedOneWithoutPelaksanaanKegiatanInput
+    posyandu: PosyanduCreateNestedOneWithoutPelaksanaanKegiatanInput
+    kader: KaderCreateNestedOneWithoutPelaksanaanKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutPelaksanaanKegiatanInput
+  }
+
+  export type PelaksanaanKegiatanCreateOrConnectWithoutPemeriksaanIbuHamilInput = {
+    where: PelaksanaanKegiatanWhereUniqueInput
+    create: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
   }
 
   export type IbuHamilUpsertWithoutPemeriksaanKehamilanInput = {
@@ -27583,6 +30823,7 @@ export namespace Prisma {
     posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
     programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
     pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput = {
@@ -27596,6 +30837,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KaderUpsertWithoutPeriksaIbuHamilInput = {
@@ -27621,6 +30863,7 @@ export namespace Prisma {
     balita?: BalitaUpdateManyWithoutKaderNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutPeriksaIbuHamilInput = {
@@ -27636,6 +30879,423 @@ export namespace Prisma {
     balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type PelaksanaanKegiatanUpsertWithoutPemeriksaanIbuHamilInput = {
+    update: XOR<PelaksanaanKegiatanUpdateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+    create: XOR<PelaksanaanKegiatanCreateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedCreateWithoutPemeriksaanIbuHamilInput>
+    where?: PelaksanaanKegiatanWhereInput
+  }
+
+  export type PelaksanaanKegiatanUpdateToOneWithWhereWithoutPemeriksaanIbuHamilInput = {
+    where?: PelaksanaanKegiatanWhereInput
+    data: XOR<PelaksanaanKegiatanUpdateWithoutPemeriksaanIbuHamilInput, PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput>
+  }
+
+  export type PelaksanaanKegiatanUpdateWithoutPemeriksaanIbuHamilInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    posyandu?: PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    kader?: KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateWithoutPemeriksaanIbuHamilInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type KegiatanCreateWithoutPelaksanaanKegiatanInput = {
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKegiatanInput
+    programKesehatan: ProgramKesehatanCreateNestedOneWithoutKegiatanInput
+    pemeriksaanBalita?: PemeriksaanBalitaCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanUncheckedCreateWithoutPelaksanaanKegiatanInput = {
+    id?: number
+    nama: string
+    deskripsi?: string | null
+    tanggalPelaksanaan?: Date | string | null
+    alamat?: string | null
+    posyanduId: number
+    programKesehatanId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKegiatanInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKegiatanInput
+  }
+
+  export type KegiatanCreateOrConnectWithoutPelaksanaanKegiatanInput = {
+    where: KegiatanWhereUniqueInput
+    create: XOR<KegiatanCreateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PosyanduCreateWithoutPelaksanaanKegiatanInput = {
+    nama: string
+    alamat: string
+    wilayah: string
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kelurahan?: KelurahanCreateNestedOneWithoutPosyanduInput
+    kader?: KaderCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduUncheckedCreateWithoutPelaksanaanKegiatanInput = {
+    id?: number
+    nama: string
+    alamat: string
+    wilayah: string
+    kelurahanId?: number | null
+    penanggungJawab: string
+    noHp: string
+    akreditasi: $Enums.Akreditasi
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    kader?: KaderUncheckedCreateNestedManyWithoutPosyanduInput
+    kegiatan?: KegiatanUncheckedCreateNestedManyWithoutPosyanduInput
+    balita?: BalitaUncheckedCreateNestedManyWithoutPosyanduInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutPosyanduInput
+  }
+
+  export type PosyanduCreateOrConnectWithoutPelaksanaanKegiatanInput = {
+    where: PosyanduWhereUniqueInput
+    create: XOR<PosyanduCreateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type KaderCreateWithoutPelaksanaanKegiatanInput = {
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    posyandu: PosyanduCreateNestedOneWithoutKaderInput
+    user?: UserCreateNestedOneWithoutKaderInput
+    balita?: BalitaCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderUncheckedCreateWithoutPelaksanaanKegiatanInput = {
+    id?: number
+    nama: string
+    nik: string
+    noHp: string
+    alamat: string
+    posyanduId: number
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita?: BalitaUncheckedCreateNestedManyWithoutKaderInput
+    ibuHamil?: IbuHamilUncheckedCreateNestedManyWithoutKaderInput
+    periksaBalita?: PemeriksaanBalitaUncheckedCreateNestedManyWithoutKaderInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedCreateNestedManyWithoutKaderInput
+  }
+
+  export type KaderCreateOrConnectWithoutPelaksanaanKegiatanInput = {
+    where: KaderWhereUniqueInput
+    create: XOR<KaderCreateWithoutPelaksanaanKegiatanInput, KaderUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput = {
+    tanggal?: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+    statusGizi?: StatusGiziBalitaCreateNestedManyWithoutPemeriksaanBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal?: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    statusGizi?: StatusGiziBalitaUncheckedCreateNestedManyWithoutPemeriksaanBalitaInput
+  }
+
+  export type PemeriksaanBalitaCreateOrConnectWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    create: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaCreateManyPelaksanaanKegiatanInputEnvelope = {
+    data: PemeriksaanBalitaCreateManyPelaksanaanKegiatanInput | PemeriksaanBalitaCreateManyPelaksanaanKegiatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput = {
+    tanggal?: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ibuHamil: IbuHamilCreateNestedOneWithoutPemeriksaanKehamilanInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanIbuHamilInput
+    kader?: KaderCreateNestedOneWithoutPeriksaIbuHamilInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal?: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateOrConnectWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    create: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInputEnvelope = {
+    data: PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInput | PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type KegiatanUpsertWithoutPelaksanaanKegiatanInput = {
+    update: XOR<KegiatanUpdateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+    create: XOR<KegiatanCreateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    where?: KegiatanWhereInput
+  }
+
+  export type KegiatanUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput = {
+    where?: KegiatanWhereInput
+    data: XOR<KegiatanUpdateWithoutPelaksanaanKegiatanInput, KegiatanUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type KegiatanUpdateWithoutPelaksanaanKegiatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
+    programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type KegiatanUncheckedUpdateWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggalPelaksanaan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    programKesehatanId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+  }
+
+  export type PosyanduUpsertWithoutPelaksanaanKegiatanInput = {
+    update: XOR<PosyanduUpdateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+    create: XOR<PosyanduCreateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    where?: PosyanduWhereInput
+  }
+
+  export type PosyanduUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput = {
+    where?: PosyanduWhereInput
+    data: XOR<PosyanduUpdateWithoutPelaksanaanKegiatanInput, PosyanduUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PosyanduUpdateWithoutPelaksanaanKegiatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kelurahan?: KelurahanUpdateOneWithoutPosyanduNestedInput
+    kader?: KaderUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type PosyanduUncheckedUpdateWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    wilayah?: StringFieldUpdateOperationsInput | string
+    kelurahanId?: NullableIntFieldUpdateOperationsInput | number | null
+    penanggungJawab?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    akreditasi?: EnumAkreditasiFieldUpdateOperationsInput | $Enums.Akreditasi
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kader?: KaderUncheckedUpdateManyWithoutPosyanduNestedInput
+    kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
+    balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+  }
+
+  export type KaderUpsertWithoutPelaksanaanKegiatanInput = {
+    update: XOR<KaderUpdateWithoutPelaksanaanKegiatanInput, KaderUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+    create: XOR<KaderCreateWithoutPelaksanaanKegiatanInput, KaderUncheckedCreateWithoutPelaksanaanKegiatanInput>
+    where?: KaderWhereInput
+  }
+
+  export type KaderUpdateToOneWithWhereWithoutPelaksanaanKegiatanInput = {
+    where?: KaderWhereInput
+    data: XOR<KaderUpdateWithoutPelaksanaanKegiatanInput, KaderUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type KaderUpdateWithoutPelaksanaanKegiatanInput = {
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutKaderNestedInput
+    user?: UserUpdateOneWithoutKaderNestedInput
+    balita?: BalitaUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+  }
+
+  export type KaderUncheckedUpdateWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noHp?: StringFieldUpdateOperationsInput | string
+    alamat?: StringFieldUpdateOperationsInput | string
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUncheckedUpdateManyWithoutKaderNestedInput
+    ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
+    periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+  }
+
+  export type PemeriksaanBalitaUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    update: XOR<PemeriksaanBalitaUpdateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+    create: XOR<PemeriksaanBalitaCreateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    data: XOR<PemeriksaanBalitaUpdateWithoutPelaksanaanKegiatanInput, PemeriksaanBalitaUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanBalitaUpdateManyWithWhereWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanBalitaScalarWhereInput
+    data: XOR<PemeriksaanBalitaUpdateManyMutationInput, PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpsertWithWhereUniqueWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    update: XOR<PemeriksaanIbuHamilUpdateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+    create: XOR<PemeriksaanIbuHamilCreateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedCreateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithWhereUniqueWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanIbuHamilWhereUniqueInput
+    data: XOR<PemeriksaanIbuHamilUpdateWithoutPelaksanaanKegiatanInput, PemeriksaanIbuHamilUncheckedUpdateWithoutPelaksanaanKegiatanInput>
+  }
+
+  export type PemeriksaanIbuHamilUpdateManyWithWhereWithoutPelaksanaanKegiatanInput = {
+    where: PemeriksaanIbuHamilScalarWhereInput
+    data: XOR<PemeriksaanIbuHamilUpdateManyMutationInput, PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanInput>
   }
 
   export type BalitaCreateWithoutStatusGiziInput = {
@@ -27678,6 +31338,54 @@ export namespace Prisma {
   export type BalitaCreateOrConnectWithoutStatusGiziInput = {
     where: BalitaWhereUniqueInput
     create: XOR<BalitaCreateWithoutStatusGiziInput, BalitaUncheckedCreateWithoutStatusGiziInput>
+  }
+
+  export type PemeriksaanBalitaCreateWithoutStatusGiziInput = {
+    tanggal?: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    catatan?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    balita: BalitaCreateNestedOneWithoutPemeriksaanBalitaInput
+    kegiatan?: KegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+    kader?: KaderCreateNestedOneWithoutPeriksaBalitaInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanCreateNestedOneWithoutPemeriksaanBalitaInput
+  }
+
+  export type PemeriksaanBalitaUncheckedCreateWithoutStatusGiziInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal?: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaCreateOrConnectWithoutStatusGiziInput = {
+    where: PemeriksaanBalitaWhereUniqueInput
+    create: XOR<PemeriksaanBalitaCreateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedCreateWithoutStatusGiziInput>
   }
 
   export type BalitaUpsertWithoutStatusGiziInput = {
@@ -27728,6 +31436,60 @@ export namespace Prisma {
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaNestedInput
   }
 
+  export type PemeriksaanBalitaUpsertWithoutStatusGiziInput = {
+    update: XOR<PemeriksaanBalitaUpdateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedUpdateWithoutStatusGiziInput>
+    create: XOR<PemeriksaanBalitaCreateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedCreateWithoutStatusGiziInput>
+    where?: PemeriksaanBalitaWhereInput
+  }
+
+  export type PemeriksaanBalitaUpdateToOneWithWhereWithoutStatusGiziInput = {
+    where?: PemeriksaanBalitaWhereInput
+    data: XOR<PemeriksaanBalitaUpdateWithoutStatusGiziInput, PemeriksaanBalitaUncheckedUpdateWithoutStatusGiziInput>
+  }
+
+  export type PemeriksaanBalitaUpdateWithoutStatusGiziInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateWithoutStatusGiziInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type PosyanduCreateManyKelurahanInput = {
     id?: number
     nama: string
@@ -27757,6 +31519,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateWithoutKelurahanInput = {
@@ -27775,6 +31538,7 @@ export namespace Prisma {
     kegiatan?: KegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
     balita?: BalitaUncheckedUpdateManyWithoutPosyanduNestedInput
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutPosyanduNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduNestedInput
   }
 
   export type PosyanduUncheckedUpdateManyWithoutKelurahanInput = {
@@ -27848,6 +31612,20 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PelaksanaanKegiatanCreateManyPosyanduInput = {
+    id?: number
+    kegiatanId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type KaderUpdateWithoutPosyanduInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
@@ -27860,6 +31638,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateWithoutPosyanduInput = {
@@ -27875,6 +31654,7 @@ export namespace Prisma {
     ibuHamil?: IbuHamilUncheckedUpdateManyWithoutKaderNestedInput
     periksaBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKaderNestedInput
     periksaIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKaderNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderNestedInput
   }
 
   export type KaderUncheckedUpdateManyWithoutPosyanduInput = {
@@ -27898,6 +31678,7 @@ export namespace Prisma {
     programKesehatan?: ProgramKesehatanUpdateOneRequiredWithoutKegiatanNestedInput
     pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateWithoutPosyanduInput = {
@@ -27911,6 +31692,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateManyWithoutPosyanduInput = {
@@ -28033,6 +31815,51 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PelaksanaanKegiatanUpdateWithoutPosyanduInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    kader?: KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutPosyanduInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BalitaCreateManyKaderInput = {
     id?: number
     nama: string
@@ -28072,14 +31899,19 @@ export namespace Prisma {
     id?: number
     balitaId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28088,15 +31920,33 @@ export namespace Prisma {
     id?: number
     ibuHamilId: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
+    pelaksanaanKegiatanId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PelaksanaanKegiatanCreateManyKaderInput = {
+    id?: number
+    kegiatanId: number
+    posyanduId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28217,12 +32067,18 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateWithoutKaderInput = {
@@ -28235,10 +32091,16 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateManyWithoutKaderInput = {
@@ -28251,8 +32113,13 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28264,6 +32131,9 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28271,6 +32141,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
   }
 
   export type PemeriksaanIbuHamilUncheckedUpdateWithoutKaderInput = {
@@ -28283,9 +32154,13 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28300,9 +32175,58 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PelaksanaanKegiatanUpdateWithoutKaderInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kegiatan?: KegiatanUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    posyandu?: PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutKaderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28465,6 +32389,7 @@ export namespace Prisma {
     posyandu?: PosyanduUpdateOneRequiredWithoutKegiatanNestedInput
     pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateWithoutProgramKesehatanInput = {
@@ -28478,6 +32403,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanNestedInput
     pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutKegiatanNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanNestedInput
   }
 
   export type KegiatanUncheckedUpdateManyWithoutProgramKesehatanInput = {
@@ -28494,15 +32420,20 @@ export namespace Prisma {
   export type PemeriksaanBalitaCreateManyKegiatanInput = {
     id?: number
     balitaId: number
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28510,16 +32441,34 @@ export namespace Prisma {
   export type PemeriksaanIbuHamilCreateManyKegiatanInput = {
     id?: number
     ibuHamilId: number
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PelaksanaanKegiatanCreateManyKegiatanInput = {
+    id?: number
+    posyanduId: number
+    kaderId: number
+    tanggalMulai?: Date | string | null
+    tanggalSelesai?: Date | string | null
+    status?: $Enums.StatusPelaksanaan
+    jumlahBalita?: number | null
+    jumlahIbuHamil?: number | null
+    catatanUmum?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28531,12 +32480,18 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
     kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateWithoutKegiatanInput = {
@@ -28548,11 +32503,17 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateManyWithoutKegiatanInput = {
@@ -28564,9 +32525,14 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28578,6 +32544,9 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28585,6 +32554,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
     kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
   }
 
   export type PemeriksaanIbuHamilUncheckedUpdateWithoutKegiatanInput = {
@@ -28596,10 +32566,14 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28613,10 +32587,59 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PelaksanaanKegiatanUpdateWithoutKegiatanInput = {
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posyandu?: PosyanduUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    kader?: KaderUpdateOneRequiredWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+    pemeriksaanIbuHamil?: PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanNestedInput
+  }
+
+  export type PelaksanaanKegiatanUncheckedUpdateManyWithoutKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    posyanduId?: IntFieldUpdateOperationsInput | number
+    kaderId?: IntFieldUpdateOperationsInput | number
+    tanggalMulai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalSelesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumStatusPelaksanaanFieldUpdateOperationsInput | $Enums.StatusPelaksanaan
+    jumlahBalita?: NullableIntFieldUpdateOperationsInput | number | null
+    jumlahIbuHamil?: NullableIntFieldUpdateOperationsInput | number | null
+    catatanUmum?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28624,21 +32647,27 @@ export namespace Prisma {
   export type PemeriksaanBalitaCreateManyBalitaInput = {
     id?: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     beratBadan: number
     tinggiBadan: number
     lingkarKepala?: number | null
     imunisasi?: string | null
     vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
+    tindakan?: string | null
     catatan?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type StatusGiziBalitaCreateManyBalitaInput = {
     id?: number
+    pemeriksaanBalitaId?: number | null
     tanggal: Date | string
     beratBadan: number
     tinggiBadan: number
@@ -28646,6 +32675,7 @@ export namespace Prisma {
     zScoreBBU?: number | null
     zScoreTBU?: number | null
     kategoriGizi?: string | null
+    statusStunting?: string | null
     createdAt?: Date | string
   }
 
@@ -28656,12 +32686,18 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
     kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateWithoutBalitaInput = {
@@ -28673,11 +32709,17 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput
   }
 
   export type PemeriksaanBalitaUncheckedUpdateManyWithoutBalitaInput = {
@@ -28689,9 +32731,14 @@ export namespace Prisma {
     lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
     imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
     vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28704,11 +32751,14 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pemeriksaanBalita?: PemeriksaanBalitaUpdateOneWithoutStatusGiziNestedInput
   }
 
   export type StatusGiziBalitaUncheckedUpdateWithoutBalitaInput = {
     id?: IntFieldUpdateOperationsInput | number
+    pemeriksaanBalitaId?: NullableIntFieldUpdateOperationsInput | number | null
     tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     beratBadan?: FloatFieldUpdateOperationsInput | number
     tinggiBadan?: FloatFieldUpdateOperationsInput | number
@@ -28716,11 +32766,13 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StatusGiziBalitaUncheckedUpdateManyWithoutBalitaInput = {
     id?: IntFieldUpdateOperationsInput | number
+    pemeriksaanBalitaId?: NullableIntFieldUpdateOperationsInput | number | null
     tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     beratBadan?: FloatFieldUpdateOperationsInput | number
     tinggiBadan?: FloatFieldUpdateOperationsInput | number
@@ -28728,22 +32780,27 @@ export namespace Prisma {
     zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
     zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
     kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PemeriksaanIbuHamilCreateManyIbuHamilInput = {
     id?: number
     kegiatanId?: number | null
-    tanggal: Date | string
+    tanggal?: Date | string
     usiaKehamilan: number
     beratBadan?: number | null
     tekananDarah?: string | null
     tinggiFundus?: number | null
     detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
     konseling?: string | null
     kaderId?: number | null
+    pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28755,6 +32812,9 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28762,6 +32822,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
     kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+    pelaksanaanKegiatan?: PelaksanaanKegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
   }
 
   export type PemeriksaanIbuHamilUncheckedUpdateWithoutIbuHamilInput = {
@@ -28773,10 +32834,14 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28790,6 +32855,233 @@ export namespace Prisma {
     tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
     tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
     detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaCreateManyPemeriksaanBalitaInput = {
+    id?: number
+    balitaId: number
+    tanggal: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    zScoreBBTB?: number | null
+    zScoreBBU?: number | null
+    zScoreTBU?: number | null
+    kategoriGizi?: string | null
+    statusStunting?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StatusGiziBalitaUpdateWithoutPemeriksaanBalitaInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutStatusGiziNestedInput
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateWithoutPemeriksaanBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    zScoreBBTB?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreBBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    zScoreTBU?: NullableFloatFieldUpdateOperationsInput | number | null
+    kategoriGizi?: NullableStringFieldUpdateOperationsInput | string | null
+    statusStunting?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanBalitaCreateManyPelaksanaanKegiatanInput = {
+    id?: number
+    balitaId: number
+    kegiatanId?: number | null
+    tanggal?: Date | string
+    beratBadan: number
+    tinggiBadan: number
+    lingkarKepala?: number | null
+    imunisasi?: string | null
+    vitamin?: boolean | null
+    jenisVitamin?: string | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    catatan?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanIbuHamilCreateManyPelaksanaanKegiatanInput = {
+    id?: number
+    ibuHamilId: number
+    kegiatanId?: number | null
+    tanggal?: Date | string
+    usiaKehamilan: number
+    beratBadan?: number | null
+    tekananDarah?: string | null
+    tinggiFundus?: number | null
+    detakJantungJanin?: number | null
+    pemberianFe?: boolean | null
+    pmt?: boolean | null
+    jenisPmt?: string | null
+    keluhan?: string | null
+    tindakan?: string | null
+    konseling?: string | null
+    kaderId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PemeriksaanBalitaUpdateWithoutPelaksanaanKegiatanInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    balita?: BalitaUpdateOneRequiredWithoutPemeriksaanBalitaNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanBalitaNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaBalitaNestedInput
+    statusGizi?: StatusGiziBalitaUpdateManyWithoutPemeriksaanBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusGizi?: StatusGiziBalitaUncheckedUpdateManyWithoutPemeriksaanBalitaNestedInput
+  }
+
+  export type PemeriksaanBalitaUncheckedUpdateManyWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    balitaId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    beratBadan?: FloatFieldUpdateOperationsInput | number
+    tinggiBadan?: FloatFieldUpdateOperationsInput | number
+    lingkarKepala?: NullableFloatFieldUpdateOperationsInput | number | null
+    imunisasi?: NullableStringFieldUpdateOperationsInput | string | null
+    vitamin?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisVitamin?: NullableStringFieldUpdateOperationsInput | string | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUpdateWithoutPelaksanaanKegiatanInput = {
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ibuHamil?: IbuHamilUpdateOneRequiredWithoutPemeriksaanKehamilanNestedInput
+    kegiatan?: KegiatanUpdateOneWithoutPemeriksaanIbuHamilNestedInput
+    kader?: KaderUpdateOneWithoutPeriksaIbuHamilNestedInput
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
+    keluhan?: NullableStringFieldUpdateOperationsInput | string | null
+    tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    konseling?: NullableStringFieldUpdateOperationsInput | string | null
+    kaderId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PemeriksaanIbuHamilUncheckedUpdateManyWithoutPelaksanaanKegiatanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ibuHamilId?: IntFieldUpdateOperationsInput | number
+    kegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    usiaKehamilan?: IntFieldUpdateOperationsInput | number
+    beratBadan?: NullableFloatFieldUpdateOperationsInput | number | null
+    tekananDarah?: NullableStringFieldUpdateOperationsInput | string | null
+    tinggiFundus?: NullableFloatFieldUpdateOperationsInput | number | null
+    detakJantungJanin?: NullableIntFieldUpdateOperationsInput | number | null
+    pemberianFe?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pmt?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null

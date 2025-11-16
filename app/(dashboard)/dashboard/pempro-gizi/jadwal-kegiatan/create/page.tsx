@@ -70,7 +70,7 @@ export default function TambahKegiatanPage() {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/pemproGiziJadwal', {
+      const res = await fetch('/api/pemproGizi/jadwal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

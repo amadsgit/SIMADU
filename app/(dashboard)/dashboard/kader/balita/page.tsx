@@ -9,6 +9,7 @@ import ModalKonfirmasi from '@/components/delete-confirmation';
 import Search from '@/app/ui/search';
 
 type Balita = {
+  umur: string;
   id: number;
   nama: string;
   nik?: string;
@@ -185,14 +186,14 @@ export default function Page() {
               <table className="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
                 <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
                   <tr>
-                    <th className="p-4 text-left">#</th>
+                    <th className="p-4 text-left">No</th>
                     <th className="px-6 py-4 text-left">Nama Balita</th>
                     <th className="px-6 py-4 text-left">No KK & NIK</th>
                     <th className="px-6 py-4 text-left">Tanggal Lahir</th>
                     <th className="px-6 py-4 text-left">Jenis Kelamin</th>
                     <th className="px-6 py-4 text-left">Berat Lahir</th>
                     <th className="px-6 py-4 text-left">Panjang Lahir</th>
-                    {/* <th className="px-6 py-4 text-left">Alamat</th> */}
+                    <th className="px-6 py-4 text-left">Umur</th>
                     <th className="px-6 py-4 text-center">Aksi</th>
                   </tr>
                 </thead>
@@ -240,7 +241,7 @@ export default function Page() {
                         <td className="px-6 py-4 text-gray-700">{item.jenisKelamin}</td>
                         <td className="px-6 py-4 text-gray-700">{item.beratLahir ?? '-'} Kg</td>
                         <td className="px-6 py-4 text-gray-700">{item.panjangLahir ?? '-'} Cm</td>
-                        {/* <td className="px-6 py-4 text-gray-700">{item.alamat}</td> */}
+                        <td className="px-6 py-4 text-gray-700">{item.umur}</td>
 
                         <td className="px-6 py-4 text-center">
                           <div className="flex justify-center items-center gap-2">

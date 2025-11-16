@@ -265,9 +265,14 @@ exports.Prisma.PemeriksaanBalitaScalarFieldEnum = {
   lingkarKepala: 'lingkarKepala',
   imunisasi: 'imunisasi',
   vitamin: 'vitamin',
+  jenisVitamin: 'jenisVitamin',
+  pmt: 'pmt',
+  jenisPmt: 'jenisPmt',
   keluhan: 'keluhan',
+  tindakan: 'tindakan',
   catatan: 'catatan',
   kaderId: 'kaderId',
+  pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -282,10 +287,29 @@ exports.Prisma.PemeriksaanIbuHamilScalarFieldEnum = {
   tekananDarah: 'tekananDarah',
   tinggiFundus: 'tinggiFundus',
   detakJantungJanin: 'detakJantungJanin',
+  pemberianFe: 'pemberianFe',
+  pmt: 'pmt',
+  jenisPmt: 'jenisPmt',
   keluhan: 'keluhan',
   tindakan: 'tindakan',
   konseling: 'konseling',
   kaderId: 'kaderId',
+  pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PelaksanaanKegiatanScalarFieldEnum = {
+  id: 'id',
+  kegiatanId: 'kegiatanId',
+  posyanduId: 'posyanduId',
+  kaderId: 'kaderId',
+  tanggalMulai: 'tanggalMulai',
+  tanggalSelesai: 'tanggalSelesai',
+  status: 'status',
+  jumlahBalita: 'jumlahBalita',
+  jumlahIbuHamil: 'jumlahIbuHamil',
+  catatanUmum: 'catatanUmum',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -293,6 +317,7 @@ exports.Prisma.PemeriksaanIbuHamilScalarFieldEnum = {
 exports.Prisma.StatusGiziBalitaScalarFieldEnum = {
   id: 'id',
   balitaId: 'balitaId',
+  pemeriksaanBalitaId: 'pemeriksaanBalitaId',
   tanggal: 'tanggal',
   beratBadan: 'beratBadan',
   tinggiBadan: 'tinggiBadan',
@@ -300,6 +325,7 @@ exports.Prisma.StatusGiziBalitaScalarFieldEnum = {
   zScoreBBU: 'zScoreBBU',
   zScoreTBU: 'zScoreTBU',
   kategoriGizi: 'kategoriGizi',
+  statusStunting: 'statusStunting',
   createdAt: 'createdAt'
 };
 
@@ -326,6 +352,12 @@ exports.Akreditasi = exports.$Enums.Akreditasi = {
   BELUM_AKREDITASI: 'BELUM_AKREDITASI'
 };
 
+exports.StatusPelaksanaan = exports.$Enums.StatusPelaksanaan = {
+  belum_mulai: 'belum_mulai',
+  berjalan: 'berjalan',
+  selesai: 'selesai'
+};
+
 exports.Prisma.ModelName = {
   Kelurahan: 'Kelurahan',
   Posyandu: 'Posyandu',
@@ -340,6 +372,7 @@ exports.Prisma.ModelName = {
   IbuHamil: 'IbuHamil',
   PemeriksaanBalita: 'PemeriksaanBalita',
   PemeriksaanIbuHamil: 'PemeriksaanIbuHamil',
+  PelaksanaanKegiatan: 'PelaksanaanKegiatan',
   StatusGiziBalita: 'StatusGiziBalita'
 };
 

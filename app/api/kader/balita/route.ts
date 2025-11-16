@@ -2,7 +2,14 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from "@/lib/auth-options";
+import { differenceInYears, differenceInMonths } from "date-fns";
 
+function hitungUmur(tanggalLahir: Date) {
+  const now = new Date();
+  const years = differenceInYears(now, tanggalLahir);
+  const months = differenceInMonths(now, tanggalLahir) % 12;
+  return `${years} thn ${months} bln`;
+}
 
 // =====================================================
 // GET: hanya balita yang terkait dengan kader login
@@ -24,21 +31,36 @@ export async function GET() {
       return NextResponse.json({ error: 'Data kader tidak ditemukan' }, { status: 404 });
     }
 
-    // ambil hanya balita yang posyanduId sama (opsional) AND kaderId === kader.id
-    // Jika ingin hanya yang terkait ke kader saja: gunakan where: { kaderId: kader.id }
+    // ambil balita terkait kader
     const balitas = await prisma.balita.findMany({
       where: { kaderId: kader.id },
       orderBy: { createdAt: 'desc' },
       include: {
-        posyandu: { select: { id: true, nama: true, wilayah: true, kelurahan: { select: { id: true, nama: true } } } },
+        posyandu: {
+          select: {
+            id: true,
+            nama: true,
+            wilayah: true,
+            kelurahan: { select: { id: true, nama: true } },
+          },
+        },
         kader: { select: { id: true, nama: true } },
       },
     });
 
-    return NextResponse.json(balitas);
+    // map untuk menambahkan field umur (string)
+    const result = balitas.map((b) => {
+      const tanggal = b.tanggalLahir ? new Date(b.tanggalLahir) : null;
+      return {
+        ...b,
+        umur: tanggal ? hitungUmur(tanggal) : null,
+      };
+    });
+
+    return NextResponse.json(result);
   } catch (error: any) {
     console.error('[GET /api/kader/balita]', error);
-    return NextResponse.json({ error: 'Gagal mengambil data balita', detail: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Gagal mengambil data balita', detail: error?.message ?? String(error) }, { status: 500 });
   }
 }
 

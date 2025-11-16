@@ -32,7 +32,7 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
       return [
         { name: 'Home', href: '/dashboard/pempro-kia', icon: HomeIcon },
         { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-kia/jadwal-kegiatan', icon: UserGroupIcon },
-        { name: 'Monitoring & Laporan', href: '/dashboard/pempro-kia/laporan', icon: UserIcon },
+        { name: 'Monitoring Kegiatan', href: '/dashboard/pempro-kia/monitoring', icon: UserIcon },
         { name: 'Rekap Data Lapangan', href: '/dashboard/pempro-kia/data-lapangan', icon: ClipboardDocumentListIcon }
       ];
 
@@ -55,14 +55,12 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
     case 'kader':
       return [
         { name: 'Home', href: '/dashboard/kader', icon: HomeIcon },
-        { name: 'Jadwal Kegiatan', href: '/dashboard/kader/jadwal-kegiatan', icon: CalendarDaysIcon },
+        { name: 'Jadwal Kegiatan', href: '/dashboard/kader/kegiatan', icon: CalendarDaysIcon },
         { name: 'Input Data Balita', href: '/dashboard/kader/balita', icon: ClipboardDocumentIcon },
-        { name: 'Status Gizi Balita', href: '/dashboard/kader/status-gizi', icon: IdentificationIcon },
         { name: 'Input Data Ibu Hamil', href: '/dashboard/kader/ibu-hamil', icon: DocumentTextIcon },
+        { name: 'Status Gizi Balita', href: '/dashboard/kader/status-gizi-balita', icon: IdentificationIcon },
         { name: 'Pemantauan Kehamilan', href: '/dashboard/kader/pemantauan-kehamilan', icon: ClipboardDocumentIcon },
-        { name: 'Riwayat Input', href: '/dashboard/kader/riwayat', icon: ClipboardDocumentListIcon },
-        { name: 'Rekap Kehadiran Balita', href: '/dashboard/kader/kehadiran-balita', icon: ClipboardDocumentListIcon },
-        { name: 'Rekap Kehadiran Bumil', href: '/dashboard/kader/kehadiran-bumil', icon: ClipboardDocumentListIcon },
+        { name: 'Riwayat Kegiatan', href: '/dashboard/kader/riwayat-kegiatan', icon: ClipboardDocumentListIcon },
       ];
 
     case 'ibu_hamil':

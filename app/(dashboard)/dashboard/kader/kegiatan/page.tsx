@@ -22,7 +22,6 @@ type Kegiatan = {
 
 export default function JadwalKegiatanKaderPage() {
   const [upcomingList, setUpcomingList] = useState<Kegiatan[]>([]);
-  const [riwayatList, setRiwayatList] = useState<Kegiatan[]>([]);
   const [filteredList, setFilteredList] = useState<Kegiatan[]>([]);
   const [selectedProgram, setSelectedProgram] = useState('Semua');
   const [loading, setLoading] = useState(true);
@@ -31,21 +30,14 @@ export default function JadwalKegiatanKaderPage() {
   const [kelurahanNama, setkelurahanNama] = useState<string>('');
 
 
-  // Pagination untuk riwayat
-  const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 2;
-  const indexOfLastRow = currentPage * rowsPerPage;
-  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = riwayatList.slice(indexOfFirstRow, indexOfLastRow);
-  const totalPages = Math.ceil(riwayatList.length / rowsPerPage);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   useEffect(() => {
     const fetchKegiatan = async () => {
       try {
-        const res = await fetch('/api/kader/jadwal-kegiatan');
+        const res = await fetch('/api/kader/kegiatan');
         if (!res.ok) throw new Error('Gagal mengambil data kegiatan');
         const data: Kegiatan[] = await res.json();
+        // Urutkan data descending (tanggal terbaru dulu)
+        data.sort((a, b) => new Date(b.tanggalPelaksanaan).getTime() - new Date(a.tanggalPelaksanaan).getTime());
 
         const today = new Date().toISOString().split('T')[0];
 
@@ -58,7 +50,6 @@ export default function JadwalKegiatanKaderPage() {
 
         setUpcomingList(upcoming);
         setFilteredList(upcoming);
-        setRiwayatList(riwayat);
 
         // Ambil posyandu dari upcoming pertama, kalau ada
         const firstKegiatan = upcoming[0] || riwayat[0]; // fallback ke riwayat
@@ -101,7 +92,7 @@ export default function JadwalKegiatanKaderPage() {
   const today = new Date().toISOString().split('T')[0];
 
   return (
-  <div className="px-4 py-6 bg-gray-50 min-h-screen">
+  <div className="px-4 py-6 bg-gray-50">
     <div className="max-w-6xl mx-auto space-y-10">
       {/* KEGIATAN AKTIF / AKAN DATANG */}
       <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-200">
@@ -191,7 +182,7 @@ export default function JadwalKegiatanKaderPage() {
                         href={`/dashboard/kader/kegiatan/${kegiatan.id}/pelaksanaan`}
                         className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium"
                       >
-                        Mulai Pelaksanaan
+                        Masuk Pelaksanaan
                       </Link>
                     ) : (
                       <button
@@ -210,68 +201,7 @@ export default function JadwalKegiatanKaderPage() {
       </div>
 
       {/* RIWAYAT KEGIATAN */}
-      <div className="bg-white shadow-md rounded-2xl border border-gray-200 p-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Riwayat Kegiatan</h2>
 
-        {riwayatList.length === 0 ? (
-          <div className="text-gray-500 italic">Belum ada kegiatan yang telah selesai.</div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-sm divide-y divide-gray-200">
-              <thead className="bg-emerald-600 text-white rounded-t-lg">
-                <tr>
-                  <th className="px-4 py-2 text-left w-16">No</th>
-                  <th className="px-4 py-2 text-left">Nama Kegiatan</th>
-                  <th className="px-4 py-2 text-left">Program</th>
-                  <th className="px-4 py-2 text-left">Tanggal</th>
-                  <th className="px-4 py-2 text-left">Posyandu</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {currentRows.map((kegiatan, index) => {
-                  const tanggalStr = new Date(
-                    kegiatan.tanggalPelaksanaan
-                  ).toLocaleDateString('id-ID', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  });
-                  return (
-                    <tr key={kegiatan.id} className="hover:bg-gray-50">
-                      <td className="px-4 py-2 font-medium text-emerald-700">
-                        {indexOfFirstRow + index + 1}
-                      </td>
-                      <td className="px-4 py-2">{kegiatan.nama}</td>
-                      <td className="px-4 py-2">{kegiatan.programKesehatan.nama}</td>
-                      <td className="px-4 py-2">{tanggalStr}</td>
-                      <td className="px-4 py-2">{kegiatan.posyandu.nama}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex justify-end items-center gap-1 p-3">
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i + 1}
-                    onClick={() => paginate(i + 1)}
-                    className={`px-3 py-1 border rounded text-sm transition ${
-                      currentPage === i + 1
-                        ? 'bg-emerald-600 text-white border-emerald-600'
-                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
     </div>
   </div>
 );
