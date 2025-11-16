@@ -339,8 +339,8 @@ export default function PemantauanGiziBalitaPage() {
             <tbody>
               {paginated.filter((b) => b.pemeriksaanTerakhir?.tanggal).length === 0 && (
                 <tr>
-                  <td colSpan={6} className="p-5 text-center text-gray-500">
-                    Tidak ada data
+                  <td colSpan={8} className="p-5 italic text-center text-gray-500">
+                    Belum ada data status gizi balita
                   </td>
                 </tr>
               )}
