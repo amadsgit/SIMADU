@@ -6,7 +6,7 @@ import { authOptions } from "@/lib/auth-options";
 export async function GET() {
   try {
     // Ambil session user login
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions); 
 
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

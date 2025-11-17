@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import TabsPane from '@/components/tab-pane-pemproKia';
 
 type StatusPelaksanaan = "belum_mulai" | "berjalan" | "selesai";
 
@@ -132,7 +133,9 @@ export default function MonitoringKIAPage() {
 
   return (
     <div className="p-2 space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Monitoring Kegiatan KIA</h1>
+      <h1 className="text-2xl font-bold text-gray-800">Monitoring & Laporan Kegiatan KIA</h1>
+
+      <TabsPane />
 
       {/* SEARCH */}
       <div className="max-w-sm">

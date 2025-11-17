@@ -10,8 +10,6 @@ import {
   ClipboardDocumentCheckIcon,
 } from '@heroicons/react/24/outline';
 import TabsPane from '@/components/tab-pane-kegiatan';
-import Link from 'next/link';
-import ButtonKembali from '@/components/button-kembali';
 
 // Lazy import
 const FormBalita = dynamic(() => import('@/components/pemeriksaan/balita'), { ssr: false });

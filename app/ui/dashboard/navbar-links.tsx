@@ -32,8 +32,8 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
       return [
         { name: 'Home', href: '/dashboard/pempro-kia', icon: HomeIcon },
         { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-kia/jadwal-kegiatan', icon: UserGroupIcon },
-        { name: 'Monitoring Kegiatan', href: '/dashboard/pempro-kia/monitoring', icon: UserIcon },
-        { name: 'Rekap Data Lapangan', href: '/dashboard/pempro-kia/data-lapangan', icon: ClipboardDocumentListIcon }
+        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-kia/monitoring', icon: UserIcon },
+        // { name: 'Rekap Data Lapangan', href: '/dashboard/pempro-kia/data-lapangan', icon: ClipboardDocumentListIcon }
       ];
 
     case 'pemegang_program_imunisasi':
