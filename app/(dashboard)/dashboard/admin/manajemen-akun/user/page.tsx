@@ -35,6 +35,10 @@ export default function Page() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // PAGINATION STATE
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,16 +53,15 @@ export default function Page() {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
-
 
   // delete user
   const openDeleteModal = (id: string) => {
     setSelectedId(id);
     setShowModal(true);
   };
+
   const handleDelete = async () => {
     if (!selectedId) return;
 
@@ -74,7 +77,6 @@ export default function Page() {
         return;
       }
 
-      // hapus user dari list state
       setUserList((prev) => prev.filter((item) => item.id !== selectedId));
       toast.success(result?.message || 'User berhasil dihapus!');
     } catch (error) {
@@ -86,19 +88,33 @@ export default function Page() {
     }
   };
 
-
+  // FILTER SEARCH
   const filteredList = useMemo(() => {
     const q = searchQuery.toLowerCase();
     return userList.filter((item) => item.nama.toLowerCase().includes(q));
   }, [userList, searchQuery]);
 
+  // PAGINATION LOGIC
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
+
+  const paginatedList = filteredList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Reset halaman ke 1 saat user melakukan pencarian
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   return (
-    <div className="p-6">
+    <div>
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-3">
           <div>
-            <h1 className="text-2xl font-bold">Manajemen Data <span>Role & Akun User</span></h1>
-            <p className="text-gray-500 dark:text-gray-400">Informasi data role & akun user</p>
+            <h2 className="text-2xl font-bold">
+              Manajemen Data <span>Role & Akun User</span>
+            </h2>
           </div>
           <Link href="/dashboard/admin/manajemen-akun/user/create">
             <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-4 py-2 rounded-md shadow-sm transition">
@@ -148,17 +164,18 @@ export default function Page() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredList.length > 0 ? (
-                    filteredList.map((item, index) => (
+                  {paginatedList.length > 0 ? (
+                    paginatedList.map((item, index) => (
                       <tr key={item.id} className="border-t hover:bg-gray-50 transition">
-                        <td className="px-4 py-4">{index + 1}</td>
+                        <td className="px-4 py-4">
+                          {(currentPage - 1) * itemsPerPage + index + 1}
+                        </td>
                         <td className="px-6 py-4">{item.nama}</td>
                         <td className="px-6 py-4">{item.email}</td>
                         <td className="px-6 py-4">{item.noHp}</td>
                         <td className="px-6 py-4">
                           {item.role?.nama ? (
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs font-semibold capitalize
+                            <span className={`px-2 py-1 rounded-full text-xs
                                 ${
                                   item.role.nama.toLowerCase() === 'admin'
                                     ? 'bg-red-100 text-red-700'
@@ -169,8 +186,7 @@ export default function Page() {
                                     : item.role.nama.toLowerCase() === 'orang tua balita'
                                     ? 'bg-orange-100 text-orange-700'
                                     : 'bg-gray-100 text-gray-700'
-                                }`}
-                            >
+                                }`}>
                               {item.role.nama}
                             </span>
                           ) : (
@@ -180,11 +196,11 @@ export default function Page() {
 
                         <td className="px-6 py-4 text-center">
                           {item.verifiedAt ? (
-                            <span className="inline-block px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
+                            <span className="inline-block px-2 py-1 text-xs text-green-800 bg-green-100 rounded-full">
                               Aktif
                             </span>
                           ) : (
-                            <span className="inline-block px-2 py-1 text-xs font-semibold text-red-800 bg-red-100 rounded-full">
+                            <span className="inline-block px-2 py-1 text-xs text-red-800 bg-red-100 rounded-full">
                               Tidak Aktif
                             </span>
                           )}
@@ -201,13 +217,8 @@ export default function Page() {
 
                             <button
                               onClick={() => openDeleteModal(item.id)}
-                              disabled={item.role?.nama?.toLowerCase() === ''}
-                              className={`p-2 rounded-md border transition 
-                                ${item.role?.nama?.toLowerCase() === ''
-                                  ? 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed'
-                                  : 'bg-white border-gray-300 hover:border-rose-500 hover:text-rose-600'
-                                }`}
-                              title={item.role?.nama?.toLowerCase() === '' ? 'Admin tidak dapat dihapus' : 'Hapus'}
+                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
+                              title="Hapus"
                             >
                               <TrashIcon className="h-4 w-4" />
                             </button>
@@ -225,7 +236,7 @@ export default function Page() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={6} className="text-center py-6 text-gray-500">
+                      <td colSpan={7} className="text-center py-6 text-gray-500">
                         Tidak ada data user.
                       </td>
                     </tr>
@@ -233,6 +244,49 @@ export default function Page() {
                 </tbody>
               </table>
             )}
+          </div>
+
+          {/* PAGINATION UI */}
+          <div className="flex justify-end items-center gap-2 p-4">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+              disabled={currentPage === 1}
+              className={`px-3 py-1 border rounded-md text-sm ${
+                currentPage === 1
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-white hover:bg-emerald-50 text-emerald-700"
+              }`}
+            >
+              Prev
+            </button>
+
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`px-3 py-1 border rounded-md text-sm ${
+                  currentPage === i + 1
+                    ? "bg-emerald-600 text-white border-emerald-600"
+                    : "bg-white hover:bg-emerald-50 text-emerald-700"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() =>
+                setCurrentPage((p) => Math.min(p + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className={`px-3 py-1 border rounded-md text-sm ${
+                currentPage === totalPages
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-white hover:bg-emerald-50 text-emerald-700"
+              }`}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>

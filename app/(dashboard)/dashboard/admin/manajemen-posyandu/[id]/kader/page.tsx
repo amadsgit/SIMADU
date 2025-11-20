@@ -23,7 +23,7 @@ export default function PageKader() {
   };
 
   return (
-    <div className="p-6">
+    <div>
       <div className="flex mb-3 items-center justify-between">
         <h2 className="text-2xl font-bold mb-4">Manajemen Kader Posyandu</h2>
           <ButtonKembali onClick={() => router.back()} />

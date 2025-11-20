@@ -47,9 +47,9 @@ export default function Page() {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 2;
 
-  // Ambil data kader login (session)
+  // Ambil data kader login (session) 
   useEffect(() => {
     const fetchSessionKader = async () => {
       try {

@@ -29,17 +29,19 @@ export default function RegisterPage() {
 
   // get data role
   const [roleOptions, setRoleOptions] = useState<{ id: string; nama: string; slug: string }[]>([]);
+  
   useEffect(() => {
     const fetchRoles = async () => {
       try {
         const res = await fetch('/api/role');
         const data = await res.json();
-        // const filtered = data.filter(
-        //   (role: { slug: string }) =>
-        //     role.slug === 'ibu_hamil' || role.slug === 'orang_tua_balita'
-        // );
-        // setRoleOptions(filtered);
-        setRoleOptions(data);
+
+        const filtered = data.filter(
+          (role: { slug: string }) =>
+            role.slug === 'ibu_hamil' || role.slug === 'orang_tua_balita'
+        );
+
+        setRoleOptions(filtered);
       } catch (error) {
         console.error('Gagal memuat role:', error);
       }
@@ -142,50 +144,17 @@ export default function RegisterPage() {
     }
   };
 
-
-  // catatan 
-  // useEffect(() => {
-  //   toast.custom((t) => (
-  //     <div className="fixed top-4 left-2 z-20">
-  //       <div
-  //         className={`${
-  //           t.visible ? 'animate-enter' : 'animate-leave'
-  //         } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-  //       >
-  //         <div className="flex-1 w-500 p-4">
-  //           <div className="flex items-start">
-  //             <div className="flex-shrink-0 pt-0.5">
-  //             </div>
-  //             <div className="ml-3 flex-1">
-  //               <p className="text-sm text-gray-900">
-  //                 untuk real project kedepannya user dengan role admin & kader hanya akan didaftarkan didalam sistem oleh admin, form register hanya untuk ibu hamil & orang tua balita.
-  //               </p>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         <div className="flex border-l border-gray-200">
-  //           <button
-  //             onClick={() => toast.dismiss(t.id)}
-  //             className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-teal-600 hover:text-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-  //           >
-  //             Tutup
-  //           </button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   ));
-  // }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-400 to-green-600 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white shadow-lg rounded-xl p-8 my-4 space-y-6">
         <div className="text-center">
           <img src="/logo3.png" alt="Logo" className="h-16 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-800">Daftar e-Posyandu</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Daftar akun</h2>
           <p className="text-sm text-gray-500">Untuk Ibu Hamil dan Ibu Balita</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Nama */}
           <div className="relative">
             <input
               name="nama"
@@ -199,6 +168,7 @@ export default function RegisterPage() {
             <UserIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
 
+          {/* Email */}
           <div className="relative">
             <input
               name="email"
@@ -212,6 +182,7 @@ export default function RegisterPage() {
             <MailIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
 
+          {/* No HP */}
           <div className="relative">
             <input
               name="noHp"
@@ -229,6 +200,7 @@ export default function RegisterPage() {
             <PhoneIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
 
+          {/* No KK */}
           <div className="relative">
             <input
               name="noKK"
@@ -248,9 +220,10 @@ export default function RegisterPage() {
             <CardSimIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
           {errornoKK.noKK && (
-            <p className="text-sm text-red-600 mt-1">{errornoKK.noKK}</p>
+            <p className="text-sm text-red-600 md:col-span-2 -mt-2">{errornoKK.noKK}</p>
           )}
 
+          {/* NIK */}
           <div className="relative">
             <input
               name="nik"
@@ -270,10 +243,11 @@ export default function RegisterPage() {
             <FingerprintIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
           {errornik.nik && (
-            <p className="text-sm text-red-600 mt-1">{errornik.nik}</p>
+            <p className="text-sm text-red-600 md:col-span-2 -mt-2">{errornik.nik}</p>
           )}
 
-          <div className="relative">
+          {/* Alamat (Full Width) */}
+          <div className="relative md:col-span-2">
             <input
               name="alamat"
               type="text"
@@ -286,14 +260,14 @@ export default function RegisterPage() {
             <HomeIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
 
-          <div>
-            <label htmlFor="tanggalLahir" className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Tanggal Lahir */}
+          <div className="md:col-span-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Tanggal Lahir
             </label>
             <div className="relative">
               <input
                 name="tanggalLahir"
-                id="tanggalLahir"
                 type="date"
                 value={form.tanggalLahir}
                 onChange={handleChange}
@@ -304,7 +278,8 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div>
+          {/* Jenis Pendaftaran */}
+          <div className="md:col-span-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">Jenis Pendaftaran</label>
             <select
               name="role"
@@ -322,7 +297,8 @@ export default function RegisterPage() {
             </select>
           </div>
 
-          <div className="relative">
+          {/* Password (Full width) */}
+          <div className="relative md:col-span-1">
             <input
               name="password"
               type="password"
@@ -336,11 +312,8 @@ export default function RegisterPage() {
             />
             <LockIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
-          {errors.password && (
-            <p className="text-sm text-red-600 mt-1">{errors.password}</p>
-          )}
 
-          <div className="relative">
+          <div className="relative md:col-span-1">
             <input
               name="confirmPassword"
               type="password"
@@ -349,20 +322,20 @@ export default function RegisterPage() {
               placeholder="Konfirmasi Password"
               required
               className={`w-full px-4 py-2 pl-10 border rounded-md focus:ring-2 focus:outline-none ${
-                isPasswordMatch
-                  ? 'border-gray-300 focus:ring-teal-500'
-                  : 'border-red-500 focus:ring-red-500'
+                isPasswordMatch ? 'border-gray-300 focus:ring-teal-500' : 'border-red-500 focus:ring-red-500'
               }`}
             />
             <LockIcon className="w-5 h-5 absolute top-2.5 left-3 text-gray-400" />
           </div>
+
           {!isPasswordMatch && (
-            <p className="text-sm text-red-500 -mt-2">Konfirmasi password tidak sama</p>
+            <p className="text-sm text-red-500 md:col-span-2 -mt-2">Konfirmasi password tidak sama</p>
           )}
 
+          {/* Tombol Submit - Full Width */}
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded disabled:opacity-50"
+            className="flex items-center justify-center gap-2 w-full md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded disabled:opacity-50"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
@@ -374,14 +347,14 @@ export default function RegisterPage() {
               'Daftar'
             )}
           </button>
-
-          <div className="text-center text-sm text-gray-500">
-            Sudah punya akun?{' '}
-            <Link href="/auth/login" className="text-teal-600 hover:underline">
-              Login di sini
-            </Link>
-          </div>
         </form>
+
+        <div className="text-center text-sm text-gray-500">
+          Sudah punya akun?{' '}
+          <Link href="/auth/login" className="text-teal-600 hover:underline">
+            Login di sini
+          </Link>
+        </div>
       </div>
     </div>
   );

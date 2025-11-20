@@ -10,15 +10,12 @@ const PosyanduChart = dynamic(() => import('@/components/posyandu-chart'), {
 
 export default function StatistikPage() {
   return (
-    <div className="p-6">
+    <div>
       <div className="flex justify-between items-center mb-3">
             <div>
-                <h1 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold">
                 Manajemen Data <span className="">Posyandu & Kader</span>
-                </h1>
-                <p className="text-gray-500 dark:text-gray-400">
-                Informasi & manajemen data posyandu
-                </p>
+                </h2>
             </div>
         </div> 
         <TabsPane />

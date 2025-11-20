@@ -8,6 +8,8 @@ export async function GET() {
       select: {
         id: true,
         nama: true,
+        createdAt: true,
+        updatedAt: true,
       },
       orderBy: { createdAt: 'desc' },
     });

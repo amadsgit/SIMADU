@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import TabsPane from '@/components/tab-pane-manajemen-akun';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
@@ -18,6 +18,18 @@ export default function Page() {
   const [selectedDeleteId, setSelectedDeleteId] = useState<string | null>(null);
 
   const isEdit = selectedId !== null;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
+  const totalPages = Math.ceil(roles.length / itemsPerPage);
+
+  const paginatedList = useMemo(() => {
+    return roles.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [roles, currentPage]);
 
   const fetchRole = async () => {
     setLoadingFetch(true);
@@ -74,28 +86,29 @@ export default function Page() {
     setNama(role.nama);
   };
 
-  
-  // delete data
+
   const openDeleteModal = (id: string) => {
     setSelectedDeleteId(id);
     setShowModal(true);
   };
+
   const handleDelete = async () => {
     if (selectedDeleteId === null) return;
+
     try {
       const res = await fetch(`/api/role/${selectedDeleteId}`, { method: 'DELETE' });
+
       if (res.ok) {
         toast.success('Role berhasil dihapus!');
         await fetchRole();
         resetForm();
-      } else if (!res.ok) {
+      } else {
         const errorData = await res.json();
         if (res.status === 409 && errorData?.error) {
           toast.error(errorData.error);
         } else {
           toast.error('Gagal menghapus data!');
         }
-        return;
       }
     } catch (error) {
       console.error(error);
@@ -107,52 +120,56 @@ export default function Page() {
   };
 
   return (
-    <div className="p-6">
+    <div>
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <div>
-          <h1 className="text-2xl font-bold">Manajemen Data <span>Role & Akun User</span></h1>
-          <p className="text-gray-500 dark:text-gray-400">Informasi data role & akun user</p>
+          <h2 className="text-2xl font-bold">
+            Manajemen Data <span>Role & Akun User</span>
+          </h2>
         </div>
       </div>
 
       <TabsPane />
 
-      {/* Form & List */}
+      {/* FORM */}
       <div className="bg-white rounded-xl shadow-md p-6 mt-6">
         <p className="text-md font-semibold text-gray-700 mb-4">
           {isEdit ? 'Edit Role' : 'Tambah Role'}
         </p>
+
         <form onSubmit={handleSubmit} className="mb-6">
           <div className="flex gap-2">
             <input
               type="text"
-              className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Contoh : Admin"
               value={nama}
-              onChange={(e) => setNama(e.target.value)}
               required
+              placeholder="Contoh : Admin"
+              onChange={(e) => setNama(e.target.value)}
+              className="border border-gray-300 rounded-md px-4 py-2 w-full focus:ring-2 focus:ring-green-500"
             />
+
             <div className="flex gap-3">
               <button
                 type="submit"
                 disabled={loadingSubmit}
                 className={`inline-flex items-center gap-2 ${
-                  loadingSubmit ? 'bg-green-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'
-                } text-white font-semibold text-sm px-5 py-2 rounded-md shadow-sm transition duration-150 ease-in-out`}
+                  loadingSubmit ? 'bg-green-400' : 'bg-green-600 hover:bg-green-700'
+                } text-white font-semibold text-sm px-5 py-2 rounded-md shadow-sm transition`}
               >
                 {isEdit ? (
-                  <RefreshCcw className={`w-4 h-4 ${loadingSubmit ? 'animate-spin-slow' : ''}`} />
+                  <RefreshCcw className={`w-4 h-4 ${loadingSubmit ? "animate-spin-slow" : ""}`} />
                 ) : (
                   <Save className="w-4 h-4" />
                 )}
+
                 {loadingSubmit
                   ? isEdit
-                    ? 'Mengupdate...'
-                    : 'Menyimpan...'
+                    ? "Mengupdate..."
+                    : "Menyimpan..."
                   : isEdit
-                  ? 'Update'
-                  : 'Simpan'}
+                  ? "Update"
+                  : "Simpan"}
               </button>
 
               {isEdit && (
@@ -168,7 +185,7 @@ export default function Page() {
           </div>
         </form>
 
-        {/* List Role */}
+        {/* TABEL ROLE */}
         <div className="overflow-x-auto">
           {loadingFetch ? (
             <div className="flex justify-center items-center py-16 text-emerald-600">
@@ -180,76 +197,81 @@ export default function Page() {
                   d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                 />
               </svg>
-              <span className="text-sm font-medium">Memuat data role...</span>
+              <span>Memuat data role...</span>
             </div>
           ) : (
-            <table className="w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-100 text-gray-700">
+            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
                 <tr>
-                  <th className="p-3 border-b border-gray-200">#</th>
-                  <th className="p-3 border-b border-gray-200">Nama Role</th>
-                  <th className="p-3 border-b border-gray-200">Dibuat</th>
-                  <th className="p-3 border-b border-gray-200">Diupdate</th>
-                  <th className="p-3 border-b border-gray-200">Aksi</th>
+                  <th className="p-3 border-b">#</th>
+                  <th className="p-3 border-b">Nama Role</th>
+                  <th className="p-3 border-b">Dibuat</th>
+                  <th className="p-3 border-b">Diupdate</th>
+                  <th className="p-3 border-b">Aksi</th>
                 </tr>
               </thead>
+
               <tbody>
-                {roles.length > 0 ? (
-                  roles.map((item, index) => (
+                {paginatedList.length > 0 ? (
+                  paginatedList.map((item, index) => (
                     <tr key={item.id} className="hover:bg-gray-50 transition">
-                      <td className="p-3 border-b border-gray-100">{index + 1}</td>
-                      {/* <td className="p-3 border-b border-gray-100">{item.nama}</td> */}
-                      <td className="px-6 py-4 inline-block w-[170px]">
-                          {item.nama ? (
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs font-semibold capitalize
-                                ${
-                                  item.nama.toLowerCase() === 'admin'
-                                    ? 'bg-red-100 text-red-700'
-                                    : item.nama.toLowerCase() === 'kader'
-                                    ? 'bg-purple-100 text-blue-700'
-                                    : item.nama.toLowerCase() === 'ibu hamil'
-                                    ? 'bg-pink-100 text-purple-700'
-                                    : item.nama.toLowerCase() === 'orang tua balita'
-                                    ? 'bg-orange-100 text-orange-700'
-                                    : 'bg-gray-100 text-gray-700'
-                                }`}
-                            >
-                              {item.nama}
-                            </span>
-                          ) : (
-                            '-'
-                          )}
-                        </td>
-                      <td className="p-3 border-b border-gray-100">
-                        {new Date(item.createdAt).toLocaleDateString('id-ID', {
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric',
-                        })}
+                      <td className="p-3 border-b">
+                        {(currentPage - 1) * itemsPerPage + index + 1}
                       </td>
-                      <td className="p-3 border-b border-gray-100">
-                        {new Date(item.updatedAt).toLocaleDateString('id-ID', {
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric',
-                        })}
+
+                      <td className="px-6 py-4">
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-semibold capitalize
+                            ${
+                              item.nama.toLowerCase() === 'admin'
+                                ? 'bg-red-100 text-red-700'
+                                : item.nama.toLowerCase() === 'kader'
+                                ? 'bg-purple-100 text-purple-700'
+                                : item.nama.toLowerCase() === 'ibu hamil'
+                                ? 'bg-pink-100 text-pink-700'
+                                : item.nama.toLowerCase() === 'orang tua balita'
+                                ? 'bg-orange-100 text-orange-700'
+                                : 'bg-gray-100 text-gray-700'
+                            }`}
+                        >
+                          {item.nama}
+                        </span>
                       </td>
+
                       <td className="p-3 border-b border-gray-100">
-                        <div className="flex gap-2">
+                        { (item as any)?.createdAt
+                          ? new Date((item as any).createdAt).toLocaleDateString('id-ID', {
+                              day: 'numeric',
+                              month: 'long',
+                              year: 'numeric'
+                            })
+                          : '-' }
+                      </td>
+
+                      <td className="p-3 border-b border-gray-100">
+                        { (item as any)?.updatedAt
+                          ? new Date((item as any).updatedAt).toLocaleDateString('id-ID', {
+                              day: 'numeric',
+                              month: 'long',
+                              year: 'numeric'
+                            })
+                          : '-' }
+                      </td>
+
+                      <td className="p-3 border-b">
+                        <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleEdit(item)}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
-                            title="Edit"
+                            className="p-2 bg-white border border-gray-300 rounded-md hover:border-teal-500 hover:text-teal-600 transition"
                           >
-                            <PencilSquareIcon className="h-4 w-4" />
+                            <PencilSquareIcon className="w-4 h-4" />
                           </button>
+
                           <button
                             onClick={() => openDeleteModal(item.id)}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
-                            title="Hapus"
+                            className="p-2 bg-white border border-gray-300 rounded-md hover:border-rose-500 hover:text-rose-600 transition"
                           >
-                            <TrashIcon className="h-4 w-4" />
+                            <TrashIcon className="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -257,8 +279,8 @@ export default function Page() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="p-3 text-center text-gray-500">
-                      Belum ada data role.
+                    <td colSpan={5} className="text-center py-6 text-gray-500">
+                      Tidak ada data role.
                     </td>
                   </tr>
                 )}
@@ -266,10 +288,51 @@ export default function Page() {
             </table>
           )}
         </div>
+
+        {/* ================================
+            PAGINATION UI (PERSIS USER PAGE)
+        ================================= */}
+        <div className="flex justify-end items-center gap-2 p-4">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 border rounded-md text-sm ${
+              currentPage === 1
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-white hover:bg-emerald-50 text-emerald-700"
+            }`}
+          >
+            Prev
+          </button>
+
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-3 py-1 border rounded-md text-sm ${
+                currentPage === i + 1
+                  ? "bg-emerald-600 text-white border-emerald-600"
+                  : "bg-white hover:bg-emerald-50 text-emerald-700"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 border rounded-md text-sm ${
+              currentPage === totalPages
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-white hover:bg-emerald-50 text-emerald-700"
+            }`}
+          >
+            Next
+          </button>
+        </div>
       </div>
 
-
-      {/* Modal Konfirmasi */}
       <ModalKonfirmasi
         isOpen={showModal}
         onClose={() => setShowModal(false)}

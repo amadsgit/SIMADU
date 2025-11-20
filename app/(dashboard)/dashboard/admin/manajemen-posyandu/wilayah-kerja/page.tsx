@@ -19,6 +19,21 @@ export default function Page() {
 
   const isEdit = selectedId !== null;
 
+  // ==============================
+  // PAGINATION STATE
+  // ==============================
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
+  const totalPages = Math.ceil(kelurahanList.length / itemsPerPage);
+
+  const paginatedKelurahan = kelurahanList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // ==============================
+
   const fetchKelurahan = async () => {
     setLoadingFetch(true);
     try {
@@ -74,7 +89,6 @@ export default function Page() {
     setNama(kelurahan.nama);
   };
 
-  
   const openDeleteModal = (id: number) => {
     setSelectedDeleteId(id);
     setShowModal(true);
@@ -107,12 +121,11 @@ export default function Page() {
   };
 
   return (
-    <div className="p-6">
+    <div>
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <div>
-          <h1 className="text-2xl font-bold">Manajemen Data <span>Posyandu & Kader</span></h1>
-          <p className="text-gray-500 dark:text-gray-400">Informasi & manajemen data posyandu</p>
+          <h2 className="text-2xl font-bold">Manajemen Data <span>Posyandu & Kader</span></h2>
         </div>
       </div>
 
@@ -188,49 +201,116 @@ export default function Page() {
               <span className="text-sm font-medium">Memuat data kelurahan/desa...</span>
             </div>
           ) : (
-            <table className="w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-100 text-gray-700">
-                <tr>
-                  <th className="p-3 border-b border-gray-200">#</th>
-                  <th className="p-3 border-b border-gray-200">Nama Kelurahan/Desa</th>
-                  <th className="p-3 border-b border-gray-200">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {kelurahanList.length > 0 ? (
-                  kelurahanList.map((item, index) => (
-                    <tr key={item.id} className="hover:bg-gray-50 transition">
-                      <td className="p-3 border-b border-gray-100">{index + 1}</td>
-                      <td className="p-3 border-b border-gray-100">{item.nama}</td>
-                      <td className="p-3 border-b border-gray-100">
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => handleEdit(item)}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
-                            title="Edit"
-                          >
-                            <PencilSquareIcon className="h-4 w-4" />
-                          </button>
-                          <button
-                            onClick={() => openDeleteModal(item.id)}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
-                            title="Hapus"
-                          >
-                            <TrashIcon className="h-4 w-4" />
-                          </button>
-                        </div>
+            <>
+              <table className="w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
+                <thead className="bg-gray-100 text-gray-700">
+                  <tr>
+                    <th className="p-3 border-b border-gray-200">#</th>
+                    <th className="p-3 border-b border-gray-200">Nama Kelurahan/Desa</th>
+                    <th className="p-3 border-b border-gray-200">Dibuat</th>
+                    <th className="p-3 border-b border-gray-200">Diupdate</th>
+                    <th className="p-3 border-b border-gray-200">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {paginatedKelurahan.length > 0 ? (
+                    paginatedKelurahan.map((item, index) => (
+                      <tr key={item.id} className="hover:bg-gray-50 transition">
+                        <td className="p-3 border-b border-gray-100">
+                          {(currentPage - 1) * itemsPerPage + (index + 1)}
+                        </td>
+                        <td className="p-3 border-b border-gray-100">{item.nama}</td>
+                        <td className="p-3 border-b border-gray-100">
+                          { (item as any)?.createdAt
+                            ? new Date((item as any).createdAt).toLocaleDateString('id-ID', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                              })
+                            : '-' }
+                        </td>
+                        <td className="p-3 border-b border-gray-100">
+                          { (item as any)?.updatedAt
+                            ? new Date((item as any).updatedAt).toLocaleDateString('id-ID', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                              })
+                            : '-' }
+                        </td>
+                        <td className="p-3 border-b border-gray-100">
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleEdit(item)}
+                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
+                              title="Edit"
+                            >
+                              <PencilSquareIcon className="h-4 w-4" />
+                            </button>
+                            <button
+                              onClick={() => openDeleteModal(item.id)}
+                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
+                              title="Hapus"
+                            >
+                              <TrashIcon className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={3} className="p-3 text-center text-gray-500">
+                        Belum ada data kelurahan.
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={3} className="p-3 text-center text-gray-500">
-                      Belum ada data kelurahan.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                  )}
+                </tbody>
+              </table>
+
+              {/* Pagination */}
+              <div className="flex justify-end items-center gap-2 p-4">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                  disabled={currentPage === 1}
+                  className={`px-3 py-1 border rounded-md text-sm ${
+                    currentPage === 1
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      : "bg-white hover:bg-emerald-50 text-emerald-700"
+                  }`}
+                >
+                  Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`px-3 py-1 border rounded-md text-sm ${
+                      currentPage === i + 1
+                        ? "bg-emerald-600 text-white border-emerald-600"
+                        : "bg-white hover:bg-emerald-50 text-emerald-700"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(p + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className={`px-3 py-1 border rounded-md text-sm ${
+                    currentPage === totalPages
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      : "bg-white hover:bg-emerald-50 text-emerald-700"
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>

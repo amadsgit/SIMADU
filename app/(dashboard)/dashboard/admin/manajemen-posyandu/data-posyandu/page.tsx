@@ -19,6 +19,8 @@ type Posyandu = {
   nama: string;
   alamat: string;
   wilayah: string;
+  akreditasi: string;
+  penanggungJawab: string;
   kelurahan: Kelurahan | null;
 };
 
@@ -28,6 +30,38 @@ export default function Page() {
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // ======================================================
+  // FILTERED LIST (SEARCH)
+  // ======================================================
+  const filteredList = useMemo(() => {
+    const q = searchQuery.toLowerCase();
+    return posyanduList.filter((item) =>
+      item.nama.toLowerCase().includes(q)
+    );
+  }, [posyanduList, searchQuery]);
+
+  // ======================================================
+  // PAGINATION
+  // ======================================================
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
+  // reset ke halaman 1 ketika search berubah
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
+
+  const paginatedPosyandu = useMemo(() => {
+    return filteredList.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [filteredList, currentPage]);
+
+  // ======================================================
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,22 +116,14 @@ export default function Page() {
     }
   };
 
-  const filteredList = useMemo(() => {
-    const q = searchQuery.toLowerCase();
-    return posyanduList.filter((item) => item.nama.toLowerCase().includes(q));
-  }, [posyanduList, searchQuery]);
-
   return (
-    <div className="p-6">
+    <div>
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-3">
           <div>
-            <h1 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold">
               Manajemen Data <span className="">Posyandu & Kader</span>
-            </h1>
-            <p className="text-gray-500 dark:text-gray-400">
-              Informasi & manajemen data posyandu
-            </p>
+            </h2>
           </div>
           <Link href="/dashboard/admin/manajemen-posyandu/create">
             <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-4 py-2 rounded-md shadow-sm transition">
@@ -141,48 +167,55 @@ export default function Page() {
                     <th className="px-6 py-4 text-left">Nama Posyandu</th>
                     <th className="px-6 py-4 text-left">Alamat</th>
                     <th className="px-6 py-4 text-left">Wilayah</th>
+                    <th className="px-6 py-4 text-left">Akreditasi</th>
+                    <th className="px-6 py-4 text-left">PJ</th>
                     <th className="px-6 py-4 text-left">Kelurahan</th>
                     <th className="px-6 py-4 text-center">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredList.length > 0 ? (
-                    filteredList.map((item, index) => (
+                  {paginatedPosyandu.length > 0 ? (
+                    paginatedPosyandu.map((item, index) => (
                       <tr key={item.id} className="border-t hover:bg-gray-50 transition">
-                        <td className="px-4 py-4">{index + 1}</td>
+                        <td className="px-4 py-4">
+                          {(currentPage - 1) * itemsPerPage + index + 1}
+                        </td>
                         <td className="px-6 py-4">{item.nama}</td>
                         <td className="px-6 py-4">{item.alamat}</td>
                         <td className="px-6 py-4">{item.wilayah}</td>
+                        <td className="px-6 py-4">{item.akreditasi}</td>
+                        <td className="px-6 py-4">{item.penanggungJawab}</td>
                         <td className="px-6 py-4">{item.kelurahan?.nama ?? '-'}</td>
                         <td className="px-6 py-4 text-center">
                           <div className="flex justify-center items-center gap-2">
                             <Link
                               href={`/dashboard/admin/manajemen-posyandu/${item.id}/edit`}
-                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
-                              title="Edit"
+                              className="p-2 rounded-md bg-white border border-gray-300 
+                                        hover:border-teal-500 hover:text-teal-600 transition"
                             >
                               <PencilSquareIcon className="h-4 w-4" />
                             </Link>
 
                             <button
                               onClick={() => openDeleteModal(item.id)}
-                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
-                              title="Hapus"
+                              className="p-2 rounded-md bg-white border border-gray-300 
+                                        hover:border-rose-500 hover:text-rose-600 transition"
                             >
                               <TrashIcon className="h-4 w-4" />
                             </button>
 
                             <Link
                               href={`/dashboard/admin/manajemen-posyandu/${item.id}`}
-                              className="p-2 rounded-md bg-white border border-gray-300 hover:border-blue-500 hover:text-blue-600 transition"
-                              title="Detail Posyandu"
+                              className="p-2 rounded-md bg-white border border-gray-300 
+                                        hover:border-blue-500 hover:text-blue-600 transition"
                             >
                               <EyeIcon className="h-4 w-4" />
                             </Link>
 
                             <Link
                               href={`/dashboard/admin/manajemen-posyandu/${item.id}/kader`}
-                              className="px-3 py-1.5 text-xs rounded-md bg-sky-600 hover:bg-sky-500 text-white transition"
+                              className="px-3 py-1.5 text-xs rounded-md bg-sky-600
+                                        hover:bg-sky-500 text-white transition"
                             >
                               Kelola Kader
                             </Link>
@@ -200,6 +233,47 @@ export default function Page() {
                 </tbody>
               </table>
             )}
+
+            {/* ======================== PAGINATION ======================== */}
+            <div className="flex justify-end items-center gap-2 p-4">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-3 py-1 border rounded-md text-sm ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                }`}
+              >
+                Prev
+              </button>
+
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`px-3 py-1 border rounded-md text-sm ${
+                    currentPage === i + 1
+                      ? 'bg-emerald-600 text-white border-emerald-600'
+                      : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className={`px-3 py-1 border rounded-md text-sm ${
+                  currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                }`}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
