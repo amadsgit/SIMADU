@@ -22,7 +22,7 @@ export default function NavbarLanding() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <span className="text-lg font-extrabold tracking-wide">
-            SIMADU
+           ⚘ SIMADU
           </span>
         </Link>
 
