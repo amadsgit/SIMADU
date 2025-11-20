@@ -1,60 +1,54 @@
-import {
-  UsersIcon,
-  ClipboardDocumentListIcon,
-  DocumentTextIcon,
-} from '@heroicons/react/24/outline';
-import SummaryCard from '@/app/ui/dashboard/summary-card';
-import { getTotalPosyandu } from '@/lib/data-posyandu';
-import { getTotalKader } from '@/lib/data-kader';
-import { getTotalUser } from '@/lib/data-user';
-import { getTotalKelurahan } from '@/lib/data-wilayah-kerja';
-import PosyanduChart from '@/components/posyandu-chart';
-import { MapIcon } from 'lucide-react';
+'use client'
 
+import { useState, useEffect, useMemo } from 'react';
+import TabsPane from '@/components/tab-pane-manajemen-laporan';
+import toast from 'react-hot-toast';
+import { Role } from '@/generated/prisma';
 
-export default async function Page() {
-  const totalPosyandu = await getTotalPosyandu();
-  const totalKader = await getTotalKader();
-  const TotalKelurahan = await getTotalKelurahan();
-  const TotalUser = await getTotalUser();
+export default function Page() {
+  const [nama, setNama] = useState('');
+  const [roles, setRoles] = useState<Role[]>([]);
+  const [loadingFetch, setLoadingFetch] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
+  const totalPages = Math.ceil(roles.length / itemsPerPage);
+
+  const paginatedList = useMemo(() => {
+    return roles.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [roles, currentPage]);
+
+  const fetchRole = async () => {
+    setLoadingFetch(true);
+    try {
+      const res = await fetch('/api/kader/balita');
+      const data = await res.json();
+      setRoles(data);
+    } catch (error) {
+      console.error(error);
+      toast.error('Gagal memuat data role');
+    } finally {
+      setLoadingFetch(false);
+    }
+  };
 
   return (
-    <div className=" text-gray-800">
-      <h1 className="text-3xl font-bold text-emerald-700 mb-2">
-        Dashboard <span className="text-emerald-500">Admin</span>
-      </h1>
-      <p className="text-gray-600 mb-8">
-        Selamat datang kembali 👋 berikut ringkasan informasi data Posyandu wilayah kerja UPTD Puskesmas Cikalapa.
-      </p>
-
-      {/* Ringkasan Info */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <SummaryCard
-          title="Jumlah Data Posyandu"
-          count={(totalPosyandu ?? 0).toString()}
-          icon={<UsersIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
-          title="Jumlah Data Kader"
-          count={(totalKader ?? 0).toString()}
-          icon={<ClipboardDocumentListIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
-          title="Jumlah Kelurahan/Desa"
-          count={(TotalKelurahan ?? 0).toString()}
-          icon={<MapIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
-          title="Jumlah Data User"
-          count={(TotalUser ?? 0).toString()}
-          icon={<DocumentTextIcon className="w-7 h-7 text-emerald-600" />}
-        />
+    <div>
+      {/* Header */}
+      <div className="flex justify-between items-center mb-3">
+        <div>
+          <h2 className="text-2xl font-bold">
+            Laporan dan Rekap Data Posyandu
+          </h2>
+        </div>
       </div>
+      <TabsPane />
 
-      <div className="bg-white rounded-xl mt-5 shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">Grafik Statistik Posyandu</h2>
-        <PosyanduChart />
-      </div>
+
     </div>
   );
 }

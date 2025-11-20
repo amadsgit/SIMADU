@@ -132,12 +132,9 @@ export default function Page() {
         {/* Header */}
         <div className="flex justify-between items-center mb-3">
           <div>
-            <h1 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold">
               Manajemen Data <span className="text-pink-600">Ibu Hamil</span>
-            </h1>
-            <p className="text-gray-500 dark:text-gray-400">
-              Informasi & manajemen data ibu hamil di posyandu Anda
-            </p>
+            </h2>
           </div>
           <Link href="/dashboard/kader/ibu-hamil/create">
             <button className="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm px-4 py-2 rounded-md shadow-sm transition">

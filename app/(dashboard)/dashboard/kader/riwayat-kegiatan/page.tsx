@@ -155,11 +155,11 @@ export default function RiwayatKegiatanPage() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-lg font-semibold flex items-center gap-2 text-emerald-700 mb-3">
+    <div>
+      <h2 className="text-lg font-semibold flex items-center gap-2 text-emerald-700 mb-3">
         <ClipboardListIcon className="w-5 h-5" />
         Riwayat Kegiatan Posyandu
-      </h1>
+      </h2>
 
       {/* HEADER INFO */}
       {rekap && (

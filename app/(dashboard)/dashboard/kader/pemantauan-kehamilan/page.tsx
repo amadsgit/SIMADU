@@ -245,10 +245,9 @@ export default function PemantauanKehamilanPage() {
       {renderModalDetail()}
 
       <div>
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h2 className="text-2xl font-bold text-gray-800">
           Pemantauan Ibu Hamil – {posyandu} ({wilayah})
-        </h1>
-        <p className="text-sm text-gray-500">Data ibu hamil dan pemeriksaan rutin bulanan</p>
+        </h2>
       </div>
 
       {/* STAT CARDS */}

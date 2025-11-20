@@ -116,12 +116,12 @@ export default function Page() {
   };
 
   return (
-    <div className="px-3 py-6">
-      <div className="max-w-4xl mx-auto">
+    <div>
+      <div className="max-w-full mx-auto">
         <div className="p-6 border bg-white shadow-md rounded-xl">
-          <h1 className="text-2xl font-bold mb-8">
+          <h2 className="text-2xl font-bold mb-8">
             Tambah <span className="text-emerald-700">Balita</span>
-          </h1>
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

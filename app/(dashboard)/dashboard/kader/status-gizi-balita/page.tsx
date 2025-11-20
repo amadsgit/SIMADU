@@ -279,7 +279,7 @@ export default function PemantauanGiziBalitaPage() {
       {/* HEADER */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Dashboard Pemantauan Status Gizi Balita</h1>
+          <h2 className="text-2xl font-bold">Dashboard Pemantauan Status Gizi Balita</h2>
           <p className="text-sm text-gray-500">{posyandu ? `${posyandu} • ${wilayah} • ${kelurahan}` : "Posyandu"}</p>
         </div>
       </div>

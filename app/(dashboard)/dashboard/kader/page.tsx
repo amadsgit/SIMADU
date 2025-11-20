@@ -68,7 +68,7 @@ export default function Page() {
   if (!data) return <div className="p-6 text-red-600 text-center">Gagal memuat data dashboard.</div>;
 
   return (
-    <div className="p-6 text-gray-800">
+    <div>
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
         Dashboard <span className="text-emerald-500">Kader</span> {data.posyandu} ({data.wilayah}) {data.kelurahan}
       </h1>
