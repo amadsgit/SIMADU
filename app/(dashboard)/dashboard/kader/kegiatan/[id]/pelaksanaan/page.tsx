@@ -18,6 +18,7 @@ const FormIbuHamil = dynamic(() => import('@/components/pemeriksaan/ibuHamil'), 
 interface Kegiatan {
   id: number;
   nama: string;
+  deskripsi: string;
   posyandu: {
     id: number;
     nama: string;
@@ -35,8 +36,18 @@ interface Pelaksanaan {
   catatanUmum?: string;
 }
 
-interface Balita { id: number; nama: string; nik: string; }
-interface IbuHamil { id: number; nama: string; nik: string; }
+interface Balita {
+  id: number;
+  nama: string; 
+  nik: string;
+  tanggalLahir: string;
+  pemeriksaanBalita: {
+    imunisasi: string;
+    tanggal: string;
+  }[];
+}
+
+interface IbuHamil { id: number; nama: string; nik: string; tanggalLahir: string; }
 
 export default function PelaksanaanPage() {
   const { id } = useParams();
@@ -160,19 +171,20 @@ export default function PelaksanaanPage() {
 
   // RENDER
   if (loading)
-    return <p className="p-4 text-gray-500 text-center">Memuat data...</p>;
+    return <p className="p-4 text-green-500 text-center">Memuat data...</p>;
 
   if (!kegiatan)
     return <p className="p-4 text-red-500 text-center">Kegiatan tidak ditemukan.</p>;
 
   return (
-    <div className="p-2">
+    <div>
       <TabsPane />
       <div className="max-w-full mx-auto bg-green-50 border border-green-200 shadow-sm hover:shadow-md transition rounded-xl p-3">
         {/* Header */}
         <div className="flex items-center justify-between mb-2">
           <div>
             <h2 className="text-lg font-semibold">{kegiatan.nama}</h2>
+            <p className="text-sm text-gray-500">{kegiatan.deskripsi}</p>
             {pelaksanaan && (
               <span
                 className={`inline-block mt-1 px-3 py-1 text-xs font-semibold rounded-full ${getBadgeColor(pelaksanaan.status)}`}

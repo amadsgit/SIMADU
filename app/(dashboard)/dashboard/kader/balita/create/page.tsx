@@ -5,6 +5,12 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonSimpan from '@/components/button-simpan';
 import ButtonBatal from '@/components/button-batal';
+import dynamic from 'next/dynamic';
+
+const ModalAmbilKoordinat = dynamic(
+  () => import('@/components/modal-ambil-koordinat'),
+  { ssr: false }
+);
 
 type SessionKader = {
   id: number;
@@ -31,6 +37,8 @@ export default function Page() {
     namaAyah: '',
     namaIbu: '',
     alamat: '',
+    longitude: '',
+    latitude: '',
     beratLahir: '',
     panjangLahir: '',
   });
@@ -38,6 +46,7 @@ export default function Page() {
   const [sessionKader, setSessionKader] = useState<SessionKader | null>(null);
   const [loading, setLoading] = useState(false);
   const [nikError, setNikError] = useState<string | null>(null);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     namaRef.current?.focus();
@@ -152,6 +161,7 @@ export default function Page() {
                   name="noKK"
                   maxLength={16}
                   value={formData.noKK}
+                  placeholder="16 digit Nomor KK"
                   onChange={handleChange}
                   className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
                 />
@@ -183,24 +193,13 @@ export default function Page() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-1">Alamat</label>
-                <input
-                  type="text"
-                  name="alamat"
-                  value={formData.alamat}
-                  onChange={handleChange}
-                  placeholder="Alamat lengkap"
-                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
-                />
-              </div>
-
-              <div>
                 <label className="block text-sm font-semibold mb-1">Nama Ayah</label>
                 <input
                   type="text"
                   name="namaAyah"
                   value={formData.namaAyah}
                   onChange={handleChange}
+                  placeholder="Masukan nama ayah"
                   className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
                 />
               </div>
@@ -212,6 +211,7 @@ export default function Page() {
                   name="namaIbu"
                   value={formData.namaIbu}
                   onChange={handleChange}
+                  placeholder="Masukan nama ibu"
                   className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
                 />
               </div>
@@ -242,6 +242,53 @@ export default function Page() {
                 />
               </div>
 
+              <div>
+                <label className="block text-sm font-semibold mb-1">Alamat</label>
+                <input
+                  type="text"
+                  name="alamat"
+                  value={formData.alamat}
+                  onChange={handleChange}
+                  placeholder="Alamat lengkap"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* Koordinat Lokasi */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Longitude</label>
+                  <input
+                    type="text"
+                    name="longitude"
+                    value={formData.longitude}
+                    readOnly
+                    placeholder="Klik Ambil Koordinat"
+                    className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Latitude</label>
+                  <input
+                    type="text"
+                    name="latitude"
+                    value={formData.latitude}
+                    readOnly
+                    placeholder="Klik Ambil Koordinat"
+                    className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="mt-2 text-sm text-green-600 font-medium hover:underline"
+                  >
+                    📍 Ambil dari Peta
+                  </button>
+                </div>
+              </div>
+
+
               {/* Posyandu & Kader (read-only) */}
               <div>
                 <label className="block text-sm font-semibold mb-1">Posyandu</label>
@@ -249,7 +296,7 @@ export default function Page() {
                   type="text"
                   value={
                     sessionKader
-                      ? `${sessionKader.posyandu.nama} (${sessionKader.posyandu.wilayah})`
+                      ? `${sessionKader.posyandu.nama} (${sessionKader.posyandu.wilayah}) ${sessionKader.posyandu.kelurahan.nama}`
                       : 'Memuat...'
                   }
                   readOnly
@@ -274,6 +321,21 @@ export default function Page() {
           </form>
         </div>
       </div>
+
+      {/* Modal Ambil Koordinat */}
+      {showMap && (
+        <ModalAmbilKoordinat
+          onPick={(lat, lng) => {
+            setFormData({
+              ...formData,
+              latitude: lat.toString(),
+              longitude: lng.toString(),
+            });
+            setShowMap(false);
+          }}
+          onClose={() => setShowMap(false)}
+        />
+      )}
     </div>
   );
 }

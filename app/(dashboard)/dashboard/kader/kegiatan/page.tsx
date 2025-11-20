@@ -113,7 +113,7 @@ export default function JadwalKegiatanKaderPage() {
   today.setHours(0, 0, 0, 0);
 
   return (
-    <div className="px-4 py-6 bg-gray-50">
+    <div className=" bg-gray-50">
       <div className="max-w-6xl mx-auto space-y-10">
 
         {/* --- HEADER --- */}

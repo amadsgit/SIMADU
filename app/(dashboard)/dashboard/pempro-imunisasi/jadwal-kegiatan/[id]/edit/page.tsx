@@ -99,7 +99,7 @@ export default function EditKegiatanPage() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/pemproImunisasiJadwal/${id}`, {
+      const res = await fetch(`/api/pemproImunisasi/jadwal/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

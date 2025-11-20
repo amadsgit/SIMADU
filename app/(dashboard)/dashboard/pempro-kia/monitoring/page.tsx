@@ -158,7 +158,8 @@ export default function MonitoringKIAPage() {
 
       {paginatedData.map((kegiatan) => {
         const showBalita = kegiatan.nama.toLowerCase().includes("balita");
-        const showIbuHamil = kegiatan.nama.toLowerCase().includes("ibu hamil");
+        const showIbuHamil = kegiatan.nama.toLowerCase().includes("ibu hamil") ||
+                             kegiatan.nama.toLowerCase().includes("anc");
 
         return (
           <div key={kegiatan.id} className="bg-white rounded-lg shadow-md border p-4 space-y-4">
@@ -335,12 +336,7 @@ export default function MonitoringKIAPage() {
                                   const today = new Date();
                                   let tahun = today.getFullYear() - tgl.getFullYear();
                                   let bulan = today.getMonth() - tgl.getMonth();
-                                  // let hari = today.getDate() - tgl.getDate();
 
-                                  // if (hari < 0) {
-                                  //   bulan--;
-                                  //   hari += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-                                  // }
                                   if (bulan < 0) {
                                     tahun--;
                                     bulan += 12;

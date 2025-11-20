@@ -5,8 +5,8 @@ import type { NextRequest } from "next/server";
 
 const PUBLIC_ROUTES = [
   "/",
-  "/tentang",
-  "/kontak",
+  "/balita",
+  "/ibu-hamil",
   "/auth/login",
   "/auth/register",
   "/auth/verify-otp",

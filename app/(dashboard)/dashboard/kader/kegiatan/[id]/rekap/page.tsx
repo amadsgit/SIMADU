@@ -386,12 +386,12 @@ export default function RekapPage() {
     XLSX.writeFile(wb, `Laporan_kegiatan_posyandu_ibuhamil_${rekap?.tanggal}.xlsx`);
   };
 
-  if (loading) return <p className="p-4 text-gray-500 text-center">Memuat data...</p>;
+  if (loading) return <p className="p-4 text-green-500 text-center">Memuat data...</p>;
   if (!rekap)
     return <p className="p-4 text-red-500 text-center">Data rekap tidak ditemukan.</p>;
 
   return (
-    <div className="p-2">
+    <div>
       <TabsPane />
 
       {/* CARD REKAP */}

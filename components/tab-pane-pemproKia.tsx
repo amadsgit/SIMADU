@@ -16,7 +16,7 @@ export default function TabsUser() {
     },
     {
       name: 'Laporan Kegiatan',
-      href: `/dashboard/pempro-kia/laporan`,
+      href: `/dashboard/pempro-kia/monitoring/laporan`,
       icon: BarChart3,
     },
   ];
@@ -27,7 +27,7 @@ export default function TabsUser() {
       <div className="flex flex-wrap gap-2">
         {tabs.map((tab) => {
           const isActive =
-            pathname === tab.href || pathname.startsWith(tab.href + '/');
+            pathname === tab.href || pathname.startsWith(tab.href + '/monitoring');
           const Icon = tab.icon;
 
           return (

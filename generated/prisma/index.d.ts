@@ -13370,6 +13370,8 @@ export namespace Prisma {
     id: number | null
     beratLahir: number | null
     panjangLahir: number | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
   }
@@ -13378,6 +13380,8 @@ export namespace Prisma {
     id: number | null
     beratLahir: number | null
     panjangLahir: number | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
   }
@@ -13391,9 +13395,11 @@ export namespace Prisma {
     jenisKelamin: string | null
     namaAyah: string | null
     namaIbu: string | null
-    alamat: string | null
     beratLahir: number | null
     panjangLahir: number | null
+    alamat: string | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
     createdAt: Date | null
@@ -13409,9 +13415,11 @@ export namespace Prisma {
     jenisKelamin: string | null
     namaAyah: string | null
     namaIbu: string | null
-    alamat: string | null
     beratLahir: number | null
     panjangLahir: number | null
+    alamat: string | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
     createdAt: Date | null
@@ -13427,9 +13435,11 @@ export namespace Prisma {
     jenisKelamin: number
     namaAyah: number
     namaIbu: number
-    alamat: number
     beratLahir: number
     panjangLahir: number
+    alamat: number
+    longitude: number
+    latitude: number
     posyanduId: number
     kaderId: number
     createdAt: number
@@ -13442,6 +13452,8 @@ export namespace Prisma {
     id?: true
     beratLahir?: true
     panjangLahir?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
   }
@@ -13450,6 +13462,8 @@ export namespace Prisma {
     id?: true
     beratLahir?: true
     panjangLahir?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
   }
@@ -13463,9 +13477,11 @@ export namespace Prisma {
     jenisKelamin?: true
     namaAyah?: true
     namaIbu?: true
-    alamat?: true
     beratLahir?: true
     panjangLahir?: true
+    alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -13481,9 +13497,11 @@ export namespace Prisma {
     jenisKelamin?: true
     namaAyah?: true
     namaIbu?: true
-    alamat?: true
     beratLahir?: true
     panjangLahir?: true
+    alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -13499,9 +13517,11 @@ export namespace Prisma {
     jenisKelamin?: true
     namaAyah?: true
     namaIbu?: true
-    alamat?: true
     beratLahir?: true
     panjangLahir?: true
+    alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -13598,15 +13618,17 @@ export namespace Prisma {
   export type BalitaGroupByOutputType = {
     id: number
     nama: string
-    nik: string | null
-    noKK: string
+    nik: string
+    noKK: string | null
     tanggalLahir: Date
     jenisKelamin: string
     namaAyah: string | null
     namaIbu: string | null
-    alamat: string
     beratLahir: number | null
     panjangLahir: number | null
+    alamat: string
+    longitude: number | null
+    latitude: number | null
     posyanduId: number
     kaderId: number | null
     createdAt: Date
@@ -13641,9 +13663,11 @@ export namespace Prisma {
     jenisKelamin?: boolean
     namaAyah?: boolean
     namaIbu?: boolean
-    alamat?: boolean
     beratLahir?: boolean
     panjangLahir?: boolean
+    alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -13664,9 +13688,11 @@ export namespace Prisma {
     jenisKelamin?: boolean
     namaAyah?: boolean
     namaIbu?: boolean
-    alamat?: boolean
     beratLahir?: boolean
     panjangLahir?: boolean
+    alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -13684,9 +13710,11 @@ export namespace Prisma {
     jenisKelamin?: boolean
     namaAyah?: boolean
     namaIbu?: boolean
-    alamat?: boolean
     beratLahir?: boolean
     panjangLahir?: boolean
+    alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -13704,16 +13732,18 @@ export namespace Prisma {
     jenisKelamin?: boolean
     namaAyah?: boolean
     namaIbu?: boolean
-    alamat?: boolean
     beratLahir?: boolean
     panjangLahir?: boolean
+    alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "jenisKelamin" | "namaAyah" | "namaIbu" | "alamat" | "beratLahir" | "panjangLahir" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["balita"]>
+  export type BalitaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "jenisKelamin" | "namaAyah" | "namaIbu" | "beratLahir" | "panjangLahir" | "alamat" | "longitude" | "latitude" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["balita"]>
   export type BalitaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
     kader?: boolean | Balita$kaderArgs<ExtArgs>
@@ -13741,15 +13771,17 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nama: string
-      nik: string | null
-      noKK: string
+      nik: string
+      noKK: string | null
       tanggalLahir: Date
       jenisKelamin: string
       namaAyah: string | null
       namaIbu: string | null
-      alamat: string
       beratLahir: number | null
       panjangLahir: number | null
+      alamat: string
+      longitude: number | null
+      latitude: number | null
       posyanduId: number
       kaderId: number | null
       createdAt: Date
@@ -14189,9 +14221,11 @@ export namespace Prisma {
     readonly jenisKelamin: FieldRef<"Balita", 'String'>
     readonly namaAyah: FieldRef<"Balita", 'String'>
     readonly namaIbu: FieldRef<"Balita", 'String'>
-    readonly alamat: FieldRef<"Balita", 'String'>
     readonly beratLahir: FieldRef<"Balita", 'Float'>
     readonly panjangLahir: FieldRef<"Balita", 'Float'>
+    readonly alamat: FieldRef<"Balita", 'String'>
+    readonly longitude: FieldRef<"Balita", 'Float'>
+    readonly latitude: FieldRef<"Balita", 'Float'>
     readonly posyanduId: FieldRef<"Balita", 'Int'>
     readonly kaderId: FieldRef<"Balita", 'Int'>
     readonly createdAt: FieldRef<"Balita", 'DateTime'>
@@ -14695,6 +14729,8 @@ export namespace Prisma {
     gravida: number | null
     para: number | null
     abortus: number | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
   }
@@ -14705,6 +14741,8 @@ export namespace Prisma {
     gravida: number | null
     para: number | null
     abortus: number | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
   }
@@ -14722,6 +14760,8 @@ export namespace Prisma {
     para: number | null
     abortus: number | null
     alamat: string | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
     createdAt: Date | null
@@ -14741,6 +14781,8 @@ export namespace Prisma {
     para: number | null
     abortus: number | null
     alamat: string | null
+    longitude: number | null
+    latitude: number | null
     posyanduId: number | null
     kaderId: number | null
     createdAt: Date | null
@@ -14760,6 +14802,8 @@ export namespace Prisma {
     para: number
     abortus: number
     alamat: number
+    longitude: number
+    latitude: number
     posyanduId: number
     kaderId: number
     createdAt: number
@@ -14774,6 +14818,8 @@ export namespace Prisma {
     gravida?: true
     para?: true
     abortus?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
   }
@@ -14784,6 +14830,8 @@ export namespace Prisma {
     gravida?: true
     para?: true
     abortus?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
   }
@@ -14801,6 +14849,8 @@ export namespace Prisma {
     para?: true
     abortus?: true
     alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -14820,6 +14870,8 @@ export namespace Prisma {
     para?: true
     abortus?: true
     alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -14839,6 +14891,8 @@ export namespace Prisma {
     para?: true
     abortus?: true
     alamat?: true
+    longitude?: true
+    latitude?: true
     posyanduId?: true
     kaderId?: true
     createdAt?: true
@@ -14945,6 +14999,8 @@ export namespace Prisma {
     para: number | null
     abortus: number | null
     alamat: string
+    longitude: number | null
+    latitude: number | null
     posyanduId: number
     kaderId: number | null
     createdAt: Date
@@ -14983,6 +15039,8 @@ export namespace Prisma {
     para?: boolean
     abortus?: boolean
     alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -15006,6 +15064,8 @@ export namespace Prisma {
     para?: boolean
     abortus?: boolean
     alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -15027,6 +15087,8 @@ export namespace Prisma {
     para?: boolean
     abortus?: boolean
     alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
@@ -15048,13 +15110,15 @@ export namespace Prisma {
     para?: boolean
     abortus?: boolean
     alamat?: boolean
+    longitude?: boolean
+    latitude?: boolean
     posyanduId?: boolean
     kaderId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type IbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "umurKehamilanAwal" | "tanggalHPHT" | "tanggalHPL" | "gravida" | "para" | "abortus" | "alamat" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["ibuHamil"]>
+  export type IbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "umurKehamilanAwal" | "tanggalHPHT" | "tanggalHPL" | "gravida" | "para" | "abortus" | "alamat" | "longitude" | "latitude" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["ibuHamil"]>
   export type IbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
     kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
@@ -15090,6 +15154,8 @@ export namespace Prisma {
       para: number | null
       abortus: number | null
       alamat: string
+      longitude: number | null
+      latitude: number | null
       posyanduId: number
       kaderId: number | null
       createdAt: Date
@@ -15532,6 +15598,8 @@ export namespace Prisma {
     readonly para: FieldRef<"IbuHamil", 'Int'>
     readonly abortus: FieldRef<"IbuHamil", 'Int'>
     readonly alamat: FieldRef<"IbuHamil", 'String'>
+    readonly longitude: FieldRef<"IbuHamil", 'Float'>
+    readonly latitude: FieldRef<"IbuHamil", 'Float'>
     readonly posyanduId: FieldRef<"IbuHamil", 'Int'>
     readonly kaderId: FieldRef<"IbuHamil", 'Int'>
     readonly createdAt: FieldRef<"IbuHamil", 'DateTime'>
@@ -21456,9 +21524,11 @@ export namespace Prisma {
     jenisKelamin: 'jenisKelamin',
     namaAyah: 'namaAyah',
     namaIbu: 'namaIbu',
-    alamat: 'alamat',
     beratLahir: 'beratLahir',
     panjangLahir: 'panjangLahir',
+    alamat: 'alamat',
+    longitude: 'longitude',
+    latitude: 'latitude',
     posyanduId: 'posyanduId',
     kaderId: 'kaderId',
     createdAt: 'createdAt',
@@ -21481,6 +21551,8 @@ export namespace Prisma {
     para: 'para',
     abortus: 'abortus',
     alamat: 'alamat',
+    longitude: 'longitude',
+    latitude: 'latitude',
     posyanduId: 'posyanduId',
     kaderId: 'kaderId',
     createdAt: 'createdAt',
@@ -22402,15 +22474,17 @@ export namespace Prisma {
     NOT?: BalitaWhereInput | BalitaWhereInput[]
     id?: IntFilter<"Balita"> | number
     nama?: StringFilter<"Balita"> | string
-    nik?: StringNullableFilter<"Balita"> | string | null
-    noKK?: StringFilter<"Balita"> | string
+    nik?: StringFilter<"Balita"> | string
+    noKK?: StringNullableFilter<"Balita"> | string | null
     tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
     jenisKelamin?: StringFilter<"Balita"> | string
     namaAyah?: StringNullableFilter<"Balita"> | string | null
     namaIbu?: StringNullableFilter<"Balita"> | string | null
-    alamat?: StringFilter<"Balita"> | string
     beratLahir?: FloatNullableFilter<"Balita"> | number | null
     panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    alamat?: StringFilter<"Balita"> | string
+    longitude?: FloatNullableFilter<"Balita"> | number | null
+    latitude?: FloatNullableFilter<"Balita"> | number | null
     posyanduId?: IntFilter<"Balita"> | number
     kaderId?: IntNullableFilter<"Balita"> | number | null
     createdAt?: DateTimeFilter<"Balita"> | Date | string
@@ -22424,15 +22498,17 @@ export namespace Prisma {
   export type BalitaOrderByWithRelationInput = {
     id?: SortOrder
     nama?: SortOrder
-    nik?: SortOrderInput | SortOrder
-    noKK?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrderInput | SortOrder
     tanggalLahir?: SortOrder
     jenisKelamin?: SortOrder
     namaAyah?: SortOrderInput | SortOrder
     namaIbu?: SortOrderInput | SortOrder
-    alamat?: SortOrder
     beratLahir?: SortOrderInput | SortOrder
     panjangLahir?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    longitude?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22450,14 +22526,16 @@ export namespace Prisma {
     OR?: BalitaWhereInput[]
     NOT?: BalitaWhereInput | BalitaWhereInput[]
     nama?: StringFilter<"Balita"> | string
-    noKK?: StringFilter<"Balita"> | string
+    noKK?: StringNullableFilter<"Balita"> | string | null
     tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
     jenisKelamin?: StringFilter<"Balita"> | string
     namaAyah?: StringNullableFilter<"Balita"> | string | null
     namaIbu?: StringNullableFilter<"Balita"> | string | null
-    alamat?: StringFilter<"Balita"> | string
     beratLahir?: FloatNullableFilter<"Balita"> | number | null
     panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    alamat?: StringFilter<"Balita"> | string
+    longitude?: FloatNullableFilter<"Balita"> | number | null
+    latitude?: FloatNullableFilter<"Balita"> | number | null
     posyanduId?: IntFilter<"Balita"> | number
     kaderId?: IntNullableFilter<"Balita"> | number | null
     createdAt?: DateTimeFilter<"Balita"> | Date | string
@@ -22471,15 +22549,17 @@ export namespace Prisma {
   export type BalitaOrderByWithAggregationInput = {
     id?: SortOrder
     nama?: SortOrder
-    nik?: SortOrderInput | SortOrder
-    noKK?: SortOrder
+    nik?: SortOrder
+    noKK?: SortOrderInput | SortOrder
     tanggalLahir?: SortOrder
     jenisKelamin?: SortOrder
     namaAyah?: SortOrderInput | SortOrder
     namaIbu?: SortOrderInput | SortOrder
-    alamat?: SortOrder
     beratLahir?: SortOrderInput | SortOrder
     panjangLahir?: SortOrderInput | SortOrder
+    alamat?: SortOrder
+    longitude?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22497,15 +22577,17 @@ export namespace Prisma {
     NOT?: BalitaScalarWhereWithAggregatesInput | BalitaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Balita"> | number
     nama?: StringWithAggregatesFilter<"Balita"> | string
-    nik?: StringNullableWithAggregatesFilter<"Balita"> | string | null
-    noKK?: StringWithAggregatesFilter<"Balita"> | string
+    nik?: StringWithAggregatesFilter<"Balita"> | string
+    noKK?: StringNullableWithAggregatesFilter<"Balita"> | string | null
     tanggalLahir?: DateTimeWithAggregatesFilter<"Balita"> | Date | string
     jenisKelamin?: StringWithAggregatesFilter<"Balita"> | string
     namaAyah?: StringNullableWithAggregatesFilter<"Balita"> | string | null
     namaIbu?: StringNullableWithAggregatesFilter<"Balita"> | string | null
-    alamat?: StringWithAggregatesFilter<"Balita"> | string
     beratLahir?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
     panjangLahir?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
+    alamat?: StringWithAggregatesFilter<"Balita"> | string
+    longitude?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
+    latitude?: FloatNullableWithAggregatesFilter<"Balita"> | number | null
     posyanduId?: IntWithAggregatesFilter<"Balita"> | number
     kaderId?: IntNullableWithAggregatesFilter<"Balita"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Balita"> | Date | string
@@ -22528,6 +22610,8 @@ export namespace Prisma {
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
     alamat?: StringFilter<"IbuHamil"> | string
+    longitude?: FloatNullableFilter<"IbuHamil"> | number | null
+    latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
     kaderId?: IntNullableFilter<"IbuHamil"> | number | null
     createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
@@ -22550,6 +22634,8 @@ export namespace Prisma {
     para?: SortOrderInput | SortOrder
     abortus?: SortOrderInput | SortOrder
     alamat?: SortOrder
+    longitude?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22575,6 +22661,8 @@ export namespace Prisma {
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
     alamat?: StringFilter<"IbuHamil"> | string
+    longitude?: FloatNullableFilter<"IbuHamil"> | number | null
+    latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
     kaderId?: IntNullableFilter<"IbuHamil"> | number | null
     createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
@@ -22597,6 +22685,8 @@ export namespace Prisma {
     para?: SortOrderInput | SortOrder
     abortus?: SortOrderInput | SortOrder
     alamat?: SortOrder
+    longitude?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22624,6 +22714,8 @@ export namespace Prisma {
     para?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
     abortus?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
     alamat?: StringWithAggregatesFilter<"IbuHamil"> | string
+    longitude?: FloatNullableWithAggregatesFilter<"IbuHamil"> | number | null
+    latitude?: FloatNullableWithAggregatesFilter<"IbuHamil"> | number | null
     posyanduId?: IntWithAggregatesFilter<"IbuHamil"> | number
     kaderId?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
@@ -23845,15 +23937,17 @@ export namespace Prisma {
 
   export type BalitaCreateInput = {
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutBalitaInput
@@ -23865,15 +23959,17 @@ export namespace Prisma {
   export type BalitaUncheckedCreateInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -23884,15 +23980,17 @@ export namespace Prisma {
 
   export type BalitaUpdateInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
@@ -23904,15 +24002,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23924,15 +24024,17 @@ export namespace Prisma {
   export type BalitaCreateManyInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -23941,15 +24043,17 @@ export namespace Prisma {
 
   export type BalitaUpdateManyMutationInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23957,15 +24061,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23984,6 +24090,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
@@ -24004,6 +24112,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -24023,6 +24133,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
@@ -24043,6 +24155,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24063,6 +24177,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -24081,6 +24197,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24098,6 +24216,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25374,9 +25494,11 @@ export namespace Prisma {
     jenisKelamin?: SortOrder
     namaAyah?: SortOrder
     namaIbu?: SortOrder
-    alamat?: SortOrder
     beratLahir?: SortOrder
     panjangLahir?: SortOrder
+    alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25387,6 +25509,8 @@ export namespace Prisma {
     id?: SortOrder
     beratLahir?: SortOrder
     panjangLahir?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
   }
@@ -25400,9 +25524,11 @@ export namespace Prisma {
     jenisKelamin?: SortOrder
     namaAyah?: SortOrder
     namaIbu?: SortOrder
-    alamat?: SortOrder
     beratLahir?: SortOrder
     panjangLahir?: SortOrder
+    alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25418,9 +25544,11 @@ export namespace Prisma {
     jenisKelamin?: SortOrder
     namaAyah?: SortOrder
     namaIbu?: SortOrder
-    alamat?: SortOrder
     beratLahir?: SortOrder
     panjangLahir?: SortOrder
+    alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25431,6 +25559,8 @@ export namespace Prisma {
     id?: SortOrder
     beratLahir?: SortOrder
     panjangLahir?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
   }
@@ -25464,6 +25594,8 @@ export namespace Prisma {
     para?: SortOrder
     abortus?: SortOrder
     alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25476,6 +25608,8 @@ export namespace Prisma {
     gravida?: SortOrder
     para?: SortOrder
     abortus?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
   }
@@ -25493,6 +25627,8 @@ export namespace Prisma {
     para?: SortOrder
     abortus?: SortOrder
     alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25512,6 +25648,8 @@ export namespace Prisma {
     para?: SortOrder
     abortus?: SortOrder
     alamat?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
     createdAt?: SortOrder
@@ -25524,6 +25662,8 @@ export namespace Prisma {
     gravida?: SortOrder
     para?: SortOrder
     abortus?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
   }
@@ -27867,15 +28007,17 @@ export namespace Prisma {
 
   export type BalitaCreateWithoutPosyanduInput = {
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     kader?: KaderCreateNestedOneWithoutBalitaInput
@@ -27886,15 +28028,17 @@ export namespace Prisma {
   export type BalitaUncheckedCreateWithoutPosyanduInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     kaderId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27924,6 +28068,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     kader?: KaderCreateNestedOneWithoutIbuHamilInput
@@ -27943,6 +28089,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     kaderId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28108,15 +28256,17 @@ export namespace Prisma {
     NOT?: BalitaScalarWhereInput | BalitaScalarWhereInput[]
     id?: IntFilter<"Balita"> | number
     nama?: StringFilter<"Balita"> | string
-    nik?: StringNullableFilter<"Balita"> | string | null
-    noKK?: StringFilter<"Balita"> | string
+    nik?: StringFilter<"Balita"> | string
+    noKK?: StringNullableFilter<"Balita"> | string | null
     tanggalLahir?: DateTimeFilter<"Balita"> | Date | string
     jenisKelamin?: StringFilter<"Balita"> | string
     namaAyah?: StringNullableFilter<"Balita"> | string | null
     namaIbu?: StringNullableFilter<"Balita"> | string | null
-    alamat?: StringFilter<"Balita"> | string
     beratLahir?: FloatNullableFilter<"Balita"> | number | null
     panjangLahir?: FloatNullableFilter<"Balita"> | number | null
+    alamat?: StringFilter<"Balita"> | string
+    longitude?: FloatNullableFilter<"Balita"> | number | null
+    latitude?: FloatNullableFilter<"Balita"> | number | null
     posyanduId?: IntFilter<"Balita"> | number
     kaderId?: IntNullableFilter<"Balita"> | number | null
     createdAt?: DateTimeFilter<"Balita"> | Date | string
@@ -28155,6 +28305,8 @@ export namespace Prisma {
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
     alamat?: StringFilter<"IbuHamil"> | string
+    longitude?: FloatNullableFilter<"IbuHamil"> | number | null
+    latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
     kaderId?: IntNullableFilter<"IbuHamil"> | number | null
     createdAt?: DateTimeFilter<"IbuHamil"> | Date | string
@@ -28280,15 +28432,17 @@ export namespace Prisma {
 
   export type BalitaCreateWithoutKaderInput = {
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutBalitaInput
@@ -28299,15 +28453,17 @@ export namespace Prisma {
   export type BalitaUncheckedCreateWithoutKaderInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28337,6 +28493,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
@@ -28356,6 +28514,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30241,15 +30401,17 @@ export namespace Prisma {
 
   export type BalitaCreateWithoutPemeriksaanBalitaInput = {
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutBalitaInput
@@ -30260,15 +30422,17 @@ export namespace Prisma {
   export type BalitaUncheckedCreateWithoutPemeriksaanBalitaInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -30435,15 +30599,17 @@ export namespace Prisma {
 
   export type BalitaUpdateWithoutPemeriksaanBalitaInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
@@ -30454,15 +30620,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateWithoutPemeriksaanBalitaInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30620,6 +30788,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutIbuHamilInput
@@ -30639,6 +30809,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -30777,6 +30949,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
@@ -30796,6 +30970,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31300,15 +31476,17 @@ export namespace Prisma {
 
   export type BalitaCreateWithoutStatusGiziInput = {
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     posyandu: PosyanduCreateNestedOneWithoutBalitaInput
@@ -31319,15 +31497,17 @@ export namespace Prisma {
   export type BalitaUncheckedCreateWithoutStatusGiziInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     kaderId?: number | null
     createdAt?: Date | string
@@ -31401,15 +31581,17 @@ export namespace Prisma {
 
   export type BalitaUpdateWithoutStatusGiziInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
@@ -31420,15 +31602,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateWithoutStatusGiziInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31580,15 +31764,17 @@ export namespace Prisma {
   export type BalitaCreateManyPosyanduInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     kaderId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31607,6 +31793,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     kaderId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31708,15 +31896,17 @@ export namespace Prisma {
 
   export type BalitaUpdateWithoutPosyanduInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kader?: KaderUpdateOneWithoutBalitaNestedInput
@@ -31727,15 +31917,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateWithoutPosyanduInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31746,15 +31938,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateManyWithoutPosyanduInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31772,6 +31966,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     kader?: KaderUpdateOneWithoutIbuHamilNestedInput
@@ -31791,6 +31987,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31810,6 +32008,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31863,15 +32063,17 @@ export namespace Prisma {
   export type BalitaCreateManyKaderInput = {
     id?: number
     nama: string
-    nik?: string | null
-    noKK: string
+    nik: string
+    noKK?: string | null
     tanggalLahir: Date | string
     jenisKelamin: string
     namaAyah?: string | null
     namaIbu?: string | null
-    alamat: string
     beratLahir?: number | null
     panjangLahir?: number | null
+    alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31890,6 +32092,8 @@ export namespace Prisma {
     para?: number | null
     abortus?: number | null
     alamat: string
+    longitude?: number | null
+    latitude?: number | null
     posyanduId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31953,15 +32157,17 @@ export namespace Prisma {
 
   export type BalitaUpdateWithoutKaderInput = {
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutBalitaNestedInput
@@ -31972,15 +32178,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateWithoutKaderInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31991,15 +32199,17 @@ export namespace Prisma {
   export type BalitaUncheckedUpdateManyWithoutKaderInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
-    nik?: NullableStringFieldUpdateOperationsInput | string | null
-    noKK?: StringFieldUpdateOperationsInput | string
+    nik?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
     jenisKelamin?: StringFieldUpdateOperationsInput | string
     namaAyah?: NullableStringFieldUpdateOperationsInput | string | null
     namaIbu?: NullableStringFieldUpdateOperationsInput | string | null
-    alamat?: StringFieldUpdateOperationsInput | string
     beratLahir?: NullableFloatFieldUpdateOperationsInput | number | null
     panjangLahir?: NullableFloatFieldUpdateOperationsInput | number | null
+    alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32017,6 +32227,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posyandu?: PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput
@@ -32036,6 +32248,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32055,6 +32269,8 @@ export namespace Prisma {
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
     alamat?: StringFieldUpdateOperationsInput | string
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

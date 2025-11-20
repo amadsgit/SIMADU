@@ -66,12 +66,29 @@ export async function GET(_req: NextRequest, context: ContextParams) {
       balita: await prisma.balita.findMany({
         where: { posyanduId: kader.posyanduId },
         orderBy: { nama: 'asc' },
-        select: { id: true, nama: true, nik: true },
+        select: { 
+          id: true, 
+          nama: true, 
+          nik: true, 
+          tanggalLahir: true,
+          pemeriksaanBalita : {
+            where: {
+              imunisasi: {
+                not: null,
+              }
+            },
+            select: {
+              imunisasi: true,
+              tanggal: true,
+            },
+            orderBy: { tanggal: 'desc' } // riwayat terbaru paling atas
+          }
+        },
       }),
       ibuHamil: await prisma.ibuHamil.findMany({
         where: { posyanduId: kader.posyanduId },
         orderBy: { nama: 'asc' },
-        select: { id: true, nama: true, nik: true },
+        select: { id: true, nama: true, nik: true, tanggalLahir: true },
       }),
     };
 

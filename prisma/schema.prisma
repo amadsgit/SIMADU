@@ -156,15 +156,17 @@ model Kegiatan {
 model Balita {
   id                Int                 @id @default(autoincrement())
   nama              String
-  nik               String?             @unique
-  noKK              String
+  nik               String             @unique
+  noKK              String?
   tanggalLahir      DateTime
   jenisKelamin      String
   namaAyah          String?
   namaIbu           String?
-  alamat            String
   beratLahir        Float?
   panjangLahir      Float?
+  alamat            String
+  longitude         Float?
+  latitude          Float?
   posyanduId        Int
   posyandu          Posyandu            @relation(fields: [posyanduId], references: [id])
   kaderId           Int?
@@ -191,6 +193,8 @@ model IbuHamil {
   para                 Int? // jumlah kelahiran
   abortus              Int? // jumlah keguguran
   alamat               String
+  longitude            Float?
+  latitude             Float?
   posyanduId           Int
   posyandu             Posyandu              @relation(fields: [posyanduId], references: [id])
   kaderId              Int?

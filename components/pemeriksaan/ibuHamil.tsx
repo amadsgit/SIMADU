@@ -149,7 +149,7 @@ export default function FormIbuHamil({
         {/* Nama Ibu Hamil */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Nama Ibu Hamil
+            Nama Ibu Hamil <span className="text-xs text-rose-500">*</span>
           </label>
           <select
             name="ibuHamilId"
@@ -174,7 +174,7 @@ export default function FormIbuHamil({
         {/* Tanggal Pemeriksaan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Tanggal Pemeriksaan
+            Tanggal Pemeriksaan <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="date"
@@ -189,7 +189,7 @@ export default function FormIbuHamil({
         {/* Usia Kehamilan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Usia Kehamilan (minggu)
+            Usia Kehamilan (minggu) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -206,7 +206,7 @@ export default function FormIbuHamil({
         {/* Berat Badan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Berat Badan (kg)
+            Berat Badan (kg) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -222,7 +222,7 @@ export default function FormIbuHamil({
         {/* Tekanan Darah */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Tekanan Darah (mmHg)
+            Tekanan Darah (mmHg) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="text"
@@ -237,7 +237,7 @@ export default function FormIbuHamil({
         {/* Tinggi Fundus */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Tinggi Fundus (cm)
+            Tinggi Fundus (cm) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -253,7 +253,7 @@ export default function FormIbuHamil({
         {/* Detak Jantung Janin */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Detak Jantung Janin (/menit)
+            Detak Jantung Janin (/menit) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"

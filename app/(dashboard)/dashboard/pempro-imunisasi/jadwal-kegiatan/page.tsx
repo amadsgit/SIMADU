@@ -281,7 +281,10 @@ export default function JadwalKegiatanPage() {
                       <td className="py-3 px-3 font-medium text-emerald-700">
                         {indexOfFirstRow + index + 1}
                       </td>
-                      <td className="py-3 px-3">{k.nama}</td>
+                      <td className="py-3 px-3">
+                        {k.nama} <br />
+                        <span className="text-xs text-gray-500">{k.deskripsi}</span>
+                        </td>
                       <td className="py-3 px-3 capitalize">
                         {format(new Date(k.tanggalPelaksanaan), "EEEE, dd MMM yyyy", { locale: id })}
                       </td>

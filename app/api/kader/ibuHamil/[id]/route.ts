@@ -73,6 +73,8 @@ export async function PUT(
       alamat,
       posyanduId,
       kaderId,
+      longitude,
+      latitude,
     } = body;
 
     // Cek apakah data ada
@@ -124,6 +126,17 @@ export async function PUT(
       }
     }
 
+    // ====== Convert longitude & latitude ======
+    const lon =
+      longitude !== undefined && longitude !== null && longitude !== ""
+        ? parseFloat(longitude)
+        : existingIbu.longitude;
+
+    const lat =
+      latitude !== undefined && latitude !== null && latitude !== ""
+        ? parseFloat(latitude)
+        : existingIbu.latitude;
+
     // ====== Kalkulasi Otomatis HPL & Usia Kehamilan ======
     let calculatedHPL: Date | null = existingIbu.tanggalHPL;
     let umurKehamilanAwal: number | null = existingIbu.umurKehamilanAwal;
@@ -140,8 +153,8 @@ export async function PUT(
       // Hitung usia kehamilan (minggu)
       const now = new Date();
       const diffMs = now.getTime() - hpht.getTime();
-      umurKehamilanAwal = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7)); // konversi ke minggu
-      if (umurKehamilanAwal < 0) umurKehamilanAwal = 0; // jika HPHT di masa depan
+      umurKehamilanAwal = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+      if (umurKehamilanAwal < 0) umurKehamilanAwal = 0;
     }
 
     // Update data ibu hamil
@@ -160,22 +173,24 @@ export async function PUT(
         tanggalHPL: calculatedHPL,
         umurKehamilanAwal,
         gravida:
-          typeof gravida !== 'undefined'
+          typeof gravida !== "undefined"
             ? Number(gravida)
             : existingIbu.gravida,
         para:
-          typeof para !== 'undefined' ? Number(para) : existingIbu.para,
+          typeof para !== "undefined" ? Number(para) : existingIbu.para,
         abortus:
-          typeof abortus !== 'undefined'
+          typeof abortus !== "undefined"
             ? Number(abortus)
             : existingIbu.abortus,
         alamat: alamat ?? existingIbu.alamat,
+        longitude: lon,
+        latitude: lat,
         posyanduId:
-          typeof posyanduId !== 'undefined' && posyanduId !== null
+          typeof posyanduId !== "undefined" && posyanduId !== null
             ? Number(posyanduId)
             : existingIbu.posyanduId,
         kaderId:
-          typeof kaderId !== 'undefined' && kaderId !== null
+          typeof kaderId !== "undefined" && kaderId !== null
             ? Number(kaderId)
             : existingIbu.kaderId,
       },
@@ -186,17 +201,18 @@ export async function PUT(
     });
 
     return NextResponse.json({
-      message: 'Data ibu hamil berhasil diperbarui.',
+      message: "Data ibu hamil berhasil diperbarui.",
       data: updatedIbu,
     });
   } catch (error: any) {
-    console.error('[PUT IbuHamil]', error);
+    console.error("[PUT IbuHamil]", error);
     return NextResponse.json(
-      { error: 'Gagal memperbarui data ibu hamil.', detail: error.message },
+      { error: "Gagal memperbarui data ibu hamil.", detail: error.message },
       { status: 500 }
     );
   }
 }
+
 
 // ========================================================
 // DELETE: Hapus data Ibu Hamil berdasarkan ID

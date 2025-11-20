@@ -5,6 +5,12 @@ import { useRouter, useParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonBatal from '@/components/button-batal';
 import ButtonUpdate from '@/components/button-update';
+import dynamic from 'next/dynamic';
+
+const ModalAmbilKoordinat = dynamic(
+  () => import('@/components/modal-ambil-koordinat'),
+  { ssr: false }
+);
 
 type SessionKader = {
   id: number;
@@ -36,12 +42,15 @@ export default function Page() {
     para: '',
     abortus: '',
     alamat: '',
+    longitude: '',
+    latitude: '',
   });
 
   const [sessionKader, setSessionKader] = useState<SessionKader | null>(null);
   const [loading, setLoading] = useState(false);
   const [nikError, setNikError] = useState<string | null>(null);
   const [loadingData, setLoadingData] = useState(true);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     namaRef.current?.focus();
@@ -82,6 +91,8 @@ export default function Page() {
           para: data.para?.toString() || '',
           abortus: data.abortus?.toString() || '',
           alamat: data.alamat || '',
+          longitude: data.longitude || '',
+          latitude: data.latitude || '',
         });
       } catch (error) {
         console.error(error);
@@ -306,7 +317,7 @@ export default function Page() {
               </div>
 
               {/* Alamat */}
-              <div className="md:col-span-2">
+              <div className="">
                 <label className="block text-sm font-semibold mb-1">Alamat</label>
                 <input
                   type="text"
@@ -318,6 +329,40 @@ export default function Page() {
                 />
               </div>
 
+              {/* Koordinat Lokasi */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Longitude</label>
+                  <input
+                    type="text"
+                    name="longitude"
+                    value={formData.longitude}
+                    readOnly
+                    placeholder="Klik Ambil Koordinat"
+                    className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Latitude</label>
+                  <input
+                    type="text"
+                    name="latitude"
+                    value={formData.latitude}
+                    readOnly
+                    placeholder="Klik Ambil Koordinat"
+                    className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="mt-2 text-sm text-green-600 font-medium hover:underline"
+                  >
+                    📍 Ambil dari Peta
+                  </button>
+                </div>
+              </div>
+
               {/* Posyandu */}
               <div>
                 <label className="block text-sm font-semibold mb-1">Posyandu</label>
@@ -325,7 +370,7 @@ export default function Page() {
                   type="text"
                   value={
                     sessionKader
-                      ? `${sessionKader.posyandu.nama} (${sessionKader.posyandu.wilayah})`
+                      ? `${sessionKader.posyandu.nama} (${sessionKader.posyandu.wilayah}) ${sessionKader.posyandu.kelurahan.nama}`
                       : 'Memuat...'
                   }
                   readOnly
@@ -352,6 +397,21 @@ export default function Page() {
           </form>
         </div>
       </div>
+
+      {/* Modal Ambil Koordinat */}
+      {showMap && (
+        <ModalAmbilKoordinat
+          onPick={(lat, lng) => {
+            setFormData({
+              ...formData,
+              latitude: lat.toString(),
+              longitude: lng.toString(),
+            });
+            setShowMap(false);
+          }}
+          onClose={() => setShowMap(false)}
+        />
+      )}
     </div>
   );
 }

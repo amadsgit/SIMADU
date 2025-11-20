@@ -41,7 +41,6 @@ export async function GET() {
         tanggalPelaksanaan: 'desc',
       },
     });
-    // console.log(JSON.stringify(jadwalImunisasi, null, 2));
 
 
     return NextResponse.json(jadwalKIA);

@@ -4,13 +4,28 @@ import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Setup ikon default leaflet
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-});
+
+const getMarkerColor = (kelurahanName: string) => {
+  const name = kelurahanName?.toLowerCase() ?? '';
+
+  if (name === 'pasirkareumbi') return 'orange';
+  if (name === 'soklat') return 'red';
+  if (name === 'parung') return 'green';
+  if (name === 'wanareja') return 'blue';
+
+  return 'gray';
+};
+
+const coloredIcon = (color: string) =>
+  L.icon({
+    iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+    shadowUrl:
+      'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
 
 type Kelurahan = {
   id: number;
@@ -22,7 +37,7 @@ type Posyandu = {
   nama: string;
   alamat: string;
   wilayah: string;
-  kelurahan: Kelurahan; // relasi ke tabel kelurahan
+  kelurahan: Kelurahan;
   penanggungJawab: string;
   noHp: string;
   akreditasi: string;
@@ -40,7 +55,7 @@ export default function MapView() {
       try {
         const res = await fetch('/api/posyandu');
         const data = await res.json();
-        console.log('Posyandu data:', data);
+
         setPosyanduData(data);
       } catch (err) {
         console.error('Gagal fetch data posyandu:', err);
@@ -56,18 +71,12 @@ export default function MapView() {
     const map = L.map('leaflet-map').setView([-6.5740985, 107.7407857], 13);
     mapRef.current = map;
 
-    // const key = 'AIasOmN8uDOgOOQXtW0T';
-    const googleStreets = L.tileLayer(
-      'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', // m = street, s = satellite, y = hybrid, t = terrain
-      {
-        maxZoom: 20,
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-      }
-    );
-    googleStreets.addTo(map);
+    L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+      maxZoom: 20,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    }).addTo(map);
 
-    const markerGroup = L.layerGroup().addTo(map);
-    markerGroupRef.current = markerGroup;
+    markerGroupRef.current = L.layerGroup().addTo(map);
   }, []);
 
   useEffect(() => {
@@ -80,32 +89,39 @@ export default function MapView() {
       const lat = parseFloat(item.latitude);
       const lng = parseFloat(item.longitude);
 
-      if (!isNaN(lat) && !isNaN(lng)) {
-        const marker = L.marker([lat, lng])
-          .bindPopup(
-            `<strong>${item.nama}</strong><br/>
-             ${item.alamat}<br/>
-             ${item.wilayah}, Kelurahan ${item.kelurahan?.nama ?? '-'}<br/>
-             Penanggung Jawab: ${item.penanggungJawab}<br/>
-             Contact: ${item.noHp}<br/>
-             Akreditasi: ${item.akreditasi}`
-          )
-          .bindTooltip(item.nama, {
-            permanent: true,
-            direction: 'top',
-            offset: [0, -10],
-          });
+      if (isNaN(lat) || isNaN(lng)) return;
 
-        markerGroup?.addLayer(marker);
-      }
+      const kelurahanName = item.kelurahan?.nama ?? '';
+      const markerColor = getMarkerColor(kelurahanName);
+
+      const marker = L.marker([lat, lng], {
+        icon: coloredIcon(markerColor),
+      })
+        .bindPopup(
+          `
+            <strong>${item.nama}</strong><br/>
+            ${item.alamat}<br/>
+            ${item.wilayah}, Kelurahan ${kelurahanName}<br/>
+            Penanggung Jawab: ${item.penanggungJawab}<br/>
+            Kontak: ${item.noHp}<br/>
+            Akreditasi: ${item.akreditasi}
+          `
+        )
+        .bindTooltip(item.nama, {
+          permanent: true,
+          direction: 'top',
+          offset: [0, -10],
+        });
+
+      markerGroup?.addLayer(marker);
     });
   }, [posyanduData]);
 
   return (
     <div
       id="leaflet-map"
-      className="rounded-sm"
-      style={{ height: '70vh', width: '100%' }}
+      className="rounded-md"
+      style={{ height: '90vh', width: '100%' }}
     />
   );
 }

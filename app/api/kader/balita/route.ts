@@ -94,10 +94,10 @@ export async function POST(req: Request) {
       namaAyah,
       namaIbu,
       alamat,
+      longitude,
+      latitude,
       beratLahir,
       panjangLahir,
-      // posyanduId,  // <- jangan percaya client utk kader: gunakan kader.posyanduId
-      // kaderId,     // <- ignore jika dikirim client
     } = body;
 
     // validasi minimal
@@ -116,7 +116,18 @@ export async function POST(req: Request) {
       }
     }
 
-    // gunakan posyanduId dari kader (trusted)
+    // Convert longitude/latitude (boleh null & gunakan parseFloat)
+    const lon =
+      longitude !== undefined && longitude !== null && longitude !== ''
+        ? parseFloat(longitude)
+        : null;
+
+    const lat =
+      latitude !== undefined && latitude !== null && latitude !== ''
+        ? parseFloat(latitude)
+        : null;
+
+    // gunakan posyanduId dari kader
     const posyanduId = kader.posyanduId;
 
     const newBalita = await prisma.balita.create({
@@ -129,9 +140,17 @@ export async function POST(req: Request) {
         namaAyah: namaAyah || null,
         namaIbu: namaIbu || null,
         alamat,
-        beratLahir: typeof beratLahir !== 'undefined' && beratLahir !== null ? Number(beratLahir) : null,
-        panjangLahir: typeof panjangLahir !== 'undefined' && panjangLahir !== null ? Number(panjangLahir) : null,
-        posyanduId: posyanduId as number, // harus ada karena kader punya posyanduId
+        longitude: lon,
+        latitude: lat,
+        beratLahir:
+          typeof beratLahir !== 'undefined' && beratLahir !== null
+            ? Number(beratLahir)
+            : null,
+        panjangLahir:
+          typeof panjangLahir !== 'undefined' && panjangLahir !== null
+            ? Number(panjangLahir)
+            : null,
+        posyanduId: posyanduId as number,
         kaderId: kader.id,
       },
       include: {
@@ -140,7 +159,10 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ message: 'Balita berhasil ditambahkan', data: newBalita }, { status: 201 });
+    return NextResponse.json(
+      { message: 'Balita berhasil ditambahkan', data: newBalita },
+      { status: 201 }
+    );
   } catch (error: any) {
     console.error('[POST /api/kader/balita]', error);
     return NextResponse.json({ error: 'Gagal menambahkan balita', detail: error.message }, { status: 500 });

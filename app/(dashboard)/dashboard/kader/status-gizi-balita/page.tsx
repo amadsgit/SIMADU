@@ -275,7 +275,7 @@ export default function PemantauanGiziBalitaPage() {
   if (error) return <p className="text-center py-12 text-red-600">{error}</p>;
 
   return (
-    <div className="space-y-6 p-4">
+    <div className="space-y-6">
       {/* HEADER */}
       <div className="flex items-center justify-between">
         <div>

@@ -69,6 +69,8 @@ export async function PUT(
       namaAyah,
       namaIbu,
       alamat,
+      longitude,
+      latitude,
       beratLahir,
       panjangLahir,
       posyanduId,
@@ -99,7 +101,9 @@ export async function PUT(
 
     // Validasi posyandu (jika diberikan)
     if (typeof posyanduId !== 'undefined' && posyanduId !== null) {
-      const posyandu = await prisma.posyandu.findUnique({ where: { id: Number(posyanduId) } });
+      const posyandu = await prisma.posyandu.findUnique({
+        where: { id: Number(posyanduId) },
+      });
       if (!posyandu) {
         return NextResponse.json(
           { error: 'Posyandu tidak ditemukan.' },
@@ -110,7 +114,9 @@ export async function PUT(
 
     // Validasi kader (jika diberikan)
     if (typeof kaderId !== 'undefined' && kaderId !== null) {
-      const kader = await prisma.kader.findUnique({ where: { id: Number(kaderId) } });
+      const kader = await prisma.kader.findUnique({
+        where: { id: Number(kaderId) },
+      });
       if (!kader) {
         return NextResponse.json(
           { error: 'Kader tidak ditemukan.' },
@@ -119,6 +125,20 @@ export async function PUT(
       }
     }
 
+    // --------------------------
+    // Tambahan: longitude & latitude
+    // --------------------------
+
+    const lon =
+      longitude !== undefined && longitude !== null && longitude !== ''
+        ? parseFloat(longitude)
+        : existingBalita.longitude;
+
+    const lat =
+      latitude !== undefined && latitude !== null && latitude !== ''
+        ? parseFloat(latitude)
+        : existingBalita.latitude;
+
     // Update data balita
     const updatedBalita = await prisma.balita.update({
       where: { id: numericId },
@@ -126,15 +146,39 @@ export async function PUT(
         nama: typeof nama !== 'undefined' ? nama : existingBalita.nama,
         nik: typeof nik !== 'undefined' ? nik : existingBalita.nik,
         noKK: typeof noKK !== 'undefined' ? noKK : existingBalita.noKK,
-        tanggalLahir: tanggalLahir ? new Date(tanggalLahir) : existingBalita.tanggalLahir,
-        jenisKelamin: typeof jenisKelamin !== 'undefined' ? jenisKelamin : existingBalita.jenisKelamin,
-        namaAyah: typeof namaAyah !== 'undefined' ? namaAyah : existingBalita.namaAyah,
-        namaIbu: typeof namaIbu !== 'undefined' ? namaIbu : existingBalita.namaIbu,
-        alamat: typeof alamat !== 'undefined' ? alamat : existingBalita.alamat,
-        beratLahir: typeof beratLahir !== 'undefined' && beratLahir !== null ? Number(beratLahir) : existingBalita.beratLahir,
-        panjangLahir: typeof panjangLahir !== 'undefined' && panjangLahir !== null ? Number(panjangLahir) : existingBalita.panjangLahir,
-        posyanduId: typeof posyanduId !== 'undefined' && posyanduId !== null ? Number(posyanduId) : existingBalita.posyanduId,
-        kaderId: typeof kaderId !== 'undefined' && kaderId !== null ? Number(kaderId) : existingBalita.kaderId,
+        tanggalLahir: tanggalLahir
+          ? new Date(tanggalLahir)
+          : existingBalita.tanggalLahir,
+        jenisKelamin:
+          typeof jenisKelamin !== 'undefined'
+            ? jenisKelamin
+            : existingBalita.jenisKelamin,
+        namaAyah:
+          typeof namaAyah !== 'undefined' ? namaAyah : existingBalita.namaAyah,
+        namaIbu:
+          typeof namaIbu !== 'undefined' ? namaIbu : existingBalita.namaIbu,
+        alamat:
+          typeof alamat !== 'undefined' ? alamat : existingBalita.alamat,
+
+        longitude: lon,
+        latitude: lat,
+
+        beratLahir:
+          typeof beratLahir !== 'undefined' && beratLahir !== null
+            ? Number(beratLahir)
+            : existingBalita.beratLahir,
+        panjangLahir:
+          typeof panjangLahir !== 'undefined' && panjangLahir !== null
+            ? Number(panjangLahir)
+            : existingBalita.panjangLahir,
+        posyanduId:
+          typeof posyanduId !== 'undefined' && posyanduId !== null
+            ? Number(posyanduId)
+            : existingBalita.posyanduId,
+        kaderId:
+          typeof kaderId !== 'undefined' && kaderId !== null
+            ? Number(kaderId)
+            : existingBalita.kaderId,
       },
       include: {
         posyandu: { select: { id: true, nama: true } },
@@ -154,6 +198,7 @@ export async function PUT(
     );
   }
 }
+
 
 // ========================================================
 // DELETE: Hapus data balita berdasarkan ID

@@ -24,7 +24,7 @@ export default async function Page() {
         Dashboard <span className="text-emerald-500">Admin</span>
       </h1>
       <p className="text-gray-600 mb-8">
-        Selamat datang, berikut ringkasan informasi data E-Posyandu..
+        Selamat datang kembali 👋 berikut ringkasan informasi data Posyandu wilayah kerja UPTD Puskesmas Cikalapa.
       </p>
 
       {/* Ringkasan Info */}

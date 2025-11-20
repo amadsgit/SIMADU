@@ -81,6 +81,8 @@ export async function POST(req: Request) {
       para,
       abortus,
       alamat,
+      longitude,
+      latitude,
     } = body;
 
     // Validasi field wajib
@@ -96,6 +98,17 @@ export async function POST(req: Request) {
     if (existing) {
       return NextResponse.json({ error: 'NIK ibu hamil sudah terdaftar!' }, { status: 400 });
     }
+
+    // ====== Convert longitude/latitude (boleh null) ======
+    const lon =
+      longitude !== undefined && longitude !== null && longitude !== ''
+        ? parseFloat(longitude)
+        : null;
+
+    const lat =
+      latitude !== undefined && latitude !== null && latitude !== ''
+        ? parseFloat(latitude)
+        : null;
 
     // ====== Kalkulasi Otomatis ======
     let calculatedHPL: Date | null = null;
@@ -113,8 +126,8 @@ export async function POST(req: Request) {
       // Hitung usia kehamilan (minggu)
       const now = new Date();
       const diffMs = now.getTime() - hpht.getTime();
-      umurKehamilanAwal = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7)); // konversi ke minggu
-      if (umurKehamilanAwal < 0) umurKehamilanAwal = 0; // jika HPHT di masa depan
+      umurKehamilanAwal = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+      if (umurKehamilanAwal < 0) umurKehamilanAwal = 0;
     }
 
     const posyanduId = kader.posyanduId;
@@ -133,6 +146,8 @@ export async function POST(req: Request) {
         para: para ? Number(para) : null,
         abortus: abortus ? Number(abortus) : null,
         alamat,
+        longitude: lon,
+        latitude: lat,
         posyanduId: posyanduId as number,
         kaderId: kader.id,
       },
@@ -154,3 +169,4 @@ export async function POST(req: Request) {
     );
   }
 }
+

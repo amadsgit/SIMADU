@@ -4,23 +4,34 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Save } from 'lucide-react';
 
+interface RiwayatImunisasi {
+  imunisasi: string;
+  tanggal: string;
+}
+
 interface Balita {
   id: number;
   nama: string;
   nik: string;
+  tanggalLahir: string;
+  pemeriksaanBalita: RiwayatImunisasi[];
 }
 
 interface FormBalitaProps {
   kegiatanId: number;
   pelaksanaanKegiatanId: number | null;
   daftarBalita: Balita[];
+  isProgramImunisasi?: boolean; // <--- tambahan
 }
 
 export default function FormBalita({
   kegiatanId,
   pelaksanaanKegiatanId,
   daftarBalita = [],
+  isProgramImunisasi = false,
 }: FormBalitaProps) {
+  const [selectedBalita, setSelectedBalita] = useState<Balita | null>(null);
+
   const [form, setForm] = useState({
     balitaId: '',
     tanggal: new Date().toISOString().split('T')[0],
@@ -36,20 +47,24 @@ export default function FormBalita({
     tindakan: '',
     catatan: '',
   });
+
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type } = e.target;
+
+    if (name === 'balitaId') {
+      const found = daftarBalita.find((b) => b.id === Number(value)) || null;
+      setSelectedBalita(found);
+    }
+
     setForm((prev) => ({
       ...prev,
-      [name]:
-        type === 'checkbox' && e.target instanceof HTMLInputElement
-          ? e.target.checked
-          : value,
+      [name]: type === 'checkbox' && e.target instanceof HTMLInputElement
+        ? e.target.checked
+        : value,
     }));
   };
 
@@ -57,7 +72,12 @@ export default function FormBalita({
     e.preventDefault();
 
     if (!form.balitaId || !form.beratBadan || !form.tinggiBadan) {
-      toast.error('Isi minimal: Nama Balita, Berat, dan Tinggi Badan.');
+      toast.error('Isi minimal: Nama Balita, Berat Badan, dan Tinggi Badan.');
+      return;
+    }
+
+    if (isProgramImunisasi && !form.imunisasi) {
+      toast.error('Jenis imunisasi wajib diisi untuk kegiatan imunisasi');
       return;
     }
 
@@ -105,6 +125,7 @@ export default function FormBalita({
         tindakan: '',
         catatan: '',
       });
+      setSelectedBalita(null);
     } catch (err: any) {
       toast.error(err.message || 'Terjadi kesalahan');
     } finally {
@@ -121,11 +142,32 @@ export default function FormBalita({
         Form Pemeriksaan Balita
       </h3>
 
+      {selectedBalita && (
+        <div className=" bg-green-50 border border-green-200 p-1 rounded-md">
+          <h4 className="text-xs text-emerald-700">
+            Riwayat Imunisasi: {selectedBalita.nama}
+          </h4>
+
+          {selectedBalita.pemeriksaanBalita.length === 0 ? (
+            <p className="text-gray-500 text-sm">Belum ada riwayat imunisasi.</p>
+          ) : (
+            <ul className="text-sm space-y-1">
+              {selectedBalita.pemeriksaanBalita.map((riw, i) => (
+                <li key={i} className="flex justify-between border-b py-1">
+                  <span className="text-gray-500">{riw.imunisasi}</span>
+                  <span className="text-gray-500">{new Date(riw.tanggal).toLocaleDateString()}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
         {/* Nama Balita */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Nama Balita
+            Nama Balita <span className="text-xs text-rose-500">*</span>
           </label>
           <select
             name="balitaId"
@@ -136,11 +178,24 @@ export default function FormBalita({
           >
             <option value="">-- Pilih Balita --</option>
             {daftarBalita.length > 0 ? (
-              daftarBalita.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.nama} ({b.nik})
-                </option>
-              ))
+              daftarBalita.map((b) => {
+                const lahir = new Date(b.tanggalLahir);
+                const now = new Date();
+
+                const diff = now.getTime() - lahir.getTime();
+                const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+                const bulan = Math.floor(totalDays / 30);
+                const minggu = Math.floor((totalDays % 30) / 7);
+
+                const umur = `${bulan} bln${minggu > 0 ? ` ${minggu} mg` : ""}`;
+
+                return (
+                  <option key={b.id} value={b.id}>
+                    ({b.nik}) {b.nama} - {umur}
+                  </option>
+                );
+              })
             ) : (
               <option disabled>Data balita belum tersedia</option>
             )}
@@ -150,7 +205,7 @@ export default function FormBalita({
         {/* Tanggal Pemeriksaan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Tanggal Pemeriksaan
+            Tanggal Pemeriksaan <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="date"
@@ -165,7 +220,7 @@ export default function FormBalita({
         {/* Berat Badan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Berat Badan (kg)
+            Berat Badan (kg) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -182,7 +237,7 @@ export default function FormBalita({
         {/* Tinggi Badan */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Tinggi Badan (cm)
+            Tinggi Badan (cm) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -199,7 +254,7 @@ export default function FormBalita({
         {/* Lingkar Kepala */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Lingkar Kepala (cm)
+            Lingkar Kepala (cm) <span className="text-xs text-rose-500">*</span>
           </label>
           <input
             type="number"
@@ -207,7 +262,7 @@ export default function FormBalita({
             step="0.1"
             value={form.lingkarKepala}
             onChange={handleChange}
-            placeholder="Opsional"
+            placeholder="Contoh: 31.2"
             className="w-full border border-gray-300 rounded-md p-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>

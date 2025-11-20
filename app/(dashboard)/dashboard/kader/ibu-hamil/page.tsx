@@ -15,8 +15,8 @@ type IbuHamil = {
   noKK: string;
   tanggalLahir: string;
   umurKehamilanAwal?: number | null;
-  tanggalHPHT?: string | null;
-  tanggalHPL?: string | null;
+  tanggalHPHT: string;
+  tanggalHPL: string;
   gravida?: number | null;
   para?: number | null;
   abortus?: number | null;
@@ -127,7 +127,7 @@ export default function Page() {
   );
 
   return (
-    <div className="p-6">
+    <div>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-3">
@@ -178,14 +178,15 @@ export default function Page() {
               <span className="text-sm font-medium">Memuat data ibu hamil...</span>
             </div>
           ) : (
-            <table className="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
-              <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+            <table className="min-w-full text-sm border border-gray-200 rounded-sm overflow-hidden">
+              <thead className="bg-gray-100 text-gray-600 text-xs tracking-wider">
                 <tr>
                   <th className="p-4 text-left">No</th>
-                  <th className="px-6 py-4 text-left">Nama Ibu Hamil</th>
-                  <th className="px-6 py-4 text-left">No KK & NIK</th>
+                  <th className="px-6 py-4 text-left">Nama</th>
                   <th className="px-6 py-4 text-left">Tanggal Lahir</th>
-                  <th className="px-6 py-4 text-left">Alamat</th>
+                  <th className="px-6 py-4 text-left">Umur Kehamilan Awal</th>
+                  <th className="px-6 py-4 text-left">Tanggal HPHT</th>
+                  <th className="px-6 py-4 text-left">Tanggal HPL</th>
                   <th className="px-6 py-4 text-center">Aksi</th>
                 </tr>
               </thead>
@@ -196,27 +197,37 @@ export default function Page() {
                       <td className="px-4 py-4 font-medium text-gray-700">
                         {(currentPage - 1) * itemsPerPage + index + 1}
                       </td>
-                      <td className="px-6 py-4 font-semibold text-gray-800">{item.nama}</td>
-                      <td className="px-6 py-4">
-                        <div className="flex flex-col space-y-1">
-                          <div className="flex items-center gap-1">
-                            <span className="text-[11px] bg-pink-50 text-pink-700 px-2 py-0.5 rounded-md font-medium">
-                              KK
-                            </span>
-                            <span className="font-mono text-gray-800 text-sm">{item.noKK}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <span className="text-[11px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-md font-medium">
-                              NIK
-                            </span>
-                            <span className="font-mono text-gray-800 text-sm">{item.nik}</span>
-                          </div>
+                      <td className="px-6 py-4  text-gray-800">
+                        <div className="font-medium">{item.nama}</div>
+                        <div className="text-xs flex text-gray-500">
+                          <span className=" bg-pink-50 text-pink-700 px-2 py-0.5 rounded-md font-medium">
+                              {item.nik}
+                          </span> 
                         </div>
+                        <div className="text-xs text-gray-400">{item.alamat}</div>
                       </td>
                       <td className="px-6 py-4 text-gray-700">
-                        {new Date(item.tanggalLahir).toLocaleDateString('id-ID')}
+                        {new Date(item.tanggalLahir).toLocaleDateString('id-ID', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        })}
                       </td>
-                      <td className="px-6 py-4 text-gray-700">{item.alamat}</td>
+                      <td className="px-6 py-4 text-gray-700">{item.umurKehamilanAwal} Minggu</td>
+                      <td className="px-6 py-4 text-gray-700">
+                        {new Date(item.tanggalHPHT).toLocaleDateString('id-ID', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        })}
+                      </td>
+                      <td className="px-6 py-4 text-gray-700">
+                        {new Date(item.tanggalHPL).toLocaleDateString('id-ID', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        })}
+                      </td>
                       <td className="px-6 py-4 text-center">
                         <div className="flex justify-center items-center gap-2">
                           <Link
