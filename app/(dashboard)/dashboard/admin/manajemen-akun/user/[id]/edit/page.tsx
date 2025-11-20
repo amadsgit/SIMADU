@@ -164,8 +164,8 @@ export default function EditUserPage() {
   };
 
   return (
-    <div className="px-3 py-6">
-      <div className="max-w-4xl mx-auto">
+    <div>
+      <div className="max-w-full mx-auto">
         <div className="p-6 border bg-white shadow-md rounded-xl">
           <h1 className="text-2xl font-bold mb-8">
             Edit <span className="text-emerald-700">User</span>

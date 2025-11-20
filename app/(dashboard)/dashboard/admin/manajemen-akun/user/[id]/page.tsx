@@ -23,7 +23,7 @@ export default async function UserDetailPage({
   if (!user) return notFound();
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="max-w-full mx-auto">
       {/* Header */}
       <div className="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
-import { PencilSquareIcon, TrashIcon, EyeIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { PlusCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ModalKonfirmasi from '@/components/delete-confirmation';
@@ -24,10 +24,9 @@ export default function Page() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Form state
-  const [nama, setNama] = useState('');
-  const [deskripsi, setDeskripsi] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 1;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,13 +46,30 @@ export default function Page() {
     fetchData();
   }, []);
 
-  const resetForm = () => {
-    setNama('');
-    setDeskripsi('');
-    setSelectedId(null);
-  };
+  // ======================== FILTER ========================
+  const filteredList = useMemo(() => {
+    const q = searchQuery.toLowerCase();
+    return klasterList.filter((item) =>
+      item.nama.toLowerCase().includes(q)
+    );
+  }, [klasterList, searchQuery]);
 
-  // Hapus klaster
+  // Reset ke page 1 saat search berubah
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  // ======================== PAGINATION ========================
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
+
+  const paginatedList = useMemo(() => {
+    return filteredList.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }, [filteredList, currentPage]);
+
+  // ======================== DELETE ========================
   const openDeleteModal = (id: number) => {
     setSelectedId(id);
     setShowModal(true);
@@ -85,33 +101,27 @@ export default function Page() {
     }
   };
 
-
-  const filteredList = useMemo(() => {
-    const q = searchQuery.toLowerCase();
-    return klasterList.filter((item) => item.nama.toLowerCase().includes(q));
-  }, [klasterList, searchQuery]);
+  // ============================================================
 
   return (
-    <div className="p-6">
+    <div>
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-3">
-          <div>
-            <h1 className="text-2xl font-bold">Manajemen Data <span>Klaster</span></h1>
-            <p className="text-gray-500 dark:text-gray-400">Informasi data klaster puskesmas</p>
-          </div>
+          <h2 className="text-2xl font-bold">
+            Manajemen Data <span>Klaster</span>
+          </h2>
+
           <Link href="/dashboard/admin/manajemen-program/klaster/create">
             <button className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-4 py-2 rounded-md shadow-sm transition">
-              <PlusCircle className="w-4 h-4 text-white text-bold" />
-              Klaster
+              <PlusCircle className="w-4 h-4 text-white" />
+              Tambah Klaster
             </button>
           </Link>
         </div>
 
-        <div className="flex justify-between items-center">
-          <TabsPane />
-        </div>
+        <TabsPane />
 
-        {/* Tabel Klaster */}
+        {/* TABLE SECTION */}
         <div className="bg-white rounded-xl shadow-md border mt-6 overflow-x-auto">
           <div className="p-4 border-b border-gray-100">
             <Search
@@ -126,7 +136,11 @@ export default function Page() {
               <div className="flex justify-center items-center py-16 text-emerald-600">
                 <svg className="w-6 h-6 animate-spin mr-2" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  />
                 </svg>
                 <span className="text-sm font-medium">Memuat data klaster...</span>
               </div>
@@ -143,24 +157,36 @@ export default function Page() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredList.length > 0 ? (
-                    filteredList.map((item, index) => (
+                  {paginatedList.length > 0 ? (
+                    paginatedList.map((item, index) => (
                       <tr key={item.id} className="border-t hover:bg-gray-50 transition">
-                        <td className="px-4 py-4">{index + 1}</td>
+                        <td className="px-4 py-4">
+                          {(currentPage - 1) * itemsPerPage + index + 1}
+                        </td>
                         <td className="px-6 py-4">{item.nama}</td>
                         <td className="px-6 py-4">{item.deskripsi || '-'}</td>
+
                         <td className="px-6 py-4 text-center">
-                          {new Date(item.createdAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                          {new Date(item.createdAt).toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                          })}
                         </td>
+
                         <td className="px-6 py-4 text-center">
-                          {new Date(item.updatedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                          {new Date(item.updatedAt).toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                          })}
                         </td>
+
                         <td className="px-6 py-4 text-center">
                           <div className="flex justify-center items-center gap-2">
                             <Link
                               href={`/dashboard/admin/manajemen-program/klaster/${item.id}/edit`}
                               className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
-                              title="Edit"
                             >
                               <PencilSquareIcon className="h-4 w-4" />
                             </Link>
@@ -168,7 +194,6 @@ export default function Page() {
                             <button
                               onClick={() => openDeleteModal(item.id)}
                               className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
-                              title="Hapus"
                             >
                               <TrashIcon className="h-4 w-4" />
                             </button>
@@ -186,6 +211,49 @@ export default function Page() {
                 </tbody>
               </table>
             )}
+
+            {/* ================= PAGINATION ================= */}
+            <div className="flex justify-end items-center gap-2 p-4">
+
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-3 py-1 border rounded-md text-sm ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                }`}
+              >
+                Prev
+              </button>
+
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`px-3 py-1 border rounded-md text-sm ${
+                    currentPage === i + 1
+                      ? 'bg-emerald-600 text-white border-emerald-600'
+                      : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className={`px-3 py-1 border rounded-md text-sm ${
+                  currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white hover:bg-emerald-50 text-emerald-700'
+                }`}
+              >
+                Next
+              </button>
+
+            </div>
           </div>
         </div>
 
