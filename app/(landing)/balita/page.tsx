@@ -43,7 +43,7 @@ export default async function Page() {
           </div>
 
           {/* STATISTIK */}
-          <div className=" mt-8 grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {/* <div className=" mt-8 grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {[
               { label: 'Posyandu', value: totalPosyandu?.toString() || '0', icon: '🏥' },
               { label: 'Kader', value: totalKader?.toString() || '0', icon: '👩‍⚕️' },
@@ -59,7 +59,7 @@ export default async function Page() {
                 <p className="text-sm text-gray-600 mt-1">{item.label}</p>
               </div>
             ))}
-          </div>
+          </div> */}
         </section>
       </div>
 
