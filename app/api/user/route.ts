@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import { sendEmail } from '@/lib/mailerRegister';
+import { sendRegisterEmail } from '@/lib/mailerRegister';
 
 // ==============================
 // GET: Ambil semua data user
@@ -17,7 +17,7 @@ export async function GET() {
             posyandu: {
               include: {
                 kelurahan: {
-                  select: { id: true, nama: true }, 
+                  select: { id: true, nama: true },
                 },
               },
             },
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
       alamat,
       password,
       roleId,
-      kaderId, // khusus kader
+      kaderId,
     } = body;
 
     // --- Validasi umum ---
@@ -67,6 +67,7 @@ export async function POST(req: Request) {
     const existingUser = await prisma.user.findFirst({
       where: { OR: [{ email }, { nik }] },
     });
+
     if (existingUser) {
       return NextResponse.json(
         { error: 'Email atau NIK sudah terdaftar sebagai user!' },
@@ -96,10 +97,9 @@ export async function POST(req: Request) {
     ].includes(role.nama.toLowerCase());
 
     // ==============================
-    // TRANSACTION: Buat user + update kader (jika ada)
+    // TRANSACTION: Buat user + update kader
     // ==============================
     const result = await prisma.$transaction(async (tx) => {
-      // --- Buat user baru ---
       const newUser = await tx.user.create({
         data: {
           nama,
@@ -116,24 +116,18 @@ export async function POST(req: Request) {
         include: { role: { select: { id: true, nama: true } } },
       });
 
-      // --- Jika role kader, sambungkan ke tabel kader yang sudah ada ---
+      // --- Jika role kader, sambungkan ---
       if (role.nama.toLowerCase() === 'kader') {
-        if (!kaderId) {
-          throw new Error('Kader harus dipilih dari daftar kader yang sudah ada!');
-        }
+        if (!kaderId) throw new Error('Kader harus dipilih!');
 
         const kaderNumericId = Number(kaderId);
-        if (isNaN(kaderNumericId)) {
-          throw new Error('ID kader tidak valid!');
-        }
+        if (isNaN(kaderNumericId)) throw new Error('ID kader tidak valid!');
 
         const existingKader = await tx.kader.findUnique({
           where: { id: kaderNumericId },
         });
 
-        if (!existingKader) {
-          throw new Error('Data kader tidak ditemukan!');
-        }
+        if (!existingKader) throw new Error('Data kader tidak ditemukan!');
 
         await tx.kader.update({
           where: { id: kaderNumericId },
@@ -145,29 +139,14 @@ export async function POST(req: Request) {
     });
 
     // ==============================
-    // KIRIM EMAIL NOTIFIKASI
+    // KIRIM EMAIL NOTIFIKASI (via helper)
     // ==============================
-    const subject = 'Akun SIMADU Anda Telah Dibuat';
-    const html = `
-      <div style="font-family: sans-serif; line-height: 1.6">
-        <h2>Halo, ${nama}</h2>
-        <p>Akun Anda telah berhasil dibuat di sistem <strong>SIMADU PKM CIKALAPA</strong>.</p>
-        <p>Berikut detail akun Anda:</p>
-        <ul>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Password:</strong> ${password}</li>
-          <li><strong>Role:</strong> ${result.role.nama}</li>
-        </ul>
-        <p>Silakan login melalui tautan berikut:</p>
-        <p><a href="${process.env.NEXT_PUBLIC_APP_URL || '#'
-      }/login" style="color: #10b981; font-weight: bold">Login ke Sistem</a></p>
-        <br/>
-        <p>Terima kasih,</p>
-        <p><strong>SIMADU UPTD Puskesmas Cikalapa</strong></p>
-      </div>
-    `;
-
-    await sendEmail({ to: email, subject, html });
+    await sendRegisterEmail({
+      nama,
+      email,
+      password,
+      role: result.role.nama,
+    });
 
     return NextResponse.json({
       message: `User berhasil ditambahkan. Email notifikasi telah dikirim.`,
