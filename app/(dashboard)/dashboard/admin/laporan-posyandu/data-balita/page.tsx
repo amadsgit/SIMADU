@@ -97,15 +97,15 @@ export default function Page() {
     autoTable(doc, {
       startY: 80,
       head: [[
-        'No', 'Nama', 'NIK', 'No KK', 'Tanggal Lahir', 'Jenis Kelamin',
+        'No', 'NIK', 'No.KK', 'Nama', 'Tanggal Lahir', 'Jenis Kelamin',
         'Berat Lahir (kg)', 'Panjang Lahir (cm)', 'Nama Ayah', 'Nama Ibu', 'Posyandu',
         'Kelurahan', 'RW', 'Alamat', 'Tanggal Didata'
       ]],
       body: filteredData.map((item, idx) => [
         idx + 1,
-        item.nama,
         item.nik,
         item.noKK,
+        item.nama,
         new Date(item.tanggalLahir).toLocaleDateString('id-ID'),
         item.jenisKelamin,
         item.beratLahir,
@@ -199,8 +199,8 @@ export default function Page() {
           <thead className="bg-gray-100">
             <tr>
               <th className="p-2 border">No</th>
+              <th className="p-2 border">NIK & No.KK</th>
               <th className="p-2 border">Nama</th>
-              <th className="p-2 border">NIK & No KK</th>
               <th className="p-2 border">Tanggal Lahir</th>
               <th className="p-2 border">Jenis Kelamin</th>
               <th className="p-2 border">Berat Lahir (kg)</th>
@@ -226,8 +226,8 @@ export default function Page() {
             {!loading && paginatedList.map((item, index) => (
               <tr key={item.id}>
                 <td className="p-2 border">{(currentPage - 1) * itemsPerPage + index + 1}</td>
-                <td className="p-2 border">{item.nama}</td>
                 <td className="p-2 border">NIK: {item.nik}<br />KK: {item.noKK}</td>
+                <td className="p-2 border">{item.nama}</td>
                 <td className="p-2 border">{new Date(item.tanggalLahir).toLocaleDateString()}</td>
                 <td className="p-2 border">{item.jenisKelamin}</td>
                 <td className="p-2 border">{item.beratLahir}</td>

@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   try {
-    const data = await prisma.balita.findMany({
+    const data = await prisma.ibuHamil.findMany({
       orderBy: { id: 'desc' },
 
       include: {
@@ -24,7 +24,7 @@ export async function GET() {
         },
 
         // === PEMERIKSAAN BALITA ===
-        pemeriksaanBalita: {
+        pemeriksaanKehamilan: {
           orderBy: { id: 'desc' },
           include: {
             kegiatan: {

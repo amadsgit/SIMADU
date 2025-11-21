@@ -22,47 +22,6 @@ export async function GET() {
             },
           },
         },
-
-        // === PEMERIKSAAN IbuHamil ===
-        pemeriksaanKehamilan: {
-          orderBy: { id: 'desc' },
-          include: {
-            kegiatan: {
-              select: { id: true, nama: true },
-            },
-
-            kader: {
-              select: { id: true, nama: true },
-            },
-
-            // === PELAKSANAAN KEGIATAN ===
-            pelaksanaanKegiatan: {
-              select: {
-                id: true,
-                tanggalMulai: true,
-
-                kegiatan: {
-                  select: { id: true, nama: true },
-                },
-
-                posyandu: {
-                  select: {
-                    id: true,
-                    nama: true,
-                    wilayah: true,
-                    kelurahan: {
-                      select: { id: true, nama: true },
-                    },
-                  },
-                },
-
-                kader: {
-                  select: { id: true, nama: true },
-                },
-              },
-            },
-          }
-        }
       },
     });
 

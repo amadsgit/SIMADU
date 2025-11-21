@@ -3,23 +3,26 @@ import {
   ClipboardDocumentListIcon,
   DocumentTextIcon,
 } from '@heroicons/react/24/outline';
+import { MapIcon } from 'lucide-react';
 import SummaryCard from '@/app/ui/dashboard/summary-card';
+import PosyanduChart from '@/components/chart-posyandu';
+import KategoriGiziChart from '@/components/chart-kategorigizi';
+import BalitaStuntingChart from '@/components/chart-balitastunting';
+import BumilKEKChart from '@/components/chart-bumilKEK';
+import ChartCard from '@/components/chart-card';
 import { getTotalPosyandu } from '@/lib/data-posyandu';
 import { getTotalKader } from '@/lib/data-kader';
 import { getTotalUser } from '@/lib/data-user';
 import { getTotalKelurahan } from '@/lib/data-wilayah-kerja';
-import PosyanduChart from '@/components/posyandu-chart';
-import { MapIcon } from 'lucide-react';
-
 
 export default async function Page() {
   const totalPosyandu = await getTotalPosyandu();
   const totalKader = await getTotalKader();
-  const TotalKelurahan = await getTotalKelurahan();
-  const TotalUser = await getTotalUser();
+  const totalKelurahan = await getTotalKelurahan();
+  const totalUser = await getTotalUser();
 
   return (
-    <div className=" text-gray-800">
+    <div className="text-gray-800">
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
         Dashboard <span className="text-emerald-500">Admin</span>
       </h1>
@@ -41,20 +44,32 @@ export default async function Page() {
         />
         <SummaryCard
           title="Jumlah Kelurahan/Desa"
-          count={(TotalKelurahan ?? 0).toString()}
+          count={(totalKelurahan ?? 0).toString()}
           icon={<MapIcon className="w-7 h-7 text-emerald-600" />}
         />
         <SummaryCard
           title="Jumlah Data User"
-          count={(TotalUser ?? 0).toString()}
+          count={(totalUser ?? 0).toString()}
           icon={<DocumentTextIcon className="w-7 h-7 text-emerald-600" />}
         />
       </div>
 
-      <div className="bg-white rounded-xl mt-5 shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">Grafik Statistik Posyandu</h2>
+      {/* Chart Cards */}
+      <ChartCard title="Statistik Posyandu" height="300px">
         <PosyanduChart />
-      </div>
+      </ChartCard>
+
+      <ChartCard title="Statistik Kategori Gizi Balita" height="300px">
+        <KategoriGiziChart />
+      </ChartCard>
+
+      <ChartCard title="Statistik Balita Stunting" height="300px">
+        <BalitaStuntingChart />
+      </ChartCard>
+      
+      <ChartCard title="Statistik Ibu Hamil Kondisi Kurang Energi Kronis (KEK)" height="300px">
+        <BumilKEKChart />
+      </ChartCard>
     </div>
   );
 }

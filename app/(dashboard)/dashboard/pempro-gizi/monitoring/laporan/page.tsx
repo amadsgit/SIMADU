@@ -300,8 +300,8 @@ export default function MonitoringGiziPage() {
 
   // Render
   return (
-    <div className="p-4 space-y-6">
-      <h1 className="text-2xl font-semibold text-gray-800">Monitoring & Laporan Kegiatan Gizi</h1>
+    <div>
+      <h2 className="text-2xl mb-2 font-semibold text-gray-800">Monitoring & Laporan Kegiatan Gizi</h2>
 
       <TabsPane />
 

@@ -132,8 +132,8 @@ export default function MonitoringKIAPage() {
   );
 
   return (
-    <div className="p-2 space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Monitoring & Laporan Kegiatan KIA</h1>
+    <div>
+      <h2 className="text-2xl mb-2 font-bold text-gray-800">Monitoring & Laporan Kegiatan KIA</h2>
 
       <TabsPane />
 

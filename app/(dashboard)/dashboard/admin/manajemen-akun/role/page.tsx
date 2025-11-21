@@ -203,10 +203,10 @@ export default function Page() {
             <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
               <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
                 <tr>
-                  <th className="p-3 border-b">#</th>
-                  <th className="p-3 border-b">Nama Role</th>
-                  <th className="p-3 border-b">Dibuat</th>
-                  <th className="p-3 border-b">Diupdate</th>
+                  <th className="p-3 border-b">No</th>
+                  <th className="p-3 border-b text-left">Nama Role</th>
+                  <th className="p-3 border-b text-left">Dibuat</th>
+                  <th className="p-3 border-b text-left">Diupdate</th>
                   <th className="p-3 border-b">Aksi</th>
                 </tr>
               </thead>
@@ -219,9 +219,9 @@ export default function Page() {
                         {(currentPage - 1) * itemsPerPage + index + 1}
                       </td>
 
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 border-b">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs font-semibold capitalize
+                          className={`px-2 py-1  rounded-full text-xs font-semibold capitalize
                             ${
                               item.nama.toLowerCase() === 'admin'
                                 ? 'bg-red-100 text-red-700'

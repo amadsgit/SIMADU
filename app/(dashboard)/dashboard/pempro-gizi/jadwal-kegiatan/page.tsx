@@ -129,10 +129,10 @@ export default function JadwalKegiatanPage() {
   };
 
   return (
-    <div className="p-2 text-gray-800">
-      <h1 className="text-3xl font-bold text-emerald-700 mb-2">
+    <div>
+      <h2 className="text-2xl font-bold text-emerald-700 mb-2">
         Jadwal Kegiatan <span className="text-emerald-500">Program Gizi</span>
-      </h1>
+      </h2>
       <p className="text-gray-600 mb-8">
         Data jadwal kegiatan Posyandu untuk Program Gizi di wilayah kerja
         Puskesmas.

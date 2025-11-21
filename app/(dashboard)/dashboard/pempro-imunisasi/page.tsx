@@ -182,7 +182,7 @@ export default function PageClient() {
     );
 
   return (
-    <div className="p-6 text-gray-800">
+    <div>
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
         Dashboard <span className="text-emerald-500">Program Imunisasi</span>
       </h1>
@@ -193,29 +193,11 @@ export default function PageClient() {
       {/* Ringkasan Data Imunisasi */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-6">
         <SummaryCard
-          title="Jumlah Balita Terdata"
-          count={jumlahBalitaTerdata}
-          icon={<UsersIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
-          title="Total Imunisasi Diberikan"
-          count={loading ? "..." : totalImunisasiDiberikan}
-          icon={<SyringeIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
-          title="Cakupan IDL (Imunisasi Dasar Lengkap)"
-          count={loading ? "..." : cakupanIDL}
-          icon={<ShieldCheckIcon className="w-7 h-7 text-emerald-600" />}
-        />
-        <SummaryCard
           title="Jumlah Kegiatan Imunisasi"
           count={totalKegiatan}
           icon={<ClipboardListIcon className="w-7 h-7 text-emerald-600" />}
         />
-      </div>
 
-      {/* Grid bawah 3 kolom */}
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <SummaryCard
           title="Kegiatan Belum Mulai"
           count={kegiatanBelumMulai}
@@ -232,6 +214,8 @@ export default function PageClient() {
           icon={<CheckCircleIcon className="w-7 h-7 text-green-600" />}
         />
       </div>
+
+      
     </div>
   );
 }

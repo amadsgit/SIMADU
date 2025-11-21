@@ -11,6 +11,10 @@ import {
   CheckCircleIcon
 } from "lucide-react";
 import SummaryCard from "@/app/ui/dashboard/summary-card";
+import ChartCard from "@/components/chart-card";
+import KategoriGiziChart from '@/components/chart-kategorigizi';
+import BalitaStuntingChart from '@/components/chart-balitastunting';
+import BumilKEKChart from '@/components/chart-bumilKEK';
 
 type AnyObj = any;
 
@@ -164,7 +168,7 @@ export default function PageClient() {
     );
 
   return (
-    <div className="p-6 text-gray-800">
+    <div>
       <h1 className="text-3xl font-bold text-emerald-700 mb-2">
         Dashboard <span className="text-emerald-500">Program KIA</span>
       </h1>
@@ -174,7 +178,7 @@ export default function PageClient() {
 
       {/* Ringkasan Data KIA */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <SummaryCard
+        {/* <SummaryCard
           title="Jumlah Ibu Hamil Terdata"
           count={jumlahIbuHamilTerdata}
           icon={<HeartPulseIcon className="w-7 h-7 text-emerald-600" />}
@@ -196,7 +200,7 @@ export default function PageClient() {
           title="Balita Stunting (Pendek/Sangat Pendek)"
           count={jumlahStuntingPendek}
           icon={<BabyIcon className="w-7 h-7 text-red-600" />}
-        />
+        /> */}
 
         <SummaryCard
           title="Jumlah Kegiatan KIA"
@@ -222,6 +226,19 @@ export default function PageClient() {
           icon={<CheckCircleIcon className="w-7 h-7 text-green-600" />}
         />
       </div>
+
+      <ChartCard title="Statistik Ibu Hamil Kondisi Kurang Energi Kronis (KEK)" height="300px">
+        <BumilKEKChart />
+      </ChartCard>
+
+      <ChartCard title="Statistik Kategori Gizi Balita" height="300px">
+        <KategoriGiziChart />
+      </ChartCard>
+
+      <ChartCard title="Statistik Balita Stunting" height="300px">
+        <BalitaStuntingChart />
+      </ChartCard>
+
     </div>
   );
 }

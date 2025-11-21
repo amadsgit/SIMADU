@@ -163,7 +163,7 @@ export default function Page() {
               <table className="min-w-full text-sm">
                 <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
                   <tr>
-                    <th className="p-4 border-b">#</th>
+                    <th className="p-4 border-b">No</th>
                     <th className="px-6 py-4 text-left">Nama Posyandu</th>
                     <th className="px-6 py-4 text-left">Alamat</th>
                     <th className="px-6 py-4 text-left">Wilayah</th>

@@ -205,7 +205,7 @@ export default function Page() {
               <table className="w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
                 <thead className="bg-gray-100 text-gray-700">
                   <tr>
-                    <th className="p-3 border-b border-gray-200">#</th>
+                    <th className="p-3 border-b border-gray-200">No</th>
                     <th className="p-3 border-b border-gray-200">Nama Kelurahan/Desa</th>
                     <th className="p-3 border-b border-gray-200">Dibuat</th>
                     <th className="p-3 border-b border-gray-200">Diupdate</th>

@@ -96,14 +96,15 @@ const handlePrintPDF = () => {
   autoTable(doc, {
     startY: 80,
     head: [[
-      'No', 'Nama', 'NIK', 'Tanggal Lahir', 'HPHT', 'HPL', 'Umur Kehamilan (minggu)',
+      'No', 'NIK & No.KK',  'Nama', 'Tanggal Lahir', 'HPHT', 'HPL', 'Umur Kehamilan (minggu)',
       'BB Sebelum Hamil (kg)', 'TB Sebelum Hamil (cm)', 'LiLA (cm)', 'IMT Trimester 1 (kg/m²)',
-      'Status Gizi KEK', 'Gravida (hamil ke)', 'Para (jumlah kelahiran)', 'Abortus', 'Gol. Darah', 
+      'Status Gizi KEK', 'Gravida (jumlah kehamilan)', 'Para (jumlah kelahiran)', 'Abortus (keguguran)', 'Gol. Darah', 
       'Kepemilikan JKN', 'Buku KIA', 'Suami', 'Alamat', 
       'Posyandu', 'Kelurahan', 'RW', 'Tanggal Didata'
     ]],
     body: filteredData.map((item, idx) => {
       const namaSuami = item.namaSuami ? `${item.namaSuami} ${item.HPSuami ?? ''}` : '-';
+      const nikKK = item.nik ? `NIK:${item.nik} No.KK:${item.noKK ?? ''}` : '-';
       const alamat = `${item.alamat ?? '-'} RT.${item.RT ?? ''}/${item.RW ?? ''}`;
       const jkn = item.kepemilikanJKN ? `${item.kepemilikanJKN} ${item.noJKN ?? ''}` : '-';
       const golDarah = (item.golonganDarah && item.golonganDarah !== 'Belum_diperiksa') 
@@ -112,8 +113,8 @@ const handlePrintPDF = () => {
 
       return [
         idx + 1,
+        nikKK,
         item.nama ?? '-',
-        item.nik ?? '-',
         item.tanggalLahir ? new Date(item.tanggalLahir).toLocaleDateString('id-ID') : '-',
         item.tanggalHPHT ? new Date(item.tanggalHPHT).toLocaleDateString('id-ID') : '-',
         item.tanggalHPL ? new Date(item.tanggalHPL).toLocaleDateString('id-ID') : '-',
@@ -230,8 +231,8 @@ const handlePrintPDF = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="p-2 border">No</th>
+              <th className="p-2 border">NIK & No.KK</th>
               <th className="p-2 border">Nama</th>
-              <th className="p-2 border">NIK</th>
               <th className="p-2 border">Tanggal Lahir</th>
               <th className="p-2 border">HPHT</th>
               <th className="p-2 border">HPL</th>
@@ -241,9 +242,9 @@ const handlePrintPDF = () => {
               <th className="p-2 border">LiLA (cm)</th>
               <th className="p-2 border">IMT Trimester 1 (kg/m²)</th>
               <th className="p-2 border">Status Gizi KEK</th>
-              <th className="p-2 border">Gravida</th>
-              <th className="p-2 border">Para</th>
-              <th className="p-2 border">Abortus</th>
+              <th className="p-2 border">Gravida (jumlah kehamilan)</th>
+              <th className="p-2 border">Para (jumlah kelahiran)</th>
+              <th className="p-2 border">Abortus (jumlah keguguran)</th>
               <th className="p-2 border">Gol. Darah</th>
               <th className="p-2 border">JKN / No JKN</th>
               <th className="p-2 border">Buku KIA</th>
@@ -268,8 +269,8 @@ const handlePrintPDF = () => {
             {!loading && paginatedList.map((item, index) => (
               <tr key={item.id}>
                 <td className="p-2 border">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                <td className="p-2 border">NIK: {item.nik} No.KK: {item.nik}</td>
                 <td className="p-2 border">{item.nama}</td>
-                <td className="p-2 border">{item.nik}</td>
                 <td className="p-2 border">{new Date(item.tanggalLahir).toLocaleDateString()}</td>
                 <td className="p-2 border">{item.tanggalHPHT ? new Date(item.tanggalHPHT).toLocaleDateString() : '-'}</td>
                 <td className="p-2 border">{item.tanggalHPL ? new Date(item.tanggalHPL).toLocaleDateString() : '-'}</td>
