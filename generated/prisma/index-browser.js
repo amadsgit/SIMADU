@@ -244,13 +244,26 @@ exports.Prisma.IbuHamilScalarFieldEnum = {
   nik: 'nik',
   noKK: 'noKK',
   tanggalLahir: 'tanggalLahir',
-  umurKehamilanAwal: 'umurKehamilanAwal',
+  BBSH: 'BBSH',
+  TBSH: 'TBSH',
+  liLA: 'liLA',
+  IMTSH: 'IMTSH',
+  StatusGiziKEK: 'StatusGiziKEK',
   tanggalHPHT: 'tanggalHPHT',
+  umurKehamilanAwal: 'umurKehamilanAwal',
   tanggalHPL: 'tanggalHPL',
   gravida: 'gravida',
   para: 'para',
   abortus: 'abortus',
+  golonganDarah: 'golonganDarah',
+  kepemilikanJKN: 'kepemilikanJKN',
+  noJKN: 'noJKN',
+  kepemilikanBukuKIA: 'kepemilikanBukuKIA',
+  namaSuami: 'namaSuami',
+  HPSuami: 'HPSuami',
   alamat: 'alamat',
+  RT: 'RT',
+  RW: 'RW',
   longitude: 'longitude',
   latitude: 'latitude',
   posyanduId: 'posyanduId',
@@ -354,6 +367,21 @@ exports.Akreditasi = exports.$Enums.Akreditasi = {
   PURNAMA: 'PURNAMA',
   MANDIRI: 'MANDIRI',
   BELUM_AKREDITASI: 'BELUM_AKREDITASI'
+};
+
+exports.golDarah = exports.$Enums.golDarah = {
+  Belum_diperiksa: 'Belum_diperiksa',
+  A: 'A',
+  AB: 'AB',
+  B: 'B',
+  O: 'O'
+};
+
+exports.kepemilikanJKN = exports.$Enums.kepemilikanJKN = {
+  Belum_punya: 'Belum_punya',
+  JKN: 'JKN',
+  Jamkesda: 'Jamkesda',
+  Jampersal: 'Jampersal'
 };
 
 exports.StatusPelaksanaan = exports.$Enums.StatusPelaksanaan = {

@@ -105,6 +105,27 @@ export namespace $Enums {
 export type Akreditasi = (typeof Akreditasi)[keyof typeof Akreditasi]
 
 
+export const kepemilikanJKN: {
+  Belum_punya: 'Belum_punya',
+  JKN: 'JKN',
+  Jamkesda: 'Jamkesda',
+  Jampersal: 'Jampersal'
+};
+
+export type kepemilikanJKN = (typeof kepemilikanJKN)[keyof typeof kepemilikanJKN]
+
+
+export const golDarah: {
+  Belum_diperiksa: 'Belum_diperiksa',
+  A: 'A',
+  AB: 'AB',
+  B: 'B',
+  O: 'O'
+};
+
+export type golDarah = (typeof golDarah)[keyof typeof golDarah]
+
+
 export const StatusPelaksanaan: {
   belum_mulai: 'belum_mulai',
   berjalan: 'berjalan',
@@ -118,6 +139,14 @@ export type StatusPelaksanaan = (typeof StatusPelaksanaan)[keyof typeof StatusPe
 export type Akreditasi = $Enums.Akreditasi
 
 export const Akreditasi: typeof $Enums.Akreditasi
+
+export type kepemilikanJKN = $Enums.kepemilikanJKN
+
+export const kepemilikanJKN: typeof $Enums.kepemilikanJKN
+
+export type golDarah = $Enums.golDarah
+
+export const golDarah: typeof $Enums.golDarah
 
 export type StatusPelaksanaan = $Enums.StatusPelaksanaan
 
@@ -14725,6 +14754,10 @@ export namespace Prisma {
 
   export type IbuHamilAvgAggregateOutputType = {
     id: number | null
+    BBSH: number | null
+    TBSH: number | null
+    liLA: number | null
+    IMTSH: number | null
     umurKehamilanAwal: number | null
     gravida: number | null
     para: number | null
@@ -14737,6 +14770,10 @@ export namespace Prisma {
 
   export type IbuHamilSumAggregateOutputType = {
     id: number | null
+    BBSH: number | null
+    TBSH: number | null
+    liLA: number | null
+    IMTSH: number | null
     umurKehamilanAwal: number | null
     gravida: number | null
     para: number | null
@@ -14753,13 +14790,26 @@ export namespace Prisma {
     nik: string | null
     noKK: string | null
     tanggalLahir: Date | null
-    umurKehamilanAwal: number | null
+    BBSH: number | null
+    TBSH: number | null
+    liLA: number | null
+    IMTSH: number | null
+    StatusGiziKEK: string | null
     tanggalHPHT: Date | null
+    umurKehamilanAwal: number | null
     tanggalHPL: Date | null
     gravida: number | null
     para: number | null
     abortus: number | null
+    golonganDarah: $Enums.golDarah | null
+    kepemilikanJKN: $Enums.kepemilikanJKN | null
+    noJKN: string | null
+    kepemilikanBukuKIA: string | null
+    namaSuami: string | null
+    HPSuami: string | null
     alamat: string | null
+    RT: string | null
+    RW: string | null
     longitude: number | null
     latitude: number | null
     posyanduId: number | null
@@ -14774,13 +14824,26 @@ export namespace Prisma {
     nik: string | null
     noKK: string | null
     tanggalLahir: Date | null
-    umurKehamilanAwal: number | null
+    BBSH: number | null
+    TBSH: number | null
+    liLA: number | null
+    IMTSH: number | null
+    StatusGiziKEK: string | null
     tanggalHPHT: Date | null
+    umurKehamilanAwal: number | null
     tanggalHPL: Date | null
     gravida: number | null
     para: number | null
     abortus: number | null
+    golonganDarah: $Enums.golDarah | null
+    kepemilikanJKN: $Enums.kepemilikanJKN | null
+    noJKN: string | null
+    kepemilikanBukuKIA: string | null
+    namaSuami: string | null
+    HPSuami: string | null
     alamat: string | null
+    RT: string | null
+    RW: string | null
     longitude: number | null
     latitude: number | null
     posyanduId: number | null
@@ -14795,13 +14858,26 @@ export namespace Prisma {
     nik: number
     noKK: number
     tanggalLahir: number
-    umurKehamilanAwal: number
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: number
     tanggalHPHT: number
+    umurKehamilanAwal: number
     tanggalHPL: number
     gravida: number
     para: number
     abortus: number
+    golonganDarah: number
+    kepemilikanJKN: number
+    noJKN: number
+    kepemilikanBukuKIA: number
+    namaSuami: number
+    HPSuami: number
     alamat: number
+    RT: number
+    RW: number
     longitude: number
     latitude: number
     posyanduId: number
@@ -14814,6 +14890,10 @@ export namespace Prisma {
 
   export type IbuHamilAvgAggregateInputType = {
     id?: true
+    BBSH?: true
+    TBSH?: true
+    liLA?: true
+    IMTSH?: true
     umurKehamilanAwal?: true
     gravida?: true
     para?: true
@@ -14826,6 +14906,10 @@ export namespace Prisma {
 
   export type IbuHamilSumAggregateInputType = {
     id?: true
+    BBSH?: true
+    TBSH?: true
+    liLA?: true
+    IMTSH?: true
     umurKehamilanAwal?: true
     gravida?: true
     para?: true
@@ -14842,13 +14926,26 @@ export namespace Prisma {
     nik?: true
     noKK?: true
     tanggalLahir?: true
-    umurKehamilanAwal?: true
+    BBSH?: true
+    TBSH?: true
+    liLA?: true
+    IMTSH?: true
+    StatusGiziKEK?: true
     tanggalHPHT?: true
+    umurKehamilanAwal?: true
     tanggalHPL?: true
     gravida?: true
     para?: true
     abortus?: true
+    golonganDarah?: true
+    kepemilikanJKN?: true
+    noJKN?: true
+    kepemilikanBukuKIA?: true
+    namaSuami?: true
+    HPSuami?: true
     alamat?: true
+    RT?: true
+    RW?: true
     longitude?: true
     latitude?: true
     posyanduId?: true
@@ -14863,13 +14960,26 @@ export namespace Prisma {
     nik?: true
     noKK?: true
     tanggalLahir?: true
-    umurKehamilanAwal?: true
+    BBSH?: true
+    TBSH?: true
+    liLA?: true
+    IMTSH?: true
+    StatusGiziKEK?: true
     tanggalHPHT?: true
+    umurKehamilanAwal?: true
     tanggalHPL?: true
     gravida?: true
     para?: true
     abortus?: true
+    golonganDarah?: true
+    kepemilikanJKN?: true
+    noJKN?: true
+    kepemilikanBukuKIA?: true
+    namaSuami?: true
+    HPSuami?: true
     alamat?: true
+    RT?: true
+    RW?: true
     longitude?: true
     latitude?: true
     posyanduId?: true
@@ -14884,13 +14994,26 @@ export namespace Prisma {
     nik?: true
     noKK?: true
     tanggalLahir?: true
-    umurKehamilanAwal?: true
+    BBSH?: true
+    TBSH?: true
+    liLA?: true
+    IMTSH?: true
+    StatusGiziKEK?: true
     tanggalHPHT?: true
+    umurKehamilanAwal?: true
     tanggalHPL?: true
     gravida?: true
     para?: true
     abortus?: true
+    golonganDarah?: true
+    kepemilikanJKN?: true
+    noJKN?: true
+    kepemilikanBukuKIA?: true
+    namaSuami?: true
+    HPSuami?: true
     alamat?: true
+    RT?: true
+    RW?: true
     longitude?: true
     latitude?: true
     posyanduId?: true
@@ -14990,15 +15113,28 @@ export namespace Prisma {
     id: number
     nama: string
     nik: string
-    noKK: string
+    noKK: string | null
     tanggalLahir: Date
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date
     umurKehamilanAwal: number | null
-    tanggalHPHT: Date | null
-    tanggalHPL: Date | null
+    tanggalHPL: Date
     gravida: number | null
     para: number | null
     abortus: number | null
-    alamat: string
+    golonganDarah: $Enums.golDarah | null
+    kepemilikanJKN: $Enums.kepemilikanJKN | null
+    noJKN: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat: string | null
+    RT: string | null
+    RW: string | null
     longitude: number | null
     latitude: number | null
     posyanduId: number
@@ -15032,13 +15168,26 @@ export namespace Prisma {
     nik?: boolean
     noKK?: boolean
     tanggalLahir?: boolean
-    umurKehamilanAwal?: boolean
+    BBSH?: boolean
+    TBSH?: boolean
+    liLA?: boolean
+    IMTSH?: boolean
+    StatusGiziKEK?: boolean
     tanggalHPHT?: boolean
+    umurKehamilanAwal?: boolean
     tanggalHPL?: boolean
     gravida?: boolean
     para?: boolean
     abortus?: boolean
+    golonganDarah?: boolean
+    kepemilikanJKN?: boolean
+    noJKN?: boolean
+    kepemilikanBukuKIA?: boolean
+    namaSuami?: boolean
+    HPSuami?: boolean
     alamat?: boolean
+    RT?: boolean
+    RW?: boolean
     longitude?: boolean
     latitude?: boolean
     posyanduId?: boolean
@@ -15057,13 +15206,26 @@ export namespace Prisma {
     nik?: boolean
     noKK?: boolean
     tanggalLahir?: boolean
-    umurKehamilanAwal?: boolean
+    BBSH?: boolean
+    TBSH?: boolean
+    liLA?: boolean
+    IMTSH?: boolean
+    StatusGiziKEK?: boolean
     tanggalHPHT?: boolean
+    umurKehamilanAwal?: boolean
     tanggalHPL?: boolean
     gravida?: boolean
     para?: boolean
     abortus?: boolean
+    golonganDarah?: boolean
+    kepemilikanJKN?: boolean
+    noJKN?: boolean
+    kepemilikanBukuKIA?: boolean
+    namaSuami?: boolean
+    HPSuami?: boolean
     alamat?: boolean
+    RT?: boolean
+    RW?: boolean
     longitude?: boolean
     latitude?: boolean
     posyanduId?: boolean
@@ -15080,13 +15242,26 @@ export namespace Prisma {
     nik?: boolean
     noKK?: boolean
     tanggalLahir?: boolean
-    umurKehamilanAwal?: boolean
+    BBSH?: boolean
+    TBSH?: boolean
+    liLA?: boolean
+    IMTSH?: boolean
+    StatusGiziKEK?: boolean
     tanggalHPHT?: boolean
+    umurKehamilanAwal?: boolean
     tanggalHPL?: boolean
     gravida?: boolean
     para?: boolean
     abortus?: boolean
+    golonganDarah?: boolean
+    kepemilikanJKN?: boolean
+    noJKN?: boolean
+    kepemilikanBukuKIA?: boolean
+    namaSuami?: boolean
+    HPSuami?: boolean
     alamat?: boolean
+    RT?: boolean
+    RW?: boolean
     longitude?: boolean
     latitude?: boolean
     posyanduId?: boolean
@@ -15103,13 +15278,26 @@ export namespace Prisma {
     nik?: boolean
     noKK?: boolean
     tanggalLahir?: boolean
-    umurKehamilanAwal?: boolean
+    BBSH?: boolean
+    TBSH?: boolean
+    liLA?: boolean
+    IMTSH?: boolean
+    StatusGiziKEK?: boolean
     tanggalHPHT?: boolean
+    umurKehamilanAwal?: boolean
     tanggalHPL?: boolean
     gravida?: boolean
     para?: boolean
     abortus?: boolean
+    golonganDarah?: boolean
+    kepemilikanJKN?: boolean
+    noJKN?: boolean
+    kepemilikanBukuKIA?: boolean
+    namaSuami?: boolean
+    HPSuami?: boolean
     alamat?: boolean
+    RT?: boolean
+    RW?: boolean
     longitude?: boolean
     latitude?: boolean
     posyanduId?: boolean
@@ -15118,7 +15306,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type IbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "umurKehamilanAwal" | "tanggalHPHT" | "tanggalHPL" | "gravida" | "para" | "abortus" | "alamat" | "longitude" | "latitude" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["ibuHamil"]>
+  export type IbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "nik" | "noKK" | "tanggalLahir" | "BBSH" | "TBSH" | "liLA" | "IMTSH" | "StatusGiziKEK" | "tanggalHPHT" | "umurKehamilanAwal" | "tanggalHPL" | "gravida" | "para" | "abortus" | "golonganDarah" | "kepemilikanJKN" | "noJKN" | "kepemilikanBukuKIA" | "namaSuami" | "HPSuami" | "alamat" | "RT" | "RW" | "longitude" | "latitude" | "posyanduId" | "kaderId" | "createdAt" | "updatedAt", ExtArgs["result"]["ibuHamil"]>
   export type IbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posyandu?: boolean | PosyanduDefaultArgs<ExtArgs>
     kader?: boolean | IbuHamil$kaderArgs<ExtArgs>
@@ -15145,15 +15333,28 @@ export namespace Prisma {
       id: number
       nama: string
       nik: string
-      noKK: string
+      noKK: string | null
       tanggalLahir: Date
+      BBSH: number
+      TBSH: number
+      liLA: number
+      IMTSH: number
+      StatusGiziKEK: string
+      tanggalHPHT: Date
       umurKehamilanAwal: number | null
-      tanggalHPHT: Date | null
-      tanggalHPL: Date | null
+      tanggalHPL: Date
       gravida: number | null
       para: number | null
       abortus: number | null
-      alamat: string
+      golonganDarah: $Enums.golDarah | null
+      kepemilikanJKN: $Enums.kepemilikanJKN | null
+      noJKN: string | null
+      kepemilikanBukuKIA: string
+      namaSuami: string
+      HPSuami: string
+      alamat: string | null
+      RT: string | null
+      RW: string | null
       longitude: number | null
       latitude: number | null
       posyanduId: number
@@ -15591,13 +15792,26 @@ export namespace Prisma {
     readonly nik: FieldRef<"IbuHamil", 'String'>
     readonly noKK: FieldRef<"IbuHamil", 'String'>
     readonly tanggalLahir: FieldRef<"IbuHamil", 'DateTime'>
-    readonly umurKehamilanAwal: FieldRef<"IbuHamil", 'Int'>
+    readonly BBSH: FieldRef<"IbuHamil", 'Float'>
+    readonly TBSH: FieldRef<"IbuHamil", 'Float'>
+    readonly liLA: FieldRef<"IbuHamil", 'Float'>
+    readonly IMTSH: FieldRef<"IbuHamil", 'Float'>
+    readonly StatusGiziKEK: FieldRef<"IbuHamil", 'String'>
     readonly tanggalHPHT: FieldRef<"IbuHamil", 'DateTime'>
+    readonly umurKehamilanAwal: FieldRef<"IbuHamil", 'Int'>
     readonly tanggalHPL: FieldRef<"IbuHamil", 'DateTime'>
     readonly gravida: FieldRef<"IbuHamil", 'Int'>
     readonly para: FieldRef<"IbuHamil", 'Int'>
     readonly abortus: FieldRef<"IbuHamil", 'Int'>
+    readonly golonganDarah: FieldRef<"IbuHamil", 'golDarah'>
+    readonly kepemilikanJKN: FieldRef<"IbuHamil", 'kepemilikanJKN'>
+    readonly noJKN: FieldRef<"IbuHamil", 'String'>
+    readonly kepemilikanBukuKIA: FieldRef<"IbuHamil", 'String'>
+    readonly namaSuami: FieldRef<"IbuHamil", 'String'>
+    readonly HPSuami: FieldRef<"IbuHamil", 'String'>
     readonly alamat: FieldRef<"IbuHamil", 'String'>
+    readonly RT: FieldRef<"IbuHamil", 'String'>
+    readonly RW: FieldRef<"IbuHamil", 'String'>
     readonly longitude: FieldRef<"IbuHamil", 'Float'>
     readonly latitude: FieldRef<"IbuHamil", 'Float'>
     readonly posyanduId: FieldRef<"IbuHamil", 'Int'>
@@ -21544,13 +21758,26 @@ export namespace Prisma {
     nik: 'nik',
     noKK: 'noKK',
     tanggalLahir: 'tanggalLahir',
-    umurKehamilanAwal: 'umurKehamilanAwal',
+    BBSH: 'BBSH',
+    TBSH: 'TBSH',
+    liLA: 'liLA',
+    IMTSH: 'IMTSH',
+    StatusGiziKEK: 'StatusGiziKEK',
     tanggalHPHT: 'tanggalHPHT',
+    umurKehamilanAwal: 'umurKehamilanAwal',
     tanggalHPL: 'tanggalHPL',
     gravida: 'gravida',
     para: 'para',
     abortus: 'abortus',
+    golonganDarah: 'golonganDarah',
+    kepemilikanJKN: 'kepemilikanJKN',
+    noJKN: 'noJKN',
+    kepemilikanBukuKIA: 'kepemilikanBukuKIA',
+    namaSuami: 'namaSuami',
+    HPSuami: 'HPSuami',
     alamat: 'alamat',
+    RT: 'RT',
+    RW: 'RW',
     longitude: 'longitude',
     latitude: 'latitude',
     posyanduId: 'posyanduId',
@@ -21744,6 +21971,34 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'golDarah'
+   */
+  export type EnumgolDarahFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'golDarah'>
+    
+
+
+  /**
+   * Reference to a field of type 'golDarah[]'
+   */
+  export type ListEnumgolDarahFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'golDarah[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'kepemilikanJKN'
+   */
+  export type EnumkepemilikanJKNFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'kepemilikanJKN'>
+    
+
+
+  /**
+   * Reference to a field of type 'kepemilikanJKN[]'
+   */
+  export type ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'kepemilikanJKN[]'>
     
 
 
@@ -22601,15 +22856,28 @@ export namespace Prisma {
     id?: IntFilter<"IbuHamil"> | number
     nama?: StringFilter<"IbuHamil"> | string
     nik?: StringFilter<"IbuHamil"> | string
-    noKK?: StringFilter<"IbuHamil"> | string
+    noKK?: StringNullableFilter<"IbuHamil"> | string | null
     tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    BBSH?: FloatFilter<"IbuHamil"> | number
+    TBSH?: FloatFilter<"IbuHamil"> | number
+    liLA?: FloatFilter<"IbuHamil"> | number
+    IMTSH?: FloatFilter<"IbuHamil"> | number
+    StatusGiziKEK?: StringFilter<"IbuHamil"> | string
+    tanggalHPHT?: DateTimeFilter<"IbuHamil"> | Date | string
     umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
-    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
-    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeFilter<"IbuHamil"> | Date | string
     gravida?: IntNullableFilter<"IbuHamil"> | number | null
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
-    alamat?: StringFilter<"IbuHamil"> | string
+    golonganDarah?: EnumgolDarahNullableFilter<"IbuHamil"> | $Enums.golDarah | null
+    kepemilikanJKN?: EnumkepemilikanJKNNullableFilter<"IbuHamil"> | $Enums.kepemilikanJKN | null
+    noJKN?: StringNullableFilter<"IbuHamil"> | string | null
+    kepemilikanBukuKIA?: StringFilter<"IbuHamil"> | string
+    namaSuami?: StringFilter<"IbuHamil"> | string
+    HPSuami?: StringFilter<"IbuHamil"> | string
+    alamat?: StringNullableFilter<"IbuHamil"> | string | null
+    RT?: StringNullableFilter<"IbuHamil"> | string | null
+    RW?: StringNullableFilter<"IbuHamil"> | string | null
     longitude?: FloatNullableFilter<"IbuHamil"> | number | null
     latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
@@ -22625,15 +22893,28 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     nik?: SortOrder
-    noKK?: SortOrder
+    noKK?: SortOrderInput | SortOrder
     tanggalLahir?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
+    StatusGiziKEK?: SortOrder
+    tanggalHPHT?: SortOrder
     umurKehamilanAwal?: SortOrderInput | SortOrder
-    tanggalHPHT?: SortOrderInput | SortOrder
-    tanggalHPL?: SortOrderInput | SortOrder
+    tanggalHPL?: SortOrder
     gravida?: SortOrderInput | SortOrder
     para?: SortOrderInput | SortOrder
     abortus?: SortOrderInput | SortOrder
-    alamat?: SortOrder
+    golonganDarah?: SortOrderInput | SortOrder
+    kepemilikanJKN?: SortOrderInput | SortOrder
+    noJKN?: SortOrderInput | SortOrder
+    kepemilikanBukuKIA?: SortOrder
+    namaSuami?: SortOrder
+    HPSuami?: SortOrder
+    alamat?: SortOrderInput | SortOrder
+    RT?: SortOrderInput | SortOrder
+    RW?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
@@ -22652,15 +22933,28 @@ export namespace Prisma {
     OR?: IbuHamilWhereInput[]
     NOT?: IbuHamilWhereInput | IbuHamilWhereInput[]
     nama?: StringFilter<"IbuHamil"> | string
-    noKK?: StringFilter<"IbuHamil"> | string
+    noKK?: StringNullableFilter<"IbuHamil"> | string | null
     tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    BBSH?: FloatFilter<"IbuHamil"> | number
+    TBSH?: FloatFilter<"IbuHamil"> | number
+    liLA?: FloatFilter<"IbuHamil"> | number
+    IMTSH?: FloatFilter<"IbuHamil"> | number
+    StatusGiziKEK?: StringFilter<"IbuHamil"> | string
+    tanggalHPHT?: DateTimeFilter<"IbuHamil"> | Date | string
     umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
-    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
-    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeFilter<"IbuHamil"> | Date | string
     gravida?: IntNullableFilter<"IbuHamil"> | number | null
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
-    alamat?: StringFilter<"IbuHamil"> | string
+    golonganDarah?: EnumgolDarahNullableFilter<"IbuHamil"> | $Enums.golDarah | null
+    kepemilikanJKN?: EnumkepemilikanJKNNullableFilter<"IbuHamil"> | $Enums.kepemilikanJKN | null
+    noJKN?: StringNullableFilter<"IbuHamil"> | string | null
+    kepemilikanBukuKIA?: StringFilter<"IbuHamil"> | string
+    namaSuami?: StringFilter<"IbuHamil"> | string
+    HPSuami?: StringFilter<"IbuHamil"> | string
+    alamat?: StringNullableFilter<"IbuHamil"> | string | null
+    RT?: StringNullableFilter<"IbuHamil"> | string | null
+    RW?: StringNullableFilter<"IbuHamil"> | string | null
     longitude?: FloatNullableFilter<"IbuHamil"> | number | null
     latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
@@ -22676,15 +22970,28 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     nik?: SortOrder
-    noKK?: SortOrder
+    noKK?: SortOrderInput | SortOrder
     tanggalLahir?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
+    StatusGiziKEK?: SortOrder
+    tanggalHPHT?: SortOrder
     umurKehamilanAwal?: SortOrderInput | SortOrder
-    tanggalHPHT?: SortOrderInput | SortOrder
-    tanggalHPL?: SortOrderInput | SortOrder
+    tanggalHPL?: SortOrder
     gravida?: SortOrderInput | SortOrder
     para?: SortOrderInput | SortOrder
     abortus?: SortOrderInput | SortOrder
-    alamat?: SortOrder
+    golonganDarah?: SortOrderInput | SortOrder
+    kepemilikanJKN?: SortOrderInput | SortOrder
+    noJKN?: SortOrderInput | SortOrder
+    kepemilikanBukuKIA?: SortOrder
+    namaSuami?: SortOrder
+    HPSuami?: SortOrder
+    alamat?: SortOrderInput | SortOrder
+    RT?: SortOrderInput | SortOrder
+    RW?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     posyanduId?: SortOrder
@@ -22705,15 +23012,28 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"IbuHamil"> | number
     nama?: StringWithAggregatesFilter<"IbuHamil"> | string
     nik?: StringWithAggregatesFilter<"IbuHamil"> | string
-    noKK?: StringWithAggregatesFilter<"IbuHamil"> | string
+    noKK?: StringNullableWithAggregatesFilter<"IbuHamil"> | string | null
     tanggalLahir?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
+    BBSH?: FloatWithAggregatesFilter<"IbuHamil"> | number
+    TBSH?: FloatWithAggregatesFilter<"IbuHamil"> | number
+    liLA?: FloatWithAggregatesFilter<"IbuHamil"> | number
+    IMTSH?: FloatWithAggregatesFilter<"IbuHamil"> | number
+    StatusGiziKEK?: StringWithAggregatesFilter<"IbuHamil"> | string
+    tanggalHPHT?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
     umurKehamilanAwal?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
-    tanggalHPHT?: DateTimeNullableWithAggregatesFilter<"IbuHamil"> | Date | string | null
-    tanggalHPL?: DateTimeNullableWithAggregatesFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeWithAggregatesFilter<"IbuHamil"> | Date | string
     gravida?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
     para?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
     abortus?: IntNullableWithAggregatesFilter<"IbuHamil"> | number | null
-    alamat?: StringWithAggregatesFilter<"IbuHamil"> | string
+    golonganDarah?: EnumgolDarahNullableWithAggregatesFilter<"IbuHamil"> | $Enums.golDarah | null
+    kepemilikanJKN?: EnumkepemilikanJKNNullableWithAggregatesFilter<"IbuHamil"> | $Enums.kepemilikanJKN | null
+    noJKN?: StringNullableWithAggregatesFilter<"IbuHamil"> | string | null
+    kepemilikanBukuKIA?: StringWithAggregatesFilter<"IbuHamil"> | string
+    namaSuami?: StringWithAggregatesFilter<"IbuHamil"> | string
+    HPSuami?: StringWithAggregatesFilter<"IbuHamil"> | string
+    alamat?: StringNullableWithAggregatesFilter<"IbuHamil"> | string | null
+    RT?: StringNullableWithAggregatesFilter<"IbuHamil"> | string | null
+    RW?: StringNullableWithAggregatesFilter<"IbuHamil"> | string | null
     longitude?: FloatNullableWithAggregatesFilter<"IbuHamil"> | number | null
     latitude?: FloatNullableWithAggregatesFilter<"IbuHamil"> | number | null
     posyanduId?: IntWithAggregatesFilter<"IbuHamil"> | number
@@ -24081,15 +24401,28 @@ export namespace Prisma {
   export type IbuHamilCreateInput = {
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     createdAt?: Date | string
@@ -24103,15 +24436,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     posyanduId: number
@@ -24124,15 +24470,28 @@ export namespace Prisma {
   export type IbuHamilUpdateInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24146,15 +24505,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
@@ -24168,15 +24540,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     posyanduId: number
@@ -24188,15 +24573,28 @@ export namespace Prisma {
   export type IbuHamilUpdateManyMutationInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24207,15 +24605,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
@@ -25581,19 +25992,46 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type EnumgolDarahNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.golDarah | EnumgolDarahFieldRefInput<$PrismaModel> | null
+    in?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumgolDarahNullableFilter<$PrismaModel> | $Enums.golDarah | null
+  }
+
+  export type EnumkepemilikanJKNNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.kepemilikanJKN | EnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    in?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel> | $Enums.kepemilikanJKN | null
+  }
+
   export type IbuHamilCountOrderByAggregateInput = {
     id?: SortOrder
     nama?: SortOrder
     nik?: SortOrder
     noKK?: SortOrder
     tanggalLahir?: SortOrder
-    umurKehamilanAwal?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
+    StatusGiziKEK?: SortOrder
     tanggalHPHT?: SortOrder
+    umurKehamilanAwal?: SortOrder
     tanggalHPL?: SortOrder
     gravida?: SortOrder
     para?: SortOrder
     abortus?: SortOrder
+    golonganDarah?: SortOrder
+    kepemilikanJKN?: SortOrder
+    noJKN?: SortOrder
+    kepemilikanBukuKIA?: SortOrder
+    namaSuami?: SortOrder
+    HPSuami?: SortOrder
     alamat?: SortOrder
+    RT?: SortOrder
+    RW?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     posyanduId?: SortOrder
@@ -25604,6 +26042,10 @@ export namespace Prisma {
 
   export type IbuHamilAvgOrderByAggregateInput = {
     id?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
     umurKehamilanAwal?: SortOrder
     gravida?: SortOrder
     para?: SortOrder
@@ -25620,13 +26062,26 @@ export namespace Prisma {
     nik?: SortOrder
     noKK?: SortOrder
     tanggalLahir?: SortOrder
-    umurKehamilanAwal?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
+    StatusGiziKEK?: SortOrder
     tanggalHPHT?: SortOrder
+    umurKehamilanAwal?: SortOrder
     tanggalHPL?: SortOrder
     gravida?: SortOrder
     para?: SortOrder
     abortus?: SortOrder
+    golonganDarah?: SortOrder
+    kepemilikanJKN?: SortOrder
+    noJKN?: SortOrder
+    kepemilikanBukuKIA?: SortOrder
+    namaSuami?: SortOrder
+    HPSuami?: SortOrder
     alamat?: SortOrder
+    RT?: SortOrder
+    RW?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     posyanduId?: SortOrder
@@ -25641,13 +26096,26 @@ export namespace Prisma {
     nik?: SortOrder
     noKK?: SortOrder
     tanggalLahir?: SortOrder
-    umurKehamilanAwal?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
+    StatusGiziKEK?: SortOrder
     tanggalHPHT?: SortOrder
+    umurKehamilanAwal?: SortOrder
     tanggalHPL?: SortOrder
     gravida?: SortOrder
     para?: SortOrder
     abortus?: SortOrder
+    golonganDarah?: SortOrder
+    kepemilikanJKN?: SortOrder
+    noJKN?: SortOrder
+    kepemilikanBukuKIA?: SortOrder
+    namaSuami?: SortOrder
+    HPSuami?: SortOrder
     alamat?: SortOrder
+    RT?: SortOrder
+    RW?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     posyanduId?: SortOrder
@@ -25658,6 +26126,10 @@ export namespace Prisma {
 
   export type IbuHamilSumOrderByAggregateInput = {
     id?: SortOrder
+    BBSH?: SortOrder
+    TBSH?: SortOrder
+    liLA?: SortOrder
+    IMTSH?: SortOrder
     umurKehamilanAwal?: SortOrder
     gravida?: SortOrder
     para?: SortOrder
@@ -25666,6 +26138,26 @@ export namespace Prisma {
     latitude?: SortOrder
     posyanduId?: SortOrder
     kaderId?: SortOrder
+  }
+
+  export type EnumgolDarahNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.golDarah | EnumgolDarahFieldRefInput<$PrismaModel> | null
+    in?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumgolDarahNullableWithAggregatesFilter<$PrismaModel> | $Enums.golDarah | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumgolDarahNullableFilter<$PrismaModel>
+    _max?: NestedEnumgolDarahNullableFilter<$PrismaModel>
+  }
+
+  export type EnumkepemilikanJKNNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.kepemilikanJKN | EnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    in?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumkepemilikanJKNNullableWithAggregatesFilter<$PrismaModel> | $Enums.kepemilikanJKN | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel>
+    _max?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel>
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -27185,6 +27677,14 @@ export namespace Prisma {
     connect?: PemeriksaanIbuHamilWhereUniqueInput | PemeriksaanIbuHamilWhereUniqueInput[]
   }
 
+  export type NullableEnumgolDarahFieldUpdateOperationsInput = {
+    set?: $Enums.golDarah | null
+  }
+
+  export type NullableEnumkepemilikanJKNFieldUpdateOperationsInput = {
+    set?: $Enums.kepemilikanJKN | null
+  }
+
   export type PosyanduUpdateOneRequiredWithoutIbuHamilNestedInput = {
     create?: XOR<PosyanduCreateWithoutIbuHamilInput, PosyanduUncheckedCreateWithoutIbuHamilInput>
     connectOrCreate?: PosyanduCreateOrConnectWithoutIbuHamilInput
@@ -27798,6 +28298,40 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumgolDarahNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.golDarah | EnumgolDarahFieldRefInput<$PrismaModel> | null
+    in?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumgolDarahNullableFilter<$PrismaModel> | $Enums.golDarah | null
+  }
+
+  export type NestedEnumkepemilikanJKNNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.kepemilikanJKN | EnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    in?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel> | $Enums.kepemilikanJKN | null
+  }
+
+  export type NestedEnumgolDarahNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.golDarah | EnumgolDarahFieldRefInput<$PrismaModel> | null
+    in?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.golDarah[] | ListEnumgolDarahFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumgolDarahNullableWithAggregatesFilter<$PrismaModel> | $Enums.golDarah | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumgolDarahNullableFilter<$PrismaModel>
+    _max?: NestedEnumgolDarahNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumkepemilikanJKNNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.kepemilikanJKN | EnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    in?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.kepemilikanJKN[] | ListEnumkepemilikanJKNFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumkepemilikanJKNNullableWithAggregatesFilter<$PrismaModel> | $Enums.kepemilikanJKN | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel>
+    _max?: NestedEnumkepemilikanJKNNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
@@ -28059,15 +28593,28 @@ export namespace Prisma {
   export type IbuHamilCreateWithoutPosyanduInput = {
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     createdAt?: Date | string
@@ -28080,15 +28627,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     kaderId?: number | null
@@ -28296,15 +28856,28 @@ export namespace Prisma {
     id?: IntFilter<"IbuHamil"> | number
     nama?: StringFilter<"IbuHamil"> | string
     nik?: StringFilter<"IbuHamil"> | string
-    noKK?: StringFilter<"IbuHamil"> | string
+    noKK?: StringNullableFilter<"IbuHamil"> | string | null
     tanggalLahir?: DateTimeFilter<"IbuHamil"> | Date | string
+    BBSH?: FloatFilter<"IbuHamil"> | number
+    TBSH?: FloatFilter<"IbuHamil"> | number
+    liLA?: FloatFilter<"IbuHamil"> | number
+    IMTSH?: FloatFilter<"IbuHamil"> | number
+    StatusGiziKEK?: StringFilter<"IbuHamil"> | string
+    tanggalHPHT?: DateTimeFilter<"IbuHamil"> | Date | string
     umurKehamilanAwal?: IntNullableFilter<"IbuHamil"> | number | null
-    tanggalHPHT?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
-    tanggalHPL?: DateTimeNullableFilter<"IbuHamil"> | Date | string | null
+    tanggalHPL?: DateTimeFilter<"IbuHamil"> | Date | string
     gravida?: IntNullableFilter<"IbuHamil"> | number | null
     para?: IntNullableFilter<"IbuHamil"> | number | null
     abortus?: IntNullableFilter<"IbuHamil"> | number | null
-    alamat?: StringFilter<"IbuHamil"> | string
+    golonganDarah?: EnumgolDarahNullableFilter<"IbuHamil"> | $Enums.golDarah | null
+    kepemilikanJKN?: EnumkepemilikanJKNNullableFilter<"IbuHamil"> | $Enums.kepemilikanJKN | null
+    noJKN?: StringNullableFilter<"IbuHamil"> | string | null
+    kepemilikanBukuKIA?: StringFilter<"IbuHamil"> | string
+    namaSuami?: StringFilter<"IbuHamil"> | string
+    HPSuami?: StringFilter<"IbuHamil"> | string
+    alamat?: StringNullableFilter<"IbuHamil"> | string | null
+    RT?: StringNullableFilter<"IbuHamil"> | string | null
+    RW?: StringNullableFilter<"IbuHamil"> | string | null
     longitude?: FloatNullableFilter<"IbuHamil"> | number | null
     latitude?: FloatNullableFilter<"IbuHamil"> | number | null
     posyanduId?: IntFilter<"IbuHamil"> | number
@@ -28484,15 +29057,28 @@ export namespace Prisma {
   export type IbuHamilCreateWithoutKaderInput = {
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     createdAt?: Date | string
@@ -28505,15 +29091,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     posyanduId: number
@@ -30779,15 +31378,28 @@ export namespace Prisma {
   export type IbuHamilCreateWithoutPemeriksaanKehamilanInput = {
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     createdAt?: Date | string
@@ -30800,15 +31412,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     posyanduId: number
@@ -30940,15 +31565,28 @@ export namespace Prisma {
   export type IbuHamilUpdateWithoutPemeriksaanKehamilanInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30961,15 +31599,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
@@ -31784,15 +32435,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     kaderId?: number | null
@@ -31957,15 +32621,28 @@ export namespace Prisma {
   export type IbuHamilUpdateWithoutPosyanduInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31978,15 +32655,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31999,15 +32689,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -32083,15 +32786,28 @@ export namespace Prisma {
     id?: number
     nama: string
     nik: string
-    noKK: string
+    noKK?: string | null
     tanggalLahir: Date | string
+    BBSH: number
+    TBSH: number
+    liLA: number
+    IMTSH: number
+    StatusGiziKEK: string
+    tanggalHPHT: Date | string
     umurKehamilanAwal?: number | null
-    tanggalHPHT?: Date | string | null
-    tanggalHPL?: Date | string | null
+    tanggalHPL: Date | string
     gravida?: number | null
     para?: number | null
     abortus?: number | null
-    alamat: string
+    golonganDarah?: $Enums.golDarah | null
+    kepemilikanJKN?: $Enums.kepemilikanJKN | null
+    noJKN?: string | null
+    kepemilikanBukuKIA: string
+    namaSuami: string
+    HPSuami: string
+    alamat?: string | null
+    RT?: string | null
+    RW?: string | null
     longitude?: number | null
     latitude?: number | null
     posyanduId: number
@@ -32218,15 +32934,28 @@ export namespace Prisma {
   export type IbuHamilUpdateWithoutKaderInput = {
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32239,15 +32968,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number
@@ -32260,15 +33002,28 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     nik?: StringFieldUpdateOperationsInput | string
-    noKK?: StringFieldUpdateOperationsInput | string
+    noKK?: NullableStringFieldUpdateOperationsInput | string | null
     tanggalLahir?: DateTimeFieldUpdateOperationsInput | Date | string
+    BBSH?: FloatFieldUpdateOperationsInput | number
+    TBSH?: FloatFieldUpdateOperationsInput | number
+    liLA?: FloatFieldUpdateOperationsInput | number
+    IMTSH?: FloatFieldUpdateOperationsInput | number
+    StatusGiziKEK?: StringFieldUpdateOperationsInput | string
+    tanggalHPHT?: DateTimeFieldUpdateOperationsInput | Date | string
     umurKehamilanAwal?: NullableIntFieldUpdateOperationsInput | number | null
-    tanggalHPHT?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tanggalHPL?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalHPL?: DateTimeFieldUpdateOperationsInput | Date | string
     gravida?: NullableIntFieldUpdateOperationsInput | number | null
     para?: NullableIntFieldUpdateOperationsInput | number | null
     abortus?: NullableIntFieldUpdateOperationsInput | number | null
-    alamat?: StringFieldUpdateOperationsInput | string
+    golonganDarah?: NullableEnumgolDarahFieldUpdateOperationsInput | $Enums.golDarah | null
+    kepemilikanJKN?: NullableEnumkepemilikanJKNFieldUpdateOperationsInput | $Enums.kepemilikanJKN | null
+    noJKN?: NullableStringFieldUpdateOperationsInput | string | null
+    kepemilikanBukuKIA?: StringFieldUpdateOperationsInput | string
+    namaSuami?: StringFieldUpdateOperationsInput | string
+    HPSuami?: StringFieldUpdateOperationsInput | string
+    alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    RT?: NullableStringFieldUpdateOperationsInput | string | null
+    RW?: NullableStringFieldUpdateOperationsInput | string | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     posyanduId?: IntFieldUpdateOperationsInput | number

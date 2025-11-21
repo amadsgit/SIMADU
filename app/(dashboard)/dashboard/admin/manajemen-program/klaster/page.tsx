@@ -31,7 +31,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/klaster');
+        const res = await fetch('/api/admin/klaster');
         if (!res.ok) throw new Error('Fetch gagal');
         const data = await res.json();
         setKlasterList(data);
@@ -79,7 +79,7 @@ export default function Page() {
     if (!selectedId) return;
 
     try {
-      const res = await fetch(`/api/klaster/${selectedId}`, {
+      const res = await fetch(`/api/admin/klaster/${selectedId}`, {
         method: 'DELETE',
       });
 

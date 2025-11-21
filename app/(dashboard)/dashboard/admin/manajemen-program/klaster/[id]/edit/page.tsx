@@ -32,7 +32,7 @@ export default function Page() {
 
     const fetchKlaster = async () => {
       try {
-        const res = await fetch(`/api/klaster/${klasterId}`);
+        const res = await fetch(`/api/admin/klaster/${klasterId}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -74,7 +74,7 @@ export default function Page() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/klaster/${klasterId}`, {
+      const res = await fetch(`/api/admin/klaster/${klasterId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

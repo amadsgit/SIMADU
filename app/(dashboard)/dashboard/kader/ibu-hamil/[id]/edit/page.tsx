@@ -28,20 +28,34 @@ export default function Page() {
   const router = useRouter();
   const params = useParams();
   const { id } = params;
-  const namaRef = useRef<HTMLInputElement>(null);
+
+  const nikRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
     nama: '',
     nik: '',
     noKK: '',
     tanggalLahir: '',
-    umurKehamilanAwal: '',
+    BBSH: '',
+    TBSH: '',
+    liLA: '',
+    IMTSH: '',
+    StatusGiziKEK: '',
     tanggalHPHT: '',
+    umurKehamilanAwal: '',
     tanggalHPL: '',
     gravida: '',
     para: '',
     abortus: '',
+    golonganDarah: 'Belum_diperiksa',
+    kepemilikanJKN: 'Belum_punya',
+    noJKN: '',
+    kepemilikanBukuKIA: '',
+    namaSuami: '',
+    HPSuami: '',
     alamat: '',
+    RT: '',
+    RW: '',
     longitude: '',
     latitude: '',
   });
@@ -52,125 +66,179 @@ export default function Page() {
   const [loadingData, setLoadingData] = useState(true);
   const [showMap, setShowMap] = useState(false);
 
+  // auto focus
   useEffect(() => {
-    namaRef.current?.focus();
+    nikRef.current?.focus();
   }, []);
 
+  // ambil data kader
   useEffect(() => {
-    const fetchSessionKader = async () => {
+    const loadSession = async () => {
       try {
         const res = await fetch('/api/kader/balita/sessionKader');
-        if (!res.ok) throw new Error('Gagal memuat data kader');
         const data = await res.json();
         setSessionKader(data);
-      } catch (error) {
-        console.error('Gagal mengambil data kader:', error);
-        toast.error('Gagal memuat data kader login!');
+      } catch {
+        toast.error("Gagal memuat data kader login");
       }
     };
-    fetchSessionKader();
+    loadSession();
   }, []);
 
+  // load data ibu hamil
   useEffect(() => {
     if (!id) return;
-    const fetchIbuHamil = async () => {
+
+    const loadData = async () => {
       try {
         const res = await fetch(`/api/kader/ibuHamil/${id}`);
-        if (!res.ok) throw new Error('Gagal memuat data ibu hamil');
         const data = await res.json();
 
         setFormData({
           nama: data.nama || '',
           nik: data.nik || '',
           noKK: data.noKK || '',
-          tanggalLahir: data.tanggalLahir ? data.tanggalLahir.split('T')[0] : '',
+          tanggalLahir: data.tanggalLahir?.split('T')[0] || '',
+          BBSH: data.BBSH?.toString() || '',
+          TBSH: data.TBSH?.toString() || '',
+          liLA: data.liLA?.toString() || '',
+          IMTSH: data.IMTSH?.toString() || '',
+          StatusGiziKEK: data.StatusGiziKEK || '',
+          tanggalHPHT: data.tanggalHPHT?.split('T')[0] || '',
           umurKehamilanAwal: data.umurKehamilanAwal?.toString() || '',
-          tanggalHPHT: data.tanggalHPHT ? data.tanggalHPHT.split('T')[0] : '',
-          tanggalHPL: data.tanggalHPL ? data.tanggalHPL.split('T')[0] : '',
+          tanggalHPL: data.tanggalHPL?.split('T')[0] || '',
           gravida: data.gravida?.toString() || '',
           para: data.para?.toString() || '',
           abortus: data.abortus?.toString() || '',
+          golonganDarah: data.golonganDarah || 'Belum_diperiksa',
+          kepemilikanJKN: data.kepemilikanJKN || 'Belum_punya',
+          noJKN: data.noJKN || '',
+          kepemilikanBukuKIA: data.kepemilikanBukuKIA || '',
+          namaSuami: data.namaSuami || '',
+          HPSuami: data.HPSuami || '',
           alamat: data.alamat || '',
-          longitude: data.longitude || '',
-          latitude: data.latitude || '',
+          RT: data.RT || '',
+          RW: data.RW || '',
+          longitude: data.longitude?.toString() || '',
+          latitude: data.latitude?.toString() || '',
         });
-      } catch (error) {
-        console.error(error);
-        toast.error('Gagal memuat data ibu hamil!');
+
+      } catch {
+        toast.error("Gagal memuat data ibu hamil");
       } finally {
         setLoadingData(false);
       }
     };
-    fetchIbuHamil();
+
+    loadData();
   }, [id]);
 
-  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
 
+  // ================================
+  // HANDLE CHANGE
+  // ================================
+  const handleChange = async (e: any) => {
+    const { name, value } = e.target;
+
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // Validasi NIK realtime
     if (name === 'nik') {
       if (value.length < 16) return setNikError('NIK harus 16 digit');
       try {
         const res = await fetch(`/api/check-email-nik?nik=${encodeURIComponent(value)}`);
-        const data = await res.json();
-        setNikError(data.exists ? 'NIK sudah terdaftar' : null);
+        const d = await res.json();
+        setNikError(d.exists ? 'NIK sudah terdaftar' : null);
       } catch {
-        setNikError('Gagal memeriksa NIK');
+        setNikError("Gagal memeriksa NIK");
       }
     }
 
+    // Kalkulasi otomatis HPL & Usia Kehamilan
     if (name === 'tanggalHPHT' && value) {
       const hpht = new Date(value);
       const hpl = new Date(hpht);
+
       hpl.setDate(hpht.getDate() + 7);
       hpl.setMonth(hpht.getMonth() + 9);
 
       const now = new Date();
-      const diffMs = now.getTime() - hpht.getTime();
-      const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+      const weeks = Math.floor((now.getTime() - hpht.getTime()) / (1000 * 60 * 60 * 24 * 7));
 
-      setFormData((prev) => ({
+      setFormData(prev => ({
         ...prev,
-        tanggalHPHT: value,
-        tanggalHPL: hpl.toISOString().split('T')[0],
-        umurKehamilanAwal: weeks > 0 ? String(weeks) : '0',
+        tanggalHPL: hpl.toISOString().split("T")[0],
+        umurKehamilanAwal: weeks > 0 ? String(weeks) : "0"
+      }));
+    }
+
+    // Kalkulasi IMT & KEK
+    if (['BBSH', 'TBSH', 'liLA'].includes(name)) {
+      const bb = Number(name === 'BBSH' ? value : formData.BBSH);
+      const tb = Number(name === 'TBSH' ? value : formData.TBSH);
+      const lila = Number(name === 'liLA' ? value : formData.liLA);
+
+      let imt = '';
+      let kek = '';
+
+      // IMT
+      if (bb > 0 && tb > 0) {
+        const tbM = tb / 100;
+        imt = (bb / (tbM * tbM)).toFixed(2);
+      }
+
+      // KEK
+      if (lila > 0) {
+        kek = lila < 23.5 ? 'KEK' : 'Tidak KEK';
+      }
+
+      setFormData(prev => ({
+        ...prev,
+        IMTSH: imt,
+        StatusGiziKEK: kek
       }));
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+
+  // ============================
+  // SUBMIT
+  // ============================
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     const required = ['nama', 'nik', 'noKK', 'tanggalLahir', 'alamat'];
-    if (required.some((f) => !formData[f as keyof typeof formData]))
-      return toast.error('Field wajib harus diisi!');
-    if (nikError) return toast.error('Perbaiki kesalahan input NIK');
+    if (required.some(f => !formData[f as keyof typeof formData]))
+      return toast.error("Field wajib harus diisi!");
+
+    if (nikError) return toast.error(nikError);
 
     setLoading(true);
     try {
       const res = await fetch(`/api/kader/ibuHamil/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Gagal memperbarui data');
+      if (!res.ok) throw new Error(data.error || "Gagal update data");
 
-      toast.success(data.message || 'Data ibu hamil berhasil diperbarui');
+      toast.success(data.message);
       router.push('/dashboard/kader/ibu-hamil');
+
     } catch (err: any) {
-      toast.error(err.message || 'Terjadi kesalahan');
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // if (loadingData)
-  //   return (
-  //     <div className="p-10 text-center text-gray-600 animate-pulse">
-  //       Memuat data ibu hamil...
-  //     </div>
-  //   );
+
+  if (loadingData) {
+    return <div className="p-10 text-center text-green-600 animate-pulse">Memuat data ibu hamil...</div>;
+  }
+
 
   return (
     <div>
@@ -183,26 +251,13 @@ export default function Page() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-              {/* Nama */}
-              <div>
-                <label className="block text-sm font-semibold mb-1">Nama Ibu Hamil</label>
-                <input
-                  type="text"
-                  name="nama"
-                  ref={namaRef}
-                  value={formData.nama}
-                  onChange={handleChange}
-                  placeholder="Nama lengkap ibu hamil"
-                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
-                />
-              </div>
-
               {/* NIK */}
               <div>
-                <label className="block text-sm font-semibold mb-1">NIK</label>
+                <label className="block text-sm font-semibold mb-1">NIK <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="text"
                   name="nik"
+                  ref={nikRef}
                   value={formData.nik}
                   onChange={handleChange}
                   maxLength={16}
@@ -214,22 +269,36 @@ export default function Page() {
                 {nikError && <p className="text-xs text-red-500 mt-1">{nikError}</p>}
               </div>
 
+              {/* Nama */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Nama Ibu Hamil <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="text"
+                  name="nama"
+                  value={formData.nama}
+                  onChange={handleChange}
+                  placeholder="Nama lengkap ibu hamil"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
               {/* No KK */}
               <div>
-                <label className="block text-sm font-semibold mb-1">No KK</label>
+                <label className="block text-sm font-semibold mb-1">No KK <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="text"
                   name="noKK"
                   maxLength={16}
                   value={formData.noKK}
                   onChange={handleChange}
+                  placeholder="16 digit Nomor KK"
                   className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
                 />
               </div>
 
               {/* Tanggal Lahir */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Tanggal Lahir</label>
+                <label className="block text-sm font-semibold mb-1">Tanggal Lahir <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="date"
                   name="tanggalLahir"
@@ -239,9 +308,73 @@ export default function Page() {
                 />
               </div>
 
+              {/* ✔ BARU – BBSH */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Berat Badan Sebelum Hamil (kg) <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="number"
+                  name="BBSH"
+                  value={formData.BBSH}
+                  onChange={handleChange}
+                  placeholder="contoh: 48"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* ✔ BARU – TBSH */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Tinggi Badan Sebelum Hamil (cm) <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="number"
+                  name="TBSH"
+                  value={formData.TBSH}
+                  onChange={handleChange}
+                  placeholder="contoh: 158"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* ✔ BARU – LiLA */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Lingkar Lengan Atas (cm) <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="number"
+                  name="liLA"
+                  value={formData.liLA}
+                  onChange={handleChange}
+                  placeholder="contoh: 24"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* IMT */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">IMT Sebelum Hamil atau IMT Trimester 1 <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="number"
+                  name="IMTSH"
+                  value={formData.IMTSH}
+                  readOnly
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* Status Gizi KEK */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Status Gizi (KEK) <span className="text-xs text-red-500">*</span></label>
+                <input
+                  name="StatusGiziKEK"
+                  value={formData.StatusGiziKEK}
+                  readOnly
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
               {/* HPHT */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Tanggal HPHT</label>
+                <label className="block text-sm font-semibold mb-1">Tanggal HPHT <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="date"
                   name="tanggalHPHT"
@@ -251,35 +384,33 @@ export default function Page() {
                 />
               </div>
 
-              {/* Umur Kehamilan Awal */}
+              {/* Umur Kehamilan */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Umur Kehamilan Awal (minggu)</label>
+                <label className="block text-sm font-semibold mb-1">Umur Kehamilan Awal (minggu) <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="number"
                   name="umurKehamilanAwal"
                   value={formData.umurKehamilanAwal}
                   readOnly
-                  placeholder="Otomatis dihitung dari HPHT"
                   className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
                 />
               </div>
 
               {/* HPL */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Tanggal HPL</label>
+                <label className="block text-sm font-semibold mb-1">Tanggal HPL <span className="text-xs text-red-500">*</span></label>
                 <input
                   type="date"
                   name="tanggalHPL"
                   value={formData.tanggalHPL}
                   readOnly
-                  placeholder="Otomatis dihitung dari HPHT"
                   className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
                 />
               </div>
 
               {/* Gravida */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Gravida (Jumlah Kehamilan)</label>
+                <label className="block text-sm font-semibold mb-1">Gravida (Kehamilan ke)</label>
                 <input
                   type="number"
                   name="gravida"
@@ -292,7 +423,7 @@ export default function Page() {
 
               {/* Para */}
               <div>
-                <label className="block text-sm font-semibold mb-1">Para (Jumlah Kelahiran)</label>
+                <label className="block text-sm font-semibold mb-1">Para (Jumlah Persalinan)</label>
                 <input
                   type="number"
                   name="para"
@@ -316,21 +447,132 @@ export default function Page() {
                 />
               </div>
 
+              {/* ✔ BARU – Golongan Darah */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Golongan Darah</label>
+                <select
+                  name="golonganDarah"
+                  value={formData.golonganDarah}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                >
+                  <option value="Belum_diperiksa">-- Pilih --</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="AB">AB</option>
+                  <option value="O">O</option>
+                </select>
+              </div>
+
+              {/* ✔ BARU – Kepemilikan JKN */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Kepemilikan JKN</label>
+                <select
+                  name="kepemilikanJKN"
+                  value={formData.kepemilikanJKN}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                >
+                  <option value="Belum_punya">-- Pilih --</option>
+                  <option value="JKN">JKN</option>
+                  <option value="Jamkesda">Jamkesda</option>
+                  <option value="Jampersal">Jampersal</option>
+                </select>
+              </div>
+
+              {/* No JKN */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Nomor JKN</label>
+                <input
+                  type="text"
+                  name="noJKN"
+                  value={formData.noJKN}
+                  onChange={handleChange}
+                  placeholder="opsional"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* ✔ BARU – Kepemilikan Buku KIA */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Kepemilikan Buku KIA <span className="text-xs text-red-500">*</span></label>
+                <select
+                  name="kepemilikanBukuKIA"
+                  value={formData.kepemilikanBukuKIA}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                >
+                  <option value="Ya">Ya</option>
+                  <option value="Tidak">Tidak</option>
+                </select>
+              </div>
+
+              {/* ✔ BARU – Nama Suami */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Nama Suami <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="text"
+                  name="namaSuami"
+                  value={formData.namaSuami}
+                  onChange={handleChange}
+                  placeholder="Nama lengkap suami"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* ✔ BARU – HP Suami */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">Nomor HP Suami <span className="text-xs text-red-500">*</span></label>
+                <input
+                  type="text"
+                  name="HPSuami"
+                  value={formData.HPSuami}
+                  onChange={handleChange}
+                  placeholder="contoh: 08123456789"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
               {/* Alamat */}
-              <div className="">
+              <div className="md:col-span-2">
                 <label className="block text-sm font-semibold mb-1">Alamat</label>
                 <input
                   type="text"
                   name="alamat"
                   value={formData.alamat}
                   onChange={handleChange}
-                  placeholder="Alamat lengkap tempat tinggal"
+                  placeholder="Alamat lengkap"
                   className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
                 />
               </div>
 
-              {/* Koordinat Lokasi */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* ✔ BARU – RT/RW */}
+              <div>
+                <label className="block text-sm font-semibold mb-1">RT</label>
+                <input
+                  type="text"
+                  name="RT"
+                  value={formData.RT}
+                  onChange={handleChange}
+                  placeholder="RT"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-1">RW</label>
+                <input
+                  type="text"
+                  name="RW"
+                  value={formData.RW}
+                  onChange={handleChange}
+                  placeholder="RW"
+                  className="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-emerald-400 outline-none transition"
+                />
+              </div>
+
+              {/* Koordinat */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:col-span-2">
                 <div>
                   <label className="block text-sm font-semibold mb-1">Longitude</label>
                   <input
@@ -388,10 +630,12 @@ export default function Page() {
                   className="w-full px-4 py-2 border rounded-xl bg-gray-100 cursor-not-allowed"
                 />
               </div>
+
             </div>
 
+            {/* Tombol */}
             <div className="flex justify-end gap-3 pt-6">
-              <ButtonBatal onClick={() => router.push('/dashboard/kader/ibu-hamil')} />
+              <ButtonBatal onClick={() => router.back()} />
               <ButtonUpdate loading={loading} />
             </div>
           </form>

@@ -47,7 +47,7 @@ export async function GET(
 }
 
 // ========================================================
-// PUT: Update data Ibu Hamil berdasarkan ID
+// PUT: Update data Ibu Hamil berdasarkan ID (Match POST Logic)
 // ========================================================
 export async function PUT(
   request: NextRequest,
@@ -57,76 +57,101 @@ export async function PUT(
     const { id } = await context.params;
     const numericId = Number(id);
     if (Number.isNaN(numericId)) {
-      return NextResponse.json({ error: 'ID tidak valid.' }, { status: 400 });
+      return NextResponse.json({ error: "ID tidak valid." }, { status: 400 });
     }
 
     const body = await request.json();
+
     const {
       nama,
       nik,
       noKK,
       tanggalLahir,
+      BBSH,
+      TBSH,
+      liLA,
       tanggalHPHT,
       gravida,
       para,
       abortus,
+      golonganDarah,
+      kepemilikanJKN,
+      noJKN,
+      kepemilikanBukuKIA,
+      namaSuami,
+      HPSuami,
       alamat,
-      posyanduId,
-      kaderId,
+      RT,
+      RW,
       longitude,
       latitude,
+      posyanduId,
+      kaderId,
     } = body;
 
+    // =====================================================
     // Cek apakah data ada
+    // =====================================================
     const existingIbu = await prisma.ibuHamil.findUnique({
       where: { id: numericId },
     });
 
     if (!existingIbu) {
       return NextResponse.json(
-        { error: 'Data ibu hamil tidak ditemukan.' },
+        { error: "Data ibu hamil tidak ditemukan." },
         { status: 404 }
       );
     }
 
-    // Cek NIK unik (jika diubah)
+    // =====================================================
+    // Cek NIK unik jika diubah
+    // =====================================================
     if (nik && nik !== existingIbu.nik) {
-      const duplicateNIK = await prisma.ibuHamil.findUnique({ where: { nik } });
-      if (duplicateNIK) {
+      const nikUsed = await prisma.ibuHamil.findUnique({ where: { nik } });
+      if (nikUsed) {
         return NextResponse.json(
-          { error: 'NIK ibu hamil sudah digunakan.' },
+          { error: "NIK ibu hamil sudah digunakan." },
           { status: 400 }
         );
       }
     }
 
-    // Validasi posyandu (jika diberikan)
-    if (typeof posyanduId !== 'undefined' && posyanduId !== null) {
-      const posyandu = await prisma.posyandu.findUnique({
+    // =====================================================
+    // Validator posyandu / kader jika ada
+    // =====================================================
+    if (posyanduId !== undefined && posyanduId !== null) {
+      const pos = await prisma.posyandu.findUnique({
         where: { id: Number(posyanduId) },
       });
-      if (!posyandu) {
+      if (!pos) {
         return NextResponse.json(
-          { error: 'Posyandu tidak ditemukan.' },
+          { error: "Posyandu tidak ditemukan." },
           { status: 400 }
         );
       }
     }
 
-    // Validasi kader (jika diberikan)
-    if (typeof kaderId !== 'undefined' && kaderId !== null) {
-      const kader = await prisma.kader.findUnique({
+    if (kaderId !== undefined && kaderId !== null) {
+      const kad = await prisma.kader.findUnique({
         where: { id: Number(kaderId) },
       });
-      if (!kader) {
+      if (!kad) {
         return NextResponse.json(
-          { error: 'Kader tidak ditemukan.' },
+          { error: "Kader tidak ditemukan." },
           { status: 400 }
         );
       }
     }
 
-    // ====== Convert longitude & latitude ======
+    // =====================================================
+    // Convert angka
+    // =====================================================
+    const toFloat = (val: any) =>
+      val !== undefined && val !== null && val !== "" ? parseFloat(val) : null;
+
+    const toInt = (val: any) =>
+      val !== undefined && val !== null && val !== "" ? parseInt(val) : null;
+
     const lon =
       longitude !== undefined && longitude !== null && longitude !== ""
         ? parseFloat(longitude)
@@ -137,63 +162,108 @@ export async function PUT(
         ? parseFloat(latitude)
         : existingIbu.latitude;
 
-    // ====== Kalkulasi Otomatis HPL & Usia Kehamilan ======
+    // =====================================================
+    // Hitung ulang HPL & Umur Kehamilan
+    // =====================================================
     let calculatedHPL: Date | null = existingIbu.tanggalHPL;
-    let umurKehamilanAwal: number | null = existingIbu.umurKehamilanAwal;
+    let umurAwal: number | null = existingIbu.umurKehamilanAwal;
 
     if (tanggalHPHT) {
       const hpht = new Date(tanggalHPHT);
 
-      // Rumus Naegele: HPL = HPHT + 7 hari + 9 bulan
       const hpl = new Date(hpht);
       hpl.setDate(hpht.getDate() + 7);
       hpl.setMonth(hpht.getMonth() + 9);
       calculatedHPL = hpl;
 
-      // Hitung usia kehamilan (minggu)
       const now = new Date();
-      const diffMs = now.getTime() - hpht.getTime();
-      umurKehamilanAwal = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
-      if (umurKehamilanAwal < 0) umurKehamilanAwal = 0;
+      umurAwal = Math.floor(
+        (now.getTime() - hpht.getTime()) / (1000 * 60 * 60 * 24 * 7)
+      );
+      if (umurAwal < 0) umurAwal = 0;
     }
 
-    // Update data ibu hamil
+    // =====================================================
+    // Hitung ulang IMT & KEK 
+    // =====================================================
+    let calculatedIMT: number | null = existingIbu.IMTSH;
+    let calculatedKEK: string = existingIbu.StatusGiziKEK;
+
+    const bb = toFloat(BBSH);
+    const tb = toFloat(TBSH);
+    const lilaVal = toFloat(liLA);
+
+    if (bb && tb) {
+      const tbMeter = tb / 100;
+      if (bb > 0 && tbMeter > 0) {
+        calculatedIMT = parseFloat((bb / (tbMeter * tbMeter)).toFixed(2));
+      }
+    }
+
+    if (lilaVal !== null) {
+      calculatedKEK = lilaVal < 23.5 ? "KEK" : "Tidak KEK";
+    }
+
+    // =====================================================
+    // UPDATE DATABASE
+    // =====================================================
     const updatedIbu = await prisma.ibuHamil.update({
       where: { id: numericId },
       data: {
         nama: nama ?? existingIbu.nama,
         nik: nik ?? existingIbu.nik,
         noKK: noKK ?? existingIbu.noKK,
+
         tanggalLahir: tanggalLahir
           ? new Date(tanggalLahir)
           : existingIbu.tanggalLahir,
+
+        // Data kesehatan
+        BBSH: bb ?? existingIbu.BBSH,
+        TBSH: tb ?? existingIbu.TBSH,
+        liLA: lilaVal ?? existingIbu.liLA,
+        IMTSH: calculatedIMT,
+        StatusGiziKEK: calculatedKEK,
+
+        // Kehamilan
         tanggalHPHT: tanggalHPHT
           ? new Date(tanggalHPHT)
           : existingIbu.tanggalHPHT,
         tanggalHPL: calculatedHPL,
-        umurKehamilanAwal,
-        gravida:
-          typeof gravida !== "undefined"
-            ? Number(gravida)
-            : existingIbu.gravida,
-        para:
-          typeof para !== "undefined" ? Number(para) : existingIbu.para,
-        abortus:
-          typeof abortus !== "undefined"
-            ? Number(abortus)
-            : existingIbu.abortus,
+        umurKehamilanAwal: umurAwal,
+
+        gravida: toInt(gravida) ?? existingIbu.gravida,
+        para: toInt(para) ?? existingIbu.para,
+        abortus: toInt(abortus) ?? existingIbu.abortus,
+
+        golonganDarah: golonganDarah ?? existingIbu.golonganDarah,
+        kepemilikanJKN: kepemilikanJKN ?? existingIbu.kepemilikanJKN,
+        noJKN: noJKN ?? existingIbu.noJKN,
+
+        kepemilikanBukuKIA:
+          kepemilikanBukuKIA ?? existingIbu.kepemilikanBukuKIA,
+
+        namaSuami: namaSuami ?? existingIbu.namaSuami,
+        HPSuami: HPSuami ?? existingIbu.HPSuami,
+
         alamat: alamat ?? existingIbu.alamat,
+        RT: RT ?? existingIbu.RT,
+        RW: RW ?? existingIbu.RW,
+
         longitude: lon,
         latitude: lat,
+
         posyanduId:
-          typeof posyanduId !== "undefined" && posyanduId !== null
+          posyanduId !== undefined && posyanduId !== null
             ? Number(posyanduId)
             : existingIbu.posyanduId,
+
         kaderId:
-          typeof kaderId !== "undefined" && kaderId !== null
+          kaderId !== undefined && kaderId !== null
             ? Number(kaderId)
             : existingIbu.kaderId,
       },
+
       include: {
         posyandu: { select: { id: true, nama: true } },
         kader: { select: { id: true, nama: true } },

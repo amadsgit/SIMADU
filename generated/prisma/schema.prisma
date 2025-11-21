@@ -180,19 +180,47 @@ model Balita {
   @@index([noKK])
 }
 
+enum kepemilikanJKN {
+  Belum_punya
+  JKN
+  Jamkesda
+  Jampersal
+}
+
+enum golDarah {
+  Belum_diperiksa
+  A
+  AB
+  B
+  O
+}
+
 model IbuHamil {
   id                   Int                   @id @default(autoincrement())
   nama                 String
   nik                  String                @unique
-  noKK                 String
+  noKK                 String?
   tanggalLahir         DateTime
+  BBSH                 Float // berat badan sebelum hamil
+  TBSH                 Float // tinggi badan sebelum hamil
+  liLA                 Float // lingkar lengan atas
+  IMTSH                Float // IMT sebelum hamil atau IMT Trimester 1
+  StatusGiziKEK        String // KEK atau Tidak KEK    
+  tanggalHPHT          DateTime // Hari Pertama Haid Terakhir
   umurKehamilanAwal    Int? // usia kehamilan awal saat pertama dicatat (minggu)
-  tanggalHPHT          DateTime? // Hari Pertama Haid Terakhir
-  tanggalHPL           DateTime? // Perkiraan persalinan
-  gravida              Int? // jumlah kehamilan
+  tanggalHPL           DateTime // Perkiraan persalinan
+  gravida              Int? // jumlah kehamilan ke
   para                 Int? // jumlah kelahiran
   abortus              Int? // jumlah keguguran
-  alamat               String
+  golonganDarah        golDarah?             @default(Belum_diperiksa)
+  kepemilikanJKN       kepemilikanJKN?       @default(Belum_punya)
+  noJKN                String?
+  kepemilikanBukuKIA   String // Ya atau Tidak
+  namaSuami            String
+  HPSuami              String
+  alamat               String?
+  RT                   String?
+  RW                   String?
   longitude            Float?
   latitude             Float?
   posyanduId           Int
