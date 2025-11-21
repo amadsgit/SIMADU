@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import TabsPane from '@/components/tab-pane-manajemen-posyandu';
 
 // Dynamic import
-const PosyanduChart = dynamic(() => import('@/components/posyandu-chart'), {
+const PosyanduChart = dynamic(() => import('@/components/chart-posyandu'), {
   ssr: false,
 });
 
