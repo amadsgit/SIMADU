@@ -37,7 +37,7 @@ export default function Page() {
   const fetchKelurahan = async () => {
     setLoadingFetch(true);
     try {
-      const res = await fetch('/api/wilayah-kerja');
+      const res = await fetch('/api/admin/wilayah-kerja');
       const data = await res.json();
       setKelurahanList(data);
     } catch (error) {
@@ -62,7 +62,7 @@ export default function Page() {
     setLoadingSubmit(true);
 
     try {
-      const res = await fetch(`/api/wilayah-kerja${isEdit ? `/${selectedId}` : ''}`, {
+      const res = await fetch(`/api/admin/wilayah-kerja${isEdit ? `/${selectedId}` : ''}`, {
         method: isEdit ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nama }),
@@ -97,7 +97,7 @@ export default function Page() {
   const handleDelete = async () => {
     if (selectedDeleteId === null) return;
     try {
-      const res = await fetch(`/api/wilayah-kerja/${selectedDeleteId}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin/wilayah-kerja/${selectedDeleteId}`, { method: 'DELETE' });
       if (res.ok) {
         toast.success('Kelurahan/Desa berhasil dihapus!');
         await fetchKelurahan();

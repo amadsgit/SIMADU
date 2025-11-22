@@ -35,7 +35,7 @@ export default function PosyanduChart() {
   const [posyandu, setPosyandu] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/api/posyandu')
+    fetch('/api/admin/posyandu')
       .then((res) => res.json())
       .then((data) => setPosyandu(data));
   }, []);

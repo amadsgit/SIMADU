@@ -52,7 +52,7 @@ export default function Page() {
   useEffect(() => {
     const fetchProkes = async () => {
       try {
-        const res = await fetch(`/api/prokes/${prokesId}`);
+        const res = await fetch(`/api/admin/prokes/${prokesId}`);
         if (!res.ok) throw new Error('Gagal memuat data program kesehatan');
         const data = await res.json();
 
@@ -91,7 +91,7 @@ export default function Page() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/prokes/${prokesId}`, {
+      const res = await fetch(`/api/admin/prokes/${prokesId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -64,7 +64,7 @@ export default function EditUserPage() {
     if (!id) return;
     const fetchUser = async () => {
       try {
-        const res = await fetch(`/api/user/${id}`);
+        const res = await fetch(`/api/admin/user/${id}`);
         if (!res.ok) throw new Error('Gagal memuat data user');
         const data = await res.json();
         setFormData({
@@ -144,7 +144,7 @@ export default function EditUserPage() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/user/${id}`, {
+      const res = await fetch(`/api/admin/user/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

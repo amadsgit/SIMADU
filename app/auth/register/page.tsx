@@ -76,8 +76,8 @@ export default function RegisterPage() {
 
     // Validasi langsung password
     if (name === 'password') {
-      if (value.length < 6) {
-        setErrors(prev => ({ ...prev, password: 'Password minimal 6 karakter' }));
+      if (value.length < 8) {
+        setErrors(prev => ({ ...prev, password: 'Password minimal 8 karakter.' }));
       } else {
         setErrors(prev => ({ ...prev, password: '' }));
       }
@@ -95,7 +95,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (form.password !== form.confirmPassword) {
-      toast.error('Password dan konfirmasi tidak cocok!');
+      toast.error('Password dan konfirmasi password harus sama.');
       return;
     }
 

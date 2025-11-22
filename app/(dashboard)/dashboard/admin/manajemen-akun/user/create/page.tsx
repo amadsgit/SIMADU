@@ -182,7 +182,7 @@ export default function Page() {
         kaderId: formData.kaderId ? Number(formData.kaderId) : null,
       };
  
-      const res = await fetch('/api/user', {
+      const res = await fetch('/api/admin/user', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

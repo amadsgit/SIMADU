@@ -66,7 +66,7 @@ export default function Page() {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/prokes', {
+      const res = await fetch('/api/admin/prokes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -53,7 +53,7 @@ export default function MapView() {
   useEffect(() => {
     const fetchPosyandu = async () => {
       try {
-        const res = await fetch('/api/posyandu');
+        const res = await fetch('/api/admin/posyandu');
         const data = await res.json();
 
         setPosyanduData(data);

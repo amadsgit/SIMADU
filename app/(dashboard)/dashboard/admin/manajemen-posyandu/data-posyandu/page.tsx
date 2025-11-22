@@ -66,7 +66,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/posyandu');
+        const res = await fetch('/api/admin/posyandu');
         if (!res.ok) throw new Error('Fetch gagal');
         const data = await res.json();
         setPosyanduList(data);
@@ -90,7 +90,7 @@ export default function Page() {
     if (!selectedId) return;
 
     try {
-      const res = await fetch(`/api/posyandu/${selectedId}`, {
+      const res = await fetch(`/api/admin/posyandu/${selectedId}`, {
         method: 'DELETE',
       });
 

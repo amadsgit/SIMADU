@@ -34,7 +34,7 @@ export default function Page() {
   const fetchRole = async () => {
     setLoadingFetch(true);
     try {
-      const res = await fetch('/api/role');
+      const res = await fetch('/api/admin/role');
       const data = await res.json();
       setRoles(data);
     } catch (error) {
@@ -59,7 +59,7 @@ export default function Page() {
     setLoadingSubmit(true);
 
     try {
-      const res = await fetch(`/api/role${isEdit ? `/${selectedId}` : ''}`, {
+      const res = await fetch(`/api/admin/role${isEdit ? `/${selectedId}` : ''}`, {
         method: isEdit ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nama }),
@@ -96,7 +96,7 @@ export default function Page() {
     if (selectedDeleteId === null) return;
 
     try {
-      const res = await fetch(`/api/role/${selectedDeleteId}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin/role/${selectedDeleteId}`, { method: 'DELETE' });
 
       if (res.ok) {
         toast.success('Role berhasil dihapus!');

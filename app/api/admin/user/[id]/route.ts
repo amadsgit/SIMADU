@@ -138,7 +138,7 @@ export async function PUT(
   }
 }
 
-// ========================================================
+/// ========================================================
 // DELETE: Hapus user berdasarkan ID (tanpa hapus data kader)
 // ========================================================
 export async function DELETE(
@@ -149,7 +149,7 @@ export async function DELETE(
     const { id } = await context.params;
 
     const user = await prisma.user.findUnique({
-      where: { id: (id) },
+      where: { id: id },
       include: { role: true },
     });
 
@@ -160,8 +160,13 @@ export async function DELETE(
       );
     }
 
-    // hanya hapus user dari tabel user
-    await prisma.user.delete({ where: { id: (id) } });
+    // Hapus OTP terkait user terlebih dahulu
+    await prisma.otp.deleteMany({
+      where: { userId: id },
+    });
+
+    // Hapus user
+    await prisma.user.delete({ where: { id: id } });
 
     return NextResponse.json({ message: 'Akun user berhasil dihapus.' });
   } catch (error) {
@@ -172,3 +177,4 @@ export async function DELETE(
     );
   }
 }
+

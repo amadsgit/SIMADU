@@ -42,7 +42,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/user');
+        const res = await fetch('/api/admin/user');
         if (!res.ok) throw new Error('Fetch gagal');
         const data = await res.json();
         setUserList(data);
@@ -66,7 +66,7 @@ export default function Page() {
     if (!selectedId) return;
 
     try {
-      const res = await fetch(`/api/user/${selectedId}`, {
+      const res = await fetch(`/api/admin/user/${selectedId}`, {
         method: 'DELETE',
       });
 

@@ -46,7 +46,7 @@ export default function EditPosyanduPage() {
     const fetchData = async () => {
       try {
         // Fetch posyandu data
-        const res = await fetch(`/api/posyandu/${id}`);
+        const res = await fetch(`/api/admin/posyandu/${id}`);
         if (!res.ok) throw new Error('Gagal mengambil data');
         const data = await res.json();
 
@@ -111,7 +111,7 @@ export default function EditPosyanduPage() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/posyandu/${id}`, {
+      const res = await fetch(`/api/admin/posyandu/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

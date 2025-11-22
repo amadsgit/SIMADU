@@ -32,7 +32,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/prokes');
+        const res = await fetch('/api/admin/prokes');
         if (!res.ok) throw new Error('Fetch gagal');
         const data = await res.json();
         setProkesList(data);
@@ -56,7 +56,7 @@ export default function Page() {
     if (!selectedId) return;
 
     try {
-      const res = await fetch(`/api/prokes/${selectedId}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin/prokes/${selectedId}`, { method: 'DELETE' });
       const result = await res.json();
 
       if (!res.ok) {
