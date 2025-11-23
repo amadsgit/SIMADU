@@ -45,7 +45,7 @@ export default function Page() {
         const res = await fetch('/api/admin/user');
         if (!res.ok) throw new Error('Fetch gagal');
         const data = await res.json();
-        setUserList(data);
+        setUserList(data)
       } catch (error) {
         console.error('Gagal memuat data user:', error);
         toast.error('Gagal memuat data user!');

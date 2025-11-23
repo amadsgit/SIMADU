@@ -309,6 +309,7 @@ exports.Prisma.PemeriksaanIbuHamilScalarFieldEnum = {
   jenisPmt: 'jenisPmt',
   keluhan: 'keluhan',
   tindakan: 'tindakan',
+  catatan: 'catatan',
   konseling: 'konseling',
   kaderId: 'kaderId',
   pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',

@@ -11,6 +11,8 @@ import {
   ShieldCheckIcon
 } from "lucide-react";
 import SummaryCard from "@/app/ui/dashboard/summary-card";
+import ChartCard from "@/components/chart-card";
+import ImunisasiChart from "@/components/chart-imunisasi";
 
 type AnyObj = any;
 
@@ -169,8 +171,16 @@ export default function PageClient() {
 
   if (loading)
     return (
-      <div className="p-6 text-emerald-600 text-center">
-        Memuat data dashboard...
+      <div className="flex justify-center items-center py-16 text-emerald-600">
+        <svg className="w-6 h-6 animate-spin mr-2" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          />
+        </svg>
+        <span className="text-sm font-medium">Memuat data...</span>
       </div>
     );
 
@@ -215,7 +225,9 @@ export default function PageClient() {
         />
       </div>
 
-      
+      <ChartCard title="Statistik Pemberian Imunisasi Pada Balita" height="300px">
+        <ImunisasiChart />
+      </ChartCard>
     </div>
   );
 }

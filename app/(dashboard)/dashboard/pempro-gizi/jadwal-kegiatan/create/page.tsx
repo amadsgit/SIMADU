@@ -38,7 +38,7 @@ export default function TambahKegiatanPage() {
   useEffect(() => {
     const fetchPosyandu = async () => {
       try {
-        const res = await fetch('/api/posyandu');
+        const res = await fetch('/api/admin/posyandu');
         if (!res.ok) throw new Error('Gagal memuat data posyandu');
         const data = await res.json();
         setPosyanduList(data);

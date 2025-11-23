@@ -139,9 +139,6 @@ export default function SebaranBalitaMap() {
 
       marker.bindPopup(`
         <div>
-          <strong>${b.nama}</strong><br/>
-          Jenis Kelamin: ${b.jenisKelamin}<br/>
-          Alamat: ${b.alamat}<br/><br/>
 
           <strong>Status Gizi:</strong> <br/>
           ${b.statusGiziTerbaru?.kategoriGizi ?? "-"} <br/>
@@ -149,21 +146,15 @@ export default function SebaranBalitaMap() {
 
           <strong>Posyandu:</strong><br/>
           ${b.posyandu?.nama ?? "-"}<br/>
-          Kelurahan ${b.posyandu?.kelurahan?.nama ?? "-"}<br/><br/>
-
-          <strong>Kader Input:</strong><br/>
-          ${b.kader?.nama ?? "-"}<br/>
-
-          <strong>Pemeriksaan Terbaru:</strong><br/>
-          BB: ${b.pemeriksaanTerbaru?.beratBadan ?? "-"} kg<br/>
-          TB: ${b.pemeriksaanTerbaru?.tinggiBadan ?? "-"} cm<br/>
+          Kelurahan ${b.posyandu?.kelurahan?.nama ?? "-"}<br/>
+          Kader: ${b.kader?.nama ?? "-"}
         </div>
       `);
 
       marker.bindTooltip(b.nama, {
         permanent: true,
         direction: "top",
-        offset: [0, -10],
+        offset: [0, -35],
       });
 
       markerGroup?.addLayer(marker);
@@ -174,7 +165,7 @@ export default function SebaranBalitaMap() {
     <div
       id="map-sebaran-balita"
       className="rounded-md border"
-      style={{ height: "90vh", width: "100%" }}
+      style={{ height: "80vh", width: "100%" }}
     />
   );
 }

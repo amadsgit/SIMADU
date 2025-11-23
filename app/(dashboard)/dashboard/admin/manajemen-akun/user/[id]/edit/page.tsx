@@ -42,7 +42,7 @@ export default function EditUserPage() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const res = await fetch('/api/role');
+        const res = await fetch('/api/admin/role');
         if (!res.ok) throw new Error('Gagal memuat data role');
         const data = await res.json();
 

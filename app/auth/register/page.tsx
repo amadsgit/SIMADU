@@ -33,7 +33,7 @@ export default function RegisterPage() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const res = await fetch('/api/role');
+        const res = await fetch('/api/admin/role');
         const data = await res.json();
 
         const filtered = data.filter(
@@ -329,7 +329,7 @@ export default function RegisterPage() {
           </div>
 
           {!isPasswordMatch && (
-            <p className="text-sm text-red-500 md:col-span-2 -mt-2">Konfirmasi password tidak sama</p>
+            <p className="text-sm text-red-500 md:col-span-2 -mt-2">Password & Konfirmasi password harus sama</p>
           )}
 
           {/* Tombol Submit - Full Width */}

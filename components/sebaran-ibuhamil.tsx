@@ -158,27 +158,20 @@ export default function SebaranIbuHamilMap() {
 
       marker.bindPopup(`
         <div>
-          <strong>${b.nama}</strong><br/>
-          Alamat: ${b.alamat}<br/><br/>
-
-          <strong>HPHT:</strong> ${formatTanggalIndo(b.tanggalHPHT)}<br/>
+          Alamat: ${b.alamat}<br/>
           <strong>HPL:</strong> ${formatTanggalIndo(b.tanggalHPL)}<br/><br/>
-
-          <strong>Pemeriksaan Terbaru:</strong><br/>
-          Usia Kehamilan: ${b.pemeriksaanTerbaru?.usiaKehamilan ?? "-"} minggu<br/>
-          <strong>Kader Pemeriksa:</strong><br/>
-          ${pemeriksa?.nama ?? "-"}<br/><br/>
 
           <strong>Posyandu:</strong><br/>
           ${b.posyandu?.nama ?? "-"}<br/>
           Kelurahan: ${b.posyandu?.kelurahan?.nama ?? "-"}<br/>
+          Kader: ${b.kader?.nama ?? "-"}
         </div>
       `);
 
       marker.bindTooltip(b.nama, {
         permanent: true,
         direction: "top",
-        offset: [0, -10],
+        offset: [0, -35],
       });
 
       markerGroup?.addLayer(marker);
@@ -189,7 +182,7 @@ export default function SebaranIbuHamilMap() {
     <div
       id="map-sebaran-ibu"
       className="rounded-md border"
-      style={{ height: "90vh", width: "100%" }}
+      style={{ height: "80vh", width: "100%" }}
     />
   );
 }

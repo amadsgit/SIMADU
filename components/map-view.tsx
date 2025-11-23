@@ -110,7 +110,7 @@ export default function MapView() {
         .bindTooltip(item.nama, {
           permanent: true,
           direction: 'top',
-          offset: [0, -10],
+          offset: [0, -35],
         });
 
       markerGroup?.addLayer(marker);
@@ -121,7 +121,7 @@ export default function MapView() {
     <div
       id="leaflet-map"
       className="rounded-md"
-      style={{ height: '90vh', width: '100%' }}
+      style={{ height: '80vh', width: '100%' }}
     />
   );
 }

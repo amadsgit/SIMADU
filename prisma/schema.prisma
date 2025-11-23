@@ -283,6 +283,7 @@ model PemeriksaanIbuHamil {
   jenisPmt          String?   // jenis PMT
   keluhan           String?
   tindakan          String?
+  catatan           String?
   konseling         String?
   kaderId           Int?
   kader             Kader?    @relation(fields: [kaderId], references: [id])

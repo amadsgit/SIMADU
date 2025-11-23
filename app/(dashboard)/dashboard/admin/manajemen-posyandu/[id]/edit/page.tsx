@@ -63,7 +63,7 @@ export default function EditPosyanduPage() {
         });
 
         // Fetch kelurahan options
-        const kelurahanRes = await fetch('/api/wilayah-kerja');
+        const kelurahanRes = await fetch('/api/admin/wilayah-kerja');
         const kelurahanData = await kelurahanRes.json();
         setKelurahanOptions(kelurahanData);
       } catch (err) {

@@ -65,15 +65,15 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
         { name: 'Dashboard', href: `/dashboard/ibu-hamil`, icon: HomeIcon },
         { name: 'Jadwal Kunjungan Posyandu', href: '/dashboard/ibu-hamil/jadwal-kunjungan', icon: CalendarDaysIcon },
         { name: 'Catatan Ibu Hamil', href: '/dashboard/ibu-hamil/catatan', icon: ClipboardDocumentListIcon },
-        { name: 'Edukasi Kesehatan', href: '/dashboard/ibu-hamil/edukasi', icon: HeartPulse },
+        // { name: 'Edukasi Kesehatan', href: '/dashboard/ibu-hamil/edukasi', icon: HeartPulse },
       ];
 
     case 'orang_tua_balita':
       return [
         { name: 'Dashboard', href: `/dashboard/orang-tua-balita`, icon: HomeIcon },
-        { name: 'Jadwal Kunjungan Posyandu', href: '/dashboard/jadwal-kunjungan', icon: CalendarDaysIcon },
-        { name: 'Catatan Balita', href: '/dashboard/catatan-anak', icon: ClipboardDocumentListIcon },
-        { name: 'Edukasi Gizi Anak', href: '/dashboard/edukasi-anak', icon: HeartPulse }
+        { name: 'Jadwal Kunjungan Posyandu', href: '/dashboard/orang-tua-balita/jadwal-kunjungan', icon: CalendarDaysIcon },
+        { name: 'Catatan Balita', href: '/dashboard/orang-tua-balita/catatan-anak', icon: ClipboardDocumentListIcon },
+        // { name: 'Edukasi Gizi Anak', href: '/dashboard/orang-tua-balita/edukasi-anak', icon: HeartPulse }
       ];
 
     default:

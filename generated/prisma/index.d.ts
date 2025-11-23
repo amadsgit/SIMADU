@@ -17739,6 +17739,7 @@ export namespace Prisma {
     jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
+    catatan: string | null
     konseling: string | null
     kaderId: number | null
     pelaksanaanKegiatanId: number | null
@@ -17761,6 +17762,7 @@ export namespace Prisma {
     jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
+    catatan: string | null
     konseling: string | null
     kaderId: number | null
     pelaksanaanKegiatanId: number | null
@@ -17783,6 +17785,7 @@ export namespace Prisma {
     jenisPmt: number
     keluhan: number
     tindakan: number
+    catatan: number
     konseling: number
     kaderId: number
     pelaksanaanKegiatanId: number
@@ -17831,6 +17834,7 @@ export namespace Prisma {
     jenisPmt?: true
     keluhan?: true
     tindakan?: true
+    catatan?: true
     konseling?: true
     kaderId?: true
     pelaksanaanKegiatanId?: true
@@ -17853,6 +17857,7 @@ export namespace Prisma {
     jenisPmt?: true
     keluhan?: true
     tindakan?: true
+    catatan?: true
     konseling?: true
     kaderId?: true
     pelaksanaanKegiatanId?: true
@@ -17875,6 +17880,7 @@ export namespace Prisma {
     jenisPmt?: true
     keluhan?: true
     tindakan?: true
+    catatan?: true
     konseling?: true
     kaderId?: true
     pelaksanaanKegiatanId?: true
@@ -17984,6 +17990,7 @@ export namespace Prisma {
     jenisPmt: string | null
     keluhan: string | null
     tindakan: string | null
+    catatan: string | null
     konseling: string | null
     kaderId: number | null
     pelaksanaanKegiatanId: number | null
@@ -18025,6 +18032,7 @@ export namespace Prisma {
     jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
+    catatan?: boolean
     konseling?: boolean
     kaderId?: boolean
     pelaksanaanKegiatanId?: boolean
@@ -18051,6 +18059,7 @@ export namespace Prisma {
     jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
+    catatan?: boolean
     konseling?: boolean
     kaderId?: boolean
     pelaksanaanKegiatanId?: boolean
@@ -18077,6 +18086,7 @@ export namespace Prisma {
     jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
+    catatan?: boolean
     konseling?: boolean
     kaderId?: boolean
     pelaksanaanKegiatanId?: boolean
@@ -18103,6 +18113,7 @@ export namespace Prisma {
     jenisPmt?: boolean
     keluhan?: boolean
     tindakan?: boolean
+    catatan?: boolean
     konseling?: boolean
     kaderId?: boolean
     pelaksanaanKegiatanId?: boolean
@@ -18110,7 +18121,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PemeriksaanIbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ibuHamilId" | "kegiatanId" | "tanggal" | "usiaKehamilan" | "beratBadan" | "tekananDarah" | "tinggiFundus" | "detakJantungJanin" | "pemberianFe" | "pmt" | "jenisPmt" | "keluhan" | "tindakan" | "konseling" | "kaderId" | "pelaksanaanKegiatanId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanIbuHamil"]>
+  export type PemeriksaanIbuHamilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ibuHamilId" | "kegiatanId" | "tanggal" | "usiaKehamilan" | "beratBadan" | "tekananDarah" | "tinggiFundus" | "detakJantungJanin" | "pemberianFe" | "pmt" | "jenisPmt" | "keluhan" | "tindakan" | "catatan" | "konseling" | "kaderId" | "pelaksanaanKegiatanId" | "createdAt" | "updatedAt", ExtArgs["result"]["pemeriksaanIbuHamil"]>
   export type PemeriksaanIbuHamilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ibuHamil?: boolean | IbuHamilDefaultArgs<ExtArgs>
     kegiatan?: boolean | PemeriksaanIbuHamil$kegiatanArgs<ExtArgs>
@@ -18153,6 +18164,7 @@ export namespace Prisma {
       jenisPmt: string | null
       keluhan: string | null
       tindakan: string | null
+      catatan: string | null
       konseling: string | null
       kaderId: number | null
       pelaksanaanKegiatanId: number | null
@@ -18599,6 +18611,7 @@ export namespace Prisma {
     readonly jenisPmt: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly keluhan: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly tindakan: FieldRef<"PemeriksaanIbuHamil", 'String'>
+    readonly catatan: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly konseling: FieldRef<"PemeriksaanIbuHamil", 'String'>
     readonly kaderId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
     readonly pelaksanaanKegiatanId: FieldRef<"PemeriksaanIbuHamil", 'Int'>
@@ -21829,6 +21842,7 @@ export namespace Prisma {
     jenisPmt: 'jenisPmt',
     keluhan: 'keluhan',
     tindakan: 'tindakan',
+    catatan: 'catatan',
     konseling: 'konseling',
     kaderId: 'kaderId',
     pelaksanaanKegiatanId: 'pelaksanaanKegiatanId',
@@ -23199,6 +23213,7 @@ export namespace Prisma {
     jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
@@ -23225,6 +23240,7 @@ export namespace Prisma {
     jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
     tindakan?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
     konseling?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
     pelaksanaanKegiatanId?: SortOrderInput | SortOrder
@@ -23254,6 +23270,7 @@ export namespace Prisma {
     jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
@@ -23280,6 +23297,7 @@ export namespace Prisma {
     jenisPmt?: SortOrderInput | SortOrder
     keluhan?: SortOrderInput | SortOrder
     tindakan?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
     konseling?: SortOrderInput | SortOrder
     kaderId?: SortOrderInput | SortOrder
     pelaksanaanKegiatanId?: SortOrderInput | SortOrder
@@ -23310,6 +23328,7 @@ export namespace Prisma {
     jenisPmt?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
+    catatan?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
     pelaksanaanKegiatanId?: IntNullableWithAggregatesFilter<"PemeriksaanIbuHamil"> | number | null
@@ -24798,6 +24817,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24822,6 +24842,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -24841,6 +24862,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24865,6 +24887,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -24887,6 +24910,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -24906,6 +24930,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24926,6 +24951,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26296,6 +26322,7 @@ export namespace Prisma {
     jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
+    catatan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
     pelaksanaanKegiatanId?: SortOrder
@@ -26330,6 +26357,7 @@ export namespace Prisma {
     jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
+    catatan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
     pelaksanaanKegiatanId?: SortOrder
@@ -26352,6 +26380,7 @@ export namespace Prisma {
     jenisPmt?: SortOrder
     keluhan?: SortOrder
     tindakan?: SortOrder
+    catatan?: SortOrder
     konseling?: SortOrder
     kaderId?: SortOrder
     pelaksanaanKegiatanId?: SortOrder
@@ -29196,6 +29225,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29219,6 +29249,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
@@ -29478,6 +29509,7 @@ export namespace Prisma {
     jenisPmt?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     keluhan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     tindakan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
+    catatan?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     konseling?: StringNullableFilter<"PemeriksaanIbuHamil"> | string | null
     kaderId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
     pelaksanaanKegiatanId?: IntNullableFilter<"PemeriksaanIbuHamil"> | number | null
@@ -30249,6 +30281,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30271,6 +30304,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -30853,6 +30887,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30875,6 +30910,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -31926,6 +31962,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31949,6 +31986,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     createdAt?: Date | string
@@ -32851,6 +32889,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     pelaksanaanKegiatanId?: number | null
     createdAt?: Date | string
@@ -33107,6 +33146,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33130,6 +33170,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33151,6 +33192,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33423,6 +33465,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -33520,6 +33563,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33542,6 +33586,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33563,6 +33608,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33769,6 +33815,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     pelaksanaanKegiatanId?: number | null
@@ -33788,6 +33835,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33810,6 +33858,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33831,6 +33880,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     pelaksanaanKegiatanId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33929,6 +33979,7 @@ export namespace Prisma {
     jenisPmt?: string | null
     keluhan?: string | null
     tindakan?: string | null
+    catatan?: string | null
     konseling?: string | null
     kaderId?: number | null
     createdAt?: Date | string
@@ -34011,6 +34062,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34034,6 +34086,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34055,6 +34108,7 @@ export namespace Prisma {
     jenisPmt?: NullableStringFieldUpdateOperationsInput | string | null
     keluhan?: NullableStringFieldUpdateOperationsInput | string | null
     tindakan?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     konseling?: NullableStringFieldUpdateOperationsInput | string | null
     kaderId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

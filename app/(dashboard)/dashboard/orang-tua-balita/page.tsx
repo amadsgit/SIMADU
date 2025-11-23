@@ -3,6 +3,10 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import ChartCard from '@/components/chart-card';
+import GrafikBBU from '@/components/kms/GrafikBBU';
+import GrafikTBU from '@/components/kms/GrafikTBU';
+import GrafikBBTB from '@/components/kms/GrafikBBTB';
 
 interface Pemeriksaan {
   id: number;
@@ -90,8 +94,8 @@ export default function DashboardOrtuBalita() {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-emerald-700 mb-2">
+    <div >
+      <h1 className="text-2xl font-bold text-emerald-700 mb-2">
         Dashboard <span className="text-emerald-500">Orang Tua Balita</span>
       </h1>
       <p className="text-gray-600 mb-8">
@@ -99,7 +103,17 @@ export default function DashboardOrtuBalita() {
       </p>
 
       {loading ? (
-        <div className="text-center text-emerald-600 animate-pulse">Memuat data...</div>
+        <div className="flex justify-center items-center py-16 text-emerald-600">
+            <svg className="w-6 h-6 animate-spin mr-2" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+              />
+            </svg>
+            <span className="text-sm font-medium">Memuat data...</span>
+          </div>
       ) : balitaList.length === 0 ? (
         <div className="text-center text-gray-500">Belum ada data balita.</div>
       ) : (
@@ -179,6 +193,18 @@ export default function DashboardOrtuBalita() {
               </motion.div>
             );
           })}
+
+          <ChartCard title="Grafik KMS Berat Badan terhadap Usia (BB/U)" height="330px">
+            <GrafikBBU />
+          </ChartCard>
+
+          <ChartCard title="Grafik KMS Tinggi Badan terhadap Usia (TB/U)" height="330px">
+            <GrafikTBU />
+          </ChartCard>
+
+          <ChartCard title="Grafik KMS Berat Badan terhadap Tinggi Badan (BB/TB)" height="330px">
+            <GrafikBBTB />
+          </ChartCard>
         </div>
       )}
     </div>

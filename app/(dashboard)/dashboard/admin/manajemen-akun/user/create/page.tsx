@@ -58,7 +58,7 @@ export default function Page() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const res = await fetch('/api/role');
+        const res = await fetch('/api/admin/role');
         if (!res.ok) throw new Error('Gagal memuat role');
         const data = await res.json();
         // filter hanya role yang relevan
