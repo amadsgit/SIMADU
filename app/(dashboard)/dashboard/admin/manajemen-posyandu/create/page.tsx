@@ -58,7 +58,7 @@ export default function Page() {
   useEffect(() => {
     const fetchKelurahan = async () => {
       try {
-        const res = await fetch('/api/wilayah-kerja');
+        const res = await fetch('/api/admin/wilayah-kerja');
         if (!res.ok) throw new Error('Gagal ambil kelurahan');
         const data = await res.json();
         setKelurahanList(data);
