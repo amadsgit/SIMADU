@@ -48,7 +48,7 @@ export async function PUT(
   try {
     const { id } = await context.params;
     const body = await request.json();
-    const { nama, deskripsi, tanggalPelaksanaan, alamat, posyanduId } = body;
+    const { nama, deskripsi, tanggalPelaksanaan, alamat, posyanduId } = body; 
 
     if (!nama || !tanggalPelaksanaan || !alamat || !posyanduId) {
       return NextResponse.json({ error: 'Semua field wajib diisi.' }, { status: 400 });
