@@ -36,7 +36,7 @@ export default function Page() {
   useEffect(() => {
     const fetchKlasters = async () => {
       try {
-        const res = await fetch('/api/klaster');
+        const res = await fetch('/api/admin/klaster');
         if (!res.ok) throw new Error('Gagal memuat daftar klaster');
         const data = await res.json();
         setKlasterList(data);
