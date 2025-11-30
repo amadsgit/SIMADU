@@ -144,7 +144,7 @@ export default function JadwalKegiatanPage() {
         Jadwal Kegiatan <span className="text-emerald-500">Program Imunisasi</span>
       </h2>
       <p className="text-gray-600 mb-8">
-        Data jadwal kegiatan Posyandu untuk program imunisasi di wilayah kerja
+        Jadwal kegiatan Posyandu untuk program imunisasi di wilayah kerja
         Puskesmas.
       </p>
 
