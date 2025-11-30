@@ -105,7 +105,7 @@ export default function Page() {
       startY: 80,
       head: [[
         'No', 'Tanggal', 'Kegiatan', 'NIK', 'Nama Balita', 'Tanggal Lahir',
-        'Berat Badan', 'Tinggi Badan', 'Lingkar Kepala', 'Imunisasi',
+        'Berat Badan (kg)', 'Tinggi Badan (cm)', 'Lingkar Kepala (cm)', 'Imunisasi',
         'Jenis Vitamin', 'Jenis PMT', 'Kategori Gizi', 'Status Stunting', 'Keluhan', 'Tindakan', 'Catatan',
         'Posyandu', 'RW', 'Kelurahan'
       ]],
@@ -228,9 +228,9 @@ export default function Page() {
               <th className="p-2 border">NIK</th>
               <th className="p-2 border">Nama Balita</th>
               <th className="p-2 border">Tanggal Lahir</th>
-              <th className="p-2 border">Berat Badan</th>
-              <th className="p-2 border">Tinggi Badan</th>
-              <th className="p-2 border">Lingkar Kepala</th>
+              <th className="p-2 border">Berat Badan (kg)</th>
+              <th className="p-2 border">Tinggi Badan (cm)</th>
+              <th className="p-2 border">Lingkar Kepala (cm)</th>
               <th className="p-2 border">Imunisasi</th>
               <th className="p-2 border">Jenis Vitamin</th>
               <th className="p-2 border">Jenis PMT</th>
