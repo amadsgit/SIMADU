@@ -32,22 +32,22 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
     case 'pemegang_program_kia':
       return [
         { name: 'Dashboard', href: '/dashboard/pempro-kia', icon: HomeIcon },
-        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-kia/jadwal-kegiatan', icon: ClipboardDocumentCheckIcon },
-        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-kia/monitoring', icon: ClipboardDocumentListIcon },
+        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-kia/jadwal-kegiatan', icon: ClipboardDocumentListIcon },
+        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-kia/monitoring', icon: ClipboardDocumentCheckIcon },
       ];
 
     case 'pemegang_program_imunisasi':
       return [
         { name: 'Dashboard', href: '/dashboard/pempro-imunisasi', icon: HomeIcon },
-        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-imunisasi/jadwal-kegiatan', icon: ClipboardDocumentCheckIcon },
-        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-imunisasi/monitoring', icon: ClipboardDocumentListIcon },
+        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-imunisasi/jadwal-kegiatan', icon: ClipboardDocumentListIcon },
+        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-imunisasi/monitoring', icon: ClipboardDocumentCheckIcon },
       ];
 
     case 'pemegang_program_gizi':
       return [
         { name: 'Dashboard', href: '/dashboard/pempro-gizi', icon: HomeIcon },
-        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-gizi/jadwal-kegiatan', icon: ClipboardDocumentCheckIcon },
-        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-gizi/monitoring', icon: ClipboardDocumentListIcon },
+        { name: 'Input jadwal kegiatan', href: '/dashboard/pempro-gizi/jadwal-kegiatan', icon: ClipboardDocumentListIcon },
+        { name: 'Monitoring & Laporan Kegiatan', href: '/dashboard/pempro-gizi/monitoring', icon: ClipboardDocumentCheckIcon },
       ];
 
     case 'kader':
