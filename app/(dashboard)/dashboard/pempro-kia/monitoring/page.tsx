@@ -148,7 +148,7 @@ export default function MonitoringKIAPage() {
       <TabsPane />
 
       {/* SEARCH */}
-      <div className="max-w-sm">
+      <div className="max-w-sm mb-3">
         <input
           type="text"
           placeholder="Cari nama kegiatan..."
@@ -172,7 +172,7 @@ export default function MonitoringKIAPage() {
                              kegiatan.nama.toLowerCase().includes("anc");
 
         return (
-          <div key={kegiatan.id} className="bg-white rounded-lg shadow-md border p-4 space-y-4">
+          <div key={kegiatan.id} className="bg-white rounded-lg shadow-md border p-4 space-y-4 mb-2">
             {/* HEADER */}
             <div>
               <h2 className="font-semibold text-lg">{kegiatan.nama}</h2>
@@ -187,14 +187,6 @@ export default function MonitoringKIAPage() {
               <p className="text-xs text-gray-400">
                 Posyandu: {kegiatan.posyandu.nama} {kegiatan.posyandu.wilayah} kel.{kegiatan.posyandu.kelurahan.nama} | Program: {kegiatan.programKesehatan.nama}
               </p>
-              {/* {kegiatan.status === "selesai" && (
-                <button
-                  // onClick={() => downloadPDF(pel, kegiatan)}
-                  className="mt-2 px-3 py-1 text-xs rounded bg-green-600 text-white hover:bg-green-700"
-                >
-                  Download PDF
-                </button>
-              )} */}
             </div>
 
             {/* BODY Pelaksanaan */}
