@@ -105,7 +105,7 @@ export default function Page() {
     autoTable(doc, {
       startY: 80,
       head: [[
-        'No', 'Tanggal', 'NIK', 'Nama Ibu Hamil', 'No KK', 'Tanggal Lahir',
+        'No', 'Tanggal', 'Kegiatan', 'NIK', 'Nama Ibu Hamil', 'No KK', 'Tanggal Lahir',
         'BB Sebelum Hamil (kg)', 'TB Sebelum Hamil (cm)', 'LiLA (cm)', 'IMT Trimester 1', 'Status Gizi KEK',
         'HPHT', 'HPL', 'Usia Kehamilan', 'Gravida', 'Para', 'Abortus',
         'Berat Badan (kg)', 'Tekanan Darah', 'Tinggi Fundus (cm)', 'Detak Jantung Janin',
@@ -117,6 +117,7 @@ export default function Page() {
         return [
           idx + 1,
           item.tanggal ? new Date(item.tanggal).toLocaleDateString('id-ID') : '-',
+          item.pelaksanaanKegiatan?.kegiatan?.nama ?? '-',
           ibu.nik ?? '-',
           ibu.nama ?? '-',
           ibu.noKK ?? '-',
@@ -147,7 +148,7 @@ export default function Page() {
         ];
       }),
       styles: { fontSize: 8, cellPadding: 3 },
-      headStyles: { fillColor: [16, 185, 129], halign: 'center' },
+      headStyles: { fillColor: [244, 63, 94], halign: 'center' },
     });
 
     const finalY = (doc as any).lastAutoTable.finalY + 20;
@@ -232,6 +233,7 @@ export default function Page() {
             <tr>
               <th className="p-2 border">No</th>
               <th className="p-2 border">Tanggal</th>
+              <th className="p-2 border">Kegiatan</th>
               <th className="p-2 border">NIK</th>
               <th className="p-2 border">Nama Ibu hamil</th>
               <th className="p-2 border">Tanggal Lahir</th>
@@ -263,7 +265,7 @@ export default function Page() {
           <tbody>
             {loading && (
               <tr>
-                <td colSpan={12} className="text-center p-6">
+                <td colSpan={18} className="text-center p-6">
                   <div className="flex justify-center items-center py-16 text-pink-600">
                     <svg className="w-6 h-6 animate-spin mr-2" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -283,6 +285,7 @@ export default function Page() {
               <tr key={item.id}>
                 <td className="p-2 border">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                 <td className="p-2 border">{item.tanggal ? new Date(item.tanggal).toLocaleDateString() : '-'}</td>
+                <td className="p-2 border">{item.pelaksanaanKegiatan?.kegiatan?.nama ?? '-'}</td>
                 <td className="p-2 border">{item.ibu?.nik ?? '-'}</td>
                 <td className="p-2 border">{item.ibu?.nama ?? '-'}</td>
                 <td className="p-2 border">{item.ibu?.tanggalLahir ? new Date(item.ibu?.tanggalLahir).toLocaleDateString() : '-'}</td>
