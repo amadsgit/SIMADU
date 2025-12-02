@@ -214,7 +214,7 @@ export default function FormIbuHamil({
             name="beratBadan"
             value={form.beratBadan}
             onChange={handleChange}
-            placeholder="Opsional"
+            placeholder="Contoh: 45.2"
             className="w-full border border-gray-300 rounded-md p-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
@@ -245,7 +245,7 @@ export default function FormIbuHamil({
             name="tinggiFundus"
             value={form.tinggiFundus}
             onChange={handleChange}
-            placeholder="Opsional"
+            placeholder="contoh: 32"
             className="w-full border border-gray-300 rounded-md p-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
@@ -260,7 +260,7 @@ export default function FormIbuHamil({
             name="detakJantungJanin"
             value={form.detakJantungJanin}
             onChange={handleChange}
-            placeholder="Opsional"
+            placeholder="Contoh: 63"
             className="w-full border border-gray-300 rounded-md p-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
