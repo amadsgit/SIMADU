@@ -133,7 +133,7 @@ export default function Page() {
         <div className="flex justify-between items-center mb-3">
           <div>
             <h2 className="text-2xl font-bold">
-              Manajemen Data <span className="text-pink-600">Ibu Hamil</span>
+              Data <span className="text-pink-600">Ibu Hamil</span>
             </h2>
           </div>
           <Link href="/dashboard/kader/ibu-hamil/create">

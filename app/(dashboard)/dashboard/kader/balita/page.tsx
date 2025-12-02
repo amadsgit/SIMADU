@@ -131,7 +131,7 @@ export default function Page() {
         <div className="flex justify-between items-center mb-3">
           <div>
             <h2 className="text-2xl font-bold">
-              Manajemen Data <span className="text-green-600">Balita</span>
+              Data <span className="text-green-600">Balita</span>
             </h2>
           </div>
           <Link href="/dashboard/kader/balita/create">
