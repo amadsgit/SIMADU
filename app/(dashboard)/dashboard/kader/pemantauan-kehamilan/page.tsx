@@ -255,9 +255,8 @@ export default function PemantauanKehamilanPage() {
       {renderModalDetail()}
 
       <div>
-        <h2 className="text-2xl font-bold text-gray-800">
-          Pemantauan Ibu Hamil – {posyandu} ({wilayah})
-        </h2>
+          <h2 className="text-2xl font-bold">Dashboard Pemantauan Ibu Hamil</h2>
+          <p className="text-sm text-gray-500">{posyandu ? `${posyandu} • ${wilayah}` : "Posyandu"}</p>
       </div>
 
       {/* STAT CARDS */}
