@@ -37,7 +37,7 @@ export default function Page() {
 
   // PAGINATION STATE
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 3;
 
   useEffect(() => {
     const fetchData = async () => {
