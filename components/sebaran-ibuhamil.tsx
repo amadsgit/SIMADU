@@ -182,7 +182,7 @@ export default function SebaranIbuHamilMap() {
     <div
       id="map-sebaran-ibu"
       className="rounded-md border"
-      style={{ height: "80vh", width: "100%" }}
+      style={{ height: "50vh", width: "100%" }}
     />
   );
 }

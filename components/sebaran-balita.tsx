@@ -165,7 +165,7 @@ export default function SebaranBalitaMap() {
     <div
       id="map-sebaran-balita"
       className="rounded-md border"
-      style={{ height: "80vh", width: "100%" }}
+      style={{ height: "50vh", width: "100%" }}
     />
   );
 }
