@@ -121,7 +121,7 @@ export default function MapView() {
     <div
       id="leaflet-map"
       className="rounded-md"
-      style={{ height: '50vh', width: '100%' }}
+      style={{ height: '70vh', width: '100%' }}
     />
   );
 }
