@@ -164,7 +164,7 @@ export default function TopNavbar() {
             >
               <Image
                 src="/akun.png"
-                alt="User Avatar"
+                alt="Users Image"
                 width={32}
                 height={32}
                 className="rounded-full border border-white/20"
