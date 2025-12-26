@@ -23,7 +23,7 @@ export default function Page() {
   // PAGINATION STATE
   // ==============================
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
 
   const totalPages = Math.ceil(kelurahanList.length / itemsPerPage);
 
@@ -260,7 +260,7 @@ export default function Page() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={3} className="p-3 text-center text-gray-500">
+                      <td colSpan={5} className="p-3 text-center text-gray-500">
                         Belum ada data kelurahan.
                       </td>
                     </tr>
