@@ -60,6 +60,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        <meta name="google-site-verification" content="7OsVRlT0LYQIhpray9U7BDsx7FbqGuZiIAAopD3H3Is" />
+      </head>
       <body>
         <NextAuthSession>
           <Toaster position="top-center" reverseOrder={false} />
