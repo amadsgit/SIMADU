@@ -86,7 +86,7 @@ export default function TopNavbar() {
         {/* Kanan: Notifikasi & Profil */}
         <div className="flex items-center gap-5">
           {/* Notifikasi */}
-          <div className="relative" ref={notifRef}>
+          {/* <div className="relative" ref={notifRef}>
             <button
               onClick={() => setIsNotifOpen(!isNotifOpen)}
               className="relative p-2 hover:bg-white/10 rounded-full transition"
@@ -109,7 +109,52 @@ export default function TopNavbar() {
                 </ul>
               </div>
             )}
+          </div> */}
+          {/* Status Online */}
+          <div className="flex items-center">
+          <div className="
+            relative flex items-center gap-2
+            px-3 py-1
+            rounded-full
+            bg-emerald-500/10
+            border border-emerald-400/30
+            backdrop-blur-sm
+            shadow-[0_0_15px_rgba(16,185,129,0.25)]
+          ">
+            {/* Glow pulse */}
+            <span className="
+              absolute inset-0
+              rounded-full
+              animate-pulse
+              bg-emerald-400/10
+            "></span>
+
+            {/* Dot */}
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="
+                absolute inline-flex h-full w-full
+                rounded-full
+                bg-emerald-50
+                animate-ping
+                opacity-75
+              "></span>
+              <span className="
+                relative inline-flex h-2.5 w-2.5
+                rounded-full
+                bg-emerald-500
+                shadow-[0_0_6px_rgba(16,185,129,0.8)]
+              "></span>
+            </span>
+
+            {/* Text */}
+            <span className="
+              relative text-xs font-semibold tracking-wide
+              text-emerald-50
+            ">
+              ONLINE
+            </span>
           </div>
+        </div>
 
           {/* Profil */}
           <div className="relative" ref={profileRef}>
@@ -118,7 +163,7 @@ export default function TopNavbar() {
               className="flex items-center gap-2 hover:bg-white/10 px-2 py-1.5 rounded-full transition"
             >
               <Image
-                src="/favicon.ico"
+                src="/akun.png"
                 alt="User Avatar"
                 width={32}
                 height={32}

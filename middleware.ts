@@ -80,6 +80,6 @@ export async function middleware(req: NextRequest) {
 // 6. Match semua route, kecuali static dan API
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|desktop.png|desktop2.png|desktop3.png|desktop4.png|mobile.png|logo.png|logo3.png).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|desktop.png|desktop2.png|desktop3.png|desktop4.png|mobile.png|logo.png|logo3.png|akun.png|users.png).*)",
   ],
 };
