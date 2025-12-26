@@ -107,7 +107,7 @@ export default function MapView() {
             Akreditasi: ${item.akreditasi}
           `
         )
-        .bindTooltip(item.nama, {
+        .bindTooltip(`🏥 ${item.nama}`, {
           permanent: true,
           direction: 'top',
           offset: [0, -35],

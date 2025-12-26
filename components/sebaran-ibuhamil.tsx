@@ -168,7 +168,9 @@ export default function SebaranIbuHamilMap() {
         </div>
       `);
 
-      marker.bindTooltip(b.nama, {
+      // marker.bindTooltip(b.nama, {
+
+      marker.bindTooltip("🤰 Ibu Hamil", {
         permanent: true,
         direction: "top",
         offset: [0, -35],

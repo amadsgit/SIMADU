@@ -18,7 +18,7 @@ export default function Page() {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   // Fetch data
   const fetchBalita = async () => {

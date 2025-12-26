@@ -45,7 +45,7 @@ export default function Page() {
   // PAGINATION
   // ======================================================
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   // reset ke halaman 1 ketika search berubah
   useEffect(() => {

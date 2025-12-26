@@ -20,7 +20,7 @@ export default function Page() {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   // Fetch data
   const fetchIbuHamil = async () => {

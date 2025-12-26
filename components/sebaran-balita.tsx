@@ -151,8 +151,9 @@ export default function SebaranBalitaMap() {
         </div>
       `);
 
-      marker.bindTooltip(b.nama, {
-        permanent: true,
+      // marker.bindTooltip(b.nama, {
+      marker.bindTooltip("👶 Balita", {
+      permanent: true,
         direction: "top",
         offset: [0, -35],
       });

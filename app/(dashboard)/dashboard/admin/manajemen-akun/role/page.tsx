@@ -20,7 +20,7 @@ export default function Page() {
   const isEdit = selectedId !== null;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
 
   const totalPages = Math.ceil(roles.length / itemsPerPage);
 
