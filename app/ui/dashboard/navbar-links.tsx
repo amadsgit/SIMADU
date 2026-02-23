@@ -24,8 +24,8 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
       return [
         { name: 'Dashboard', href: '/dashboard/admin', icon: HomeIcon },
         { name: 'Manajemen Posyandu & Kader', href: '/dashboard/admin/manajemen-posyandu/wilayah-kerja', icon: UserGroupIcon },
-        { name: 'Manajemen Program', href: '/dashboard/admin/manajemen-program/klaster', icon: HeartPulse },
-        { name: 'Manajemen User', href: '/dashboard/admin/manajemen-akun/role', icon: UserIcon },
+        { name: 'Manajemen Klaster & Program Kesehatan', href: '/dashboard/admin/manajemen-program/klaster', icon: HeartPulse },
+        { name: 'Manajemen Role & User', href: '/dashboard/admin/manajemen-akun/role', icon: UserIcon },
         { name: 'Laporan & Rekap Data Posyandu', href: '/dashboard/admin/laporan-posyandu/data-balita', icon: Layers3 }
       ];
 
