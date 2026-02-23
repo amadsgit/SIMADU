@@ -24,11 +24,11 @@ export default function TabsPosyandu() {
       href: '/dashboard/admin/manajemen-posyandu/gis',
       icon: MapPin,
     },
-    {
-      name: 'Grafik Statistik Posyandu',
-      href: '/dashboard/admin/manajemen-posyandu/statistik-posyandu',
-      icon: BarChart3,
-    },
+    // {
+    //   name: 'Grafik Statistik Posyandu',
+    //   href: '/dashboard/admin/manajemen-posyandu/statistik-posyandu',
+    //   icon: BarChart3,
+    // },
   ];
 
   return (
