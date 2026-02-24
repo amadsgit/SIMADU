@@ -10,7 +10,7 @@ export default function TabsUser() {
 
   const tabs = [
     { name: 'Manajemen Role', href: '/dashboard/admin/manajemen-akun/role', icon: Shield },
-    { name: 'Manajemen User', href: '/dashboard/admin/manajemen-akun/user', icon: Users },
+    { name: 'Manajemen Akun', href: '/dashboard/admin/manajemen-akun/user', icon: Users },
   ];
 
   return (
