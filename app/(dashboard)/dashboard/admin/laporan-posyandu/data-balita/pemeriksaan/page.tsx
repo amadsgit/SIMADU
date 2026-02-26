@@ -152,7 +152,7 @@ export default function Page() {
   return (
     <div>
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-2xl font-bold">Laporan Pemeriksaan Balita</h2>
+        <h2 className="text-2xl font-bold">Rekap Pemeriksaan Balita</h2>
       </div>
 
       <TabsPane />

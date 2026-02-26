@@ -168,7 +168,7 @@ const handlePrintPDF = () => {
     <div>
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-2xl font-bold">Laporan dan Rekap Data Ibu Hamil</h2>
+        <h2 className="text-2xl font-bold">Rekap Data Ibu Hamil</h2>
       </div>
 
       <TabsPane />

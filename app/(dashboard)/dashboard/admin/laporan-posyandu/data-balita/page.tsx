@@ -136,7 +136,7 @@ export default function Page() {
     <div>
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-2xl font-bold">Laporan dan Rekap Data Balita</h2>
+        <h2 className="text-2xl font-bold">Rekap Data Balita</h2>
       </div>
 
       <TabsPane />
