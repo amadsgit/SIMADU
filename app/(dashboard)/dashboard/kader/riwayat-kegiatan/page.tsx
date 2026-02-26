@@ -269,7 +269,7 @@ export default function RiwayatKegiatanPage() {
                       className="inline-flex items-center gap-1.5 px-3 py-1 border border-gray-200 rounded-md bg-white hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 text-gray-600 text-xs font-medium transition-all"
                     >
                       <EyeIcon className="h-4 w-4" />
-                      Rekap Data
+                      Laporan Kegiatan
                     </Link>
                   </td>
                 </tr>

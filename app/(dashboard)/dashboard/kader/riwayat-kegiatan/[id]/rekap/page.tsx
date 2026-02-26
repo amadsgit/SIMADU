@@ -424,7 +424,7 @@ export default function RekapPage() {
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold text-emerald-700 flex items-center gap-2">
           <ClipboardCheckIcon className="w-6 h-6" />
-          Rekap Data Kegiatan
+          Laporan Kegiatan Posyadu
         </h1>
         <Link href="/dashboard/kader/riwayat-kegiatan">
           <ButtonKembali />
