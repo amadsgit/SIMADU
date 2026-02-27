@@ -26,7 +26,7 @@ export const getFlatMenuByRole = (role: string): NavLink[] => {
         { name: 'Manajemen Posyandu & Kader', href: '/dashboard/admin/manajemen-posyandu/wilayah-kerja', icon: UserGroupIcon },
         { name: 'Manajemen Klaster & Program Kesehatan', href: '/dashboard/admin/manajemen-program/klaster', icon: HeartPulse },
         { name: 'Manajemen Role & Akun', href: '/dashboard/admin/manajemen-akun/role', icon: UserIcon },
-        { name: 'Rekap Data Posyandu', href: '/dashboard/admin/laporan-posyandu/data-balita', icon: Layers3 }
+        { name: 'Rekap Data Sasaran', href: '/dashboard/admin/laporan-posyandu/data-balita', icon: Layers3 }
       ];
 
     case 'pemegang_program_kia':
