@@ -16,11 +16,6 @@ const MapView = dynamic(() => import('@/components/map-view'), {
 export default function MapSection() {
   return (
     <section className="mt-2 mx-4 md:mx-6">
-      <p className="text-center text-gray-600 mb-6">
-        Berikut adalah sebaran lokasi posyandu di wilayah kerja{' '}
-        <strong>UPTD Puskesmas Cikalapa</strong>.
-      </p>
-
       <div className="w-full rounded-xl overflow-hidden shadow-lg border border-emerald-100">
         <Suspense fallback={<p className="p-10 text-center text-emerald-600">Memuat peta...</p>}>
           <MapView />
