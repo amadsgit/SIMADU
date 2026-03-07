@@ -271,6 +271,23 @@ export default function MapView() {
     }).addTo(mapRef.current);
   };
 
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const fullscreen = !!document.fullscreenElement;
+      setIsFullscreen(fullscreen);
+
+      setTimeout(() => {
+        mapRef.current?.invalidateSize();
+      }, 300);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
   // LOAD MARKERS
   useEffect(() => {
     if (!mapRef.current || posyanduData.length === 0) return;
@@ -328,31 +345,38 @@ export default function MapView() {
   }, [posyanduData]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      ref={mapContainerRef}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: isFullscreen ? "100vh" : "80vh",
+      }}
+    >
+      {/* FULLSCREEN BUTTON */}
       <button
         onClick={toggleFullscreen}
         style={{
-          position: 'absolute',
+          position: "absolute",
           zIndex: 999,
           top: 10,
           right: 100,
-          padding: '6px 10px',
-          background: 'white',
-          border: '1px solid #ccc',
-          borderRadius: '6px',
-          cursor: 'pointer',
+          padding: "6px 10px",
+          background: "white",
+          border: "1px solid #ccc",
+          borderRadius: "6px",
+          cursor: "pointer",
         }}
       >
-        {isFullscreen ? '⤢ Exit' : '⤢ Fullscreen'}
+        {isFullscreen ? "⤢ Exit" : "⤢ Fullscreen"}
       </button>
 
       <div
-        ref={mapContainerRef}
+        // ref={mapContainerRef}
         id="leaflet-map"
         style={{
-          height: '80vh',
+          height: "100%",
           width: '100%',
-          borderRadius: '10px',
         }}
       />
     </div>

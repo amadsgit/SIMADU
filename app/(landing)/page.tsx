@@ -32,7 +32,7 @@ export default function Page() {
   const [data, setData] = useState<Posyandu[]>([]);
   const [loading, setLoading] = useState(true);
   const COLORS_AKREDITASI = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
-  const COLORS_KELURAHAN = ['#34d399', '#60a5fa', '#fbbf24', '#fb7185'];
+  const COLORS_KELURAHAN = ['#fb7185', '#fbbf24', '#60a5fa', '#34d399'];
 
 
   useEffect(() => {
