@@ -331,9 +331,11 @@ export default function MapView() {
         }
       });
 
-      marker.bindTooltip(`🏥 ${item.nama}`, {
+      marker.bindTooltip(`📍 ${item.nama}`, {
+        // permanent: true,
         direction: 'top',
         offset: [0, -30],
+        className: 'posyandu-label'
       });
 
       cluster?.addLayer(marker);

@@ -32,3 +32,46 @@ input[type='number']::-webkit-outer-spin-button {
 .leaflet-popup-pane {
   z-index: 0 !important;
 }
+
+.marker-cluster div {
+  animation: clusterPulse 1.6s infinite;
+}
+
+@keyframes clusterPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
+  }
+
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.posyandu-label {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1f2937;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(255,255,255,0.4) inset;
+
+  letter-spacing: 0.2px;
+}
+
+.posyandu-label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
