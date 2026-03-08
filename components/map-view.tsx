@@ -10,6 +10,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+import { kelurahanPolygon } from '@/src/data/kelurahanPolygon';
 
 /* FIX MARKER ICON UNTUK NEXT JS */
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -26,10 +27,10 @@ L.Icon.Default.mergeOptions({
 const getMarkerColor = (kelurahanName: string) => {
   const name = kelurahanName?.toLowerCase() ?? '';
 
-  if (name === 'pasirkareumbi') return 'orange';
-  if (name === 'soklat') return 'red';
-  if (name === 'parung') return 'green';
-  if (name === 'wanareja') return 'blue';
+  if (name === 'pasirkareumbi') return 'red';
+  if (name === 'soklat') return 'orange';
+  if (name === 'parung') return 'blue';
+  if (name === 'wanareja') return 'green';
 
   return 'gray';
 };
@@ -239,6 +240,57 @@ export default function MapView() {
     };
 
     closeRouteBtn.addTo(map);
+  }, []);
+
+  // polygon batas kelurahan
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    const map = mapRef.current;
+
+    const kelurahanStyle: Record<string, any> = {
+      pasirkareumbi: { color: "orange", fillColor: "orange" },
+      soklat: { color: "red", fillColor: "red" },
+      parung: { color: "green", fillColor: "green" },
+      wanareja: { color: "blue", fillColor: "blue" },
+    };
+
+    Object.entries(kelurahanPolygon).forEach(([nama, coords]) => {
+
+      const style = kelurahanStyle[nama] || {
+        color: "#6b7280",
+        fillColor: "#9ca3af"
+      };
+
+      const polygon = L.polygon(coords as L.LatLngExpression[][], {
+        color: style.color,
+        fillColor: style.fillColor,
+        fillOpacity: 0.2,
+        weight: 2
+      }).addTo(map);
+
+      polygon.bindTooltip(`Kelurahan ${nama}`, {
+        permanent: false,
+        direction: "center",
+        className: "posyandu-label"
+      });
+
+      polygon.on("mouseover", () => {
+        polygon.setStyle({
+          fillOpacity: 0.45,
+          weight: 3
+        });
+      });
+
+      polygon.on("mouseout", () => {
+        polygon.setStyle({
+          fillOpacity: 0.2,
+          weight: 2
+        });
+      });
+
+    });
+
   }, []);
 
   // ROUTE FUNCTION
