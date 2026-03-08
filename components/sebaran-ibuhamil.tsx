@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { kelurahanPolygon } from '@/src/data/kelurahanPolygon';
 
 // Fix default marker icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -117,6 +118,57 @@ export default function SebaranIbuHamilMap() {
 
     const markerGroup = L.layerGroup().addTo(map);
     markerGroupRef.current = markerGroup;
+  }, []);
+
+  // polygon batas kelurahan
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    const map = mapRef.current;
+
+    const kelurahanStyle: Record<string, any> = {
+      pasirkareumbi: { color: "orange", fillColor: "orange" },
+      soklat: { color: "red", fillColor: "red" },
+      parung: { color: "green", fillColor: "green" },
+      wanareja: { color: "blue", fillColor: "blue" },
+    };
+
+    Object.entries(kelurahanPolygon).forEach(([nama, coords]) => {
+
+      const style = kelurahanStyle[nama] || {
+        color: "#6b7280",
+        fillColor: "#9ca3af"
+      };
+
+      const polygon = L.polygon(coords as L.LatLngExpression[][], {
+        color: style.color,
+        fillColor: style.fillColor,
+        fillOpacity: 0.2,
+        weight: 2
+      }).addTo(map);
+
+      polygon.bindTooltip(`Kelurahan ${nama}`, {
+        permanent: false,
+        direction: "center",
+        className: "posyandu-label"
+      });
+
+      polygon.on("mouseover", () => {
+        polygon.setStyle({
+          fillOpacity: 0.45,
+          weight: 3
+        });
+      });
+
+      polygon.on("mouseout", () => {
+        polygon.setStyle({
+          fillOpacity: 0.2,
+          weight: 2
+        });
+      });
+
+    });
+
   }, []);
 
   // Render markers
