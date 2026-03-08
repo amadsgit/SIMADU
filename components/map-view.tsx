@@ -12,7 +12,7 @@ import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import { kelurahanPolygon } from '@/src/data/kelurahanPolygon';
 
-/* FIX MARKER ICON UNTUK NEXT JS */
+/* FIX MARKER ICON UNTUK NEXT JS */ 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
 L.Icon.Default.mergeOptions({
