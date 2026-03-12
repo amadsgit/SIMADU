@@ -22118,10 +22118,10 @@ export namespace Prisma {
 
   export type PosyanduWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    nama?: string
     AND?: PosyanduWhereInput | PosyanduWhereInput[]
     OR?: PosyanduWhereInput[]
     NOT?: PosyanduWhereInput | PosyanduWhereInput[]
+    nama?: StringFilter<"Posyandu"> | string
     alamat?: StringFilter<"Posyandu"> | string
     wilayah?: StringFilter<"Posyandu"> | string
     kelurahanId?: IntNullableFilter<"Posyandu"> | number | null
@@ -22138,7 +22138,7 @@ export namespace Prisma {
     balita?: BalitaListRelationFilter
     ibuHamil?: IbuHamilListRelationFilter
     pelaksanaanKegiatan?: PelaksanaanKegiatanListRelationFilter
-  }, "id" | "nama">
+  }, "id">
 
   export type PosyanduOrderByWithAggregationInput = {
     id?: SortOrder

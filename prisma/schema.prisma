@@ -27,7 +27,7 @@ enum Akreditasi {
 
 model Posyandu {
   id              Int        @id @default(autoincrement())
-  nama            String     @unique
+  nama            String     
   alamat          String
   wilayah         String
   kelurahanId     Int?

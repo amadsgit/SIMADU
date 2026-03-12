@@ -31,7 +31,7 @@ export async function GET() {
 }
 
 // ==================================================
-// POST: Tambah data posyandu baru dengan validasi unik
+// POST: Tambah data posyandu baru
 // ==================================================
 export async function POST(request: Request) {
   try {
@@ -48,7 +48,6 @@ export async function POST(request: Request) {
       latitude,
     } = body;
 
-    // Validasi wajib isi
     if (
       !nama ||
       !alamat ||
@@ -66,7 +65,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validasi enum akreditasi
     const validAkreditasi = [
       'PARIPURNA',
       'PRATAMA',
@@ -75,6 +73,7 @@ export async function POST(request: Request) {
       'MANDIRI',
       'BELUM_AKREDITASI',
     ];
+
     if (!validAkreditasi.includes(akreditasi)) {
       return NextResponse.json(
         { error: 'Akreditasi tidak valid.' },
@@ -82,10 +81,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert tipe data
     const lon = parseFloat(longitude);
     const lat = parseFloat(latitude);
     const kelurahanIdInt = parseInt(kelurahanId);
+
     if (isNaN(lon) || isNaN(lat) || isNaN(kelurahanIdInt)) {
       return NextResponse.json(
         { error: 'Longitude, Latitude, dan Kelurahan ID harus berupa angka.' },
@@ -93,24 +92,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // alidasi nama Posyandu unik (case insensitive)
-    const existing = await prisma.posyandu.findFirst({
-      where: {
-        nama: {
-          equals: nama,
-          mode: 'insensitive',
-        },
-      },
-    });
-
-    if (existing) {
-      return NextResponse.json(
-        { error: 'Nama Posyandu sudah terdaftar. Gunakan nama lain.' },
-        { status: 409 } // Conflict
-      );
-    }
-
-    // Simpan data baru
+    // langsung create tanpa cek nama
     const newPosyandu = await prisma.posyandu.create({
       data: {
         nama,
@@ -126,6 +108,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(newPosyandu, { status: 201 });
+
   } catch (error) {
     console.error('[POST Posyandu]', error);
     return NextResponse.json(
