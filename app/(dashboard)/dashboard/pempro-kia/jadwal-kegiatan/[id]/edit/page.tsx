@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonBatal from '@/components/button-batal';
 import ButtonUpdate from '@/components/button-update';
+import Select from "react-select";
 
 type Posyandu = {
   kelurahan: any;
@@ -30,6 +31,12 @@ export default function EditKegiatanPage() {
   const [posyanduList, setPosyanduList] = useState<Posyandu[]>([]);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const posyanduOptions = posyanduList.map((pos) => ({
+    value: pos.id,
+    label: `${pos.nama}, ${pos.wilayah} Kel.${pos.kelurahan.nama}`,
+  }));
+
+  const [selectedPosyandu, setSelectedPosyandu] = useState<any>(null);
 
   // Fokus otomatis ke nama kegiatan
   useEffect(() => {
@@ -67,6 +74,12 @@ export default function EditKegiatanPage() {
           alamat: data.alamat || '',
           wilayah: data.wilayah || '',
           posyanduId: data.posyandu?.id?.toString() || '',
+        });
+
+        // set selected option react-select
+        setSelectedPosyandu({
+          value: data.posyandu?.id,
+          label: `${data.posyandu?.nama}, ${data.posyandu?.wilayah} Kel.${data.posyandu?.kelurahan?.nama}`,
         });
       } catch (error: any) {
         console.error(error);
@@ -196,19 +209,20 @@ export default function EditKegiatanPage() {
               <label className="block text-sm font-semibold text-gray-700 mb-1">
                 Posyandu
               </label>
-              <select
-                name="posyanduId"
-                value={formData.posyanduId}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm bg-white focus:ring-2 focus:ring-emerald-400 outline-none transition"
-              >
-                <option value="">-- Pilih Posyandu --</option>
-                {posyanduList.map((pos) => (
-                  <option key={pos.id} value={pos.id}>
-                    {pos.nama}, {pos.wilayah} Kel.{pos.kelurahan.nama}
-                  </option>
-                ))}
-              </select>
+              <Select
+                options={posyanduOptions}
+                value={selectedPosyandu}
+                placeholder="Cari atau pilih posyandu..."
+                maxMenuHeight={220}
+                onChange={(selected: any) => {
+                  setSelectedPosyandu(selected);
+
+                  setFormData((prev) => ({
+                    ...prev,
+                    posyanduId: selected?.value.toString() || "",
+                  }));
+                }}
+              />
             </div>
 
             {/* --- Tombol --- */}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonSimpan from '@/components/button-simpan';
 import ButtonBatal from '@/components/button-batal';
+import Select from "react-select";
 
 type Role = {
   id: string;
@@ -49,6 +50,10 @@ export default function Page() {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [nikError, setNikError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
+  const kaderOptions = kaderList.map((k) => ({
+    value: k.id,
+    label: `${k.nama}, ${k.posyandu?.nama} ${k.posyandu?.wilayah} Kel.${k.posyandu?.kelurahan?.nama}`,
+  }));
 
   useEffect(() => {
     roleIdRef.current?.focus();
@@ -238,20 +243,17 @@ export default function Page() {
               <label className="block text-sm font-semibold text-gray-700 mb-1">
                 Pilih Nama Kader
               </label>
-              <select
-                name="kaderId"
-                value={formData.kaderId}
-                onChange={handleKaderSelect}
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm bg-white focus:ring-2 focus:ring-emerald-400 outline-none transition"
-              >
-                <option value="">-- Pilih Kader --</option>
-                {kaderList.map((k) => (
-                  <option key={k.id} value={k.id}>
-                    {k.nama} — {k.posyandu?.nama || '-'} ({k.posyandu?.wilayah || '-'}) Kel.
-                    {k.posyandu?.kelurahan?.nama || '-'}
-                  </option>
-                ))}
-              </select>
+              <Select
+                options={kaderOptions}
+                placeholder="Cari atau pilih kader..."
+                onChange={(selected) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    posyanduId: selected?.value.toString() || "",
+                  }))
+                }
+                className="text-sm"
+              />
             </div>
           )}
 

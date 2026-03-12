@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import ButtonSimpan from '@/components/button-simpan';
 import ButtonBatal from '@/components/button-batal';
+import Select from "react-select"; 
 
 type Posyandu = {
   id: number;
@@ -28,6 +29,10 @@ export default function TambahKegiatanPage() {
 
   const [posyanduList, setPosyanduList] = useState<Posyandu[]>([]);
   const [loading, setLoading] = useState(false);
+  const posyanduOptions = posyanduList.map((pos) => ({
+    value: pos.id,
+    label: `${pos.nama}, ${pos.wilayah} Kel.${pos.kelurahan.nama}`,
+  }));
 
   // Fokus otomatis ke nama kegiatan
   useEffect(() => {
@@ -163,19 +168,17 @@ export default function TambahKegiatanPage() {
               <label className="block text-sm font-semibold text-gray-700 mb-1">
                 Posyandu
               </label>
-              <select
-                name="posyanduId"
-                value={formData.posyanduId}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm bg-white focus:ring-2 focus:ring-emerald-400 outline-none transition"
-              >
-                <option value="">-- Pilih Posyandu --</option>
-                {posyanduList.map((pos) => (
-                  <option key={pos.id} value={pos.id}>
-                    {pos.nama}, {pos.wilayah} Kel.{pos.kelurahan.nama}
-                  </option>
-                ))}
-              </select>
+              <Select
+                options={posyanduOptions}
+                placeholder="Cari atau pilih posyandu..."
+                onChange={(selected) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    posyanduId: selected?.value.toString() || "",
+                  }))
+                }
+                className="text-sm"
+              />
             </div>
 
             {/* --- Tombol --- */}
