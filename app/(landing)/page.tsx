@@ -73,7 +73,7 @@ export default function Page() {
   }, [data]);
 
   return (
-    <main className="min-h-screen flex flex-col bg-gradient-to-b from-white via-emerald-50/40 to-white text-gray-800">
+    <main className="min-h-screen flex flex-col bg-gradient-to-b from-white via-emerald-50/40 to-white text-gray-800 mt-20">
       <NavbarLanding />
 
       <div className="mt-6 md:px-10 lg:px-14 flex gap-6">

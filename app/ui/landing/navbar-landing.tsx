@@ -17,83 +17,61 @@ export default function NavbarLanding() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-emerald-500 px-6 py-4 shadow-lg text-white">
-      <div className="flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full z-[9999] bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 text-white shadow-md mb-20">
+      
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <span className="text-lg font-extrabold tracking-wide">
-           ⚘ SIMADU
+        <Link href="/" className="flex items-center gap-2">
+          <span className="text-lg font-bold tracking-wide">
+            ⚘ SIMADU
           </span>
         </Link>
 
-        {/* Hamburger Button */}
+        {/* Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="sm:hidden focus:outline-none"
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
 
-        {/* Menu Desktop */}
-        <div className="hidden sm:flex gap-6 text-sm font-medium">
-          <NavItem
-            href="/"
-            icon={<MapPin className="w-5 h-5" />}
-            pathname={pathname}
-          >
+        {/* Desktop Menu */}
+        <div className="hidden sm:flex items-center gap-4 text-sm font-medium">
+          <NavItem href="/" icon={<MapPin size={18} />} pathname={pathname}>
             Lokasi Posyandu
           </NavItem>
 
-          <NavItem
-            href="/balita"
-            icon={<Baby className="w-5 h-5" />}
-            pathname={pathname}
-          >
+          <NavItem href="/balita" icon={<Baby size={18} />} pathname={pathname}>
             Sebaran Balita
           </NavItem>
 
-          <NavItem
-            href="/ibu-hamil"
-            icon={<HeartPulse className="w-5 h-5" />}
-            pathname={pathname}
-          >
+          <NavItem href="/ibu-hamil" icon={<HeartPulse size={18} />} pathname={pathname}>
             Sebaran Ibu Hamil
           </NavItem>
 
-          <NavItem
-            href="/auth/login"
-            icon={<LogIn className="w-5 h-5" />}
-            pathname={pathname}
-          >
+          <NavItem href="/auth/login" icon={<LogIn size={18} />} pathname={pathname}>
             Login
           </NavItem>
         </div>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="flex flex-col gap-3 mt-4 sm:hidden">
-          <NavItem href="/" icon={<MapPin className="w-5 h-5" />} pathname={pathname}>
+        <div className="sm:hidden px-6 pb-4 flex flex-col gap-2 bg-emerald-600">
+          <NavItem href="/" icon={<MapPin size={18} />} pathname={pathname}>
             Lokasi Posyandu
           </NavItem>
 
-          <NavItem href="/balita" icon={<Baby className="w-5 h-5" />} pathname={pathname}>
+          <NavItem href="/balita" icon={<Baby size={18} />} pathname={pathname}>
             Sebaran Balita
           </NavItem>
 
-          <NavItem
-            href="/ibu-hamil"
-            icon={<HeartPulse className="w-5 h-5" />}
-            pathname={pathname}
-          >
+          <NavItem href="/ibu-hamil" icon={<HeartPulse size={18} />} pathname={pathname}>
             Sebaran Ibu Hamil
           </NavItem>
 
-          <NavItem
-            href="/auth/login"
-            icon={<LogIn className="w-5 h-5" />}
-            pathname={pathname}
-          >
+          <NavItem href="/auth/login" icon={<LogIn size={18} />} pathname={pathname}>
             Login
           </NavItem>
         </div>
@@ -102,7 +80,12 @@ export default function NavbarLanding() {
   );
 }
 
-function NavItem({ href, icon, children, pathname }: {
+function NavItem({
+  href,
+  icon,
+  children,
+  pathname,
+}: {
   href: string;
   icon: React.ReactNode;
   children: React.ReactNode;
@@ -113,10 +96,10 @@ function NavItem({ href, icon, children, pathname }: {
   return (
     <Link
       href={href}
-      className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all ${
+      className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${
         isActive
-          ? 'bg-white text-emerald-600 font-semibold shadow-sm'
-          : 'hover:bg-emerald-600 hover:bg-opacity-40'
+          ? 'bg-white/90 text-emerald-700 font-semibold shadow-sm'
+          : 'hover:bg-white/15'
       }`}
     >
       {icon}

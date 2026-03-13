@@ -343,3 +343,9 @@ model StatusGiziBalita {
   statusStunting String?   // Normal, Pendek, Sangat Pendek
   createdAt    DateTime @default(now())
 }
+
+model Visitor {
+  id        Int      @id @default(autoincrement())
+  ip        String?
+  createdAt DateTime @default(now())
+}

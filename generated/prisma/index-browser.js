@@ -348,6 +348,12 @@ exports.Prisma.StatusGiziBalitaScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.VisitorScalarFieldEnum = {
+  id: 'id',
+  ip: 'ip',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -407,7 +413,8 @@ exports.Prisma.ModelName = {
   PemeriksaanBalita: 'PemeriksaanBalita',
   PemeriksaanIbuHamil: 'PemeriksaanIbuHamil',
   PelaksanaanKegiatan: 'PelaksanaanKegiatan',
-  StatusGiziBalita: 'StatusGiziBalita'
+  StatusGiziBalita: 'StatusGiziBalita',
+  Visitor: 'Visitor'
 };
 
 /**
