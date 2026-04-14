@@ -115,7 +115,7 @@ export default function JadwalKegiatanPage() {
     if (selectedId === null) return;
 
     try {
-      const res = await fetch(`/api/pemproGiziJadwal/${selectedId}`, {
+      const res = await fetch(`/api/pemproGizi/jadwal/${selectedId}`, {
         method: 'DELETE',
       });
 

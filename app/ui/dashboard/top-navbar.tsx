@@ -179,13 +179,13 @@ export default function TopNavbar() {
                 <div className="px-4 py-2 text-sm text-gray-700 border-b bg-gray-50 font-semibold">
                   {session?.user?.role || 'User'}
                 </div>
-                <Link
+                {/* <Link
                   href="#"
                   className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <User className="w-5 h-5 text-emerald-600" />
                   Profil
-                </Link>
+                </Link> */}
                 <button
                   onClick={showLogoutConfirm}
                   className="flex items-center gap-2 w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100"

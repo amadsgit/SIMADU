@@ -89,7 +89,7 @@ export async function PUT(
 // ========================================================
 export async function DELETE(
   _request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: number }> }
 ) {
   try {
     const { id } = await context.params;
@@ -104,6 +104,6 @@ export async function DELETE(
     return NextResponse.json({ message: 'Kegiatan berhasil dihapus.' });
   } catch (error) {
     console.error('[DELETE Kegiatan]', error);
-    return NextResponse.json({ error: 'Gagal menghapus kegiatan.' }, { status: 500 });
+    return NextResponse.json({ error: 'Kegiatan Sudah Selesai Dilaksanakan, Data tidak dapat Dihapus!.' }, { status: 500 });
   }
 }

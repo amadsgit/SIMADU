@@ -115,7 +115,7 @@ export default function JadwalKegiatanPage() {
     if (selectedId === null) return;
 
     try {
-      const res = await fetch(`/api/pemproKiaJadwal/${selectedId}`, {
+      const res = await fetch(`/api/pemproKia/jadwal/${selectedId}`, {
         method: 'DELETE',
       });
 
@@ -286,55 +286,100 @@ export default function JadwalKegiatanPage() {
                     </td>
                   </tr>
                 ) : (
-                  currentRows.map((k, index) => (
-                    <tr key={k.id} className="odd:bg-gray-50">
-                      <td className="py-3 px-3 font-medium text-emerald-700">
-                        {indexOfFirstRow + index + 1} {/* nomor urut tetap global */}
-                      </td>
-                      <td className="py-3 px-3">{k.nama}</td>
-                      <td className="py-3 px-3 capitalize">
-                        {format(new Date(k.tanggalPelaksanaan), "EEEE, dd MMM yyyy", { locale: id })}
-                      </td>
-                      <td className="py-3 px-3">
-                        <span
-                          className={
-                            getStatus(k.tanggalPelaksanaan) === 'Akan Datang'
-                              ? 'inline-flex px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs'
-                              : getStatus(k.tanggalPelaksanaan) === 'Berlangsung'
-                              ? 'inline-flex px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs'
-                              : 'inline-flex px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs'
-                          }
-                        >
-                          {getStatus(k.tanggalPelaksanaan)}
-                        </span>
-                      </td>
-                      <td className="py-3 px-3">
-                        {k.posyandu?.nama || '-'}
-                        <br />
-                        <span className="text-xs text-gray-500">
-                          {k.posyandu?.wilayah || '-'}, Kel. {k.posyandu?.kelurahan?.nama || '-'}
-                        </span>
-                      </td>
-                      <td>
-                        <div className="flex justify-center items-center gap-2">
-                          <Link
-                            href={`/dashboard/pempro-kia/jadwal-kegiatan/${k.id}/edit`}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-teal-500 hover:text-teal-600 transition"
-                            title="Edit"
+                  currentRows.map((k, index) => {
+                    const status = getStatus(k.tanggalPelaksanaan);
+                    const isSelesai = status === "Selesai";
+
+                    return (
+                      <tr key={k.id} className="odd:bg-gray-50">
+                        <td className="py-3 px-3 font-medium text-emerald-700">
+                          {indexOfFirstRow + index + 1}
+                        </td>
+
+                        <td className="py-3 px-3">{k.nama}</td>
+
+                        <td className="py-3 px-3 capitalize">
+                          {format(new Date(k.tanggalPelaksanaan), "EEEE, dd MMM yyyy", {
+                            locale: id,
+                          })}
+                        </td>
+
+                        {/* STATUS */}
+                        <td className="py-3 px-3">
+                          <span
+                            className={
+                              status === "Akan Datang"
+                                ? "inline-flex px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs"
+                                : status === "Berlangsung"
+                                ? "inline-flex px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs"
+                                : "inline-flex px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs"
+                            }
                           >
-                            <PencilSquareIcon className="h-4 w-4" />
-                          </Link>
-                          <button
-                            onClick={() => openDeleteModal(k.id)}
-                            className="p-2 rounded-md bg-white border border-gray-300 hover:border-rose-500 hover:text-rose-600 transition"
-                            title="Hapus"
-                          >
-                            <TrashIcon className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
+                            {status}
+                          </span>
+                        </td>
+
+                        {/* LOKASI */}
+                        <td className="py-3 px-3">
+                          {k.posyandu?.nama || "-"}
+                          <br />
+                          <span className="text-xs text-gray-500">
+                            {k.posyandu?.wilayah || "-"}, Kel.{" "}
+                            {k.posyandu?.kelurahan?.nama || "-"}
+                          </span>
+                        </td>
+
+                        {/* ACTION */}
+                        <td>
+                          <div className="flex justify-center items-center gap-2">
+                            
+                            {/* EDIT */}
+                            <Link
+                              href={
+                                isSelesai
+                                  ? "#"
+                                  : `/dashboard/pempro-kia/jadwal-kegiatan/${k.id}/edit`
+                              }
+                              onClick={(e) => {
+                                if (isSelesai) e.preventDefault();
+                              }}
+                              className={`p-2 rounded-md border transition ${
+                                isSelesai
+                                  ? "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
+                                  : "bg-white border-gray-300 hover:border-teal-500 hover:text-teal-600"
+                              }`}
+                              title={
+                                isSelesai
+                                  ? "Tidak bisa edit (sudah selesai)"
+                                  : "Edit"
+                              }
+                            >
+                              <PencilSquareIcon className="h-4 w-4" />
+                            </Link>
+
+                            {/* HAPUS */}
+                            <button
+                              onClick={() => openDeleteModal(k.id)}
+                              disabled={isSelesai}
+                              className={`p-2 rounded-md border transition ${
+                                isSelesai
+                                  ? "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
+                                  : "bg-white border-gray-300 hover:border-rose-500 hover:text-rose-600"
+                              }`}
+                              title={
+                                isSelesai
+                                  ? "Tidak bisa hapus (sudah selesai)"
+                                  : "Hapus"
+                              }
+                            >
+                              <TrashIcon className="h-4 w-4" />
+                            </button>
+
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>

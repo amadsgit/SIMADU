@@ -104,6 +104,6 @@ export async function DELETE(
     return NextResponse.json({ message: 'Kegiatan berhasil dihapus.' });
   } catch (error) {
     console.error('[DELETE Kegiatan]', error);
-    return NextResponse.json({ error: 'Gagal menghapus kegiatan.' }, { status: 500 });
+    return NextResponse.json({ error: 'Kegiatan Sudah Selesai Dilaksanakan, Data tidak dapat Dihapus!.' }, { status: 500 });
   }
 }
